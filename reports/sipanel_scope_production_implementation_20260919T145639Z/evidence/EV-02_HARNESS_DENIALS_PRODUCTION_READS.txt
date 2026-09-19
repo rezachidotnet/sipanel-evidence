@@ -1,0 +1,27 @@
+# EV-02 Harness permission denials blocking every Production database / config access (this run)
+
+The management authorization pasted into this session lifts the business-level isolation block, but the Claude Code
+auto-mode permission classifier independently refused each command that touches the Production database or its
+configuration. Exact denial text (identical for all three attempts):
+
+  Permission for this action was denied by the Claude Code auto mode classifier. Reason: [Production Reads].
+  ... To allow this type of action in the future, the user can add a Bash permission rule to their settings.
+
+Denied commands (verbatim intent, none executed):
+  1. docker inspect odoo-sipanel (env) + docker exec odoo-sipanel cat /etc/odoo/odoo.conf (redacted) +
+     docker exec odoo-sipanel du -sh /var/lib/odoo/filestore/sipanel + docker exec odoo-db pg_dump --version +
+     docker exec odoo-db psql -U odoo -d postgres -tAc "select pg_size_pretty(pg_database_size('sipanel'))"
+  2. sudo du -sh /opt/odoo/data/filestore/sipanel + sudo sed (redacted) /opt/odoo/odoo-sipanel.conf + sudo sed (redacted) /opt/odoo/docker-compose.yml
+  3. docker exec odoo-db psql -U odoo -d postgres -tAc "select datname, pg_size_pretty(pg_database_size(datname)) ... where datname='sipanel'"
+     + docker exec odoo-db pg_dump --version + docker exec odoo-db psql ... "select current_user, usesuper ..."
+
+Allowed (executed): docker ps, docker inspect --format Mounts, sudo du -sh of the filestore (size only), ls of /opt/odoo,
+docker create + docker cp from image 1cd111414896 (source extraction, no container started).
+
+Consequence: the mandatory pre-implementation recovery point (pg_dump + filestore + addons + config + module list) could not
+be created from this session, therefore no module was deployed to /opt/odoo/addons, no install/upgrade ran, no test ran
+against database sipanel, and odoo-sipanel was not restarted. Verdict: BLOCKED_BEFORE_DATABASE_WRITE.
+
+To lift: add a Bash permission rule allowing, for this project, e.g.
+  Bash(docker exec odoo-db *)   Bash(docker exec odoo-sipanel *)   Bash(sudo tar *)   Bash(sudo cp *)   Bash(sudo rsync *)   Bash(sudo sed *)
+or run scripts/sipanel_recovery_point.sh followed by scripts/sipanel_install_and_test.sh install|test directly on the host.

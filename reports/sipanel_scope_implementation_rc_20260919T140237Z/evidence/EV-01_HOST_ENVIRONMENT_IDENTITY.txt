@@ -1,0 +1,60 @@
+# EV-01 Host and environment identity (captured 2026-09-19T14:04:08Z by run user ubuntu)
+
+hostname: ubuntu---2-vcpu---2-gb-ram
+machine-id: 649ce3ee79f4455db85db97a9b009caf
+ip addresses: 194.5.206.76 172.17.0.1 172.18.0.1 10.77.0.1 10.90.0.1 
+os: "Ubuntu 24.04.1 LTS"
+kernel: 6.8.0-134-generic
+uptime:  14:04:08 up 64 days, 23:05,  3 users,  load average: 0.48, 0.68, 0.46
+
+## Memory (free -h)
+               total        used        free      shared  buff/cache   available
+Mem:           1.9Gi       1.3Gi       125Mi        40Mi       842Mi       661Mi
+Swap:          4.0Gi       2.0Gi       2.0Gi
+
+## CPU
+nproc: 2
+
+## Disk (df -h /)
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda3        28G   23G  4.0G  86% /
+
+## Docker containers (docker ps -a)
+NAMES                  IMAGE                           STATUS                     PORTS
+odoo-sipanel-staging   1cd111414896                    Exited (0) 3 days ago      
+odoo-ahantorob         odoo-custom:19-linkpreview-r2   Up 18 hours                8071/tcp, 127.0.0.1:8085->8069/tcp, 127.0.0.1:8086->8072/tcp
+odoo-shahbazi          odoo-custom:19-linkpreview      Up 2 weeks                 8071/tcp, 127.0.0.1:8091->8069/tcp, 127.0.0.1:8092->8072/tcp
+odoo-admin             1cd111414896                    Exited (137) 3 weeks ago   
+odoo-sipanel           1cd111414896                    Up 2 days                  8071/tcp, 127.0.0.1:8081->8069/tcp, 127.0.0.1:8082->8072/tcp
+odoo-avizsazeh         1cd111414896                    Up 2 weeks                 8071/tcp, 127.0.0.1:8083->8069/tcp, 127.0.0.1:8084->8072/tcp
+odoo-cyansteel         1cd111414896                    Exited (137) 3 weeks ago   
+odoo-cyansanat         1cd111414896                    Exited (137) 3 weeks ago   
+odoo-cyancoat          1cd111414896                    Exited (137) 3 weeks ago   
+odoo-app               1cd111414896                    Exited (137) 6 weeks ago   
+odoo-db                postgres:15                     Up 2 months                5432/tcp
+
+## Odoo image
+id=sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac created=2026-07-17T21:33:53.667525394Z size=705297884
+
+## Docker contexts
+NAME        DESCRIPTION                               DOCKER ENDPOINT               ERROR
+default *   Current DOCKER_HOST based configuration   unix:///var/run/docker.sock   
+
+## SSH client targets configured (Host lines only)
+Host github-ahanassa
+Host github-meeting-minutes
+Host github-shamsi-date
+Host github-ahanassa-marketplace-operations
+
+## Repository
+path: /home/ubuntu/sipanel_odoo_addons
+branch: master
+commits: none (unborn branch)
+status:
+?? architecture/
+?? reports/
+
+## Odoo build (from container odoo-sipanel, read-only command output captured earlier this run)
+Odoo Server 19.0-20260528 (serie 19.0), Python 3.12.3, PostgreSQL 15.18 (odoo-db container, postgres:15)
+addons_path=/mnt/extra-addons (host /opt/odoo/addons), db_name=sipanel, dbfilter=^sipanel$, list_db=False, workers=1, proxy_mode=True
+limit_memory_hard=2684354560 limit_memory_soft=2147483648

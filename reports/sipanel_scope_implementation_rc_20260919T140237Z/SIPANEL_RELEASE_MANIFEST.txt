@@ -1,0 +1,32 @@
+SIPANEL Commercial Scope / Recipe / Estimation — RELEASE MANIFEST
+Run: sipanel_scope_implementation_rc_20260919T140237Z
+Generated (UTC): 2026-09-19
+Verdict: BLOCKED_NOT_ISOLATED
+Release Candidate: NOT_PRODUCED
+
+Target platform (verified read-only this run):
+  Odoo 19.0-20260528 Community (serie 19.0), Python 3.12.3, PostgreSQL 15.18
+  Odoo image: sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac
+  Production database: sipanel (NOT modified)
+  Production addons path: /opt/odoo/addons (not a git repository; not modified)
+
+Planned modules (DESIGNED, NOT WRITTEN, NOT BUILT):
+  sipanel_commercial_scope_core  19.0.1.0.0   commit: NONE   sha256: NONE
+  sipanel_sale_scope             19.0.1.0.0   commit: NONE   sha256: NONE
+  sipanel_scope_execution        19.0.1.0.0   commit: NONE   sha256: NONE
+  sipanel_scope_costing          19.0.1.0.0   commit: NONE   sha256: NONE
+  sipanel_scope_demo             19.0.1.0.0   commit: NONE   sha256: NONE   (clone/test only — never Production)
+
+Repository: /home/ubuntu/sipanel_odoo_addons  branch master  commits: none (unborn)  release hash: NONE
+
+Applied decision profile (provisional, unsigned): BQ-01=B, BQ-02=B (joint Finance+Sales; deviates from worksheet v0.12 A), BQ-03=A,
+  BQ-04=one terminal recognized event per route (Finance answer MISSING_INPUT), BQ-05=A, BQ-06=A+UNALLOCATED, BQ-07=A, BQ-08=B,
+  BQ-09=A company-currency-only; AM-01-R2 apply, AM-02 apply, AM-03-R1 apply subject to Finance route tests, AM-04 apply, AM-05 excluded.
+FROZEN decisions altered: NONE. New CONFLICT_FOUND against FROZEN: NONE. Installed-fact corrections: IF-01, IF-02, IF-03 (see PRE_IMPLEMENTATION_REPORT.md §5).
+
+Test totals: PASS 0 / FAIL 0 / BLOCKED 32 (PT-01..PT-32) + all additional suites BLOCKED / NOT_APPLICABLE 0.
+
+SIPANEL_PRODUCTION_RELEASE_CANDIDATE.zip: NOT_PRODUCED (no reviewed/tested source exists; a ZIP would be a fabricated artifact)
+SIPANEL_PRODUCTION_RELEASE_CANDIDATE.zip.sha256: NOT_PRODUCED
+
+PRODUCTION_DEPLOYMENT_REQUIRES_SEPARATE_EXPLICIT_AUTHORIZATION

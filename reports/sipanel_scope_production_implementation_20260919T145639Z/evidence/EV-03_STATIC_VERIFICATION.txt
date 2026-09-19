@@ -1,0 +1,26 @@
+# EV-03 Static verification of the written source (no database)
+captured 2026-09-19T15:31:33Z
+
+## python compile
+py_compile: OK (71 files)
+
+## xml well-formedness
+xml parse: OK (44 files)
+
+## manifest data files / ACL model refs / xml-id refs: see static check script output
+STATIC CHECKS: no errors (run at 2026-09-19, script in SIPANEL_IMPLEMENTATION_LOG.md step 9)
+
+## import against stubbed odoo API (catches import-time NameError/ImportError only)
+IMPORT OK  odoo.addons.sipanel_commercial_scope_core
+IMPORT OK  odoo.addons.sipanel_commercial_scope_core.tests
+IMPORT OK  odoo.addons.sipanel_sale_scope
+IMPORT OK  odoo.addons.sipanel_sale_scope.tests
+IMPORT OK  odoo.addons.sipanel_scope_execution
+IMPORT OK  odoo.addons.sipanel_scope_execution.tests
+IMPORT OK  odoo.addons.sipanel_scope_costing
+IMPORT OK  odoo.addons.sipanel_scope_costing.tests
+IMPORT OK  odoo.addons.sipanel_scope_demo
+IMPORT OK  odoo.addons.sipanel_scope_demo.tests
+ALL IMPORTS OK
+
+LIMIT: no Odoo registry was loaded; view validation, field resolution against native models, SQL constraints and all tests remain NOT EXECUTED.

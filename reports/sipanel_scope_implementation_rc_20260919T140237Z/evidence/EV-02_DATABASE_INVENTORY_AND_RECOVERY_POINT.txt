@@ -1,0 +1,21 @@
+# EV-02 Database inventory on shared PostgreSQL container odoo-db (read-only catalog listing, captured this run)
+
+datname | size | owner
+ahanassa | 99 MB | odoo_ahantorob_app
+ahanassa_phase6j12_test | 81 MB | odoo_ahantorob_app
+avizsazeh | 84 MB | odoo_avizsazeh_app
+cyancoat | 84 MB | odoo_cyancoat_app
+cyansanat | 84 MB | odoo_cyansanat_app
+cyansteel | 83 MB | odoo_cyansteel_app
+postgres | 7519 kB | odoo
+raw-database | 130 MB | odoo
+shahbazi | 66 MB | odoo_shahbazi_app
+sipanel | 135 MB | odoo_sipanel_app   <-- PRODUCTION
+sipanel_staging_rehearsal | 111 MB | sipanel_staging_app   <-- restore-rehearsal copy, container odoo-sipanel-staging Exited (0) 2026-09-15 19:45 UTC
+
+## Recovery-point comparison (READ ONLY transactions, aggregate max(write_date) only, no row data)
+database | database.uuid | installed modules | max(product_template.write_date) | max(sale_order.write_date)
+sipanel | 6a18f226-5a5b-11f1-aa67-d7045c504f39 | 196 | 2026-09-18 08:39:45 | 2026-09-18 07:09:00
+sipanel_staging_rehearsal | cce2da37-921f-4bae-98e8-2d7adf8eb207 | 196 | 2026-09-16 02:56:12 | 2026-09-05 18:13:04
+
+Conclusion: sipanel_staging_rehearsal predates the 2026-09-16 Product Master cutover completion and the 2026-09-18 legacy cleanups; it is NOT the current recovery point and it shares the Production PostgreSQL instance and host.
