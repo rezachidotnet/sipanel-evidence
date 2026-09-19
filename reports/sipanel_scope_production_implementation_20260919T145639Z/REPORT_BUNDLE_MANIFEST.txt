@@ -1,0 +1,27 @@
+REPORT BUNDLE MANIFEST — sipanel_scope_production_implementation_20260919T145639Z — generated 2026-09-19T16:21:53Z
+Source commit: 931f949ef65c428d69c13808b7bf5f31431963ea
+
+SIPANEL_BACKUP_RESTORE_ROLLBACK_REPORT.md                                  1424 bytes
+SIPANEL_DATA_MIGRATION_REPORT.md                                           1320 bytes
+SIPANEL_DATA_MODEL_FIELD_DICTIONARY.md                                    37256 bytes
+SIPANEL_DOUBLE_COUNTING_RECONCILIATION.md                                  2729 bytes
+SIPANEL_FINAL_TECHNICAL_DESIGN.md                                          4188 bytes
+SIPANEL_FINANCE_TAX_IMPLEMENTATION_MATRIX.md                               2470 bytes
+SIPANEL_IMPLEMENTATION_LOG.md                                              6599 bytes
+SIPANEL_IMPLEMENTATION_POLICY_APPROVAL_RECORD.md                           5745 bytes
+SIPANEL_INSTALL_UPGRADE_REPORT.md                                          2892 bytes
+SIPANEL_KNOWN_LIMITATIONS_DEFERRED_ITEMS.md                                2840 bytes
+SIPANEL_MODULE_DEPENDENCY_MANIFEST.md                                      2027 bytes
+SIPANEL_PRE_CHANGE_RECOVERY_POINT_REPORT.md                                3386 bytes
+SIPANEL_PRODUCTION_GO_NO_GO_ASSESSMENT.md                                  1136 bytes
+SIPANEL_RELEASE_MANIFEST.txt                                               2225 bytes
+SIPANEL_SECURITY_AND_ROLE_MATRIX.md                                       15623 bytes
+SIPANEL_SECURITY_TEST_RESULTS.md                                           2243 bytes
+SIPANEL_TEST_DATA_INVENTORY.md                                             2626 bytes
+SIPANEL_TEST_RESULTS_PT01_PT32.md                                          6778 bytes
+SIPANEL_VERTICAL_PILOT_RESULTS.md                                          1996 bytes
+evidence/EV-01_PREFLIGHT_AND_TARGET_IDENTITY.txt                           1814 bytes
+evidence/EV-02_HARNESS_DENIALS_PRODUCTION_READS.txt                        2292 bytes
+evidence/EV-03_STATIC_VERIFICATION.txt                                     1101 bytes
+
+Excluded from ZIP: secrets, private keys, database dumps, filestore, personal data (none present).

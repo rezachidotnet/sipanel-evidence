@@ -1,0 +1,26 @@
+SIPANEL Commercial Scope / Recipe / Estimation — RELEASE MANIFEST
+Run: sipanel_scope_production_implementation_20260919T145639Z
+Generated (UTC): 2026-09-19T16:21:52Z
+Verdict: BLOCKED_BEFORE_DATABASE_WRITE
+Bundle: SIPANEL_PRODUCTION_IMPLEMENTATION_BUNDLE.zip (source + tests + docs; NOT a tested release candidate)
+
+Target platform (verified read-only from image 1cd111414896): Odoo 19.0-20260528 Community, Python 3.12.3, PostgreSQL 15.18
+Target database: sipanel (NOT modified)  container: odoo-sipanel (NOT restarted)  addons path: /opt/odoo/addons (NOT modified)
+
+Modules (WRITTEN, STATICALLY CHECKED, NOT INSTALLED, NOT TESTED):
+  sipanel_commercial_scope_core    19.0.1.0.0   tree-sha256: f9506d613ee09791d77e5bc26e1834074771aa0d4a14d99e1bdcf5cd4f03c1b4  files: 29  lines: 1699
+  sipanel_sale_scope               19.0.1.0.0   tree-sha256: 092e30692e953abaab544f6d7f25377922f9fd5efc614228537d74f01acc154c  files: 44  lines: 3412
+  sipanel_scope_execution          19.0.1.0.0   tree-sha256: d4baa0feeae104918cde997f92c3996f1b5e9c4ccfd62e43c5f48516c15d960b  files: 25  lines: 1158
+  sipanel_scope_costing            19.0.1.0.0   tree-sha256: 7f2850efe36299836f7e50f0abe00248f62f688fbdb7aff0973228189d133e73  files: 22  lines: 991
+  sipanel_scope_demo               19.0.1.0.0   tree-sha256: 9d710719953be076ee37056bceacdebe19beacd1ddbfe1db8e5a6f2a21349446  files: 5  lines: 92
+
+Repository: /home/ubuntu/sipanel_odoo_addons  branch: master  source commit: 931f949ef65c428d69c13808b7bf5f31431963ea
+
+Applied decision profile (management authorization 2026-09-19): BQ-01=B, BQ-02=B joint, BQ-03=A, BQ-04 one terminal event per route, BQ-05=A, BQ-06=A+UNALLOCATED, BQ-07=A, BQ-08=B, BQ-09=A;
+  AM-01-R2, AM-02, AM-03-R1, AM-04 APPROVED; AM-05 DEFERRED. FROZEN decisions altered: NONE. IF-01, IF-02, IF-03 applied.
+
+Test totals: PASS 0 / FAIL 0 / BLOCKED 31 / NOT_RUN 1 (PT-30) / NOT_APPLICABLE 0. Automated test methods written: 50.
+Recovery point: NOT CREATED (harness denial, EV-02). Installed modules changed: NONE. Configuration changes: NONE. Test records created in sipanel: 0.
+odoo-sipanel restarted: NO. Other databases / tenant containers modified: NO.
+
+PRODUCTION_DEPLOYMENT_REQUIRES_SEPARATE_EXPLICIT_AUTHORIZATION
