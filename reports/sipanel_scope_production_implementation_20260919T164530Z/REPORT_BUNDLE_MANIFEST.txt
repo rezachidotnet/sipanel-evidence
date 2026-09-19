@@ -1,0 +1,47 @@
+REPORT BUNDLE MANIFEST — sipanel_scope_production_implementation_20260919T164530Z — generated 2026-09-19T17:43:09Z
+Source commit: 13676e4cb76e5fbc6e4a2e3a686503346b36d2f7
+
+SIPANEL_BACKUP_RESTORE_ROLLBACK_REPORT.md                                  2382 bytes
+SIPANEL_DATA_MIGRATION_REPORT.md                                           1445 bytes
+SIPANEL_DATA_MODEL_FIELD_DICTIONARY.md                                    37213 bytes
+SIPANEL_DOUBLE_COUNTING_RECONCILIATION.md                                  2175 bytes
+SIPANEL_FINAL_TECHNICAL_DESIGN.md                                          4297 bytes
+SIPANEL_FINANCE_TAX_IMPLEMENTATION_MATRIX.md                               2579 bytes
+SIPANEL_IMPLEMENTATION_LOG.md                                              2801 bytes
+SIPANEL_IMPLEMENTATION_POLICY_APPROVAL_RECORD.md                           5854 bytes
+SIPANEL_INSTALL_UPGRADE_REPORT.md                                          3469 bytes
+SIPANEL_KNOWN_LIMITATIONS_DEFERRED_ITEMS.md                                2949 bytes
+SIPANEL_MODULE_DEPENDENCY_MANIFEST.md                                      2152 bytes
+SIPANEL_PRODUCTION_GO_NO_GO_ASSESSMENT.md                                  2224 bytes
+SIPANEL_RELEASE_MANIFEST.txt                                               2666 bytes
+SIPANEL_RUNTIME_DEFECT_AND_FIX_REGISTER.md                                 8801 bytes
+SIPANEL_SECURITY_AND_ROLE_MATRIX.md                                       13952 bytes
+SIPANEL_SECURITY_TEST_RESULTS.md                                           2888 bytes
+SIPANEL_TEST_DATA_INVENTORY.md                                             3804 bytes
+SIPANEL_TEST_RESULTS_PT01_PT32.md                                          9609 bytes
+SIPANEL_VERTICAL_PILOT_RESULTS.md                                          1945 bytes
+evidence/EV-01_REPO_REVALIDATION_AND_RECOVERY_POINT_VERIFICATION.txt       2290 bytes
+evidence/EV-02_PREVIOUS_RUN_HARNESS_DENIALS.txt                            2292 bytes
+evidence/EV-03_STATIC_VERIFICATION_PREVIOUS_RUN.txt                        1101 bytes
+evidence/EV-04_CODE_REVIEW_FINDINGS.md                                    11175 bytes
+evidence/EV-05_MEMORY_BEFORE_INSTALL.txt                                    162 bytes
+evidence/EV-06_CONTAINERS_BEFORE_INSTALL.txt                                121 bytes
+evidence/EV-07_RESTORE_REHEARSAL.txt                                       1328 bytes
+evidence/EV-08_RESTART_AND_SMOKE.txt                                       2146 bytes
+evidence/odoo-configure.log                                                3790 bytes
+evidence/odoo-demo-leftovers.log                                           1618 bytes
+evidence/odoo-demo-uninstall.log                                           3016 bytes
+evidence/odoo-install-2.log                                                5983 bytes
+evidence/odoo-install-3.log                                               28732 bytes
+evidence/odoo-install.log                                                  5894 bytes
+evidence/odoo-smoke.log                                                    3162 bytes
+evidence/odoo-test-1.log                                                  58659 bytes
+evidence/odoo-test-2.log                                                  44862 bytes
+evidence/odoo-test-3.log                                                  33639 bytes
+evidence/odoo-test-3b-costing.log                                             0 bytes
+evidence/odoo-test-4.log                                                  32320 bytes
+evidence/odoo-test-4b-costing.log                                          6428 bytes
+evidence/odoo-test-5.log                                                  31511 bytes
+evidence/odoo-upgrade.log                                                 10629 bytes
+
+Excluded from ZIP: secrets, private keys, database dumps, filestore, personal data (none present).

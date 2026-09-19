@@ -1,0 +1,26 @@
+SIPANEL Commercial Scope / Recipe / Estimation — RELEASE MANIFEST
+Run: sipanel_scope_production_implementation_20260919T164530Z
+Generated (UTC): 2026-09-19T17:43:08Z
+Verdict: CONDITIONAL_GO
+Bundle: SIPANEL_PRODUCTION_IMPLEMENTATION_BUNDLE.zip (source + tests + docs + executed-run evidence; installed and runtime-tested on sipanel)
+
+Target platform: Odoo 19.0-20260528 Community, Python 3.12.3, PostgreSQL 15.18 (image 1cd111414896)
+Target database: sipanel (modules INSTALLED, configuration APPLIED)  container: odoo-sipanel (RESTARTED once, EV-08)  addons path: /opt/odoo/addons (4 sipanel_* modules deployed; sipanel_scope_demo removed)
+
+Modules (INSTALLED 19.0.1.0.0 on sipanel; 49/49 tagged tests green in run #5, pilot smoke 1/1, upgrade green):
+  sipanel_commercial_scope_core    19.0.1.0.0   tree-sha256: 0227ce39332e79d9a276c14b119d984b098268dfad16e80ff531b4bcefdd1e7b  files: 29  lines: 1729
+  sipanel_sale_scope               19.0.1.0.0   tree-sha256: a28aa8a00af86f2afc1d4a734cedf1ce5a80e20cc85ca1f08fd9d3da175c2363  files: 44  lines: 3441
+  sipanel_scope_execution          19.0.1.0.0   tree-sha256: 186a1e7bdb52c481c97e7ffe4308e8b2d8e18d8728b5dc3ecd5a5d1b85bdb6d4  files: 25  lines: 1168
+  sipanel_scope_costing            19.0.1.0.0   tree-sha256: 2f36d33a59fcb568dda9deb19fd92216103f9da34b0ca11a254d6761bb84b318  files: 22  lines: 1017
+  sipanel_scope_demo               19.0.1.0.0   tree-sha256: 9d710719953be076ee37056bceacdebe19beacd1ddbfe1db8e5a6f2a21349446  files: 5  lines: 92
+
+Repository: /home/ubuntu/sipanel_odoo_addons  branch: master  source commit: 13676e4cb76e5fbc6e4a2e3a686503346b36d2f7
+
+Applied decision profile (management authorization 2026-09-19): BQ-01=B, BQ-02=B joint, BQ-03=A, BQ-04 one terminal event per route, BQ-05=A, BQ-06=A+UNALLOCATED, BQ-07=A, BQ-08=B, BQ-09=A;
+  AM-01-R2, AM-02, AM-03-R1, AM-04 APPROVED; AM-05 DEFERRED. FROZEN decisions altered: NONE. IF-01, IF-02, IF-03 applied.
+
+Test totals: PT PASS 32 / FAIL 0 / BLOCKED 0 / NOT_APPLICABLE 0; automated 49 + 1 pilot executed, 0 failures (final). Automated test methods: 50.
+Recovery point: /opt/odoo/backups/sipanel-pre-scope-20260919T164558Z VERIFIED (6/6 sha256, pg_restore --list, restore rehearsal PASS). Installed modules: +4 (196->200). Configuration changes: plans 80/81, picking type 91, project 55, 14 UoM families, 9 policies approved, 8 groups to user 2. Test records persisted: 0 (2 fixture leftovers archived).
+odoo-sipanel restarted: YES (once, 17:36Z, HTTP 200 after 4 s). odoo-db restarted: NO. Other databases / tenant containers modified: NO (rehearsal DB created and dropped).
+
+PRODUCTION_DEPLOYMENT_REQUIRES_SEPARATE_EXPLICIT_AUTHORIZATION
