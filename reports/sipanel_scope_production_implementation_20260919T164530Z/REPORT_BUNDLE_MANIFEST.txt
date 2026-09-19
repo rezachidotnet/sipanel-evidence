@@ -1,23 +1,24 @@
-REPORT BUNDLE MANIFEST — sipanel_scope_production_implementation_20260919T164530Z — generated 2026-09-19T17:43:09Z
-Source commit: 13676e4cb76e5fbc6e4a2e3a686503346b36d2f7
+REPORT BUNDLE MANIFEST — sipanel_scope_production_implementation_20260919T164530Z — generated 2026-09-19T19:02:42Z
+Source commit: 07d8781d9bbb6a39dea4863fc6e97b7a6019043b
 
 SIPANEL_BACKUP_RESTORE_ROLLBACK_REPORT.md                                  2382 bytes
-SIPANEL_DATA_MIGRATION_REPORT.md                                           1445 bytes
+SIPANEL_DATA_MIGRATION_REPORT.md                                           1576 bytes
 SIPANEL_DATA_MODEL_FIELD_DICTIONARY.md                                    37213 bytes
+SIPANEL_DOCUMENTATION_RECONCILIATION_REPORT.md                             5544 bytes
 SIPANEL_DOUBLE_COUNTING_RECONCILIATION.md                                  2175 bytes
 SIPANEL_FINAL_TECHNICAL_DESIGN.md                                          4297 bytes
-SIPANEL_FINANCE_TAX_IMPLEMENTATION_MATRIX.md                               2579 bytes
+SIPANEL_FINANCE_TAX_IMPLEMENTATION_MATRIX.md                               2875 bytes
 SIPANEL_IMPLEMENTATION_LOG.md                                              2801 bytes
-SIPANEL_IMPLEMENTATION_POLICY_APPROVAL_RECORD.md                           5854 bytes
+SIPANEL_IMPLEMENTATION_POLICY_APPROVAL_RECORD.md                           6920 bytes
 SIPANEL_INSTALL_UPGRADE_REPORT.md                                          3469 bytes
-SIPANEL_KNOWN_LIMITATIONS_DEFERRED_ITEMS.md                                2949 bytes
-SIPANEL_MODULE_DEPENDENCY_MANIFEST.md                                      2152 bytes
+SIPANEL_KNOWN_LIMITATIONS_DEFERRED_ITEMS.md                                4038 bytes
+SIPANEL_MODULE_DEPENDENCY_MANIFEST.md                                      2291 bytes
 SIPANEL_PRODUCTION_GO_NO_GO_ASSESSMENT.md                                  2224 bytes
-SIPANEL_RELEASE_MANIFEST.txt                                               2666 bytes
+SIPANEL_RELEASE_MANIFEST.txt                                               2864 bytes
 SIPANEL_RUNTIME_DEFECT_AND_FIX_REGISTER.md                                 8801 bytes
 SIPANEL_SECURITY_AND_ROLE_MATRIX.md                                       13952 bytes
 SIPANEL_SECURITY_TEST_RESULTS.md                                           2888 bytes
-SIPANEL_TEST_DATA_INVENTORY.md                                             3804 bytes
+SIPANEL_TEST_DATA_INVENTORY.md                                             4073 bytes
 SIPANEL_TEST_RESULTS_PT01_PT32.md                                          9609 bytes
 SIPANEL_VERTICAL_PILOT_RESULTS.md                                          1945 bytes
 evidence/EV-01_REPO_REVALIDATION_AND_RECOVERY_POINT_VERIFICATION.txt       2290 bytes
