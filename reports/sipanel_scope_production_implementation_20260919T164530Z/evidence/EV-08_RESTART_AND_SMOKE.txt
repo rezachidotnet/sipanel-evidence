@@ -1,0 +1,32 @@
+# EV-08 Restart of odoo-sipanel only (2026-09-19T17:36:16Z) — required because the serving Python process imported the module code at the first registry reload; later fixes need a fresh process
+## before
+odoo-ahantorob	Up 21 hours
+odoo-shahbazi	Up 2 weeks
+odoo-sipanel	Up 3 days
+odoo-avizsazeh	Up 2 weeks
+odoo-db	Up 2 months
+               total        used        free      shared  buff/cache   available
+Mem:            1970        1353         161         132         848         616
+## restart odoo-sipanel
+odoo-sipanel
+## wait for HTTP
+web/login http=200 after ~4s
+## after
+odoo-ahantorob	Up 21 hours
+odoo-shahbazi	Up 2 weeks
+odoo-sipanel	Up 12 seconds
+odoo-avizsazeh	Up 2 weeks
+odoo-db	Up 2 months
+               total        used        free      shared  buff/cache   available
+Mem:            1970        1446         107         125         802         523
+## other tenant containers unchanged (Up times above); odoo-db not restarted
+## JSON-RPC version
+{"jsonrpc": "2.0", "id": 1, "result": {"server_version": "19.0-20260528", "server_version_info": [19, 0, 0, "final", 0, ""], "server_serie": "19.0", "protocol_version": 1}}
+
+## registry smoke inside a fresh shell (read-only)
+SMOKE modules [('sipanel_commercial_scope_core', 'installed', '19.0.1.0.0'), ('sipanel_partner_autocomplete_guard', 'installed', '19.0.1.0.0'), ('sipanel_sale_scope', 'installed', '19.0.1.0.0'), ('sipanel_scope_costing', 'installed', '19.0.1.0.0'), ('sipanel_scope_demo', 'uninstalled', False), ('sipanel_scope_execution', 'installed', '19.0.1.0.0')]
+SMOKE menu SIPANEL Scope actions True
+SMOKE latest sale order readable True has_scopes False readiness ok
+SMOKE guard token active True policies approved 9
+SMOKE role holder groups ['SIPANEL Commercial Scope / Cost & Margin Viewer', 'SIPANEL Commercial Scope / Estimator', 'SIPANEL Commercial Scope / Execution Owner', 'SIPANEL Commercial Scope / Finance (cost recognition)', 'SIPANEL Commercial Scope / Scope Sales', 'SIPANEL Commercial Scope / Scope Steward', 'SIPANEL Commercial Scope / Waiver — Finance approver', 'SIPANEL Commercial Scope / Waiver — Sales approver']
+SMOKE fixture archived False

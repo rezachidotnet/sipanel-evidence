@@ -1,0 +1,28 @@
+# EV-01 Repository revalidation and recovery-point verification (2026-09-19, UTC)
+
+## Step 1 — repository state
+git status: clean (0 changes) at start; HEAD 0c71e03 (bundle commit) on top of source commit 931f949ef65c428d69c13808b7bf5f31431963ea (present, type commit).
+Tree hashes of the four Production modules at start (sha256 over sorted file sha256s) matched the previous release manifest exactly:
+  sipanel_commercial_scope_core f9506d613ee09791d77e5bc26e1834074771aa0d4a14d99e1bdcf5cd4f03c1b4
+  sipanel_sale_scope            092e30692e953abaab544f6d7f25377922f9fd5efc614228537d74f01acc154c
+  sipanel_scope_execution       d4baa0feeae104918cde997f92c3996f1b5e9c4ccfd62e43c5f48516c15d960b
+  sipanel_scope_costing         7f2850efe36299836f7e50f0abe00248f62f688fbdb7aff0973228189d133e73
+(Runtime fixes made during this run changed the trees afterwards; final trees are in SIPANEL_RELEASE_MANIFEST.txt.)
+
+## Step 2 — scripts/sipanel_recovery_point.sh (executed 16:45:58Z)
+container=/odoo-sipanel image=sha256:1cd111414896… status=running
+db_bytes=141917543 filestore_bytes=278378716 addons_bytes=45487338 need_mb~=444 free_mb=3595
+RECOVERY_POINT_OK /opt/odoo/backups/sipanel-pre-scope-20260919T164558Z
+Files: sipanel.dump (21,685,609 B, pg_dump -Fc), filestore-sipanel.tar.gz (53,199,759 B), addons.tar.gz (38,762,723 B),
+       odoo-sipanel.conf.redacted (434 B), container-inspect.json (10,126 B), installed_modules.txt (196 modules), TIMESTAMP, SHA256SUMS. Mode 0600/0400, owner root.
+
+## Step 3 — independent verification
+pg_restore --list sipanel.dump: 16,499 entries listed (OK)
+tar -tzf filestore-sipanel.tar.gz: 1,053 entries (OK);  tar -tzf addons.tar.gz: 2,823 entries (OK)
+odoo-sipanel.conf.redacted: line 7 "db_password = <redacted>" (no raw password present)
+container-inspect.json env keys: PATH, LANG, ODOO_VERSION, ODOO_RC — no secret-like env var
+sha256sum -c SHA256SUMS: 6/6 OK (sipanel.dump, filestore-sipanel.tar.gz, addons.tar.gz, installed_modules.txt, container-inspect.json, odoo-sipanel.conf.redacted)
+Disk after creation: 3.5 GiB free on / (88 % used) — sufficient.
+Pre-existing sipanel_* module in the recovery point: sipanel_partner_autocomplete_guard 19.0.1.0.0 only.
+
+Result: RECOVERY POINT VERIFIED — database writes were allowed to proceed.

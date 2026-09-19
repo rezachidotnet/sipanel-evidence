@@ -1,0 +1,32 @@
+# EV-07 Restore rehearsal into a separately named temporary database (2026-09-19T17:32:19Z)
+source: /opt/odoo/backups/sipanel-pre-scope-20260919T164558Z/sipanel.dump  target db: sipanel_restore_rehearsal_20260919 (owner odoo)  filestore: extracted to a temp dir, not to the live filestore
+free before: 3472 MB
+CREATE DATABASE
+pg_restore exit: 0
+## counts (restored vs live)
+select count(*) from ir_module_module where state='installed' => restored: 196 | live sipanel: 200
+select count(*) from sale_order => restored: 14 | live sipanel: 14
+select count(*) from res_partner => restored: 88 | live sipanel: 88
+select count(*) from product_template => restored: 113 | live sipanel: 114
+select count(*) from ir_attachment => restored: 1061 | live sipanel: 1062
+select max(write_date) from sale_order => restored: 2026-09-18 07:09:00.821533 | live sipanel: 2026-09-19 16:52:59.219479
+## sipanel_* modules in restored copy (expect none except partner guard):
+sipanel_partner_autocomplete_guard
+## filestore archive extraction test
+extracted files: 713
+## drop rehearsal database (runbook: temporary rehearsal DB is removed after verification)
+DROP DATABASE
+ahanassa
+ahanassa_phase6j12_test
+avizsazeh
+cyancoat
+cyansanat
+cyansteel
+postgres
+raw-database
+shahbazi
+sipanel
+sipanel_staging_rehearsal
+template0
+template1
+free after: 3440 MB
