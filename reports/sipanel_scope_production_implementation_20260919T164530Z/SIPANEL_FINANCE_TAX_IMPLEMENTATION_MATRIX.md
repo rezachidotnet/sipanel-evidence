@@ -4,15 +4,15 @@ Run sipanel_scope_production_implementation_20260919T164530Z · Status: INSTALLE
 
 | Topic | Implementation | Validation status |
 |---|---|---|
-| Recognition routes (BQ-04, AM-03-R1) | nine `sipanel.cost.recognition.policy` rows shipped **DRAFT** (`data/recognition_policies.xml`); Finance approves with source "management authorization 2026-09-19"; approval user must hold `group_scope_finance`; approved rows immutable; new version supersedes | not approved (no DB) |
-| Terminal event sources | `stock.move.value` (IF-01), posted `account.move.line` on PO line, timesheet `account.analytic.line.amount` (SV-17), `hr.expense.total_amount` | not executed |
+| Recognition routes (BQ-04, AM-03-R1) | nine `sipanel.cost.recognition.policy` rows shipped DRAFT (`data/recognition_policies.xml`) and **APPROVED on `sipanel`** by the Finance role holder with source "Management authorization 2026-09-19 …; statutory tax/accounting validation still required"; approved rows immutable; new version supersedes | approved in DB (evidence/odoo-configure.log); statutory validation outstanding |
+| Terminal event sources | `stock.move.value` (IF-01), posted `account.move.line` on PO line, timesheet `account.analytic.line.amount` (SV-17), `hr.expense.total_amount` | verified by test_pt16_pt21_reconciliation / test_pt19 (run #5) |
 | Freight / landed cost | DEFERRED, policy `terminal_event_model='none'`; `stock_landed_costs` not installed | — |
 | Company-owned equipment | policy row present (allocation source); no automatic projection candidate in MVP (manual allocation by Finance with reason) | — |
-| Returns / credits | negative events linked via `reversal_of_id`; historical records never deleted | not executed |
-| Analytic attribution (C0-D11, SV-15) | BUY_DIRECT/EQUIPMENT_SERVICE PO lines get `analytic_distribution` = Project account + System + Activity; MO gets `project_id` (project_mrp); stock issue carries a `stock.reference` | not executed |
-| Taxes / discount / pricelist (C0-D01) | untouched: extension writes only `product_uom_qty` (governed) and `price_unit` (explicit Apply Price); margin uses native `price_subtotal` (untaxed after discount) | test_pt27 written |
-| Currency (BQ-09) | company currency only; `fx_rate=1.0`, `fx_source='company_currency'`; foreign currency blocked at add/send/confirm/pricelist change | test_pt25 written |
-| Invoicing | native per anchor line policy; revenue events = posted customer invoice lines linked to the anchor minus credits | not executed |
+| Returns / credits | negative events linked via `reversal_of_id`; historical records never deleted | verified by test_pt16_pt21_reconciliation / test_pt19 (run #5) |
+| Analytic attribution (C0-D11, SV-15) | BUY_DIRECT/EQUIPMENT_SERVICE PO lines get `analytic_distribution` = Project account + System + Activity; MO gets `project_id` (project_mrp); stock issue carries a `stock.reference` | verified by test_pt16_pt21_reconciliation / test_pt19 (run #5) |
+| Taxes / discount / pricelist (C0-D01) | untouched: extension writes only `product_uom_qty` (governed) and `price_unit` (explicit Apply Price); margin uses native `price_subtotal` (untaxed after discount) | test_pt27 PASS |
+| Currency (BQ-09) | company currency only; `fx_rate=1.0`, `fx_source='company_currency'`; foreign currency blocked at add/send/confirm/pricelist change | test_pt25 PASS |
+| Invoicing | native per anchor line policy; revenue events = posted customer invoice lines linked to the anchor minus credits | verified by test_pt16_pt21_reconciliation / test_pt19 (run #5) |
 | Fiscal invoices / Iranian taxpayer system | never touched by the modules; test discipline forbids posting externally transmitted fiscal invoices | — |
 | Product Unit precision (B-01), `cm` inactive | not changed by data files; runbook regression item | — |
 | Statutory tax / accounting validation | **REQUIRED before live commercial use**; this matrix is derived from a management authorization, not a professional tax opinion | outstanding |

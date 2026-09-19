@@ -14,6 +14,6 @@ Boundary rules honoured: no Odoo core patch; no edit of native or third-party ad
 
 Installed-fact corrections carried: IF-01 (`stock.move.value` field; `product.value` model — used in `_product_cost_snapshot_vals` and the projection), IF-02 (`sale_management` dependency; controller override of `portal_quote_option_update`), IF-03 (section/note delete guard in `sale.order.line.unlink`).
 
-Install order: 1 → 2 → 3 → 4 (→ 5 on test only). Status: EXECUTED (see this run).
+Install order: 1 → 2 → 3 → 4 (→ 5 on test only). Status: installed on `sipanel` in this order (install #3), upgraded (`-u sipanel_commercial_scope_core` cascade) and module 5 installed for the smoke run then uninstalled.
 
 Source inventory and per-file SHA-256: `SHA256SUMS` and `SIPANEL_RELEASE_MANIFEST.txt`.

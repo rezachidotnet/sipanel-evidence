@@ -6,4 +6,4 @@ Run sipanel_scope_production_implementation_20260919T164530Z · Status: INSTALLE
 - No backfill: existing quotations get no snapshot; `sipanel_has_scopes=False`; ordinary sale lines keep native behaviour (PT-31 test written).
 - No `pre-migrate.py` / `post-migrate.py` scripts exist; `migrations/19.0.1.0.0/README.md` in every module records the rule that later versions ship numbered, idempotent scripts.
 - Product Master, contacts and telephone numbers are never read or modified by any migration (none exists) and never by module data files (only `ir.config_parameter` keys, groups, draft policy rows, owner-registry defaults, an inactive cron).
-- Execution status: **EXECUTED (see this run)** (no install happened; see EV-02).
+- Execution status: install and upgrade EXECUTED on `sipanel` (evidence/odoo-install-3.log, odoo-upgrade.log); no migration script ran because none exists for 19.0.1.0.0; schema additions were created by the ORM.

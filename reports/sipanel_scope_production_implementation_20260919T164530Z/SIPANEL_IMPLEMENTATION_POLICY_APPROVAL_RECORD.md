@@ -44,10 +44,14 @@ Numeric thresholds remain **TBE** and live in configuration parameters (`sipanel
 
 WIP, commitment, operational quantity, cost-to-date, recognised P&L cost, invoiced revenue, recognised revenue and collected cash are kept as separate measures (event `layer`, variance columns).
 
-## 4. Role configuration approved
+## 4. Role configuration approved — APPLIED
 
-User **Taleghani** (amirmousa1983@gmail.com) is the initial holder of System Administrator, Product Data Steward, Sales, Purchase, Inventory, Accounting/Finance, Scope Release and Execution Release. Groups are configurable; no user id is hard-coded. Segregation-of-duties limitation recorded in `SIPANEL_SECURITY_AND_ROLE_MATRIX.md` §F. **Not applied in this run** (no database write happened).
+User **Taleghani** (login amirmousa1983@gmail.com, internal user id 2, active) was assigned the eight SIPANEL groups on database `sipanel` by `scripts/sipanel_configure.py` (evidence/odoo-configure.log): Scope Steward, Estimator, Cost & Margin Viewer, Scope Sales, Waiver — Sales approver, Waiver — Finance approver, Execution Owner, Finance (cost recognition). These come on top of the native System Administrator, Sales, Purchase, Inventory and Accounting/Finance rights already held. Groups are configurable; no user id, login or e-mail is hard-coded in module source or XML (the login is a parameter of the configuration script).
 
-## 5. Status of this authorization in this run
+**Segregation-of-duties limitation (acknowledged):** the same person can create a commercial waiver and approve both its Sales and Finance halves, approve recognition policies, release execution and approve native Purchase/MRP documents. This is a single-person governance limitation, not simulated segregation; compensating control is the immutable audit trail. A second independent waiver approver remains a condition of the go/no-go assessment.
 
-Code, tests, documentation and bundle were produced under this authorization. The mandatory recovery point and every database write remained blocked by the Claude Code harness permission classifier (evidence/EV-02), so the run stops at `BLOCKED_BEFORE_DATABASE_WRITE`. The authorization remains valid for the next run once the permission rule is added or the scripts are executed by an operator.
+## 5. Status of this authorization in this run — EXECUTED
+
+Under this authorization the recovery point was created and verified, the four Production modules were installed on `sipanel`, 49/49 automated tests and the C9 pilot passed, the configuration in §3–§4 was applied, and the **nine recognition policies were approved** in the database by the Finance role holder with the approval source "Management authorization 2026-09-19 (SIPANEL_IMPLEMENTATION_POLICY_APPROVAL_RECORD.md); statutory tax/accounting validation still required" (9 `policy_approve` audit events). Runtime source commit 99dd874; reports/evidence commit 13676e4; bundle commit cbc246f.
+
+**Statutory tax/accounting validation remains required before live commercial use.** The verdict is CONDITIONAL_GO for a controlled pilot only.

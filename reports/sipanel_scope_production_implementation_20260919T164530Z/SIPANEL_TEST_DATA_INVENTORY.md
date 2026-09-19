@@ -1,35 +1,45 @@
-Run sipanel_scope_production_implementation_20260919T164530Z · Status: INSTALLED ON sipanel AND RUNTIME-TESTED (49/49 tagged tests green in run #5, C9 pilot smoke green, upgrade green) — see SIPANEL_TEST_RESULTS_PT01_PT32.md and evidence/. Carried forward from run 20260919T145639Z where unchanged; status lines updated.
+Run sipanel_scope_production_implementation_20260919T164530Z · Status: INSTALLED ON sipanel AND RUNTIME-TESTED (49/49 tagged tests green in run #5, C9 pilot smoke green, upgrade green) · runtime source commit 99dd874 · reports/evidence commit 13676e4 · bundle commit cbc246f · reconciled 2026-09-19 (documentation only)
 
-# SIPANEL — Test Data Inventory
+# SIPANEL — Test Data Inventory (reconciled with the final runtime state)
 
-## Records created in database `sipanel`: **0** (no database write occurred).
+## A. Transactional test records: **0 persisted**
 
-## Records the written tests would create (all inside the test transaction, rolled back by Odoo's test runner; batch identifier `SIPANEL-PT-CORE`, every name prefixed `SIPANEL-PT`)
+All automated tests (runs #1–#5, targeted runs 3b/4b, pilot smoke) executed under Odoo's test runner; every test transaction was rolled back. The records below were therefore created and discarded inside each run and do **not** exist in `sipanel` (batch identifier `SIPANEL-PT-CORE`, every name prefixed `SIPANEL-PT`):
 
 | Kind | Names / pattern | Created by |
 |---|---|---|
-| Users | sipanel_pt_steward, sipanel_pt_estimator, sipanel_pt_plain, sipanel_pt_sales, sipanel_pt_sales_mgr, sipanel_pt_finance, sipanel_pt_exec, sipanel_pt_fin_rec, sipanel_pt_portal, sipanel_pt_stranger, sipanel_pt_other_co | tests/common.py of each module |
+| Users | sipanel_pt_steward, _estimator, _plain, _sales, _sales_mgr, _finance, _exec, _fin_rec, _portal, _stranger, _other_co | tests/common.py of each module |
 | Partners | SIPANEL-PT Synthetic Customer, SIPANEL-PT Synthetic Vendor (no e-mail, no phone) | sale_scope / execution common |
-| Products | SIPANEL-PT Gutter run (anchor), Gutter, Bracket, Screw, Sealant cartridge, Installation labour, Base crane service, Coil, Dozen product, free item | core / sale / execution tests |
-| Analytic plans / accounts | SIPANEL-PT System, SIPANEL-PT Activity, System A, MFG, INS, EQP, GEN | core common |
-| UoM | SIPANEL-PT Dozen; family tags for m, cm, unit, hour | tests |
-| Scope masters | SIPANEL-PT-GUTTER (V1/V2), SIPANEL-PT-OTHER, SIPANEL-PT-EMPTY, SIPANEL-PT-GUTTER-2 | tests |
-| Quotations / orders | origin SIPANEL-PT-CORE / SIPANEL-PT-ORDINARY / SIPANEL-PT-PILOT | tests |
-| Stock | picking type "SIPANEL-PT Site issue", location "SIPANEL-PT Site", quants for 4 products, draft pickings/moves | execution / costing tests |
-| Purchase / MRP / Project | draft RFQs to the synthetic vendor, BoM for Gutter, MO, project "SIPANEL-PT Project", employee "SIPANEL-PT Installer" | execution / costing tests |
-| Accounting | vendor bill / refund on synthetic RFQ lines, customer invoice on the synthetic order — posted inside the rolled-back test transaction only; never transmitted | costing tests |
-| Company | SIPANEL-PT Other Co (isolation test) | security test |
+| Products | anchor, Gutter, Bracket, Screw, Sealant cartridge, Installation labour, Base crane service, Coil, Dozen product, free item | core / sale / execution tests |
+| Analytic plans / accounts | SIPANEL-PT System / Activity, System A, MFG, INS, EQP, GEN | core common |
+| UoM / families | SIPANEL-PT Dozen; family tags for m, cm, unit, hour | tests |
+| Scope masters | SIPANEL-PT-GUTTER (V1/V2), -OTHER, -EMPTY, -GUTTER-2 | tests |
+| Quotations / orders / pickings / RFQs / MO / invoices / timesheets / expenses | origin SIPANEL-PT-CORE / -ORDINARY / -PILOT; posted inside the rolled-back transaction only, never transmitted | sale / execution / costing tests |
+| Company | SIPANEL-PT Other Co | security test |
 
-The demo module `sipanel_scope_demo` (test only) would create persistent fixture records prefixed SIPANEL-PT (products, plans, partner, project, master V1) — install it only on a test run and archive/remove afterwards; it must never be installed as a Production dependency.
+Outbound integrations: no mail/SMS/portal invitation was sent (test-mode notifications for synthetic users appear in the logs as "no mail server matches … fallback"; nothing left the host); nothing was submitted to the Iranian taxpayer system; no external supplier order was sent (RFQs stayed draft and were rolled back). Real contacts and telephone numbers were neither read for test data nor modified.
 
-Outbound integrations: tests send no mail/SMS/portal invitation (test runner mail is queued and rolled back); nothing is submitted to the Iranian taxpayer system; no external supplier order is sent (RFQs stay draft).
+## B. Synthetic fixture (`sipanel_scope_demo`, installed for the smoke run only, then uninstalled)
 
-## Addendum — what actually persisted in `sipanel` after this run
+| Record | State now |
+|---|---|
+| partner "SIPANEL-PT Synthetic Customer", project "SIPANEL-PT Gutter site", plans "SIPANEL-PT System/Activity" + 5 accounts, 6 component products, recipe lines, version V1 xml records | deleted by the uninstall |
+| product 1083 "SIPANEL-PT Gutter run (anchor)" | **archived** (active=False) — protected by a restrict FK from the released version |
+| scope master 91 "SIPANEL-PT-GUTTER" with released version 1 | **archived** (active=False) — the module's own immutability rule forbids deleting a released master; it cannot be selected for new quotations |
+| 1 audit event (`release` of the fixture version) | **retained** — audit events are append-only by design |
 
-| Kind | Persisted | Note |
-|---|---|---|
-| Test-transaction records (users, partners, products, orders, pickings, POs, MOs, invoices, timesheets…) | **0** | Odoo test runner rolled every test transaction back (`--test-enable`) |
-| Demo fixture (`sipanel_scope_demo`) | removed by uninstall, except: product 1083 "SIPANEL-PT Gutter run (anchor)" (archived) and scope master 91 "SIPANEL-PT-GUTTER" with released version 1 (archived) — both protected by restrict FKs and the module's own immutability rule | archived, inactive; 1 audit event of the fixture release retained (append-only) |
-| Configuration records (approved) | analytic plans 80/81, picking type 91 + location "SIPANEL Site", project 55, 14 `sipanel.uom.family` rows, 9 approved policies, 6 `ir.config_parameter` keys, 8 group memberships for user 2 | intended operational configuration |
-| Audit events from configuration | 9 `policy_approve` events | append-only |
-| Attachments | none added (test artifacts rolled back) | — |
+## C. Persistent operational configuration (intended, management-approved)
+
+| Record | Value |
+|---|---|
+| `account.analytic.plan` | 80 "SIPANEL System", 81 "SIPANEL Activity" |
+| `stock.picking.type` / `stock.location` | 91 "SIPANEL Site Issue" (internal, WH/Stock → "SIPANEL Site", usage customer) |
+| `project.project` | 55 "SIPANEL Execution (default)" |
+| `sipanel.uom.family` | 14 rows (length, count, time, mass, volume, area) |
+| `sipanel.cost.recognition.policy` | 9 rows, state APPROVED (source recorded), 9 `policy_approve` audit events |
+| `ir.config_parameter` | sipanel_scope.system_plan_id=80, activity_plan_id=81, stock_issue_picking_type_id=91, default_project_id=55, release_retry_count=3, company_currency_only=True |
+| `res.users` 2 (Taleghani) | 8 SIPANEL groups added |
+| `sipanel.execution.owner.rule` | 5 default rows (module data) |
+| Modules | 4 installed (196 → 200); `sipanel_scope_demo` uninstalled |
+
+No attachment, quotation, order, invoice or stock document created by tests persisted.
