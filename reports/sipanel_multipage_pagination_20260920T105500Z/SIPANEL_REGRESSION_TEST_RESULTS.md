@@ -5,8 +5,16 @@
 | Suite | Command | Before the fix | After the fix |
 |---|---|---|---|
 | `sale_shamsi_report` | `odoo -d sipanel --no-http --stop-after-init -u sale_shamsi_report --test-enable --test-tags shamsi_characterization` | **80 tests, 2 failures** (both the new L-02 checks) | **80 tests, 0 failures** |
-| SIPANEL modules | `scripts/sipanel_install_and_test.sh test` (`-u sipanel_commercial_scope_core,sipanel_sale_scope,sipanel_scope_execution,sipanel_scope_costing --test-tags sipanel`) | 70 tests, 0 failures (STEP 1C baseline) | **70 tests, 0 failures** |
+| SIPANEL modules | `scripts/sipanel_install_and_test.sh test` (`-u sipanel_commercial_scope_core,sipanel_sale_scope,sipanel_scope_execution,sipanel_scope_costing --test-tags sipanel`) | not re-run — no SIPANEL module was changed by this run¹ | **70 tests, 0 failures** |
 | Totals | | | **150 tests, 0 failures** |
+
+¹ The change is confined to `sale_shamsi_report`; `git status` in
+`/home/ubuntu/sipanel_odoo_addons` was clean throughout. The full four-module suite
+was run once, after the fix. Earlier runs on 2026-09-20 exercised subsets only
+(STEP 1A: 20 + 37 + 5 + 8 across two invocations; STEP 1C: a 13-test
+`sipanel_sale_scope` subset), so there is no directly comparable 70-test
+"before" figure from today; the last full-breadth green run before this one is
+the 2026-09-19 implementation run, at which point the suite was smaller.
 
 SIPANEL module breakdown after the fix: `sipanel_commercial_scope_core` 20,
 `sipanel_sale_scope` 37, `sipanel_scope_costing` 5, `sipanel_scope_execution` 8.
@@ -46,8 +54,9 @@ the output. Design:
 
 ## 3. Before/after evidence for the new test
 
-Run on Production against the **unmodified** template and CSS
-(`evidence/logs/test_shamsi_L02_before_fix.log`, exit 1):
+Run on Production against the **unmodified** template and CSS — only the test file
+was deployed at that point, deliberately, to prove the new checks detect the defect
+before anything was fixed (`evidence/logs/test_shamsi_L02_before_fix.log`, exit 1):
 
 ```
 FAIL: TestSaleOrderPdfPagination.test_table_frame_is_paginated_with_its_rows
@@ -87,11 +96,18 @@ SUMMARY: 5 of 10 shapes FAIL before the fix, 0 of 10 FAIL after
   E2, E3                             -> R4, page carries marks but no text
 ```
 
-Two corrections were made to the rules during this run, both after a page was looked
-at and the rule disagreed (see the visual matrix §3): images now count as marks
-(pdfminer reports them as `LTImage`/`LTFigure`, never as rects, so R4 was originally
-blind to the signature-only page), and the header comparison is case-insensitive
-because the layout uppercases `thead`.
+### Corrections made to the test itself
+
+Three, all to the test's own matching logic, never to what it demands of the output.
+Two were made after the pre-fix run above, so that run used the first revision of the
+new tests; the two rules it failed (R3, R5) are unchanged by those edits, and R5
+failed for the genuine reason as well as the cosmetic one.
+
+| Correction | Why |
+|---|---|
+| header comparison made case-insensitive | the layout applies `text-transform: uppercase` to `thead`, so the rendered text is `DESCRIPTION` |
+| the split-line rule given the same 1 pt tolerance as the band rule | pdfminer reports a glyph's full em box including descent, so a line resting on the last baseline can report 0.3 pt past the limit without any visible clipping |
+| images counted as marks in R4 | pdfminer reports an image as `LTImage`/`LTFigure`, never as a rect, so R4 was originally blind to the signature-only page — the clearest defect in the set |
 
 ## 5. Pre-existing tests re-verified
 

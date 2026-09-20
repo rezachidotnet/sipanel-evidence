@@ -210,8 +210,8 @@ Deployed with `-u sale_shamsi_report` on `sipanel`. View + asset change only, **
 | Persian portal operational | pass — `/my/orders/<id>` and `/fa/my/orders/<id>` both HTTP 200 for all 10 orders |
 | PDF and portal totals match the quotation | pass — 20/20 fetches contain the order total |
 | no leakage (cost, margin, internal notes, internal-only components, tokens, filesystem paths) | pass — raw-byte scan of all 20 deliverable PDFs for `access_token`, `/opt/odoo`, `/mnt/extra-addons`, `127.0.0.1`, `8072`, `/tmp/report`, `INTERNAL-MARKER`, `eligible_cost`, `margin`: zero hits |
-| SIPANEL customer-output and security tests | pass — 70 tests, 0 failures (`sipanel_commercial_scope_core` 20, `sipanel_sale_scope` 37, `sipanel_scope_costing` 5, `sipanel_scope_execution` 8) |
-| Shamsi suite | pass — 80 tests, 0 failures (75 pre-existing + 5 new) |
+| SIPANEL customer-output and security tests | pass — 70 tests, 0 failures (`sipanel_commercial_scope_core` 20, `sipanel_sale_scope` 37, `sipanel_scope_costing` 5, `sipanel_scope_execution` 8). Run once, after the fix: no SIPANEL module was changed by this run, and earlier runs today covered subsets only, so there is no comparable 70-test "before" figure from today. |
+| Shamsi suite | pass — 80 tests, 0 failures (75 pre-existing + 5 new). The same suite was run first against the unmodified template with only the new test file deployed: 2 of the 5 new checks failed. |
 
 ## 10. Evidence index
 

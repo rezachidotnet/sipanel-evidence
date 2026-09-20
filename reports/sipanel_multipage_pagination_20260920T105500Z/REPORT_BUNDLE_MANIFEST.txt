@@ -1,11 +1,11 @@
 SIPANEL STEP 1D — MULTI-PAGE PAGINATION (L-02) — REPORT BUNDLE MANIFEST
 Run:                 sipanel_multipage_pagination_20260920T105500Z
-Generated (UTC):     2026-09-20T11:54:00Z
+Generated (UTC):     2026-09-20T11:56:47Z
 Verdict:             PASS — L-02 reproduced, root cause fixed, 10/10 shapes clean
 Target:              database sipanel, container odoo-sipanel (RestartCount=0, no restart)
 Other tenants:       NOT touched (avizsazeh, shahbazi, ahantorob, odoo-db untouched)
 Fix commit:          sale_shamsi_report 5680013d1e58ce43db062683c43a9262023f5657 (branch develop/shamsi-date-core, NOT pushed)
-Reports commit:      sipanel_odoo_addons 68209835c444d07f88a839d3bdd66312c37fe3cf (NOT pushed)
+Reports commit:      sipanel_odoo_addons 7ae671dfc77efd9f3b8372316f2a1fddbe153ee6 (NOT pushed)
 Recovery point:      /opt/odoo/backups/sipanel-pre-multipage-20260920T104900Z (verified, root-only, NOT in this bundle)
 Tests:               sale_shamsi_report 80/80 pass (2 failed before the fix); SIPANEL modules 70/70 pass
 Temporary records:   10 draft quotations + 11 scopes + 11 revisions + 77 components + 1 partner created and fully deleted
@@ -14,10 +14,10 @@ FILES
   SIPANEL_AUTOMATED_GEOMETRY_RESULTS.md                                               8816 bytes
   SIPANEL_LAYOUT_DEFECT_AND_FIX_REGISTER.md                                           8540 bytes
   SIPANEL_MULTIPAGE_CONTACT_SHEET_BEFORE_AFTER.png                                  476695 bytes
-  SIPANEL_MULTIPAGE_PAGINATION_VALIDATION_REPORT.md                                  15910 bytes
+  SIPANEL_MULTIPAGE_PAGINATION_VALIDATION_REPORT.md                                  16216 bytes
   SIPANEL_MULTIPAGE_QUOTATION_AFTER_REDACTED.pdf                                    160357 bytes
   SIPANEL_MULTIPAGE_QUOTATION_BEFORE_REDACTED.pdf                                   156909 bytes
-  SIPANEL_REGRESSION_TEST_RESULTS.md                                                  7375 bytes
+  SIPANEL_REGRESSION_TEST_RESULTS.md                                                  8633 bytes
   SIPANEL_TEMPORARY_DATA_CLEANUP_REPORT.md                                            4744 bytes
   SIPANEL_VISUAL_PAGE_REVIEW_MATRIX.md                                                8910 bytes
   evidence/contact_sheets/contact_A_SHORT.png                                       127600 bytes
