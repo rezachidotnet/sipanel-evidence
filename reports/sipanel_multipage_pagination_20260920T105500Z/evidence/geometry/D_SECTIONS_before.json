@@ -1,0 +1,146 @@
+{
+ "pdf": "before/D_SECTIONS.bodyonly.pdf",
+ "label": "D_SECTIONS_before",
+ "margin_top_mm": 52.0,
+ "margin_bottom_mm": 32.0,
+ "tol_pt": 1.0,
+ "dpi": 150,
+ "pages": [
+  {
+   "page": 1,
+   "page_h": 842.0,
+   "body_top": 147.4,
+   "body_bottom": 751.3,
+   "above": [],
+   "below": [],
+   "clipped_top": [],
+   "clipped_bottom": [],
+   "nwords": 114,
+   "min_y": 147.2,
+   "max_y": 621.8,
+   "ink_above": [],
+   "ink_below": [],
+   "ink_fill": 0.145,
+   "min_ink_y": 207.4,
+   "max_ink_y": 524.2,
+   "trailing_frame": -97.6,
+   "leading_frame": -60.2,
+   "violations": 0,
+   "trailing_span": 0.0,
+   "text_fraction": 0.786
+  },
+  {
+   "page": 2,
+   "page_h": 842.0,
+   "body_top": 147.4,
+   "body_bottom": 751.3,
+   "above": [],
+   "below": [],
+   "clipped_top": [],
+   "clipped_bottom": [],
+   "nwords": 1365,
+   "min_y": 166.0,
+   "max_y": 687.2,
+   "ink_above": [],
+   "ink_below": [
+    {
+     "y_pt": 751.7,
+     "y_px": 1566,
+     "dark_px": 2,
+     "run": 1,
+     "x0": 55,
+     "x1": 1185,
+     "span": 0.911
+    }
+   ],
+   "ink_fill": 0.953,
+   "min_ink_y": 160.3,
+   "max_ink_y": 751.7,
+   "trailing_frame": 64.5,
+   "leading_frame": 5.7,
+   "violations": 2,
+   "trailing_span": 0.911,
+   "frame_violation": true,
+   "text_fraction": 0.863
+  },
+  {
+   "page": 3,
+   "page_h": 842.0,
+   "body_top": 147.4,
+   "body_bottom": 751.3,
+   "above": [],
+   "below": [],
+   "clipped_top": [],
+   "clipped_bottom": [],
+   "nwords": 1727,
+   "min_y": 152.0,
+   "max_y": 646.0,
+   "ink_above": [
+    {
+     "y_pt": 146.9,
+     "y_px": 306,
+     "dark_px": 2,
+     "run": 1,
+     "x0": 55,
+     "x1": 1185,
+     "span": 0.911
+    }
+   ],
+   "ink_below": [
+    {
+     "y_pt": 751.7,
+     "y_px": 1566,
+     "dark_px": 2,
+     "run": 1,
+     "x0": 55,
+     "x1": 1185,
+     "span": 0.911
+    }
+   ],
+   "ink_fill": 1.0,
+   "min_ink_y": 146.9,
+   "max_ink_y": 751.7,
+   "trailing_frame": 105.7,
+   "leading_frame": 5.1,
+   "violations": 3,
+   "trailing_span": 0.911,
+   "frame_violation": true,
+   "text_fraction": 0.818
+  },
+  {
+   "page": 4,
+   "page_h": 842.0,
+   "body_top": 147.4,
+   "body_bottom": 751.3,
+   "above": [],
+   "below": [],
+   "clipped_top": [],
+   "clipped_bottom": [],
+   "nwords": 1959,
+   "min_y": 152.0,
+   "max_y": 749.0,
+   "ink_above": [
+    {
+     "y_pt": 146.9,
+     "y_px": 306,
+     "dark_px": 2,
+     "run": 1,
+     "x0": 55,
+     "x1": 1185,
+     "span": 0.911
+    }
+   ],
+   "ink_below": [],
+   "ink_fill": 0.918,
+   "min_ink_y": 146.9,
+   "max_ink_y": 746.4,
+   "trailing_frame": -2.6,
+   "leading_frame": 5.1,
+   "violations": 1,
+   "trailing_span": 0.0,
+   "text_fraction": 0.989
+  }
+ ],
+ "orphan": null,
+ "violations": 6
+}

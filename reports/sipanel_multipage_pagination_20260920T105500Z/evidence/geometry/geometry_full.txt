@@ -1,0 +1,167 @@
+################ before
+== A_SHORT_before  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2    407   166.0   603.8   683.0   751.3   79.2    0    0    0    0    0    0  ok
+RESULT A_SHORT_before: PASS (0 violations)
+
+== B_NORMAL_before  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2   1309   166.0   656.5   751.7   751.3   95.2    0    0    0    0    0    1  FAIL
+       frame: border ink runs 95.2pt below the last text line (max 36.0pt)
+       ink_below: 1 rows, first y=751.7pt run=1px last y=751.7pt
+  3    765   152.0   512.2   509.8   751.3   -2.4    0    0    0    0    1    0  FAIL
+       ink_above: 1 rows, first y=146.9pt run=1px last y=146.9pt
+RESULT B_NORMAL_before: FAIL (3 violations)
+
+== C_LONGNOTES_before  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2   1765   166.0   717.9   751.7   751.3   33.8    0    0    0    0    0    1  FAIL
+       ink_below: 1 rows, first y=751.7pt run=1px last y=751.7pt
+  3   2836   152.0   692.3   751.7   751.3   59.4    0    0    0    0    1    1  FAIL
+       frame: border ink runs 59.4pt below the last text line (max 36.0pt)
+       ink_below: 1 rows, first y=751.7pt run=1px last y=751.7pt
+       ink_above: 1 rows, first y=146.9pt run=1px last y=146.9pt
+  4   2141   152.0   738.1   735.4   751.3   -2.7    0    0    0    0    1    0  FAIL
+       ink_above: 1 rows, first y=146.9pt run=1px last y=146.9pt
+  5     24   147.4   163.4   160.8   751.3   -2.6    0    0    0    0    0    0  ok
+RESULT C_LONGNOTES_before: FAIL (5 violations)
+
+== D_SECTIONS_before  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2   1365   166.0   687.2   751.7   751.3   64.5    0    0    0    0    0    1  FAIL
+       frame: border ink runs 64.5pt below the last text line (max 36.0pt)
+       ink_below: 1 rows, first y=751.7pt run=1px last y=751.7pt
+  3   1727   152.0   646.0   751.7   751.3  105.7    0    0    0    0    1    1  FAIL
+       frame: border ink runs 105.7pt below the last text line (max 36.0pt)
+       ink_below: 1 rows, first y=751.7pt run=1px last y=751.7pt
+       ink_above: 1 rows, first y=146.9pt run=1px last y=146.9pt
+  4   1959   152.0   749.0   746.4   751.3   -2.6    0    0    0    0    1    0  FAIL
+       ink_above: 1 rows, first y=146.9pt run=1px last y=146.9pt
+RESULT D_SECTIONS_before: FAIL (6 violations)
+
+== E1_before  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2    654   166.0   645.4   724.8   751.3   79.4    0    0    0    0    0    0  ok
+RESULT E1_before: PASS (0 violations)
+
+== E2_before  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2    882   166.0   691.5   686.9   751.3   -4.6    0    0    0    0    0    0  ok
+  3      0    None    None   226.6   751.7   None    0    0    0    0    0    0  FAIL
+ORPHAN: page 3: page carries ink but no text
+RESULT E2_before: FAIL (2 violations)
+
+== E3_before  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2   1110   166.0   722.2   717.6   751.3   -4.6    0    0    0    0    0    0  ok
+  3      0    None    None   226.6   751.7   None    0    0    0    0    0    0  FAIL
+ORPHAN: page 3: page carries ink but no text
+RESULT E3_before: FAIL (2 violations)
+
+== E4_before  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2   1337   166.0   738.8   735.8   751.3   -3.0    0    0    0    0    0    0  ok
+  3      1   150.5   170.5   249.6   751.3   79.1    0    0    0    0    0    0  ok
+RESULT E4_before: PASS (0 violations)
+
+== E5_before  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2   1513   166.0   660.9   751.7   751.3   90.8    0    0    0    0    0    1  FAIL
+       frame: border ink runs 90.8pt below the last text line (max 36.0pt)
+       ink_below: 1 rows, first y=751.7pt run=1px last y=751.7pt
+  3     53   151.9   280.6   360.0   751.3   79.4    0    0    0    0    1    0  FAIL
+       ink_above: 1 rows, first y=146.9pt run=1px last y=146.9pt
+RESULT E5_before: FAIL (3 violations)
+
+== E6_before  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2   1741   166.0   707.0   751.7   751.3   44.7    0    0    0    0    0    1  FAIL
+       frame: border ink runs 44.7pt below the last text line (max 36.0pt)
+       ink_below: 1 rows, first y=751.7pt run=1px last y=751.7pt
+  3     53   151.9   280.6   360.0   751.3   79.4    0    0    0    0    1    0  FAIL
+       ink_above: 1 rows, first y=146.9pt run=1px last y=146.9pt
+RESULT E6_before: FAIL (3 violations)
+
+################ after
+== A_SHORT_after  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2    407   166.0   621.1   700.3   751.3   79.2    0    0    0    0    0    0  ok
+RESULT A_SHORT_after: PASS (0 violations)
+
+== B_NORMAL_after  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2   1309   166.0   657.1   661.4   751.3    4.3    0    0    0    0    0    0  ok
+  3    795   152.5   539.7   537.1   751.3   -2.6    0    0    0    0    0    0  ok
+RESULT B_NORMAL_after: PASS (0 violations)
+
+== C_LONGNOTES_after  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2   1765   166.0   718.5   722.9   751.3    4.4    0    0    0    0    0    0  ok
+  3   2866   152.5   717.9   724.8   751.3    6.9    0    0    0    0    0    0  ok
+  4   2076   152.5   750.3   747.8   751.3   -2.5    0    0    0    0    0    0  ok
+  5    119   147.4   178.8   176.2   751.3   -2.6    0    0    0    0    0    0  ok
+RESULT C_LONGNOTES_after: PASS (0 violations)
+
+== D_SECTIONS_after  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2   1365   166.0   703.2   707.5   751.3    4.3    0    0    0    0    0    0  ok
+  3   1763   152.5   702.3   706.6   751.3    4.3    0    0    0    0    0    0  ok
+  4   1724   152.5   745.8   743.0   751.3   -2.8    0    0    0    0    0    0  ok
+  5    271   147.4   194.1   191.5   751.3   -2.6    0    0    0    0    0    0  ok
+RESULT D_SECTIONS_after: PASS (0 violations)
+
+== E1_after  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2    654   166.0   647.3   726.7   751.3   79.4    0    0    0    0    0    0  ok
+RESULT E1_after: PASS (0 violations)
+
+== E2_after  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2    869   166.0   632.5   637.4   751.3    4.9    0    0    0    0    0    0  ok
+  3     13   147.3   196.8   276.0   751.3   79.2    0    0    0    0    0    0  ok
+RESULT E2_after: PASS (0 violations)
+
+== E3_after  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2   1097   166.0   663.3   668.2   751.3    4.9    0    0    0    0    0    0  ok
+  3     13   147.3   196.8   276.0   751.3   79.2    0    0    0    0    0    0  ok
+RESULT E3_after: PASS (0 violations)
+
+== E4_after  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2   1325   166.0   709.3   714.2   751.3    4.9    0    0    0    0    0    0  ok
+  3     13   147.3   196.8   276.0   751.3   79.2    0    0    0    0    0    0  ok
+RESULT E4_after: PASS (0 violations)
+
+== E5_after  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2   1513   166.0   661.6   666.2   751.3    4.6    0    0    0    0    0    0  ok
+  3     53   151.9   281.2   360.5   751.3   79.3    0    0    0    0    0    0  ok
+RESULT E5_after: PASS (0 violations)
+
+== E6_after  band [52.0mm .. page-32.0mm]  tol 1.0pt
+ pg  words    minY    maxY  maxInk   limit  frame  abv  blw clpT clpB inkA inkB  verdict
+  1    114   147.2   621.8   524.2   751.3  -97.6    0    0    0    0    0    0  ok
+  2   1741   166.0   707.7   712.3   751.3    4.6    0    0    0    0    0    0  ok
+  3     53   151.9   281.2   360.5   751.3   79.3    0    0    0    0    0    0  ok
+RESULT E6_after: PASS (0 violations)
+

@@ -1,0 +1,181 @@
+SIPANEL STEP 1D — MULTI-PAGE PAGINATION (L-02) — REPORT BUNDLE MANIFEST
+Run:                 sipanel_multipage_pagination_20260920T105500Z
+Generated (UTC):     2026-09-20T11:54:00Z
+Verdict:             PASS — L-02 reproduced, root cause fixed, 10/10 shapes clean
+Target:              database sipanel, container odoo-sipanel (RestartCount=0, no restart)
+Other tenants:       NOT touched (avizsazeh, shahbazi, ahantorob, odoo-db untouched)
+Fix commit:          sale_shamsi_report 5680013d1e58ce43db062683c43a9262023f5657 (branch develop/shamsi-date-core, NOT pushed)
+Reports commit:      sipanel_odoo_addons 68209835c444d07f88a839d3bdd66312c37fe3cf (NOT pushed)
+Recovery point:      /opt/odoo/backups/sipanel-pre-multipage-20260920T104900Z (verified, root-only, NOT in this bundle)
+Tests:               sale_shamsi_report 80/80 pass (2 failed before the fix); SIPANEL modules 70/70 pass
+Temporary records:   10 draft quotations + 11 scopes + 11 revisions + 77 components + 1 partner created and fully deleted
+
+FILES
+  SIPANEL_AUTOMATED_GEOMETRY_RESULTS.md                                               8816 bytes
+  SIPANEL_LAYOUT_DEFECT_AND_FIX_REGISTER.md                                           8540 bytes
+  SIPANEL_MULTIPAGE_CONTACT_SHEET_BEFORE_AFTER.png                                  476695 bytes
+  SIPANEL_MULTIPAGE_PAGINATION_VALIDATION_REPORT.md                                  15910 bytes
+  SIPANEL_MULTIPAGE_QUOTATION_AFTER_REDACTED.pdf                                    160357 bytes
+  SIPANEL_MULTIPAGE_QUOTATION_BEFORE_REDACTED.pdf                                   156909 bytes
+  SIPANEL_REGRESSION_TEST_RESULTS.md                                                  7375 bytes
+  SIPANEL_TEMPORARY_DATA_CLEANUP_REPORT.md                                            4744 bytes
+  SIPANEL_VISUAL_PAGE_REVIEW_MATRIX.md                                                8910 bytes
+  evidence/contact_sheets/contact_A_SHORT.png                                       127600 bytes
+  evidence/contact_sheets/contact_B_NORMAL.png                                      277893 bytes
+  evidence/contact_sheets/contact_C_LONGNOTES.png                                   628168 bytes
+  evidence/contact_sheets/contact_D_SECTIONS.png                                    476695 bytes
+  evidence/contact_sheets/contact_E1.png                                            147824 bytes
+  evidence/contact_sheets/contact_E2.png                                            172103 bytes
+  evidence/contact_sheets/contact_E3.png                                            184296 bytes
+  evidence/contact_sheets/contact_E4.png                                            210612 bytes
+  evidence/contact_sheets/contact_E5.png                                            229382 bytes
+  evidence/contact_sheets/contact_E6.png                                            248493 bytes
+  evidence/geometry/A_SHORT_after.json                                                1114 bytes
+  evidence/geometry/A_SHORT_before.json                                               1116 bytes
+  evidence/geometry/B_NORMAL_after.json                                               1572 bytes
+  evidence/geometry/B_NORMAL_before.json                                              1882 bytes
+  evidence/geometry/C_LONGNOTES_after.json                                            2493 bytes
+  evidence/geometry/C_LONGNOTES_before.json                                           3081 bytes
+  evidence/geometry/D_SECTIONS_after.json                                             2490 bytes
+  evidence/geometry/D_SECTIONS_before.json                                            2652 bytes
+  evidence/geometry/E1_after.json                                                     1104 bytes
+  evidence/geometry/E1_before.json                                                    1106 bytes
+  evidence/geometry/E2_after.json                                                     1560 bytes
+  evidence/geometry/E2_before.json                                                    1643 bytes
+  evidence/geometry/E3_after.json                                                     1562 bytes
+  evidence/geometry/E3_before.json                                                    1645 bytes
+  evidence/geometry/E4_after.json                                                     1560 bytes
+  evidence/geometry/E4_before.json                                                    1562 bytes
+  evidence/geometry/E5_after.json                                                     1560 bytes
+  evidence/geometry/E5_before.json                                                    1867 bytes
+  evidence/geometry/E6_after.json                                                     1561 bytes
+  evidence/geometry/E6_before.json                                                    1868 bytes
+  evidence/geometry/geometry_full.txt                                                10550 bytes
+  evidence/geometry/rule_replay.txt                                                   1500 bytes
+  evidence/logs/recovery_point_SHA256SUMS.txt                                          520 bytes
+  evidence/logs/test_shamsi_L02_after_fix.log                                        17468 bytes
+  evidence/logs/test_shamsi_L02_before_fix.log                                       19197 bytes
+  evidence/logs/test_sipanel_after_fix.log                                           33107 bytes
+  evidence/pdf_after/SIPANEL_A_SHORT_AFTER.pdf                                      125854 bytes
+  evidence/pdf_after/SIPANEL_B_NORMAL_AFTER.pdf                                     138187 bytes
+  evidence/pdf_after/SIPANEL_C_LONGNOTES_AFTER.pdf                                  164599 bytes
+  evidence/pdf_after/SIPANEL_D_SECTIONS_AFTER.pdf                                   160357 bytes
+  evidence/pdf_after/SIPANEL_E1_AFTER.pdf                                           128151 bytes
+  evidence/pdf_after/SIPANEL_E2_AFTER.pdf                                           131676 bytes
+  evidence/pdf_after/SIPANEL_E3_AFTER.pdf                                           127107 bytes
+  evidence/pdf_after/SIPANEL_E4_AFTER.pdf                                           133575 bytes
+  evidence/pdf_after/SIPANEL_E5_AFTER.pdf                                           134587 bytes
+  evidence/pdf_after/SIPANEL_E6_AFTER.pdf                                           135549 bytes
+  evidence/pdf_before/SIPANEL_A_SHORT_BEFORE.pdf                                    125912 bytes
+  evidence/pdf_before/SIPANEL_B_NORMAL_BEFORE.pdf                                   138050 bytes
+  evidence/pdf_before/SIPANEL_C_LONGNOTES_BEFORE.pdf                                164010 bytes
+  evidence/pdf_before/SIPANEL_D_SECTIONS_BEFORE.pdf                                 156909 bytes
+  evidence/pdf_before/SIPANEL_E1_BEFORE.pdf                                         128270 bytes
+  evidence/pdf_before/SIPANEL_E2_BEFORE.pdf                                         131770 bytes
+  evidence/pdf_before/SIPANEL_E3_BEFORE.pdf                                         132707 bytes
+  evidence/pdf_before/SIPANEL_E4_BEFORE.pdf                                         133715 bytes
+  evidence/pdf_before/SIPANEL_E5_BEFORE.pdf                                         134896 bytes
+  evidence/pdf_before/SIPANEL_E6_BEFORE.pdf                                         135881 bytes
+  evidence/png_after/A_SHORT-1.png                                                   70510 bytes
+  evidence/png_after/A_SHORT-2.png                                                  146988 bytes
+  evidence/png_after/B_NORMAL-1.png                                                  70622 bytes
+  evidence/png_after/B_NORMAL-2.png                                                 239939 bytes
+  evidence/png_after/B_NORMAL-3.png                                                 169780 bytes
+  evidence/png_after/C_LONGNOTES-1.png                                               70510 bytes
+  evidence/png_after/C_LONGNOTES-2.png                                              297924 bytes
+  evidence/png_after/C_LONGNOTES-3.png                                              411603 bytes
+  evidence/png_after/C_LONGNOTES-4.png                                              327379 bytes
+  evidence/png_after/C_LONGNOTES-5.png                                               60923 bytes
+  evidence/png_after/D_SECTIONS-1.png                                                70563 bytes
+  evidence/png_after/D_SECTIONS-2.png                                               248307 bytes
+  evidence/png_after/D_SECTIONS-3.png                                               285513 bytes
+  evidence/png_after/D_SECTIONS-4.png                                               287467 bytes
+  evidence/png_after/D_SECTIONS-5.png                                                78801 bytes
+  evidence/png_after/E1-1.png                                                        70623 bytes
+  evidence/png_after/E1-2.png                                                       177364 bytes
+  evidence/png_after/E2-1.png                                                        70809 bytes
+  evidence/png_after/E2-2.png                                                       190796 bytes
+  evidence/png_after/E2-3.png                                                        60775 bytes
+  evidence/png_after/E3-1.png                                                        53969 bytes
+  evidence/png_after/E3-2.png                                                       181512 bytes
+  evidence/png_after/E3-3.png                                                        21912 bytes
+  evidence/png_after/E4-1.png                                                        70508 bytes
+  evidence/png_after/E4-2.png                                                       248390 bytes
+  evidence/png_after/E4-3.png                                                        60775 bytes
+  evidence/png_after/E5-1.png                                                        70628 bytes
+  evidence/png_after/E5-2.png                                                       265492 bytes
+  evidence/png_after/E5-3.png                                                        73440 bytes
+  evidence/png_after/E6-1.png                                                        70470 bytes
+  evidence/png_after/E6-2.png                                                       294012 bytes
+  evidence/png_after/E6-3.png                                                        73440 bytes
+  evidence/png_before/A_SHORT-1.png                                                  70510 bytes
+  evidence/png_before/A_SHORT-2.png                                                 147211 bytes
+  evidence/png_before/B_NORMAL-1.png                                                 70622 bytes
+  evidence/png_before/B_NORMAL-2.png                                                239969 bytes
+  evidence/png_before/B_NORMAL-3.png                                                165178 bytes
+  evidence/png_before/C_LONGNOTES-1.png                                              70510 bytes
+  evidence/png_before/C_LONGNOTES-2.png                                             298817 bytes
+  evidence/png_before/C_LONGNOTES-3.png                                             409618 bytes
+  evidence/png_before/C_LONGNOTES-4.png                                             337143 bytes
+  evidence/png_before/C_LONGNOTES-5.png                                              48603 bytes
+  evidence/png_before/D_SECTIONS-1.png                                               70491 bytes
+  evidence/png_before/D_SECTIONS-2.png                                              249070 bytes
+  evidence/png_before/D_SECTIONS-3.png                                              280272 bytes
+  evidence/png_before/D_SECTIONS-4.png                                              316224 bytes
+  evidence/png_before/E1-1.png                                                       70623 bytes
+  evidence/png_before/E1-2.png                                                      177924 bytes
+  evidence/png_before/E2-1.png                                                       70809 bytes
+  evidence/png_before/E2-2.png                                                      196128 bytes
+  evidence/png_before/E2-3.png                                                       56032 bytes
+  evidence/png_before/E3-1.png                                                       70396 bytes
+  evidence/png_before/E3-2.png                                                      225060 bytes
+  evidence/png_before/E3-3.png                                                       56032 bytes
+  evidence/png_before/E4-1.png                                                       70508 bytes
+  evidence/png_before/E4-2.png                                                      252750 bytes
+  evidence/png_before/E4-3.png                                                       57628 bytes
+  evidence/png_before/E5-1.png                                                       70628 bytes
+  evidence/png_before/E5-2.png                                                      266953 bytes
+  evidence/png_before/E5-3.png                                                       73511 bytes
+  evidence/png_before/E6-1.png                                                       70470 bytes
+  evidence/png_before/E6-2.png                                                      295834 bytes
+  evidence/png_before/E6-3.png                                                       73511 bytes
+  evidence/portal_results.txt                                                         1555 bytes
+  evidence/probes/P0_baseline.pdf                                                   110988 bytes
+  evidence/probes/P1_display_table.pdf                                              111116 bytes
+  evidence/probes/P2_table_avoid.pdf                                                111116 bytes
+  evidence/probes/P3_small_sig.pdf                                                  110989 bytes
+  evidence/probes/P4_table_small.pdf                                                111117 bytes
+  evidence/probes/P5_inner_avoid.pdf                                                110988 bytes
+  evidence/probes/V0_baseline.pdf                                                   132295 bytes
+  evidence/probes/V1_no_overlay.pdf                                                 131587 bytes
+  evidence/probes/V2_real_borders.pdf                                               131807 bytes
+  evidence/probes/V3_tr_avoid.pdf                                                   132618 bytes
+  evidence/probes/V4_sig_avoid.pdf                                                  132295 bytes
+  evidence/probes/V5_static_table.pdf                                               131697 bytes
+  evidence/probes/W0_baseline.pdf                                                   110988 bytes
+  evidence/probes/W1_boxfix.pdf                                                     110818 bytes
+  evidence/probes/W2_sigrow.pdf                                                     111252 bytes
+  evidence/probes/W3_both.pdf                                                       111087 bytes
+  evidence/probes/W4_orphans.pdf                                                    110988 bytes
+  evidence/probes/Z0_baseline.pdf                                                   132295 bytes
+  evidence/probes/Z1_box.pdf                                                        131807 bytes
+  evidence/probes/Z2_box_thead.pdf                                                  134147 bytes
+  evidence/probes/Z3_thead_only.pdf                                                 134597 bytes
+  evidence/scripts/bodyonly_render.sh                                                 1002 bytes
+  evidence/scripts/build_bundle_1d.sh                                                 3465 bytes
+  evidence/scripts/cleanup_1d.py                                                      4249 bytes
+  evidence/scripts/contact_sheet.py                                                   1835 bytes
+  evidence/scripts/create_1d.py                                                       5360 bytes
+  evidence/scripts/css_variant_probe.py                                               2503 bytes
+  evidence/scripts/pdf_geometry.py                                                   11207 bytes
+  evidence/scripts/portal_check.py                                                     855 bytes
+  evidence/scripts/probe_run.py                                                       1270 bytes
+  evidence/scripts/render_1d.py                                                       1807 bytes
+  evidence/scripts/rule_replay.py                                                     3867 bytes
+  evidence/source_diff/sale_shamsi_report_L02.diff                                   16020 bytes
+
+EXCLUDED: database dumps, filestore, container config, private keys, portal access tokens,
+          prepared body HTML (carried signed image URLs and absolute paths).
+REDACTION: none required — every document in this bundle was rendered from synthetic data
+          created for this run and deleted afterwards; the only real-world content is the
+          company's own letterhead and the salesperson block that appears on every quotation.

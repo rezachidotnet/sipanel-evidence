@@ -1,0 +1,102 @@
+{
+ "pdf": "before/E5.bodyonly.pdf",
+ "label": "E5_before",
+ "margin_top_mm": 52.0,
+ "margin_bottom_mm": 32.0,
+ "tol_pt": 1.0,
+ "dpi": 150,
+ "pages": [
+  {
+   "page": 1,
+   "page_h": 842.0,
+   "body_top": 147.4,
+   "body_bottom": 751.3,
+   "above": [],
+   "below": [],
+   "clipped_top": [],
+   "clipped_bottom": [],
+   "nwords": 114,
+   "min_y": 147.2,
+   "max_y": 621.8,
+   "ink_above": [],
+   "ink_below": [],
+   "ink_fill": 0.145,
+   "min_ink_y": 207.4,
+   "max_ink_y": 524.2,
+   "trailing_frame": -97.6,
+   "leading_frame": -60.2,
+   "violations": 0,
+   "trailing_span": 0.0,
+   "text_fraction": 0.786
+  },
+  {
+   "page": 2,
+   "page_h": 842.0,
+   "body_top": 147.4,
+   "body_bottom": 751.3,
+   "above": [],
+   "below": [],
+   "clipped_top": [],
+   "clipped_bottom": [],
+   "nwords": 1513,
+   "min_y": 166.0,
+   "max_y": 660.9,
+   "ink_above": [],
+   "ink_below": [
+    {
+     "y_pt": 751.7,
+     "y_px": 1566,
+     "dark_px": 2,
+     "run": 1,
+     "x0": 55,
+     "x1": 620,
+     "span": 0.456
+    }
+   ],
+   "ink_fill": 0.828,
+   "min_ink_y": 160.3,
+   "max_ink_y": 751.7,
+   "trailing_frame": 90.8,
+   "leading_frame": 5.7,
+   "violations": 2,
+   "trailing_span": 0.91,
+   "frame_violation": true,
+   "text_fraction": 0.82
+  },
+  {
+   "page": 3,
+   "page_h": 842.0,
+   "body_top": 147.4,
+   "body_bottom": 751.3,
+   "above": [],
+   "below": [],
+   "clipped_top": [],
+   "clipped_bottom": [],
+   "nwords": 53,
+   "min_y": 151.9,
+   "max_y": 280.6,
+   "ink_above": [
+    {
+     "y_pt": 146.9,
+     "y_px": 306,
+     "dark_px": 2,
+     "run": 1,
+     "x0": 55,
+     "x1": 620,
+     "span": 0.456
+    }
+   ],
+   "ink_below": [],
+   "ink_fill": 0.297,
+   "min_ink_y": 146.9,
+   "max_ink_y": 360.0,
+   "trailing_frame": 79.4,
+   "leading_frame": 5.0,
+   "violations": 1,
+   "trailing_span": 0.175,
+   "text_fraction": 0.213
+  }
+ ],
+ "orphan": null,
+ "violations": 3
+}
