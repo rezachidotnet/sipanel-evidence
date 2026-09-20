@@ -1,0 +1,238 @@
+{
+ "ts": "20260920T060817Z",
+ "prefix": "SIPANEL-CUSTOMER-OUTPUT-CHECK-20260920T060817Z",
+ "analytic_accounts": [
+  248,
+  249,
+  250
+ ],
+ "products": [
+  1113,
+  1114,
+  1115,
+  1116,
+  1117,
+  1118,
+  1119,
+  1120
+ ],
+ "scope": 95,
+ "version": 115,
+ "recipe_lines": [
+  897,
+  898,
+  899,
+  900,
+  901,
+  902,
+  903
+ ],
+ "partner": 426,
+ "order": 312,
+ "order_name": "SI-26/312",
+ "scope1": 217,
+ "scope2": 218,
+ "rev1": 237,
+ "rev2": 238,
+ "anchor1": 555,
+ "anchor2": 558,
+ "section": 557,
+ "note_line": 556,
+ "order_b": 313,
+ "order_b_name": "SI-26/313",
+ "backoffice": {
+  "rev1_eligible_cost_total": 18144382.0,
+  "rev1_margin_amount": 10355618.0,
+  "rev1_margin_percent": 36.34,
+  "order_total_cost": 18144382.0,
+  "order_total_margin": 10355618.0,
+  "components": [
+   {
+    "id": 1838,
+    "label_fa": "ناودان گالوانیزه",
+    "disclosure": "customer_eligible",
+    "placement": "included_parent",
+    "certainty": "firm",
+    "responsibility": "sipanel",
+    "final_qty": 12.0,
+    "unit_cost": 731000.0,
+    "cost_amount": 8772000.0,
+    "cost_source": "product_cost"
+   },
+   {
+    "id": 1839,
+    "label_fa": "بست دیواری (صورت‌حساب جداگانه)",
+    "disclosure": "customer_eligible",
+    "placement": "own_line",
+    "certainty": "firm",
+    "responsibility": "sipanel",
+    "final_qty": 24.0,
+    "unit_cost": 9876.0,
+    "cost_amount": 237024.0,
+    "cost_source": "product_cost"
+   },
+   {
+    "id": 1840,
+    "label_fa": "درزگیر سیلیکونی",
+    "disclosure": "customer_eligible",
+    "placement": "included_parent",
+    "certainty": "provisional",
+    "responsibility": "sipanel",
+    "final_qty": 6.0,
+    "unit_cost": 55555.0,
+    "cost_amount": 333330.0,
+    "cost_source": "product_cost"
+   },
+   {
+    "id": 1841,
+    "label_fa": "نصب و راه‌اندازی",
+    "disclosure": "customer_eligible",
+    "placement": "included_parent",
+    "certainty": "firm",
+    "responsibility": "sipanel",
+    "final_qty": 8.0,
+    "unit_cost": 4321.0,
+    "cost_amount": 34568.0,
+    "cost_source": "manual_estimate"
+   },
+   {
+    "id": 1842,
+    "label_fa": "داربست و دسترسی به محل به عهده کارفرما است (خارج از محدوده)",
+    "disclosure": "customer_eligible",
+    "placement": "no_customer_line",
+    "certainty": "firm",
+    "responsibility": "customer",
+    "final_qty": 1.0,
+    "unit_cost": 0.0,
+    "cost_amount": 0.0,
+    "cost_source": "not_applicable"
+   },
+   {
+    "id": 1843,
+    "label_fa": "INTERNAL-MARKER-LABEL-FA-20260920T060817Z",
+    "disclosure": "internal_only",
+    "placement": "included_parent",
+    "certainty": "firm",
+    "responsibility": "sipanel",
+    "final_qty": 20.0,
+    "unit_cost": 123.0,
+    "cost_amount": 2460.0,
+    "cost_source": "product_cost"
+   },
+   {
+    "id": 1844,
+    "label_fa": "جرثقیل",
+    "disclosure": "customer_eligible",
+    "placement": "included_parent",
+    "certainty": "firm",
+    "responsibility": "sipanel",
+    "final_qty": 1.0,
+    "unit_cost": 8765000.0,
+    "cost_amount": 8765000.0,
+    "cost_source": "manual_estimate"
+   }
+  ]
+ },
+ "seal": {
+  "rev1_hash": "874468afa3ab4d56e88fef680e71d622dcdbc93ca4e2695f2c6afe551dd09cce",
+  "rev2_hash": "59deaa8c04398abee9243c618de6ffa4f683d6849cf1ac408b2faf5bb2ccb386",
+  "order_hash": "1a0b3c44695900a8505c3cb48f19f4a5a0e49d2385a96add1478f32b3b14ceb2",
+  "artifacts": [
+   {
+    "id": 255,
+    "kind": "text",
+    "hash": "8aed0b99be83f9b07cd2bfaa34919033d34fbcd5c3287a657080407b7e58299e",
+    "att": false
+   },
+   {
+    "id": 256,
+    "kind": "pdf",
+    "hash": "a3b1bf44af9590353f4d5ef853395fa70bc28253c3548348d44060c5fc34acae",
+    "att": 3955
+   },
+   {
+    "id": 257,
+    "kind": "text",
+    "hash": "b8675e2c050ea493fe1757b99558ac4178bde4e65f50a60001bc0a49fafe4c03",
+    "att": false
+   },
+   {
+    "id": 258,
+    "kind": "pdf",
+    "hash": "6234f7e6c6dc68942a508ec5a3e9528d3325ddb1afe6f6ee4e2473ba77e759b9",
+    "att": 3956
+   }
+  ]
+ },
+ "final_note_rev1": "متعلقات آبرو (داده آزمایشی)\nشرح مشتری: تأمین و نصب متعلقات آبرو مطابق نقشه — این پیش‌فاکتور صرفاً برای اعتبارسنجی خروجی است.\n- ناودان گالوانیزه: 12 m\n- بست دیواری (صورت‌حساب جداگانه): 24 Units\n- درزگیر سیلیکونی: 6 Units (مقدار اولیه؛ پس از بازدید محل نهایی می‌شود (داده آزمایشی))\n- نصب و راه‌اندازی: 8 Hours\n- داربست و دسترسی به محل به عهده کارفرما است (خارج از محدوده)\n- جرثقیل: 1 Units",
+ "final_note_rev2": "متعلقات آبرو (داده آزمایشی)\nشرح مشتری: تأمین و نصب متعلقات آبرو مطابق نقشه — این پیش‌فاکتور صرفاً برای اعتبارسنجی خروجی است.\n- ناودان گالوانیزه: 5 m\n- بست دیواری (صورت‌حساب جداگانه): 10 Units\n- درزگیر سیلیکونی: 6 Units\n- نصب و راه‌اندازی: 8 Hours\n- داربست و دسترسی به محل به عهده کارفرما است (خارج از محدوده)\n- جرثقیل: 1 Units",
+ "amounts": {
+  "untaxed": 28500000.0,
+  "tax": 2850000.0,
+  "total": 31350000.0,
+  "currency": "IRR",
+  "lines": [
+   {
+    "id": 555,
+    "name": "متعلقات آبرو (داده آزمایشی)\nشرح مشتری: تأمین و نصب متعلقات آبرو مطابق نقشه — این پیش‌فاکتور صرفاً برای اعتبارسنجی خروجی است.\n- ناودان گالوانیزه: 12 m\n- بست دیواری (صورت‌حساب جداگانه): 24 Units\n- درزگیر سیلیکونی: 6 Units (مقدار اولیه؛ پس از بازدید محل نهایی می‌شود (داده آزمایشی))\n- نصب و راه‌اندازی: 8 Hours\n- داربست و دسترسی به محل به عهده کارفرما است (خارج از محدوده)\n- جرثقیل: 1 Units",
+    "display_type": false,
+    "qty": 12.0,
+    "uom": "m",
+    "price_unit": 2500000.0,
+    "discount": 5.0,
+    "taxes": [
+     "10%"
+    ],
+    "subtotal": 28500000.0,
+    "total": 31350000.0,
+    "is_optional": false,
+    "optional_line": false
+   },
+   {
+    "id": 556,
+    "name": "یادداشت سطر (داده آزمایشی): قیمت‌ها بر اساس ریال و شامل مالیات بر ارزش افزوده طبق ردیف است.",
+    "display_type": "line_note",
+    "qty": 0.0,
+    "uom": false,
+    "price_unit": 0.0,
+    "discount": 0.0,
+    "taxes": [],
+    "subtotal": 0.0,
+    "total": 0.0,
+    "is_optional": false,
+    "optional_line": null
+   },
+   {
+    "id": 557,
+    "name": "گزینه‌های اختیاری (Optional – validation)",
+    "display_type": "line_section",
+    "qty": 0.0,
+    "uom": false,
+    "price_unit": 0.0,
+    "discount": 0.0,
+    "taxes": [],
+    "subtotal": 0.0,
+    "total": 0.0,
+    "is_optional": true,
+    "optional_line": null
+   },
+   {
+    "id": 558,
+    "name": "متعلقات آبرو (داده آزمایشی)\nشرح مشتری: تأمین و نصب متعلقات آبرو مطابق نقشه — این پیش‌فاکتور صرفاً برای اعتبارسنجی خروجی است.\n- ناودان گالوانیزه: 5 m\n- بست دیواری (صورت‌حساب جداگانه): 10 Units\n- درزگیر سیلیکونی: 6 Units\n- نصب و راه‌اندازی: 8 Hours\n- داربست و دسترسی به محل به عهده کارفرما است (خارج از محدوده)\n- جرثقیل: 1 Units",
+    "display_type": false,
+    "qty": 0.0,
+    "uom": "m",
+    "price_unit": 2200000.0,
+    "discount": 0.0,
+    "taxes": [
+     "10%"
+    ],
+    "subtotal": 0.0,
+    "total": 0.0,
+    "is_optional": false,
+    "optional_line": true
+   }
+  ]
+ },
+ "mail_count_before": 0
+}

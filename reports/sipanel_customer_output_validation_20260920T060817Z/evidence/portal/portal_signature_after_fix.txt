@@ -1,0 +1,1 @@
+{"jsonrpc": "2.0", "id": 1, "result": {"error": "This quotation has been updated since it was sent. Please ask your sales contact to re-send it before signing."}} [http 200]

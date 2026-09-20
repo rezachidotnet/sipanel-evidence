@@ -1,0 +1,10 @@
+T1 wrong_hash: {"jsonrpc": "2.0", "id": 1, "result": {"error": "stale_link"}} [http 200]
+T2 wrong_revision: {"jsonrpc": "2.0", "id": 1, "result": {"error": "stale_link"}} [http 200]
+T3 no_binding: {"jsonrpc": "2.0", "id": 1, "result": {"error": "stale_link"}} [http 200]
+T4 no_token: {"jsonrpc": "2.0", "id": 1, "result": "<_Response 193 bytes [303 SEE OTHER]>"} [http 200]
+T5 tokenB_on_A: {"jsonrpc": "2.0", "id": 1, "result": "<_Response 193 bytes [303 SEE OTHER]>"} [http 200]
+T6 base_line_not_optional: {"jsonrpc": "2.0", "id": 1, "result": {"error": "not_editable"}} [http 200]
+T7 correct_accept: {"jsonrpc": "2.0", "id": 1, "result": {"ok": true, "acceptance_state": "accepted"}} [http 200]
+T8 repeat_idempotent: {"jsonrpc": "2.0", "id": 1, "result": {"ok": true, "acceptance_state": "accepted"}} [http 200]
+T9 qty_tamper_7: {"jsonrpc": "2.0", "id": 1, "result": {"ok": true, "acceptance_state": "accepted"}} [http 200]
+portal_after 200 41330
