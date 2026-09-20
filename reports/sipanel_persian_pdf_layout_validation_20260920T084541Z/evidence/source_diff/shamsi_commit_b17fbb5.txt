@@ -1,0 +1,22 @@
+commit b17fbb573041fefeff8072a3fd4cf01c187fc036
+Author: SIPANEL Implementation <cyansanatiranian@gmail.com>
+Date:   Sun Sep 20 09:03:21 2026 +0000
+
+    fix: keep the sale report cover page inside its 20cm box (date no longer spills onto page 2)
+    
+    The cover block is a fixed 20cm flex box with page-break-after, but its spacers (100px + 300px) plus
+    title/number/customer/date lines exceeded the box; the overflow (the 26px date line) rendered past the
+    page break and overlapped the document-information block at the top of page 2 on every multi-page
+    quotation (reproduced with pdfminer on the real PDF, Odoo 19, wkhtmltopdf 0.12.6.1).
+    
+    - add overflow: hidden to the cover box (nothing can spill past the page break)
+    - spacers 100px -> 60px and 300px -> 80px so the content fits inside 20cm with headroom
+    - structural regression test test_sale_report_cover_page_is_bounded (fails on the previous template)
+    
+    Validated on database sipanel: 5-page Persian quotation, no overlap on any page, headers/footers intact.
+    
+    Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+ tests/test_sale_order_shamsi.py | 20 ++++++++++++++++++++
+ views/sale_report_templates.xml |  5 +++--
+ 2 files changed, 23 insertions(+), 2 deletions(-)

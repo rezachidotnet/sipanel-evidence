@@ -1,0 +1,2 @@
+template_HEAD_before.xml spacers [50, 100, 50, 50, 300] RESULT FAIL {'overflow_hidden': False, 'max_spacer_le_100': False, 'sum_spacers_le_320': False}
+template_after.xml spacers [50, 60, 50, 50, 80] RESULT PASS {}
