@@ -1,0 +1,36 @@
+SIPANEL PDF/Portal live fix bundle — STEP 1B run 20260920T080013Z
+Verdict: PASS_WITH_FINDINGS | db: sipanel | container: odoo-sipanel | git HEAD: ca9c474 (no source change) | generated: 2026-09-20T08:17:44Z
+
+Files (path | bytes | sha256):
+SIPANEL_CONFIGURATION_CHANGE_AND_ROLLBACK.md | 4122 | 7d16d40cc7d88543e7af665565dfeb6350f26d5f6e5870e22f3716d5eefa87e9
+SIPANEL_D01_APPLICATION_REPORT.md | 5407 | d385e6c9e05f7c5f21d3bcfca95d6241bb9b86a1c367606010fdfc5e11cd55b8
+SIPANEL_FA_IR_PORTAL_ENABLEMENT_REPORT.md | 4348 | 64fc412940299b0c677ec6e6ba0caacc43f955e24abfe33681317121c60b887b
+SIPANEL_LIVE_PDF_VALIDATION_REPORT.md | 5729 | 2baff0570f9f3965aee5e6535a974f66d99d452bd01fc447e0e566d869a9950b
+SIPANEL_LIVE_PORTAL_VALIDATION_REPORT.md | 4686 | 79b5f6e087e21b6be47a30b42e52e3c352b2928480a7e246c217fe89793b0929
+SIPANEL_LIVE_QUOTATION_SI-26_312_REDACTED.pdf | 134803 | 905ee0f76de9541784ccc119dd8f99915a0d01d9e9676560a04bcbd564eaabf3
+SIPANEL_POST_CHANGE_SECURITY_CHECK.md | 4003 | 80c3c47be5f4095814ce91b85212f1243cdc69e4326cafb27d42b8cb0eb269e8
+evidence/logs/odoo-sipanel_report_and_portal_REDACTED.log | 11673 | d5b31a6f35b1b5fd242b921133863ff97185c87880daaeeff95c98d1c0b0284d
+evidence/pdf/http_pdf_fetch.txt | 46 | fc8588eec5ddc4701fd1851c994545dcc6ed1191dcb558eb7ea29b33082a0ed5
+evidence/pdf/quotation_live_en_route_after_D01.pdf | 134803 | 905ee0f76de9541784ccc119dd8f99915a0d01d9e9676560a04bcbd564eaabf3
+evidence/pdf/quotation_live_fa_route_after_D01.pdf | 134819 | 655fd4a8c730b429262411a358da6790a632867ecce063f868fca60736850513
+evidence/pdf/text_extraction_live_after_D01.txt | 5855 | 03c0b8ddd27c5b8d9501a8d37178b5675aa405179fc5cfc4a9cb82ab113faf7e
+evidence/png/report_live_part01.png | 162288 | 095622ab7e87e53d58b1f2d78dfaf4c3c9986e3c6a0217a84980572de2668ce7
+evidence/png/report_live_part02.png | 138575 | ccbc861c6a0da844e2dab80b9544aa1fa07dd7987f1129f003ed6fb7f09bbfef
+evidence/portal/fa_no_token_REDACTED.html | 193 | b3b7bcf83a8a9c13922ba598f3904dbd9d03e1a4e70bac71af25bb552b5130a8
+evidence/portal/portal_en_after_D01_REDACTED.html | 36825 | 56c89c26734aa31b787b5ff445bad1a9b0121e6335891add808df62ee917a8a2
+evidence/portal/portal_en_after_fa_REDACTED.html | 39739 | 0871e0ca58e5df2388c1f3c016036422f9e583e72be71220aab747c379071a34
+evidence/portal/portal_fa_REDACTED.html | 41125 | 4cfd46156ab59fb3ce0c6bb84f47591b557dc5d26bd350e2085d628e029295c3
+evidence/portal/portal_routes.txt | 614 | 23818f5e7b049f2cd5166ef087248f5360f1987ee6cf6665bba1bc2c551f8e80
+evidence/portal/report_html_fa_route_REDACTED.html | 30643 | 50db5bb8415e7b74496c56b5ecefe2875f1c486deada70556cb571d861d1d5c6
+evidence/recovery_point.log | 1279 | 365df3dd73f85725210318f812692a608e1c7f07249dd1973ea1e44f0526158f
+evidence/scripts/apply_d01.py | 651 | 395819d968994f329f0fe64cf45bfc3017fc07db5961ec72db173c742d35b75e
+evidence/scripts/apply_d01_8072.py | 567 | 2277001a45ea12bc0a50d010136fa2a92f35bc57860f99beda6a105b9647604d
+evidence/scripts/enable_fa.py | 1246 | d6e98eda8a5f07843be7b0a1999a192f586266a20e6b034866f4419e90b6b78e
+evidence/scripts/png_live.py | 959 | b93d212d65e1a9df37a07112d143b441113a5b9dc969a91b1342dfc0d920faa9
+evidence/scripts/portal_fa_check.py | 2554 | e9c68666eda3e36d3c343320be24a82b1deeebcac3c33229aedf00ba09f6e437
+evidence/scripts/post_check.py | 1354 | 889d2d277df9d737b072aa5ed66eef5063ec71e4bf6c4fdfeb3426dbd3668bc7
+evidence/scripts/preflight_1b.py | 1615 | 540b828ff3a893fdf2c48186004332f36b01f9c3a99eab6bf9c402ae78a5bc20
+evidence/scripts/rollback_d01.py | 385 | 7c220d77aa66e0f707f6a7621ca65130a29af117932f5e34b74af803f846eaaf
+evidence/scripts/signal_cache.py | 756 | 9aaa469c11506e0ac5fbd5dce716c6358e1881c9aae24072103aabdca2044a3d
+
+Secret-scan note: the security report names the scanned patterns themselves (db_password, admin_passwd, PRIVATE KEY, session_id=); no value follows them.
