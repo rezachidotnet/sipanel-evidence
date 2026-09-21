@@ -1,0 +1,44 @@
+SIPANEL STEP 2A — NATIVE ODOO TRANSLATION FIELDS — REPORT BUNDLE MANIFEST
+Run:                 sipanel_native_translation_20260921T013000Z
+Generated (UTC):     2026-09-21T01:48:44Z
+Verdict:             PASS — masters natively translatable, 20 terms migrated, nothing lost
+Target:              database sipanel, container odoo-sipanel (RestartCount=0, no restart)
+Other tenants:       NOT touched (avizsazeh, shahbazi, ahantorob, odoo-db untouched)
+Modules upgraded:    sipanel_commercial_scope_core 19.0.1.1.0, sipanel_sale_scope 19.0.1.1.0
+Not changed:         sale_shamsi_report, scope_costing, scope_execution, Product Master,
+                     report.url, website languages, paperformat
+Repo commit:         8d10567c4ea03e952116674e10448dd1eec692e1 (NOT pushed)
+Recovery point:      /opt/odoo/backups/sipanel-pre-translation-20260921T013000Z (verified, NOT in this bundle)
+Tests:               SIPANEL 122/122 pass (was 70), sale_shamsi_report 80/80 pass — 202 total
+Migration:           11 field-records scanned, 10 written, 20 terms (en_US 10, fa_IR 10), 1 blank skipped
+Temporary records:   1 draft quotation + 1 scope + 1 revision + 7 components + 1 partner, all deleted
+
+FILES
+  SIPANEL_NATIVE_TRANSLATION_IMPLEMENTATION_REPORT.md                               9798 bytes
+  SIPANEL_TEMPORARY_DATA_CLEANUP_REPORT.md                                          3282 bytes
+  SIPANEL_TRANSLATION_FIELD_INVENTORY.md                                            5102 bytes
+  SIPANEL_TRANSLATION_MIGRATION_PREVIEW_AND_RESULT.md                               7834 bytes
+  SIPANEL_TRANSLATION_REGRESSION_TEST_RESULTS.md                                    6417 bytes
+  SIPANEL_TRANSLATION_SNAPSHOT_IMMUTABILITY_REPORT.md                               7717 bytes
+  SIPANEL_TRANSLATION_UI_VALIDATION_REPORT.md                                       4467 bytes
+  evidence/SIPANEL_TRANSLATION_E2E_QUOTATION.pdf                                  125479 bytes
+  evidence/logs/recovery_point_SHA256SUMS.txt                                        520 bytes
+  evidence/logs/test_shamsi_after_2a.log                                           17468 bytes
+  evidence/logs/test_sipanel_after_2a.log                                          45281 bytes
+  evidence/logs/upgrade_2a.log                                                     14135 bytes
+  evidence/migration/preview.json                                                   3541 bytes
+  evidence/migration/verify.json                                                    3828 bytes
+  evidence/scripts/build_bundle_2a.sh                                               3445 bytes
+  evidence/scripts/cleanup_2a.py                                                    3478 bytes
+  evidence/scripts/inventory.py                                                     3226 bytes
+  evidence/scripts/migration_preview.py                                             3345 bytes
+  evidence/scripts/ui_and_e2e.py                                                    4252 bytes
+  evidence/scripts/verify_migration.py                                              2788 bytes
+  evidence/source_diff/sipanel_step2a.diff                                        109978 bytes
+  evidence/ui_e2e.json                                                              2144 bytes
+
+EXCLUDED: database dumps, filestore, container config, private keys, portal access tokens.
+REDACTION: none required — the only quotation in this bundle was rendered from synthetic
+          data created for this run and deleted afterwards. Master customer text is the
+          company's own product wording. Preview/verify JSON records value LENGTHS and
+          language keys for legacy data, not raw customer values.

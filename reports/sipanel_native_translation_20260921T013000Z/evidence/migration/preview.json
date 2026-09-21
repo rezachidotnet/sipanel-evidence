@@ -1,0 +1,181 @@
+{
+ "preview": true,
+ "models": {
+  "sipanel.scope.version": {
+   "table": "sipanel_scope_version",
+   "records": 2,
+   "fields": {
+    "label_fa|label_en": {
+     "native_field": "customer_label",
+     "classification": {
+      "distinct_per_language": 2
+     },
+     "records": [
+      {
+       "id": 111,
+       "class": "distinct_per_language",
+       "fa_len": 12,
+       "en_len": 18,
+       "target_langs": [
+        "en_US",
+        "fa_IR"
+       ],
+       "writes_blank_en_US": false
+      },
+      {
+       "id": 115,
+       "class": "distinct_per_language",
+       "fa_len": 27,
+       "en_len": 36,
+       "target_langs": [
+        "en_US",
+        "fa_IR"
+       ],
+       "writes_blank_en_US": false
+      }
+     ]
+    },
+    "customer_description_fa|customer_description_en": {
+     "native_field": "customer_description",
+     "classification": {
+      "blank_both": 1,
+      "distinct_per_language": 1
+     },
+     "records": [
+      {
+       "id": 111,
+       "class": "blank_both",
+       "fa_len": 0,
+       "en_len": 0,
+       "target_langs": [],
+       "writes_blank_en_US": false
+      },
+      {
+       "id": 115,
+       "class": "distinct_per_language",
+       "fa_len": 96,
+       "en_len": 98,
+       "target_langs": [
+        "en_US",
+        "fa_IR"
+       ],
+       "writes_blank_en_US": false
+      }
+     ]
+    }
+   }
+  },
+  "sipanel.scope.recipe.line": {
+   "table": "sipanel_scope_recipe_line",
+   "records": 7,
+   "fields": {
+    "customer_label_fa|customer_label_en": {
+     "native_field": "customer_label",
+     "classification": {
+      "distinct_per_language": 7
+     },
+     "records": [
+      {
+       "id": 897,
+       "class": "distinct_per_language",
+       "fa_len": 16,
+       "en_len": 17,
+       "target_langs": [
+        "en_US",
+        "fa_IR"
+       ],
+       "writes_blank_en_US": false
+      },
+      {
+       "id": 898,
+       "class": "distinct_per_language",
+       "fa_len": 30,
+       "en_len": 32,
+       "target_langs": [
+        "en_US",
+        "fa_IR"
+       ],
+       "writes_blank_en_US": false
+      },
+      {
+       "id": 899,
+       "class": "distinct_per_language",
+       "fa_len": 15,
+       "en_len": 16,
+       "target_langs": [
+        "en_US",
+        "fa_IR"
+       ],
+       "writes_blank_en_US": false
+      },
+      {
+       "id": 900,
+       "class": "distinct_per_language",
+       "fa_len": 16,
+       "en_len": 12,
+       "target_langs": [
+        "en_US",
+        "fa_IR"
+       ],
+       "writes_blank_en_US": false
+      },
+      {
+       "id": 901,
+       "class": "distinct_per_language",
+       "fa_len": 59,
+       "en_len": 72,
+       "target_langs": [
+        "en_US",
+        "fa_IR"
+       ],
+       "writes_blank_en_US": false
+      },
+      {
+       "id": 902,
+       "class": "distinct_per_language",
+       "fa_len": 41,
+       "en_len": 41,
+       "target_langs": [
+        "en_US",
+        "fa_IR"
+       ],
+       "writes_blank_en_US": false
+      },
+      {
+       "id": 903,
+       "class": "distinct_per_language",
+       "fa_len": 6,
+       "en_len": 5,
+       "target_langs": [
+        "en_US",
+        "fa_IR"
+       ],
+       "writes_blank_en_US": false
+      }
+     ]
+    }
+   }
+  }
+ },
+ "totals": {
+  "scanned": 11,
+  "to_write": 10,
+  "terms_by_lang": {
+   "en_US": 10,
+   "fa_IR": 10
+  }
+ },
+ "checksum_algo_v1_targets": {
+  "count": 2,
+  "ids": [
+   115,
+   111
+  ]
+ },
+ "snapshot_models_untouched": {
+  "sipanel.quote.scope.revision": 2,
+  "sipanel.quote.scope.component": 14,
+  "sealed_revisions": 2,
+  "artifacts": 4
+ }
+}

@@ -1,0 +1,75 @@
+{
+ "ui": {
+  "installed_langs": [
+   "en_US",
+   "fa_IR",
+   "ru_RU"
+  ],
+  "translation_control_available": true,
+  "sipanel.scope.version": {
+   "view": "sipanel_commercial_scope_core.view_sipanel_scope_version_form",
+   "renders": true,
+   "has_customer_label": true,
+   "has_customer_description": true,
+   "legacy_fields_in_view": [],
+   "customer_label_count": 2,
+   "customer_description_count": 1,
+   "field_is_translatable": true,
+   "field_label": "Customer label",
+   "fa_en_in_any_field_label": []
+  },
+  "sipanel.scope.recipe.line": {
+   "view": "sipanel_commercial_scope_core.view_sipanel_recipe_line_form",
+   "renders": true,
+   "has_customer_label": true,
+   "has_customer_description": false,
+   "legacy_fields_in_view": [],
+   "customer_label_count": 1,
+   "customer_description_count": 0,
+   "field_is_translatable": true,
+   "field_label": "Customer label",
+   "fa_en_in_any_field_label": []
+  },
+  "sipanel_commercial_scope_core.view_sipanel_scope_version_list": {
+   "legacy_fields": []
+  },
+  "cost_group_still_guards_manual_cost": true
+ },
+ "e2e": {
+  "master_terms": {
+   "label": {
+    "en_US": "Gutter accessories (validation data)",
+    "fa_IR": "متعلقات آبرو (داده آزمایشی)"
+   },
+   "description_langs": [
+    "en_US",
+    "fa_IR"
+   ]
+  },
+  "revision": {
+   "resolved_language": "fa_IR",
+   "label_resolved": "متعلقات آبرو (داده آزمایشی)",
+   "label_fa": "متعلقات آبرو (داده آزمایشی)",
+   "label_en": "Gutter accessories (validation data)",
+   "source_version_checksum": "89ae02d9a81fb0c84412d8e1fab10a737d260e6fafefaada70316caaca8571de",
+   "missing_translations": [],
+   "provenance_fallbacks": {
+    "customer_label": false,
+    "customer_description": false
+   },
+   "component_resolved_sample": [
+    "ناودان گالوانیزه",
+    "بست دیواری (صورت‌حساب جداگانه)",
+    "درزگیر سیلیکونی"
+   ],
+   "note_head": "متعلقات آبرو (داده آزمایشی)"
+  },
+  "pdf_bytes": 125479,
+  "order": {
+   "id": 599,
+   "name": "SI-26/599",
+   "partner": 795,
+   "total": 33000000.0
+  }
+ }
+}

@@ -1,0 +1,1720 @@
+diff --git a/addons/sipanel_commercial_scope_core/__manifest__.py b/addons/sipanel_commercial_scope_core/__manifest__.py
+index 571dfaf..d3be588 100644
+--- a/addons/sipanel_commercial_scope_core/__manifest__.py
++++ b/addons/sipanel_commercial_scope_core/__manifest__.py
+@@ -2,7 +2,7 @@
+ {
+     'name': 'SIPANEL Commercial Scope Core',
+     'summary': 'Scope identity, versions, recipe lines, release gate, audit, role groups (Slice A)',
+-    'version': '19.0.1.0.0',
++    'version': '19.0.1.1.0',
+     'category': 'Sales/Sales',
+     'author': 'SIPANEL',
+     'license': 'LGPL-3',
+diff --git a/addons/sipanel_commercial_scope_core/migrations/19.0.1.1.0/post-migrate.py b/addons/sipanel_commercial_scope_core/migrations/19.0.1.1.0/post-migrate.py
+new file mode 100644
+index 0000000..b5015ba
+--- /dev/null
++++ b/addons/sipanel_commercial_scope_core/migrations/19.0.1.1.0/post-migrate.py
+@@ -0,0 +1,27 @@
++# -*- coding: utf-8 -*-
++"""STEP 2A: backfill native translations from the dormant *_fa / *_en columns.
++
++post- rather than pre-migrate: the new translatable columns must exist before
++anything can be written into them. The legacy columns are still present at this
++point (Odoo does not drop columns of removed fields), which is what makes the
++migration possible and why they are documented as dormant rather than deleted.
++"""
++import logging
++
++from odoo import api, SUPERUSER_ID
++
++from odoo.addons.sipanel_commercial_scope_core.models.legacy_translation_backfill import backfill
++
++_logger = logging.getLogger(__name__)
++
++
++def migrate(cr, version):
++    if not version:
++        return
++    env = api.Environment(cr, SUPERUSER_ID, {})
++    preview = backfill(env, dry_run=True)
++    _logger.info("SIPANEL STEP 2A translation backfill preview: %s", preview['totals'])
++    result = backfill(env, dry_run=False)
++    _logger.info("SIPANEL STEP 2A translation backfill applied: %s", result['totals'])
++    _logger.info("SIPANEL STEP 2A checksum_algo v1 marked on %s released version(s)",
++                 result['checksum_algo_v1']['count'])
+diff --git a/addons/sipanel_commercial_scope_core/models/legacy_translation_backfill.py b/addons/sipanel_commercial_scope_core/models/legacy_translation_backfill.py
+new file mode 100644
+index 0000000..641a550
+--- /dev/null
++++ b/addons/sipanel_commercial_scope_core/models/legacy_translation_backfill.py
+@@ -0,0 +1,135 @@
++# -*- coding: utf-8 -*-
++"""STEP 2A: move the legacy *_fa / *_en customer text into native translations.
++
++The legacy columns are no longer ORM fields, so they are read with a plain
++SELECT. That is a read of dormant business data, not hand-written translation
++SQL: every write goes through `Model.update_field_translations`.
++
++Two behaviours of the installed Odoo 19 were measured before this was written
++(both on a NULL jsonb column, which is the state of every new field here):
++
++  * `update_field_translations` works directly on a NULL column, so no priming
++    write is needed;
++  * passing only a non-English language COPIES that term into the `en_US`
++    source. Persian would silently become the English term - exactly what a
++    customer must never receive - so an explicit `en_US` key is always sent,
++    blank when the record has no English text.
++"""
++from .sipanel_tools import guard_ctx, stored_translations
++
++# (model, table, [(legacy_fa_column, legacy_en_column, native_field)])
++LEGACY_MAP = [
++    ('sipanel.scope.version', 'sipanel_scope_version', [
++        ('label_fa', 'label_en', 'customer_label'),
++        ('customer_description_fa', 'customer_description_en', 'customer_description'),
++    ]),
++    ('sipanel.scope.recipe.line', 'sipanel_scope_recipe_line', [
++        ('customer_label_fa', 'customer_label_en', 'customer_label'),
++    ]),
++]
++
++
++def _clean(value):
++    return value.strip() if isinstance(value, str) else ''
++
++
++def _column_exists(env, table, column):
++    env.cr.execute(
++        "SELECT 1 FROM information_schema.columns WHERE table_name = %s AND column_name = %s",
++        (table, column))
++    return bool(env.cr.fetchone())
++
++
++def plan_record(fa, en, existing):
++    """Decide what to store for one record/field.
++
++    Returns (terms_to_write, classification). `terms_to_write` is empty when
++    there is nothing to do. Rules:
++      * a blank legacy value never overwrites a non-empty native translation;
++      * FA and EN are kept as separate language terms, never merged;
++      * `en_US` is always written explicitly so Persian cannot leak into it.
++    """
++    fa, en = _clean(fa), _clean(en)
++    if not fa and not en:
++        return {}, 'blank_both'
++    terms = {'en_US': en, 'fa_IR': fa} if fa else {'en_US': en}
++    # never clobber an existing native term with an empty legacy value
++    terms = {lang: val for lang, val in terms.items()
++             if val or not existing.get(lang)}
++    conflicting = {lang: val for lang, val in terms.items()
++                   if existing.get(lang) and existing[lang] != val}
++    if not terms:
++        return {}, 'nothing_to_write'
++    if conflicting:
++        return terms, 'would_overwrite_existing'
++    if fa and en:
++        klass = 'identical_both' if fa == en else 'distinct_per_language'
++    else:
++        klass = 'fa_only' if fa else 'en_only'
++    return terms, klass
++
++
++def backfill(env, dry_run=True):
++    """Migrate every legacy value into native translations.
++
++    Runs under the release guard: the masters in this database are RELEASED and
++    their content - translations included - is otherwise immutable. This is the
++    one-time, audited system path.
++    """
++    report = {'dry_run': dry_run, 'models': {}, 'totals': {}}
++    totals = {'records_scanned': 0, 'records_written': 0, 'terms_written': 0,
++              'terms_by_lang': {}, 'skipped': 0}
++
++    for model, table, pairs in LEGACY_MAP:
++        if model not in env:
++            continue
++        entry = {'table': table, 'fields': {}, 'missing_legacy_columns': []}
++        records = env[model].sudo().with_context(active_test=False).search([])
++        for fa_col, en_col, native in pairs:
++            if not (_column_exists(env, table, fa_col) and _column_exists(env, table, en_col)):
++                entry['missing_legacy_columns'].append(f'{fa_col}/{en_col}')
++                continue
++            env.cr.execute(
++                f'SELECT id, "{fa_col}", "{en_col}" FROM "{table}" WHERE id IN %s',
++                (tuple(records.ids) or (0,),))
++            legacy = {row[0]: (row[1], row[2]) for row in env.cr.fetchall()}
++            stats = {'native_field': native, 'scanned': 0, 'written': 0,
++                     'terms_by_lang': {}, 'classification': {}, 'details': []}
++            for record in records:
++                fa, en = legacy.get(record.id, (None, None))
++                existing = stored_translations(record, native)
++                terms, klass = plan_record(fa, en, existing)
++                stats['scanned'] += 1
++                stats['classification'][klass] = stats['classification'].get(klass, 0) + 1
++                totals['records_scanned'] += 1
++                if not terms:
++                    totals['skipped'] += 1
++                    continue
++                stats['details'].append({
++                    'id': record.id, 'ref': record.display_name, 'class': klass,
++                    'langs': sorted(terms), 'existing_langs': sorted(existing),
++                })
++                if not dry_run:
++                    record.with_context(**guard_ctx('sipanel_release_transaction')) \
++                          .update_field_translations(native, terms)
++                stats['written'] += 1
++                totals['records_written'] += 1
++                for lang, value in terms.items():
++                    if value:
++                        stats['terms_by_lang'][lang] = stats['terms_by_lang'].get(lang, 0) + 1
++                        totals['terms_by_lang'][lang] = totals['terms_by_lang'].get(lang, 0) + 1
++                        totals['terms_written'] += 1
++            entry['fields'][f'{fa_col}|{en_col}'] = stats
++        report['models'][model] = entry
++
++    # Releases made before STEP 2A were checksummed without the translation map.
++    # Mark them v1 so their recorded checksum stays verifiable; anything released
++    # from now on uses v2, which hashes the complete translation map.
++    Version = env['sipanel.scope.version'].sudo().with_context(active_test=False)
++    stale = Version.search([('release_checksum', '!=', False), ('checksum_algo', '!=', 'v1')])
++    report['checksum_algo_v1'] = {'count': len(stale), 'ids': stale.ids}
++    if not dry_run and stale:
++        stale.with_context(**guard_ctx('sipanel_release_transaction')).write({'checksum_algo': 'v1'})
++
++    report['totals'] = totals
++    return report
+diff --git a/addons/sipanel_commercial_scope_core/models/recipe_line.py b/addons/sipanel_commercial_scope_core/models/recipe_line.py
+index b618429..f394ff2 100644
+--- a/addons/sipanel_commercial_scope_core/models/recipe_line.py
++++ b/addons/sipanel_commercial_scope_core/models/recipe_line.py
+@@ -8,7 +8,7 @@ from .sipanel_tools import guard, guard_ctx
+ 
+ from .sipanel_tools import (BASIS, CERTAINTY, DIMENSION_FAMILY, DISCLOSURE, EXECUTION_MODE, KIND,
+                             NO_ACTION_REASON, PERCENT_BASES, PLACEMENT, RESPONSIBILITY, ROUNDING_MODE,
+-                            find_cycle)
++                            find_cycle, translation_map)
+ 
+ 
+ class SipanelScopeRecipeLine(models.Model):
+@@ -25,8 +25,8 @@ class SipanelScopeRecipeLine(models.Model):
+     kind = fields.Selection(KIND, required=True, default='product')
+     product_id = fields.Many2one('product.product', ondelete='restrict')
+     internal_description = fields.Text()
+-    customer_label_fa = fields.Char()
+-    customer_label_en = fields.Char()
++    # STEP 2A: one native translatable customer label (see scope_version.py).
++    customer_label = fields.Char(string='Customer label', translate=True)
+     customer_eligible = fields.Boolean(default=False)
+     spec_json = fields.Json()
+     uom_id = fields.Many2one('uom.uom', required=True, ondelete='restrict')
+@@ -138,6 +138,14 @@ class SipanelScopeRecipeLine(models.Model):
+         self._check_version_draft('modify')
+         return super().write(vals)
+ 
++    def update_field_translations(self, field_name, translations, *args, **kwargs):
++        """Translations of a released recipe follow the same immutability as its
++        other content. Odoo's translation dialog writes the jsonb column without
++        going through `write`, so the draft check is repeated here."""
++        if self._fields[field_name].translate:
++            self._check_version_draft('translate')
++        return super().update_field_translations(field_name, translations, *args, **kwargs)
++
+     @api.ondelete(at_uninstall=False)
+     def _unlink_except_draft(self):
+         self._check_version_draft('delete')
+@@ -146,12 +154,26 @@ class SipanelScopeRecipeLine(models.Model):
+             if dependents:
+                 raise UserError(self.env._("Line %s is a base of a percent line; remove that reference first.", l.display_name))
+ 
++    def _content_payload_v1(self):
++        """Historical line payload, only for verifying pre-STEP-2A release checksums.
++
++        Reconstructed from the migrated translation map - see
++        SipanelScopeVersion._compute_content_checksum_v1 for why that is exact.
++        """
++        self.ensure_one()
++        terms = translation_map(self, 'customer_label')
++        payload = self._content_payload()
++        payload.pop('customer_label', None)
++        payload['label_fa'] = terms.get('fa_IR') or False
++        payload['label_en'] = terms.get('en_US') or False
++        return payload
++
+     def _content_payload(self):
+         self.ensure_one()
+         return {
+             'key': self.occurrence_key, 'seq': self.sequence, 'kind': self.kind,
+             'product': self.product_id.id, 'desc': self.internal_description,
+-            'label_fa': self.customer_label_fa, 'label_en': self.customer_label_en,
++            'customer_label': translation_map(self, 'customer_label'),
+             'eligible': self.customer_eligible, 'spec': self.spec_json,
+             'uom': self.uom_id.id, 'family': self.dimension_family, 'basis': self.basis,
+             'rate': self.rate, 'fixed': self.fixed_qty, 'manual': self.manual_qty_default, 'percent': self.percent,
+diff --git a/addons/sipanel_commercial_scope_core/models/scope_version.py b/addons/sipanel_commercial_scope_core/models/scope_version.py
+index 96a4107..9e6a1fd 100644
+--- a/addons/sipanel_commercial_scope_core/models/scope_version.py
++++ b/addons/sipanel_commercial_scope_core/models/scope_version.py
+@@ -5,11 +5,12 @@ from odoo.exceptions import LockError, UserError, ValidationError
+ from .sipanel_tools import guard, guard_ctx
+ 
+ from .sipanel_tools import (CERTAINTY, DIMENSION_FAMILY, DISCLOSURE, OWNER_MODE, PLACEMENT,
+-                            RESPONSIBILITY, PERCENT_BASES, find_cycle, sha256_of)
++                            RESPONSIBILITY, PERCENT_BASES, find_cycle, sha256_of,
++                            stored_translations, translation_map)
+ 
+ # Fields that may change on a RELEASED/SUPERSEDED version (non-content bookkeeping).
+ VERSION_MUTABLE_AFTER_RELEASE = {
+-    'state', 'released_by_id', 'released_date', 'release_checksum', 'superseded_by_id',
++    'state', 'released_by_id', 'released_date', 'release_checksum', 'checksum_algo', 'superseded_by_id',
+     'message_main_attachment_id', 'message_follower_ids', 'message_ids', 'activity_ids',
+     'rating_ids', 'website_message_ids', 'message_partner_ids', 'activity_user_id',
+     'activity_type_id', 'activity_date_deadline', 'activity_summary', 'my_activity_date_deadline',
+@@ -31,10 +32,12 @@ class SipanelScopeVersion(models.Model):
+     parent_version_id = fields.Many2one('sipanel.scope.version', readonly=True, ondelete='restrict', copy=False)
+     state = fields.Selection([('draft', 'Draft'), ('released', 'Released'), ('superseded', 'Superseded')],
+                              required=True, default='draft', readonly=True, copy=False, tracking=True, index=True)
+-    label_fa = fields.Char(string='Customer label (FA)', tracking=True)
+-    label_en = fields.Char(string='Customer label (EN)', tracking=True)
+-    customer_description_fa = fields.Text()
+-    customer_description_en = fields.Text()
++    # STEP 2A: one native translatable field per customer-facing text. The
++    # operator edits en_US in the form and every other active language through
++    # Odoo's standard translation dialog. The legacy *_fa / *_en columns are
++    # dormant in the database and are no longer business fields.
++    customer_label = fields.Char(string='Customer label', translate=True, tracking=True)
++    customer_description = fields.Text(string='Customer description', translate=True)
+     internal_description = fields.Text()
+     base_uom_id = fields.Many2one('uom.uom', required=True, ondelete='restrict')
+     dimension_family = fields.Selection(DIMENSION_FAMILY, required=True, default='count')
+@@ -54,6 +57,11 @@ class SipanelScopeVersion(models.Model):
+     released_by_id = fields.Many2one('res.users', readonly=True, copy=False)
+     released_date = fields.Datetime(readonly=True, copy=False)
+     release_checksum = fields.Char(readonly=True, copy=False)
++    checksum_algo = fields.Char(readonly=True, copy=False, default='v2',
++                                help="Algorithm the stored release checksum was produced with. "
++                                     "v1 predates native translations; v2 hashes the full stored "
++                                     "translation map. Existing releases keep v1 so their recorded "
++                                     "checksum stays verifiable.")
+     superseded_by_id = fields.Many2one('sipanel.scope.version', readonly=True, copy=False, ondelete='restrict')
+     requires_quote_resolution = fields.Boolean(readonly=True, copy=False,
+                                                help="Contains ESTIMATE_ONLY lines; can be quoted but never 'ready to execute'.")
+@@ -108,6 +116,25 @@ class SipanelScopeVersion(models.Model):
+                 raise UserError(self.env._("State transitions are only possible through the release action."))
+         return super().write(vals)
+ 
++    def update_field_translations(self, field_name, translations, *args, **kwargs):
++        """Released content is immutable in every language.
++
++        `write` already covers a write made under a language context, an import,
++        an RPC call or `sudo()` - the guard is a process-local token, not a
++        permission - but Odoo's translation dialog and `update_field_translations`
++        reach the jsonb column without going through `write`, so the same rule is
++        enforced here. Otherwise a released customer label could be rewritten in
++        Persian while the English term, and the release checksum, stayed put.
++        """
++        if self._fields[field_name].translate and not guard(self.env, 'sipanel_release_transaction'):
++            frozen = self.filtered(lambda v: v.state != 'draft')
++            if frozen:
++                raise UserError(self.env._(
++                    "Version %(name)s is %(state)s; its %(field)s translations are immutable. "
++                    "Create a new version instead.",
++                    name=frozen[0].display_name, state=frozen[0].state, field=field_name))
++        return super().update_field_translations(field_name, translations, *args, **kwargs)
++
+     @api.ondelete(at_uninstall=False)
+     def _unlink_except_draft(self):
+         for v in self:
+@@ -193,20 +220,67 @@ class SipanelScopeVersion(models.Model):
+                 self.message_post(body=self.env._("Release warning [%(rule)s]: %(msg)s", rule=w['rule'], msg=w['msg']))
+         return True
+ 
+-    def _compute_content_checksum(self):
++    def _content_checksum_payload(self):
++        """v2 payload. Customer-facing master text participates in released content,
++        so the COMPLETE stored translation map goes in, in deterministic language
++        order - adding, changing or removing any translation changes the checksum."""
+         self.ensure_one()
+         payload = {
+             'scope': self.scope_id.code,
+             'revision': self.revision,
+-            'label_fa': self.label_fa, 'label_en': self.label_en,
+-            'customer_description_fa': self.customer_description_fa,
+-            'customer_description_en': self.customer_description_en,
++            'customer_label': translation_map(self, 'customer_label'),
++            'customer_description': translation_map(self, 'customer_description'),
+             'base_uom': self.base_uom_id.id, 'dimension_family': self.dimension_family,
+             'anchor_product': self.anchor_product_id.id, 'anchor_owner_mode': self.anchor_owner_mode,
+             'all_systems': self.all_systems, 'systems': sorted(self.system_ids.ids),
+             'defaults': [self.default_responsibility, self.default_placement, self.default_certainty, self.default_disclosure],
+             'lines': [l._content_payload() for l in self.recipe_line_ids.sorted(lambda l: (l.sequence, l.id))],
+         }
++        return payload
++
++    def _compute_content_checksum(self):
++        return sha256_of(self._content_checksum_payload())
++
++    def verify_release_checksum(self):
++        """Recompute with the algorithm this version was released under.
++
++        v1 releases predate native translations; recomputing them with v2 would
++        report a false mismatch, so their recorded checksum is verified against
++        the legacy payload read from the dormant columns.
++        """
++        self.ensure_one()
++        if self.checksum_algo == 'v1':
++            return self.release_checksum == self._compute_content_checksum_v1()
++        return self.release_checksum == self._compute_content_checksum()
++
++    def _compute_content_checksum_v1(self):
++        """Historical algorithm, kept only to verify releases made before STEP 2A.
++
++        Odoo 19 drops the column of a removed field once the module is updated,
++        so the legacy *_fa / *_en columns no longer exist after this migration.
++        The v1 payload is instead reconstructed from the migrated translation
++        map, which is exact because the migration is a pure relabelling:
++        FA -> fa_IR, EN -> en_US, and an absent term reproduces the `False` an
++        empty legacy column used to read as. If a translation is later edited,
++        this reconstruction stops matching the recorded checksum - which is the
++        detection we want, not a bug.
++        """
++        self.ensure_one()
++        label = stored_translations(self, 'customer_label')
++        desc = stored_translations(self, 'customer_description')
++        payload = {
++            'scope': self.scope_id.code,
++            'revision': self.revision,
++            'label_fa': label.get('fa_IR') or False,
++            'label_en': label.get('en_US') or False,
++            'customer_description_fa': desc.get('fa_IR') or False,
++            'customer_description_en': desc.get('en_US') or False,
++            'base_uom': self.base_uom_id.id, 'dimension_family': self.dimension_family,
++            'anchor_product': self.anchor_product_id.id, 'anchor_owner_mode': self.anchor_owner_mode,
++            'all_systems': self.all_systems, 'systems': sorted(self.system_ids.ids),
++            'defaults': [self.default_responsibility, self.default_placement, self.default_certainty, self.default_disclosure],
++            'lines': [l._content_payload_v1() for l in self.recipe_line_ids.sorted(lambda l: (l.sequence, l.id))],
++        }
+         return sha256_of(payload)
+ 
+     # ------------------------------------------------------------------ release validations R1..R12
+@@ -224,9 +298,20 @@ class SipanelScopeVersion(models.Model):
+         for acc in self.system_ids | lines.mapped('activity_id'):
+             if acc.company_id and acc.company_id != company:
+                 add('R1', _("Analytic account %s belongs to another company.", acc.display_name))
+-        # R2 labels
+-        if not (self.label_fa or self.label_en):
+-            add('R2', _("A customer label (FA or EN) is required."))
++        # R2 labels: one native field, checked across the stored translations
++        label_terms = stored_translations(self, 'customer_label')
++        if not label_terms:
++            add('R2', _("A customer label is required."))
++        else:
++            missing = [code for code, _n in self.env['res.lang'].get_installed()
++                       if code not in label_terms]
++            if missing:
++                add('R2', _("Customer label has no translation for: %s. Quotations in those "
++                            "languages cannot be sealed until it is added.",
++                            ', '.join(sorted(missing))), 'warn')
++        for line in lines.filtered(lambda l: l.disclosure != 'internal_only' and l.customer_eligible):
++            if not stored_translations(line, 'customer_label'):
++                add('R2', _("Customer-eligible line %s has no customer label.", line.display_name))
+         # R3 base uom
+         if not self.base_uom_id.active:
+             add('R3', _("Base unit is inactive."))
+diff --git a/addons/sipanel_commercial_scope_core/models/sipanel_tools.py b/addons/sipanel_commercial_scope_core/models/sipanel_tools.py
+index 3953ff8..e213c77 100644
+--- a/addons/sipanel_commercial_scope_core/models/sipanel_tools.py
++++ b/addons/sipanel_commercial_scope_core/models/sipanel_tools.py
+@@ -141,3 +141,102 @@ def guard_ctx(*names):
+ def guard(env, name):
+     """True only when the flag was set by internal code (token matches)."""
+     return bool(env.context.get(name)) and env.context.get('sipanel_guard_token') == GUARD_TOKEN
++
++
++# ---------------------------------------------------------------------------
++# Native translation helpers (STEP 2A).
++#
++# Odoo 19 stores a `translate=True` field in a jsonb column keyed by language,
++# with `en_US` as the source term. Reading the field in a language context
++# silently falls back to `en_US` when that language has no stored term, and so
++# does `Model.get_field_translations` — verified against the installed source:
++# `Text._insert_cache` fills every installed language with `val['en_US']` when
++# `prefetch_langs` is set, which is exactly what `get_field_translations` uses.
++# A customer-facing quotation must never ship that fallback silently, so we need
++# to know whether a term is really stored.
++#
++# `Text._get_stored_translations` is the only accessor in the installed ORM that
++# returns the raw jsonb map without applying the fallback
++# (odoo/orm/fields_textual.py). It is module-private but it is an ORM accessor,
++# not hand-written translation SQL: it flushes the record and reads back the
++# column Odoo itself wrote. We keep the dependency in this one place and fall
++# back to a conservative comparison if a future version removes it.
++
++def stored_translations(record, field_name):
++    """Raw {lang: term} actually stored for a translatable field, no fallback.
++
++    Returns {} when nothing is stored. Empty and whitespace-only terms are
++    dropped, so callers can treat the result as "these languages are ready".
++    """
++    record.ensure_one()
++    field = record._fields[field_name]
++    if not field.translate:
++        raise ValueError(f"{record._name}.{field_name} is not translatable")
++    if not record.id:
++        return {}
++    getter = getattr(field, '_get_stored_translations', None)
++    if getter is None:  # pragma: no cover - guard for a future ORM change
++        raw = {}
++        for code, _name in record.env['res.lang'].get_installed():
++            value = record.with_context(lang=code)[field_name]
++            if value:
++                raw[code] = value
++    else:
++        raw = getter(record) or {}
++    return {lang: term.strip() for lang, term in raw.items()
++            if isinstance(term, str) and term.strip()}
++
++
++def has_translation(record, field_name, lang):
++    """True only when `lang` really has a stored, non-empty term."""
++    return bool(stored_translations(record, field_name).get(lang))
++
++
++def resolve_customer_text(record, field_name, lang, fallback_lang='en_US'):
++    """Resolve customer-facing text for `lang`.
++
++    Returns (value, used_lang, is_fallback). `is_fallback` is True whenever the
++    requested language had no stored term, including when the value returned is
++    the source term. Callers decide whether a fallback is acceptable: it is for
++    a draft (with a warning), never for sealing a customer quotation.
++    """
++    terms = stored_translations(record, field_name)
++    if lang and terms.get(lang):
++        return terms[lang], lang, False
++    if terms.get(fallback_lang):
++        return terms[fallback_lang], fallback_lang, True
++    if terms:
++        used = sorted(terms)[0]
++        return terms[used], used, True
++    return '', None, True
++
++
++def translation_map(record, field_name):
++    """Deterministic {lang: term} for checksums: sorted by language code."""
++    terms = stored_translations(record, field_name)
++    return {lang: terms[lang] for lang in sorted(terms)}
++
++
++SNAPSHOT_LANGS = ('fa_IR', 'en_US')
++
++
++def snapshot_customer_text(master, field_name, lang, snapshot_langs=SNAPSHOT_LANGS):
++    """Freeze one customer-facing master term into a quotation snapshot.
++
++    Returns (terms, resolved, provenance):
++      terms      {lang: term} limited to `snapshot_langs`, containing only terms
++                 that are really stored - an English term is never written into
++                 the Persian snapshot column, and vice versa;
++      resolved   the term for `lang`, or '' when that language has none. Callers
++                 may fall back for a draft, but the fallback is always visible in
++                 the provenance so sealing can refuse it;
++      provenance {'lang': used or None, 'fallback': bool, 'available': [langs]}.
++    """
++    terms = stored_translations(master, field_name)
++    resolved = terms.get(lang, '')
++    return (
++        {code: terms[code] for code in snapshot_langs if terms.get(code)},
++        resolved,
++        {'lang': lang if resolved else None, 'fallback': not resolved,
++         'available': sorted(terms)},
++    )
+diff --git a/addons/sipanel_commercial_scope_core/tests/__init__.py b/addons/sipanel_commercial_scope_core/tests/__init__.py
+index 60c7fd4..f0a40e0 100644
+--- a/addons/sipanel_commercial_scope_core/tests/__init__.py
++++ b/addons/sipanel_commercial_scope_core/tests/__init__.py
+@@ -2,3 +2,4 @@ from . import common
+ from . import test_tools
+ from . import test_scope_lifecycle
+ from . import test_recipe_validation
++from . import test_native_translation
+diff --git a/addons/sipanel_commercial_scope_core/tests/common.py b/addons/sipanel_commercial_scope_core/tests/common.py
+index 285be17..02916f2 100644
+--- a/addons/sipanel_commercial_scope_core/tests/common.py
++++ b/addons/sipanel_commercial_scope_core/tests/common.py
+@@ -2,6 +2,16 @@
+ """Shared synthetic fixture for Slice A tests. All records are prefixed SIPANEL-PT (test discipline)."""
+ import uuid
+ 
++
++def set_translation(record, field_name, en='', fa=None):
++    """Store customer text natively. en_US is ALWAYS passed: Odoo copies a
++    lone non-English term into the English source, which would silently send
++    Persian to an English customer."""
++    terms = {'en_US': en or ''}
++    if fa is not None:
++        terms['fa_IR'] = fa
++    record.update_field_translations(field_name, terms)
++
+ from odoo.tests import TransactionCase, new_test_user
+ 
+ TEST_BATCH = 'SIPANEL-PT-CORE'
+@@ -60,7 +70,8 @@ class SipanelCoreCase(TransactionCase):
+         # unique per run: an archived leftover with the same code (unique per company, archived included) must not break the suite
+         scope = env['sipanel.scope'].create({'code': f'{code}-{uuid.uuid4().hex[:8]}', 'name': f'{TEST_BATCH} Gutter accessories', 'owner_user_id': cls.steward.id})
+         v1 = env['sipanel.scope.version'].create({
+-            'scope_id': scope.id, 'label_fa': 'متعلقات آبرو', 'label_en': 'Gutter accessories',
++            'scope_id': scope.id, 'customer_label': 'Gutter accessories',
++            'customer_description': 'Supply and installation of gutter accessories.',
+             'base_uom_id': cls.uom_m.id, 'dimension_family': 'length',
+             'anchor_product_id': cls.p_anchor.id, 'anchor_owner_mode': 'component_bridge_owner',
+             'all_systems': True,
+@@ -71,26 +82,35 @@ class SipanelCoreCase(TransactionCase):
+         cls_ = holder
+         cls_.l_gutter = L.create(dict(common, sequence=10, product_id=cls.p_gutter.id, uom_id=cls.uom_m.id, dimension_family='length',
+                                      basis='per_scope_qty', rate=1.0, activity_id=cls.act_mfg.id, execution_mode='manufacture',
+-                                     customer_label_fa='ناودان', customer_label_en='Gutter'))
++                                     customer_label='Gutter'))
+         cls_.l_bracket = L.create(dict(common, sequence=20, product_id=cls.p_bracket.id, uom_id=cls.uom_unit.id, dimension_family='count',
+                                       basis='per_scope_qty', rate=2.0, activity_id=cls.act_ins.id, execution_mode='stock_issue',
+-                                      customer_label_fa='بست', customer_label_en='Bracket'))
++                                      customer_label='Bracket'))
+         cls_.l_screw = L.create(dict(common, sequence=30, product_id=cls.p_screw.id, uom_id=cls.uom_unit.id, dimension_family='count',
+                                     basis='per_scope_qty', rate=4.0, activity_id=cls.act_ins.id, execution_mode='stock_issue',
+-                                    customer_label_fa='پیچ', customer_label_en='Screw'))
++                                    customer_label='Screw'))
+         cls_.l_sealant = L.create(dict(common, sequence=40, product_id=cls.p_sealant.id, uom_id=cls.uom_unit.id, dimension_family='count',
+                                       basis='manual', manual_qty_default=10.0, activity_id=cls.act_ins.id, execution_mode='stock_issue',
+-                                      customer_label_fa='درزگیر', customer_label_en='Sealant'))
++                                      customer_label='Sealant'))
+         cls_.l_labour = L.create(dict(common, sequence=50, product_id=cls.p_labour.id, uom_id=cls.uom_hour.id, dimension_family='time',
+                                      basis='fixed', fixed_qty=8.0, activity_id=cls.act_ins.id, execution_mode='labour',
+-                                     customer_label_fa='نصب', customer_label_en='Installation'))
++                                     customer_label='Installation'))
+         cls_.l_crane = L.create(dict(common, sequence=60, product_id=cls.p_crane.id, uom_id=cls.uom_unit.id, dimension_family='count',
+                                     basis='fixed', fixed_qty=1.0, activity_id=cls.act_eqp.id, execution_mode='equipment_service',
+-                                    customer_label_fa='جرثقیل', customer_label_en='Crane'))
++                                    customer_label='Crane'))
+         cls_.l_allow = L.create(dict(common, sequence=70, product_id=cls.p_screw.id, uom_id=cls.uom_unit.id, dimension_family='count',
+                                     basis='percent_of_quantity', percent=5.0, base_line_ids=[(6, 0, [cls_.l_screw.id])],
+                                     activity_id=cls.act_ins.id, execution_mode='stock_issue', customer_eligible=False,
+                                     disclosure='internal_only'))
++        # native translations: the English term is the source, Persian is a stored
++        # translation. `set_translation` always passes en_US explicitly - omitting it
++        # makes Odoo copy the Persian term into the English source.
++        for line, fa in ((cls_.l_gutter, 'ناودان'), (cls_.l_bracket, 'بست'), (cls_.l_screw, 'پیچ'),
++                         (cls_.l_sealant, 'درزگیر'), (cls_.l_labour, 'نصب'), (cls_.l_crane, 'جرثقیل')):
++            set_translation(line, 'customer_label', en=line.customer_label, fa=fa)
++        set_translation(v1, 'customer_label', en='Gutter accessories', fa='متعلقات آبرو')
++        set_translation(v1, 'customer_description', en='Supply and installation of gutter accessories.',
++                        fa='تأمین و نصب متعلقات آبرو.')
+         cls_.l_cont = L.create(dict(common, sequence=80, kind='product', product_id=cls.p_gutter.id, uom_id=cls.uom_m.id, dimension_family='length',
+                                    basis='percent_of_cost', percent=2.0, base_line_ids=[(6, 0, [cls_.l_gutter.id, cls_.l_bracket.id])],
+                                    cost_policy='derived', activity_id=cls.act_gen.id, execution_mode='no_action',
+diff --git a/addons/sipanel_commercial_scope_core/tests/test_native_translation.py b/addons/sipanel_commercial_scope_core/tests/test_native_translation.py
+new file mode 100644
+index 0000000..e53e648
+--- /dev/null
++++ b/addons/sipanel_commercial_scope_core/tests/test_native_translation.py
+@@ -0,0 +1,229 @@
++# -*- coding: utf-8 -*-
++"""STEP 2A: native translatable master text, released immutability, migration.
++
++These tests drive the ORM the way an operator, an import, an RPC client and the
++translation dialog do. They never assert on template or view source.
++"""
++from odoo.exceptions import UserError
++from odoo.tests import tagged
++
++from ..models.legacy_translation_backfill import backfill, plan_record
++from ..models.sipanel_tools import (has_translation, resolve_customer_text,
++                                    stored_translations, translation_map)
++from .common import SipanelCoreCase, set_translation
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_translation')
++class TestNativeMasterTranslation(SipanelCoreCase):
++    """(1)(2)(3) storage and retrieval through the native mechanism."""
++
++    def _draft_version(self):
++        scope = self.env['sipanel.scope'].create({
++            'code': f'SIPANEL-PT-XLATE-{self.env.cr.dbname[:4]}-{id(self) % 100000}',
++            'name': 'SIPANEL-PT translation scope', 'owner_user_id': self.steward.id})
++        return self.env['sipanel.scope.version'].create({
++            'scope_id': scope.id, 'customer_label': 'Gutter accessories',
++            'base_uom_id': self.uom_m.id, 'dimension_family': 'length',
++            'anchor_product_id': self.p_anchor.id, 'all_systems': True})
++
++    def test_persian_master_text_round_trips_through_fa_IR(self):
++        version = self._draft_version()
++        set_translation(version, 'customer_label', en='Gutter accessories', fa='متعلقات آبرو')
++        self.assertEqual(version.with_context(lang='fa_IR').customer_label, 'متعلقات آبرو')
++        self.assertTrue(has_translation(version, 'customer_label', 'fa_IR'))
++
++    def test_english_master_text_round_trips_through_en_US(self):
++        version = self._draft_version()
++        set_translation(version, 'customer_label', en='Gutter accessories', fa='متعلقات آبرو')
++        self.assertEqual(version.with_context(lang='en_US').customer_label, 'Gutter accessories')
++        self.assertTrue(has_translation(version, 'customer_label', 'en_US'))
++
++    def test_one_field_holds_every_language_and_the_dialog_sees_them(self):
++        """(3) The operator maintains languages through the standard control,
++        which reads and writes through get/update_field_translations."""
++        version = self._draft_version()
++        set_translation(version, 'customer_label', en='Gutter accessories', fa='متعلقات آبرو')
++        translations, context = version.get_field_translations('customer_label')
++        by_lang = {t['lang']: t['value'] for t in translations}
++        self.assertEqual(by_lang['en_US'], 'Gutter accessories')
++        self.assertEqual(by_lang['fa_IR'], 'متعلقات آبرو')
++        self.assertEqual(context['translation_type'], 'char')
++        # a third language can be added without a new field
++        version.update_field_translations('customer_label', {'ru_RU': 'Водосток'})
++        self.assertEqual(version.with_context(lang='ru_RU').customer_label, 'Водосток')
++        self.assertEqual(sorted(stored_translations(version, 'customer_label')),
++                         ['en_US', 'fa_IR', 'ru_RU'])
++
++    def test_missing_translation_is_distinguished_from_a_fallback(self):
++        """The whole language-readiness rule depends on this distinction."""
++        version = self._draft_version()
++        set_translation(version, 'customer_label', en='Gutter accessories')
++        # reading fa_IR yields the English source ...
++        self.assertEqual(version.with_context(lang='fa_IR').customer_label, 'Gutter accessories')
++        # ... but nothing is stored for fa_IR, and we can tell
++        self.assertFalse(has_translation(version, 'customer_label', 'fa_IR'))
++        value, used, is_fallback = resolve_customer_text(version, 'customer_label', 'fa_IR')
++        self.assertTrue(is_fallback)
++        self.assertEqual(used, 'en_US')
++        self.assertEqual(value, 'Gutter accessories')
++
++    def test_persian_only_master_does_not_leak_into_the_english_source(self):
++        version = self._draft_version()
++        version.update_field_translations('customer_label', {'en_US': '', 'fa_IR': 'فقط فارسی'})
++        self.assertEqual(version.with_context(lang='fa_IR').customer_label, 'فقط فارسی')
++        self.assertFalse(version.with_context(lang='en_US').customer_label)
++        self.assertFalse(has_translation(version, 'customer_label', 'en_US'))
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_translation')
++class TestReleasedTranslationImmutability(SipanelCoreCase):
++    """(11)(12) a released version is immutable in EVERY language and by every route."""
++
++    @classmethod
++    def setUpClass(cls):
++        super().setUpClass()
++        cls.scope, cls.v1 = cls._make_master()
++
++    def test_released_translation_cannot_be_edited_by_a_normal_write(self):
++        with self.assertRaises(UserError):
++            self.v1.write({'customer_label': 'renamed'})
++
++    def test_released_translation_cannot_be_edited_through_a_language_context(self):
++        with self.assertRaises(UserError):
++            self.v1.with_context(lang='fa_IR').write({'customer_label': 'برچسب جدید'})
++
++    def test_released_translation_cannot_be_edited_through_sudo(self):
++        with self.assertRaises(UserError):
++            self.v1.sudo().with_context(lang='fa_IR').write({'customer_label': 'برچسب جدید'})
++
++    def test_released_translation_cannot_be_edited_through_the_translation_dialog(self):
++        """update_field_translations bypasses write - the route the web
++        translation dialog and an RPC client both take."""
++        with self.assertRaises(UserError):
++            self.v1.update_field_translations('customer_label', {'fa_IR': 'برچسب جدید'})
++        with self.assertRaises(UserError):
++            self.v1.sudo().update_field_translations('customer_label', {'fa_IR': 'برچسب جدید'})
++
++    def test_released_recipe_line_translation_is_immutable_too(self):
++        line = self.v1.recipe_line_ids[0]
++        with self.assertRaises(UserError):
++            line.update_field_translations('customer_label', {'fa_IR': 'دیگر'})
++        with self.assertRaises(UserError):
++            line.sudo().write({'customer_label': 'other'})
++
++    def test_translation_stays_unchanged_after_a_rejected_edit(self):
++        before = stored_translations(self.v1, 'customer_label')
++        for attempt in (
++            lambda: self.v1.update_field_translations('customer_label', {'fa_IR': 'x'}),
++            lambda: self.v1.with_context(lang='fa_IR').write({'customer_label': 'y'}),
++        ):
++            with self.assertRaises(UserError):
++                attempt()
++        self.assertEqual(stored_translations(self.v1, 'customer_label'), before)
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_translation')
++class TestReleaseChecksumCoversTranslations(SipanelCoreCase):
++    """A translation edit must not be able to slip past the release checksum."""
++
++    @classmethod
++    def setUpClass(cls):
++        super().setUpClass()
++        cls.scope, cls.v1 = cls._make_master()
++
++    def _new_draft_from(self, version):
++        """action_new_version returns a window action; follow it to the record."""
++        action = version.action_new_version()
++        return self.env['sipanel.scope.version'].browse(action['res_id'])
++
++    def test_checksum_payload_contains_the_full_translation_map(self):
++        payload = self.v1._content_checksum_payload()
++        self.assertEqual(payload['customer_label'],
++                         translation_map(self.v1, 'customer_label'))
++        self.assertIn('fa_IR', payload['customer_label'])
++        self.assertIn('en_US', payload['customer_label'])
++        # deterministic language order
++        self.assertEqual(list(payload['customer_label']),
++                         sorted(payload['customer_label']))
++
++    def test_adding_a_translation_changes_the_checksum(self):
++        before = self.v1._compute_content_checksum()
++        new = self._new_draft_from(self.v1)
++        new.update_field_translations('customer_label', {'ru_RU': 'Водосток'})
++        self.assertNotEqual(new._compute_content_checksum(), before,
++                            "a new language term must change the content checksum")
++
++    def test_changing_one_language_changes_the_checksum(self):
++        new = self._new_draft_from(self.v1)
++        before = new._compute_content_checksum()
++        new.update_field_translations('customer_label', {'fa_IR': 'برچسب متفاوت'})
++        self.assertNotEqual(new._compute_content_checksum(), before)
++
++    def test_recipe_line_translation_participates_in_the_checksum(self):
++        new = self._new_draft_from(self.v1)
++        before = new._compute_content_checksum()
++        new.recipe_line_ids[0].update_field_translations('customer_label', {'fa_IR': 'ناودان جدید'})
++        new.invalidate_recordset()
++        self.assertNotEqual(new._compute_content_checksum(), before)
++
++    def test_existing_release_keeps_its_recorded_checksum_verifiable(self):
++        """v1 releases predate translations; recomputing them with v2 would be a
++        false mismatch, so the algorithm is recorded per release."""
++        self.assertIn(self.v1.checksum_algo, ('v1', 'v2'))
++        self.assertTrue(self.v1.verify_release_checksum(),
++                        "a released version must verify under its own algorithm")
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_translation')
++class TestLegacyTranslationMigration(SipanelCoreCase):
++    """(4) migration of existing FA/EN values, including the awkward shapes."""
++
++    @classmethod
++    def setUpClass(cls):
++        super().setUpClass()
++        cls.scope, cls.v1 = cls._make_master()
++
++    def test_plan_maps_fa_to_fa_IR_and_en_to_en_US(self):
++        terms, klass = plan_record('متعلقات آبرو', 'Gutter accessories', {})
++        self.assertEqual(terms, {'en_US': 'Gutter accessories', 'fa_IR': 'متعلقات آبرو'})
++        self.assertEqual(klass, 'distinct_per_language')
++
++    def test_plan_keeps_conflicting_values_as_separate_languages(self):
++        terms, _klass = plan_record('فارسی', 'English', {})
++        self.assertEqual(terms['fa_IR'], 'فارسی')
++        self.assertEqual(terms['en_US'], 'English')
++
++    def test_plan_never_overwrites_a_native_translation_with_a_blank_legacy_value(self):
++        terms, klass = plan_record('', '', {'fa_IR': 'موجود'})
++        self.assertEqual(terms, {})
++        self.assertEqual(klass, 'blank_both')
++        terms, _klass = plan_record('', 'English', {'fa_IR': 'موجود'})
++        self.assertNotIn('fa_IR', terms, "a blank legacy FA must not clear a stored fa_IR term")
++
++    def test_plan_always_writes_en_US_explicitly(self):
++        """Odoo copies a lone non-English term into the English source, which
++        would send Persian to an English customer."""
++        terms, klass = plan_record('فقط فارسی', '', {})
++        self.assertEqual(klass, 'fa_only')
++        self.assertIn('en_US', terms)
++        self.assertEqual(terms['en_US'], '')
++
++    def test_plan_ignores_whitespace_only_legacy_values(self):
++        terms, klass = plan_record('   ', '\t\n', {})
++        self.assertEqual(terms, {})
++        self.assertEqual(klass, 'blank_both')
++
++    def test_backfill_dry_run_writes_nothing(self):
++        before = stored_translations(self.v1, 'customer_label')
++        report = backfill(self.env, dry_run=True)
++        self.assertTrue(report['dry_run'])
++        self.assertEqual(stored_translations(self.v1, 'customer_label'), before)
++
++    def test_backfill_is_idempotent(self):
++        """Re-running must not duplicate or disturb anything already migrated."""
++        first = backfill(self.env, dry_run=False)
++        snapshot = stored_translations(self.v1, 'customer_label')
++        second = backfill(self.env, dry_run=False)
++        self.assertEqual(stored_translations(self.v1, 'customer_label'), snapshot)
++        self.assertLessEqual(second['totals']['terms_written'],
++                             first['totals']['terms_written'])
+diff --git a/addons/sipanel_commercial_scope_core/tests/test_scope_lifecycle.py b/addons/sipanel_commercial_scope_core/tests/test_scope_lifecycle.py
+index 40e8cb8..3c56bf8 100644
+--- a/addons/sipanel_commercial_scope_core/tests/test_scope_lifecycle.py
++++ b/addons/sipanel_commercial_scope_core/tests/test_scope_lifecycle.py
+@@ -38,9 +38,9 @@ class TestScopeLifecycle(SipanelCoreCase):
+         """PT-24: released content cannot be changed through write (UI, RPC and import all reach write)."""
+         scope, v1 = self._make_master()
+         with self.assertRaises(UserError):
+-            v1.write({'label_fa': 'x'})
++            v1.write({'customer_label': 'x'})
+         with self.assertRaises(UserError):
+-            v1.with_user(self.steward).write({'label_en': 'y'})
++            v1.with_user(self.steward).write({'customer_label': 'y'})
+         with self.assertRaises(UserError):
+             v1.recipe_line_ids[0].write({'rate': 9})
+         with self.assertRaises(UserError):
+@@ -53,7 +53,7 @@ class TestScopeLifecycle(SipanelCoreCase):
+             v1.write({'state': 'draft'})
+         # sudo does not bypass Python guards
+         with self.assertRaises(UserError):
+-            v1.sudo().write({'label_fa': 'z'})
++            v1.sudo().write({'customer_label': 'z'})
+         # base_import path: load() -> write()
+         xid = f'__export__.sipanel_scope_recipe_line_{v1.recipe_line_ids[0].id}_pt'
+         self.env['ir.model.data']._update_xmlids([{'xml_id': xid, 'record': v1.recipe_line_ids[0]}])
+diff --git a/addons/sipanel_commercial_scope_core/views/recipe_line_views.xml b/addons/sipanel_commercial_scope_core/views/recipe_line_views.xml
+index d9537c6..fb69c35 100644
+--- a/addons/sipanel_commercial_scope_core/views/recipe_line_views.xml
++++ b/addons/sipanel_commercial_scope_core/views/recipe_line_views.xml
+@@ -35,8 +35,7 @@
+                             <field name="currency_id" invisible="1"/>
+                         </group>
+                         <group>
+-                            <field name="customer_label_fa"/>
+-                            <field name="customer_label_en"/>
++                            <field name="customer_label"/>
+                             <field name="customer_eligible"/>
+                             <field name="responsibility"/>
+                             <field name="placement"/>
+diff --git a/addons/sipanel_commercial_scope_core/views/scope_version_views.xml b/addons/sipanel_commercial_scope_core/views/scope_version_views.xml
+index 9603f81..8c3b9d5 100644
+--- a/addons/sipanel_commercial_scope_core/views/scope_version_views.xml
++++ b/addons/sipanel_commercial_scope_core/views/scope_version_views.xml
+@@ -9,7 +9,7 @@
+                 <field name="scope_id"/>
+                 <field name="revision"/>
+                 <field name="state" widget="badge"/>
+-                <field name="label_fa"/>
++                <field name="customer_label"/>
+                 <field name="anchor_product_id"/>
+                 <field name="released_date"/>
+             </list>
+@@ -41,11 +41,12 @@
+                             <field name="base_uom_id"/>
+                             <field name="dimension_family"/>
+                         </group>
+-                        <group string="Customer labels">
+-                            <field name="label_fa"/>
+-                            <field name="label_en"/>
+-                            <field name="customer_description_fa"/>
+-                            <field name="customer_description_en"/>
++                        <group string="Customer text">
++                            <!-- STEP 2A: one field per customer-facing text. Odoo renders its
++                                 standard translation control beside a translate=True field as
++                                 soon as more than one language is active. -->
++                            <field name="customer_label"/>
++                            <field name="customer_description"/>
+                         </group>
+                         <group string="Applicability">
+                             <field name="all_systems"/>
+@@ -88,7 +89,7 @@
+                                     <field name="no_action_reason"/>
+                                     <field name="cost_policy"/>
+                                     <field name="manual_cost_default" groups="sipanel_commercial_scope_core.group_scope_cost_viewer"/>
+-                                    <field name="customer_label_fa"/>
++                                    <field name="customer_label"/>
+                                     <field name="customer_eligible"/>
+                                     <field name="disclosure"/>
+                                     <field name="responsibility" optional="hide"/>
+diff --git a/addons/sipanel_commercial_scope_core/views/scope_views.xml b/addons/sipanel_commercial_scope_core/views/scope_views.xml
+index 687b74b..1cefd04 100644
+--- a/addons/sipanel_commercial_scope_core/views/scope_views.xml
++++ b/addons/sipanel_commercial_scope_core/views/scope_views.xml
+@@ -52,7 +52,7 @@
+                                 <list>
+                                     <field name="revision"/>
+                                     <field name="state" widget="badge"/>
+-                                    <field name="label_fa"/>
++                                    <field name="customer_label"/>
+                                     <field name="anchor_product_id"/>
+                                     <field name="released_date"/>
+                                 </list>
+diff --git a/addons/sipanel_sale_scope/__manifest__.py b/addons/sipanel_sale_scope/__manifest__.py
+index e46986c..7d1dde8 100644
+--- a/addons/sipanel_sale_scope/__manifest__.py
++++ b/addons/sipanel_sale_scope/__manifest__.py
+@@ -2,7 +2,7 @@
+ {
+     'name': 'SIPANEL Sale Scope',
+     'summary': 'Quote Scope, revisions, component snapshots, quantity/cost engine, pricing & margin, notes, seal, optional/provisional governance, portal guard (Slices B + C)',
+-    'version': '19.0.1.0.0',
++    'version': '19.0.1.1.0',
+     'category': 'Sales/Sales',
+     'author': 'SIPANEL',
+     'license': 'LGPL-3',
+diff --git a/addons/sipanel_sale_scope/models/quote_scope.py b/addons/sipanel_sale_scope/models/quote_scope.py
+index f911955..e53de74 100644
+--- a/addons/sipanel_sale_scope/models/quote_scope.py
++++ b/addons/sipanel_sale_scope/models/quote_scope.py
+@@ -8,6 +8,7 @@ from odoo.tools import float_compare, float_is_zero
+ 
+ from odoo.addons.sipanel_commercial_scope_core.models.sipanel_tools import ACCEPTANCE
+ from odoo.addons.sipanel_commercial_scope_core.models.sipanel_tools import guard, guard_ctx
++from odoo.addons.sipanel_commercial_scope_core.models.sipanel_tools import snapshot_customer_text
+ 
+ COST_GROUP = 'sipanel_commercial_scope_core.group_scope_cost_viewer'
+ 
+@@ -115,11 +116,10 @@ class SipanelQuoteScope(models.Model):
+         Config = self.env['sipanel.config']
+         if Config.company_currency_only() and order.currency_id != order.company_id.currency_id:
+             add('CURRENCY', _("Foreign-currency quotations are blocked in MVP (BQ-09)."))
+-        lang_fa = (rev.language or '').startswith('fa')
+-        if lang_fa and not rev.label_fa:
+-            add('LABEL_LANG', _("Persian customer label missing for a Persian quotation (BQ-01)."))
+-        if not lang_fa and not rev.label_en:
+-            add('LABEL_LANG', _("English customer label missing for a non-Persian quotation (BQ-01)."))
++        missing = rev._missing_translation_keys()
++        if missing:
++            add('LABEL_LANG', _("Customer text has no %(lang)s translation for: %(items)s (BQ-01).",
++                                lang=rev.language or '?', items=', '.join(missing)))
+         if rev.state != 'working':
+             return issues
+         comps = rev.component_ids.sudo().filtered(lambda c: c.active_state == 'active')
+@@ -130,7 +130,8 @@ class SipanelQuoteScope(models.Model):
+                 add('OVERRIDE_STALE', _("Stale override on %s: confirm or clear it.", c.display_name))
+             if c.kind == 'estimate_only' and c.resolution_state == 'open':
+                 add('ESTIMATE_ONLY', _("%s needs resolution.", c.display_name), 'warn')
+-            if c.disclosure == 'customer_eligible' and not (c.customer_label_fa or c.customer_label_en):
++            if c.disclosure == 'customer_eligible' and not (
++                    c.customer_label_resolved or c.customer_label_fa or c.customer_label_en):
+                 add('LABEL', _("%s has no customer label; it is skipped in the note.", c.display_name), 'warn')
+         approved = rev.waiver_ids.filtered(lambda w: w.state == 'approved').mapped('waiver_type')
+         if rev.waiver_ids.filtered(lambda w: w.state == 'pending'):
+@@ -232,18 +233,22 @@ class SipanelQuoteScope(models.Model):
+         quote_uom = quote_uom or version.base_uom_id
+         Family.check_compatible(quote_uom, version.base_uom_id)
+         qty_base = Family.convert(scope_qty, quote_uom, version.base_uom_id)
++        # quotation language: customer note and unit-name snapshots are rendered in this language (D-02, BQ-01)
++        lang = order.partner_id.lang or self.env.user.lang or 'en_US'
++        label_terms, label_resolved, label_prov = snapshot_customer_text(version, 'customer_label', lang)
++        desc_terms, desc_resolved, desc_prov = snapshot_customer_text(version, 'customer_description', lang)
+         line_vals = {
+             'order_id': order.id, 'product_id': version.anchor_product_id.id,
+             'product_uom_qty': 0.0 if optional else qty_base, 'product_uom_id': version.base_uom_id.id,
+-            'name': (version.label_fa if (order.partner_id.lang or '').startswith('fa') else version.label_en) or version.label_fa or version.label_en,
++            # a draft may fall back so the operator still sees a usable line; the
++            # fallback is recorded and blocks the seal (BQ-01, STEP 2A)
++            'name': label_resolved or label_terms.get('en_US') or label_terms.get('fa_IR') or '',
+         }
+         if sequence is not None:
+             line_vals['sequence'] = sequence
+         elif section_line:
+             line_vals['sequence'] = section_line.sequence + 1
+         line = self.env['sale.order.line'].with_context(**guard_ctx('sipanel_anchor_create')).create(line_vals)
+-        # quotation language: customer note and unit-name snapshots are rendered in this language (D-02, BQ-01)
+-        lang = order.partner_id.lang or self.env.user.lang or 'en_US'
+         scope = self.create({
+             'order_id': order.id, 'source_scope_id': version.scope_id.id, 'source_version_id': version.id,
+             'anchor_line_id': line.id, 'is_optional': optional, 'optional_section_line_id': section_line.id if section_line else False,
+@@ -253,8 +258,10 @@ class SipanelQuoteScope(models.Model):
+             'quote_scope_id': scope.id, 'revision': 1, 'language': lang,
+             'quote_uom_id': quote_uom.id, 'base_uom_id': version.base_uom_id.id,
+             'uom_factor': Family.convert(1.0, quote_uom, version.base_uom_id),
+-            'label_fa': version.label_fa, 'label_en': version.label_en,
+-            'customer_description_fa': version.customer_description_fa, 'customer_description_en': version.customer_description_en,
++            'label_fa': label_terms.get('fa_IR', False), 'label_en': label_terms.get('en_US', False),
++            'customer_description_fa': desc_terms.get('fa_IR', False), 'customer_description_en': desc_terms.get('en_US', False),
++            'label_resolved': label_resolved, 'customer_description_resolved': desc_resolved,
++            'resolved_language': lang, 'source_version_checksum': version.release_checksum,
+             'system_id': system.id if system else False,
+             'fx_source_currency_id': order.currency_id.id, 'fx_rate': 1.0, 'fx_date': fields.Date.today(), 'fx_source': 'company_currency',
+         })
+@@ -264,11 +271,18 @@ class SipanelQuoteScope(models.Model):
+             rev.with_context(**guard_ctx('sipanel_seal_transaction')).write({'offered_scope_qty': qty_base})
+         Comp = self.env['sipanel.quote.scope.component'].sudo()
+         id_map = {}
++        comp_prov = {}
+         for l in version.recipe_line_ids.sorted(lambda l: (l.sequence, l.id)):
++            c_terms, c_resolved, c_prov = snapshot_customer_text(l, 'customer_label', lang)
++            # an internal-only line is never shown to the customer, so a missing
++            # customer translation is not a defect for it
++            c_prov['exempt'] = (l.disclosure == 'internal_only') or not l.customer_eligible
++            comp_prov[l.occurrence_key] = c_prov
+             cvals = {
+                 'revision_id': rev.id, 'source_occurrence_key': l.occurrence_key, 'source_line_id': l.id, 'origin': 'master',
+                 'sequence': l.sequence, 'kind': l.kind, 'product_id': l.product_id.id, 'description': l.internal_description,
+-                'customer_label_fa': l.customer_label_fa, 'customer_label_en': l.customer_label_en, 'spec_json': l.spec_json,
++                'customer_label_fa': c_terms.get('fa_IR', False), 'customer_label_en': c_terms.get('en_US', False),
++                'customer_label_resolved': c_resolved, 'label_provenance': c_prov, 'spec_json': l.spec_json,
+                 'uom_id': l.uom_id.id, 'uom_name_snapshot': l.uom_id.with_context(lang=lang).name, 'dimension_family': l.dimension_family,
+                 'basis': l.basis, 'rate': l.rate, 'fixed_qty': l.fixed_qty, 'percent': l.percent,
+                 'manual_qty': l.manual_qty_default, 'manual_qty_set': bool(l.basis == 'manual' and l.manual_qty_default),
+@@ -295,7 +309,23 @@ class SipanelQuoteScope(models.Model):
+         for l in version.recipe_line_ids:
+             if l.base_line_ids:
+                 Comp.browse(id_map[l.id]).write({'base_component_ids': [(6, 0, [id_map[b.id] for b in l.base_line_ids if b.id in id_map])]})
++        provenance = {'language': lang, 'version': {'customer_label': label_prov,
++                                                    'customer_description': desc_prov},
++                      'components': comp_prov}
++        provenance['missing'] = rev._missing_translation_keys(provenance)
++        rev.with_context(**guard_ctx('sipanel_seal_transaction')).write({'translation_provenance': provenance})
+         rev.action_generate_note(accept=True)
++        if provenance['missing']:
++            # draft may proceed on the fallback, but the gap must be visible now
++            # and it will block the seal (STEP 2A language readiness)
++            scope.message_post(body=self.env._(
++                "Customer text is missing a %(lang)s translation for: %(items)s. "
++                "The draft uses a fallback; this quotation cannot be sent until the "
++                "master translations are completed.",
++                lang=lang, items=', '.join(provenance['missing'])))
+         self.env['sipanel.scope.audit.event'].log(scope, 'add_scope', after={'version_id': version.id, 'scope_qty': qty_base,
+-                                                                              'optional': optional}, revision_ref=rev.display_name)
++                                                                              'optional': optional,
++                                                                              'resolved_language': lang,
++                                                                              'missing_translations': provenance['missing']},
++                                                  revision_ref=rev.display_name)
+         return scope
+diff --git a/addons/sipanel_sale_scope/models/quote_scope_component.py b/addons/sipanel_sale_scope/models/quote_scope_component.py
+index f071718..9f720d2 100644
+--- a/addons/sipanel_sale_scope/models/quote_scope_component.py
++++ b/addons/sipanel_sale_scope/models/quote_scope_component.py
+@@ -49,8 +49,12 @@ class SipanelQuoteScopeComponent(models.Model):
+     kind = fields.Selection(KIND, required=True, default='product')
+     product_id = fields.Many2one('product.product', ondelete='restrict')
+     description = fields.Text()
++    # Immutable snapshot of the master recipe line's customer label (see the
++    # revision model). Only really-stored terms are copied into each column.
+     customer_label_fa = fields.Char()
+     customer_label_en = fields.Char()
++    customer_label_resolved = fields.Char(readonly=True)
++    label_provenance = fields.Json(readonly=True)
+     spec_json = fields.Json()
+     uom_id = fields.Many2one('uom.uom', required=True, ondelete='restrict')
+     uom_name_snapshot = fields.Char(readonly=True)
+@@ -117,10 +121,11 @@ class SipanelQuoteScopeComponent(models.Model):
+     _occurrence_uid_unique = models.Constraint('UNIQUE(revision_id, occurrence_uid)', 'Occurrence uid must be unique within a revision (stable across amendments).')
+ 
+     # ------------------------------------------------------------ computes
+-    @api.depends('product_id', 'description', 'customer_label_en', 'customer_label_fa')
++    @api.depends('product_id', 'description', 'customer_label_en', 'customer_label_fa', 'customer_label_resolved')
+     def _compute_name(self):
+         for c in self:
+-            c.name = c.product_id.display_name or c.customer_label_en or c.customer_label_fa or (c.description or '')[:64]
++            c.name = (c.product_id.display_name or c.customer_label_resolved or c.customer_label_en
++                      or c.customer_label_fa or (c.description or '')[:64])
+ 
+     @api.depends('basis', 'rate', 'fixed_qty', 'manual_qty', 'manual_qty_set', 'percent', 'base_component_ids.final_qty',
+                  'base_component_ids.uom_id', 'rounding_increment', 'rounding_mode', 'qty_override', 'override_qty',
+@@ -373,8 +378,13 @@ class SipanelQuoteScopeComponent(models.Model):
+         self.ensure_one()
+         if self.disclosure != 'customer_eligible' or self.active_state != 'active':
+             return None
+-        label = self.customer_label_fa if (language or '').startswith('fa') else self.customer_label_en
+-        label = label or (self.customer_label_fa or self.customer_label_en)
++        # Prefer the term resolved when the snapshot was taken. Revisions created
++        # before STEP 2A have no resolved term, so they keep the historical
++        # language-pair lookup and their sealed artifacts stay byte-identical.
++        label = self.customer_label_resolved
++        if not label:
++            label = self.customer_label_fa if (language or '').startswith('fa') else self.customer_label_en
++            label = label or (self.customer_label_fa or self.customer_label_en)
+         if not label:
+             return None
+         payload = {'label': label}
+diff --git a/addons/sipanel_sale_scope/models/quote_scope_revision.py b/addons/sipanel_sale_scope/models/quote_scope_revision.py
+index 2a4c38a..ca50a69 100644
+--- a/addons/sipanel_sale_scope/models/quote_scope_revision.py
++++ b/addons/sipanel_sale_scope/models/quote_scope_revision.py
+@@ -39,10 +39,25 @@ class SipanelQuoteScopeRevision(models.Model):
+     quote_uom_id = fields.Many2one('uom.uom', readonly=True, ondelete='restrict')
+     base_uom_id = fields.Many2one('uom.uom', readonly=True, ondelete='restrict')
+     uom_factor = fields.Float(digits=(16, 6), default=1.0, readonly=True)
++    # Immutable snapshot of the master customer text. These stay plain columns on
++    # purpose: a snapshot must never follow later master edits, so it is copied,
++    # never translated. They now hold ONLY terms that were really stored for that
++    # language - an English term is never written into the Persian column.
+     label_fa = fields.Char()
+     label_en = fields.Char()
+     customer_description_fa = fields.Text()
+     customer_description_en = fields.Text()
++    # STEP 2A: the text actually resolved for `language`, plus its provenance.
++    # Empty on revisions created before STEP 2A, and every reader falls back to
++    # the pair above in that case, so sealed content does not move.
++    label_resolved = fields.Char(readonly=True)
++    customer_description_resolved = fields.Text(readonly=True)
++    resolved_language = fields.Char(readonly=True,
++                                    help="Language the customer text was resolved in when this revision was created.")
++    source_version_checksum = fields.Char(readonly=True,
++                                          help="Release checksum of the master version this snapshot came from.")
++    translation_provenance = fields.Json(readonly=True,
++                                         help="Which language each customer-facing term came from, and whether it was a fallback.")
+     spec_json = fields.Json()
+     commercial_projection_json = fields.Json(compute='_compute_commercial', store=True, readonly=True)
+     net_revenue_projection = fields.Monetary(currency_field='currency_id', compute='_compute_commercial', store=True, groups=COST_GROUP)
+@@ -155,6 +170,7 @@ class SipanelQuoteScopeRevision(models.Model):
+                 r.margin_percent_na = False
+ 
+     @api.depends('component_ids.final_qty', 'component_ids.customer_label_fa', 'component_ids.customer_label_en',
++                 'component_ids.customer_label_resolved',
+                  'component_ids.disclosure', 'component_ids.active_state', 'component_ids.placement', 'component_ids.certainty',
+                  'component_ids.provisional_basis', 'component_ids.sequence', 'note_fingerprint', 'language')
+     def _compute_note_stale(self):
+@@ -212,8 +228,12 @@ class SipanelQuoteScopeRevision(models.Model):
+     def _build_generated_note(self):
+         self.ensure_one()
+         lang_fa = (self.language or '').startswith('fa')
+-        head = (self.label_fa if lang_fa else self.label_en) or self.label_fa or self.label_en or ''
+-        desc = (self.customer_description_fa if lang_fa else self.customer_description_en) or ''
++        # Prefer the term resolved when the snapshot was taken. Revisions created
++        # before STEP 2A have none, and keep the historical language-pair lookup,
++        # so their regenerated note is unchanged.
++        head = self.label_resolved or (self.label_fa if lang_fa else self.label_en) or self.label_fa or self.label_en or ''
++        desc = self.customer_description_resolved or (
++            self.customer_description_fa if lang_fa else self.customer_description_en) or ''
+         lines = [head] if head else []
+         if desc:
+             lines.append(desc)
+@@ -248,6 +268,40 @@ class SipanelQuoteScopeRevision(models.Model):
+             self.env['sipanel.scope.audit.event'].log(r, 'note_reviewed', revision_ref=r.display_name)
+         return True
+ 
++    # ---------------------------------------------------------- language readiness (STEP 2A)
++    def _missing_translation_keys(self, provenance=None):
++        """Customer-facing terms with no translation in this quotation's language.
++
++        Empty list means the quotation can be sent. A revision created before
++        STEP 2A carries no provenance, so it is judged by the historical rule on
++        its snapshot columns and its behaviour does not change.
++        """
++        self.ensure_one()
++        prov = provenance if provenance is not None else (self.translation_provenance or None)
++        if not prov:
++            lang_fa = (self.language or '').startswith('fa')
++            if lang_fa and not self.label_fa:
++                return ['customer_label']
++            if not lang_fa and not self.label_en:
++                return ['customer_label']
++            return []
++        missing = []
++        version = prov.get('version') or {}
++        label = version.get('customer_label') or {}
++        if label.get('fallback'):
++            # a quotation always needs a label in its own language
++            missing.append('customer_label')
++        desc = version.get('customer_description') or {}
++        if desc.get('fallback') and desc.get('available'):
++            # the master has a description, just not in this language
++            missing.append('customer_description')
++        for key, cprov in sorted((prov.get('components') or {}).items()):
++            if cprov.get('exempt'):
++                continue          # internal-only lines never reach the customer
++            if cprov.get('fallback') and cprov.get('available'):
++                missing.append(f'component:{key}')
++        return missing
++
+     # ---------------------------------------------------------- seal / accept (C3-D03, C7-D04)
+     def _seal_payload(self):
+         self.ensure_one()
+@@ -272,6 +326,13 @@ class SipanelQuoteScopeRevision(models.Model):
+         for r in self:
+             if r.state != 'working':
+                 continue
++            # Fail closed: never send a customer a fallback in the wrong language.
++            missing = r._missing_translation_keys()
++            if missing:
++                raise UserError(self.env._(
++                    "Cannot send %(rev)s: the customer text has no %(lang)s translation for "
++                    "%(items)s. Complete the master translations, then create a new revision.",
++                    rev=r.display_name, lang=r.language or '?', items=', '.join(missing)))
+             payload = r._seal_payload()
+             h = sha256_of(payload)
+             r.with_context(**guard_ctx('sipanel_seal_transaction')).write({
+diff --git a/addons/sipanel_sale_scope/models/sale_order.py b/addons/sipanel_sale_scope/models/sale_order.py
+index 8b25aeb..36154bd 100644
+--- a/addons/sipanel_sale_scope/models/sale_order.py
++++ b/addons/sipanel_sale_scope/models/sale_order.py
+@@ -160,6 +160,11 @@ class SaleOrder(models.Model):
+                 'quote_scope_id': scope.id, 'revision': 1, 'language': rev.language, 'quote_uom_id': rev.quote_uom_id.id,
+                 'base_uom_id': rev.base_uom_id.id, 'uom_factor': rev.uom_factor, 'label_fa': rev.label_fa, 'label_en': rev.label_en,
+                 'customer_description_fa': rev.customer_description_fa, 'customer_description_en': rev.customer_description_en,
++                # the duplicate keeps the ORIGINAL snapshot and its provenance: it is a
++                # copy of this quotation, not a fresh resolution against today's master
++                'label_resolved': rev.label_resolved, 'customer_description_resolved': rev.customer_description_resolved,
++                'resolved_language': rev.resolved_language, 'source_version_checksum': rev.source_version_checksum,
++                'translation_provenance': rev.translation_provenance,
+                 'spec_json': rev.spec_json, 'final_note': rev.final_note, 'generated_note': rev.generated_note,
+                 'note_manually_edited': rev.note_manually_edited, 'system_id': rev.system_id.id,
+                 'fx_source_currency_id': new_order.currency_id.id, 'fx_rate': 1.0, 'fx_date': fields.Date.today(), 'fx_source': 'company_currency',
+diff --git a/addons/sipanel_sale_scope/tests/__init__.py b/addons/sipanel_sale_scope/tests/__init__.py
+index 76c0544..d318489 100644
+--- a/addons/sipanel_sale_scope/tests/__init__.py
++++ b/addons/sipanel_sale_scope/tests/__init__.py
+@@ -3,3 +3,4 @@ from . import test_quote_engine
+ from . import test_governance
+ from . import test_security
+ from . import test_customer_output
++from . import test_translation_snapshot
+diff --git a/addons/sipanel_sale_scope/tests/test_governance.py b/addons/sipanel_sale_scope/tests/test_governance.py
+index 64b2b63..0483eea 100644
+--- a/addons/sipanel_sale_scope/tests/test_governance.py
++++ b/addons/sipanel_sale_scope/tests/test_governance.py
+@@ -153,7 +153,7 @@ class TestGovernance(SipanelSaleCase):
+         self.assertTrue(text_art)
+         # live master translation change never touches the sealed artifact
+         v2 = self.env['sipanel.scope.version'].browse(self.v1.action_new_version()['res_id'])
+-        v2.write({'label_en': 'RENAMED'})
++        v2.write({'customer_label': 'RENAMED'})
+         v2.action_release()
+         self.assertNotIn('RENAMED', text_art.content_text)
+         self.assertIn('Gutter accessories', text_art.content_text)
+diff --git a/addons/sipanel_sale_scope/tests/test_quote_engine.py b/addons/sipanel_sale_scope/tests/test_quote_engine.py
+index 45792eb..9f11bde 100644
+--- a/addons/sipanel_sale_scope/tests/test_quote_engine.py
++++ b/addons/sipanel_sale_scope/tests/test_quote_engine.py
+@@ -54,14 +54,14 @@ class TestQuoteEngine(SipanelSaleCase):
+         v2 = self.env['sipanel.scope.version'].browse(self.v1.action_new_version()['res_id'])
+         self.env['sipanel.scope.recipe.line'].create({'version_id': v2.id, 'product_id': self.p_bracket.id, 'uom_id': self.uom_unit.id,
+                                                       'dimension_family': 'count', 'basis': 'fixed', 'fixed_qty': 1, 'activity_id': self.act_ins.id,
+-                                                      'execution_mode': 'stock_issue', 'customer_label_en': 'Outlet', 'customer_eligible': True})
+-        v2.write({'label_en': 'Gutter accessories V2'})
++                                                      'execution_mode': 'stock_issue', 'customer_label': 'Outlet', 'customer_eligible': True})
++        v2.write({'customer_label': 'Gutter accessories V2'})
+         v2.action_release()
+         self.p_gutter.write({'standard_price': 999.0})
+         rev.invalidate_recordset()
+         after = [c._snapshot_payload() for c in rev.component_ids.sorted('id')]
+         self.assertEqual(before, after)
+-        self.assertEqual(rev.label_en, 'Gutter accessories')
++        self.assertEqual(rev.label_en, 'Gutter accessories')  # frozen snapshot, not the renamed master
+         self.assertAlmostEqual(rev.eligible_cost_total, 10734.0, places=4)
+         self.assertEqual(scope.source_version_id, self.v1)
+ 
+@@ -169,7 +169,8 @@ class TestQuoteEngine(SipanelSaleCase):
+         self.assertEqual(scope.anchor_line_id.name, 'Manually edited customer note')
+         self.assertFalse(rev.note_stale)
+         bracket = self._comp(scope, self.p_bracket)
+-        bracket.write({'customer_label_en': 'Heavy bracket'})
++        # snapshot component: the note is built from the resolved snapshot label
++        bracket.write({'customer_label_resolved': 'Heavy bracket'})
+         self.assertTrue(rev.note_stale)
+         self.assertEqual(rev.final_note, 'Manually edited customer note')
+         rev.write({'note_reviewed': False}) if rev.note_reviewed else None
+diff --git a/addons/sipanel_sale_scope/tests/test_translation_snapshot.py b/addons/sipanel_sale_scope/tests/test_translation_snapshot.py
+new file mode 100644
+index 0000000..164d0ce
+--- /dev/null
++++ b/addons/sipanel_sale_scope/tests/test_translation_snapshot.py
+@@ -0,0 +1,236 @@
++# -*- coding: utf-8 -*-
++"""STEP 2A: quotation snapshots resolve the master translations once and freeze them.
++
++The snapshot boundary is the point of these tests: a quotation must carry the
++text it was created with, in the customer's language, and must not move when the
++master or its translations later change.
++"""
++from odoo.exceptions import UserError
++from odoo.tests import tagged
++
++from odoo.addons.sipanel_commercial_scope_core.models.sipanel_tools import (
++    guard_ctx, stored_translations)
++from odoo.addons.sipanel_commercial_scope_core.tests.common import set_translation
++
++from .common import SipanelSaleCase
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_translation')
++class TestTranslationSnapshot(SipanelSaleCase):
++
++    def _order(self, lang='en_US'):
++        self.env['res.lang'].sudo()._activate_lang('fa_IR')
++        partner = self.env['res.partner'].create({
++            'name': f'SIPANEL-PT-XLATE customer {lang}', 'lang': lang, 'email': False})
++        return self.env['sale.order'].with_user(self.estimator).create({
++            'partner_id': partner.id, 'origin': 'SIPANEL-PT-XLATE'})
++
++    def _scope(self, lang='en_US', version=None, qty=12.0):
++        order = self._order(lang)
++        return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
++            order, version or self.v1, qty, self.uom_m)
++
++    def _draft_master(self):
++        """A fresh DRAFT version whose translations we are free to edit."""
++        action = self.v1.action_new_version()
++        return self.env['sipanel.scope.version'].browse(action['res_id'])
++
++    # ------------------------------------------------------------ (8)(9) resolution
++    def test_persian_quotation_snapshots_the_persian_master_text(self):
++        scope = self._scope('fa_IR')
++        rev = scope.current_revision_id
++        self.assertEqual(rev.resolved_language, 'fa_IR')
++        self.assertEqual(rev.label_resolved, 'متعلقات آبرو')
++        self.assertEqual(rev.label_fa, 'متعلقات آبرو')
++        self.assertEqual(rev.label_en, 'Gutter accessories')
++        self.assertFalse(rev.translation_provenance['version']['customer_label']['fallback'])
++
++    def test_english_quotation_snapshots_the_english_master_text(self):
++        scope = self._scope('en_US')
++        rev = scope.current_revision_id
++        self.assertEqual(rev.resolved_language, 'en_US')
++        self.assertEqual(rev.label_resolved, 'Gutter accessories')
++        self.assertFalse(rev.translation_provenance['version']['customer_label']['fallback'])
++
++    def test_snapshot_records_the_source_version_provenance(self):
++        scope = self._scope('fa_IR')
++        rev = scope.current_revision_id
++        self.assertEqual(scope.source_version_id, self.v1)
++        self.assertEqual(rev.source_version_checksum, self.v1.release_checksum)
++        self.assertEqual(rev.translation_provenance['language'], 'fa_IR')
++
++    def test_component_labels_are_resolved_in_the_quotation_language(self):
++        scope = self._scope('fa_IR')
++        labels = scope.current_revision_id.component_ids.mapped('customer_label_resolved')
++        self.assertIn('ناودان', labels)
++        self.assertNotIn('Gutter', labels)
++
++    # ------------------------------------------------------------ (10) immutability
++    def test_master_translation_change_does_not_alter_an_existing_snapshot(self):
++        scope = self._scope('fa_IR')
++        rev = scope.current_revision_id
++        before = (rev.label_resolved, rev.label_fa, rev.label_en,
++                  rev.component_ids.mapped('customer_label_resolved'))
++        # a NEW master version with different Persian text
++        draft = self._draft_master()
++        draft.update_field_translations('customer_label', {'fa_IR': 'برچسب تازه'})
++        draft.recipe_line_ids[0].update_field_translations('customer_label', {'fa_IR': 'ناودان تازه'})
++        rev.invalidate_recordset()
++        self.assertEqual(
++            (rev.label_resolved, rev.label_fa, rev.label_en,
++             rev.component_ids.mapped('customer_label_resolved')), before,
++            "an existing quotation snapshot must not follow later master translations")
++
++    def test_sealed_snapshot_and_artifact_survive_a_master_translation_change(self):
++        scope = self._scope('fa_IR')
++        rev = scope.current_revision_id
++        rev.action_seal()
++        sealed_hash = rev.sealed_hash
++        artifact_hashes = sorted(rev.artifact_ids.mapped('content_hash'))
++        draft = self._draft_master()
++        draft.update_field_translations('customer_label', {'fa_IR': 'برچسب تازه'})
++        rev.invalidate_recordset()
++        self.assertEqual(rev.sealed_hash, sealed_hash)
++        self.assertEqual(sorted(rev.artifact_ids.mapped('content_hash')), artifact_hashes)
++        self.assertEqual(rev._current_seal_hash(), sealed_hash,
++                         "recomputing the seal payload must still match")
++
++    def test_snapshot_is_not_a_live_read_of_the_master(self):
++        """The snapshot columns are plain columns, never translatable fields."""
++        rev = self._scope('fa_IR').current_revision_id
++        for fname in ('label_fa', 'label_en', 'label_resolved',
++                      'customer_description_resolved'):
++            self.assertFalse(rev._fields[fname].translate,
++                             f'{fname} must not be a translatable field')
++
++    # ------------------------------------------------- (5)(6)(7) language readiness
++    def _master_without_persian(self):
++        scope = self.env['sipanel.scope'].create({
++            'code': f'SIPANEL-PT-NOFA-{id(self) % 100000}', 'name': 'SIPANEL-PT no-Persian',
++            'owner_user_id': self.steward.id})
++        version = self.env['sipanel.scope.version'].create({
++            'scope_id': scope.id, 'customer_label': 'English only scope',
++            'base_uom_id': self.uom_m.id, 'dimension_family': 'length',
++            'anchor_product_id': self.p_anchor.id, 'all_systems': True})
++        self.env['sipanel.scope.recipe.line'].create({
++            'version_id': version.id, 'sequence': 10, 'product_id': self.p_gutter.id,
++            'uom_id': self.uom_m.id, 'dimension_family': 'length', 'basis': 'per_scope_qty',
++            'rate': 1.0, 'activity_id': self.act_ins.id, 'execution_mode': 'stock_issue',
++            'customer_eligible': True, 'customer_label': 'Gutter'})
++        version.with_context(**guard_ctx('sipanel_release_transaction')).write({
++            'state': 'released', 'release_checksum': 'test'})
++        return version
++
++    def test_draft_warns_when_the_requested_translation_is_missing(self):
++        """(5) the draft may fall back, but the gap must be visible."""
++        version = self._master_without_persian()
++        scope = self._scope('fa_IR', version=version)
++        rev = scope.current_revision_id
++        self.assertIn('customer_label', rev._missing_translation_keys())
++        self.assertTrue(rev.translation_provenance['version']['customer_label']['fallback'])
++        body = ' '.join(scope.message_ids.mapped('body'))
++        self.assertIn('customer_label', body,
++                      "the missing translation must be posted on the scope")
++        # the draft still has a usable anchor line
++        self.assertTrue(scope.anchor_line_id.name)
++
++    def test_seal_fails_closed_when_the_requested_translation_is_missing(self):
++        """(6) never send English fallback to a Persian customer."""
++        version = self._master_without_persian()
++        rev = self._scope('fa_IR', version=version).current_revision_id
++        with self.assertRaises(UserError):
++            rev.action_seal()
++        self.assertEqual(rev.state, 'working')
++        self.assertFalse(rev.artifact_ids)
++
++    def test_seal_succeeds_once_the_translation_exists(self):
++        rev = self._scope('fa_IR').current_revision_id
++        self.assertEqual(rev._missing_translation_keys(), [])
++        rev.action_seal()
++        self.assertEqual(rev.state, 'sent_sealed')
++
++    def test_readiness_blocks_on_a_missing_translation(self):
++        version = self._master_without_persian()
++        scope = self._scope('fa_IR', version=version)
++        codes = [i['code'] for i in scope._readiness_issues() if i['level'] == 'block']
++        self.assertIn('LABEL_LANG', codes)
++
++    def test_internal_only_component_needs_no_customer_translation(self):
++        """(7) exemption: an internal-only line never reaches the customer."""
++        scope = self._scope('fa_IR')
++        rev = scope.current_revision_id
++        internal = rev.component_ids.filtered(lambda c: c.disclosure == 'internal_only')
++        self.assertTrue(internal, 'fixture must contain an internal-only component')
++        for comp in internal:
++            self.assertTrue(comp.label_provenance.get('exempt'))
++        for key in rev._missing_translation_keys():
++            self.assertNotIn(key.removeprefix('component:'),
++                             internal.mapped('source_occurrence_key'))
++        # and it does not block the seal
++        rev.action_seal()
++        self.assertEqual(rev.state, 'sent_sealed')
++
++    # ------------------------------------------------------------ (13) duplication
++    def test_duplicate_quotation_keeps_the_original_snapshot_and_provenance(self):
++        scope = self._scope('fa_IR')
++        rev = scope.current_revision_id
++        order = scope.order_id
++        draft = self._draft_master()
++        draft.update_field_translations('customer_label', {'fa_IR': 'برچسب تازه'})
++        copy_order = order.copy()
++        new_scope = copy_order.sipanel_quote_scope_ids
++        self.assertEqual(len(new_scope), 1)
++        new_rev = new_scope.current_revision_id
++        self.assertEqual(new_rev.label_resolved, rev.label_resolved,
++                         "a duplicate copies the quotation, it does not re-resolve the master")
++        self.assertEqual(new_rev.resolved_language, rev.resolved_language)
++        self.assertEqual(new_rev.source_version_checksum, rev.source_version_checksum)
++        self.assertEqual(new_rev.translation_provenance, rev.translation_provenance)
++
++    # ------------------------------------------------------- (14) PDF / portal text
++    def test_customer_note_uses_the_resolved_snapshot_language(self):
++        rev = self._scope('fa_IR').current_revision_id
++        self.assertIn('متعلقات آبرو', rev.final_note)
++        self.assertNotIn('Gutter accessories', rev.final_note)
++        # the anchor line, which is what the PDF and the portal render
++        self.assertEqual(rev.quote_scope_id.anchor_line_id.name, rev.final_note)
++
++    def test_english_quotation_note_is_english(self):
++        rev = self._scope('en_US').current_revision_id
++        self.assertIn('Gutter accessories', rev.final_note)
++        self.assertNotIn('متعلقات آبرو', rev.final_note)
++
++    def test_sealed_text_artifact_carries_the_resolved_language(self):
++        rev = self._scope('fa_IR').current_revision_id
++        rev.action_seal()
++        artifact = rev.artifact_ids.filtered(lambda a: a.kind == 'text')
++        self.assertTrue(artifact)
++        self.assertEqual(artifact[0].language, 'fa_IR')
++        self.assertIn('ناودان', artifact[0].content_text)
++
++    # --------------------------------------------------------------- (15) leakage
++    def test_no_cost_margin_or_internal_text_reaches_the_customer_payload(self):
++        rev = self._scope('fa_IR').current_revision_id
++        blob = (rev.final_note or '') + ' '.join(
++            str(c._customer_payload(rev.language)) for c in rev.component_ids)
++        for forbidden in ('unit_cost', 'cost_amount', 'margin', 'standard_price',
++                          'internal_description', 'eligible_cost'):
++            self.assertNotIn(forbidden, blob)
++        internal = rev.component_ids.filtered(lambda c: c.disclosure == 'internal_only')
++        for comp in internal:
++            self.assertIsNone(comp._customer_payload(rev.language),
++                              'an internal-only component must never build a customer payload')
++
++    def test_master_internal_description_is_not_translatable_and_stays_internal(self):
++        self.assertFalse(self.v1._fields['internal_description'].translate)
++        rev = self._scope('fa_IR').current_revision_id
++        self.assertNotIn(self.v1.internal_description or '#none#', rev.final_note or '')
++
++    # --------------------------------------------------------- snapshot integrity
++    def test_snapshot_columns_hold_only_really_stored_terms(self):
++        """An English term must never be written into the Persian column."""
++        version = self._master_without_persian()
++        rev = self._scope('fa_IR', version=version).current_revision_id
++        self.assertFalse(rev.label_fa, 'no Persian term exists, so the column stays empty')
++        self.assertEqual(rev.label_en, 'English only scope')
++        self.assertFalse(stored_translations(version, 'customer_label').get('fa_IR'))
+diff --git a/addons/sipanel_sale_scope/views/quote_scope_component_views.xml b/addons/sipanel_sale_scope/views/quote_scope_component_views.xml
+index bd488aa..fed72ba 100644
+--- a/addons/sipanel_sale_scope/views/quote_scope_component_views.xml
++++ b/addons/sipanel_sale_scope/views/quote_scope_component_views.xml
+@@ -58,8 +58,9 @@
+                             <field name="provisional_basis"/>
+                             <field name="disclosure"/>
+                             <field name="treatment_preset"/>
+-                            <field name="customer_label_fa"/>
+-                            <field name="customer_label_en"/>
++                            <field name="customer_label_resolved"/>
++                            <field name="customer_label_fa" optional="hide"/>
++                            <field name="customer_label_en" optional="hide"/>
+                         </group>
+                         <group string="Execution intent">
+                             <field name="activity_id"/>
+diff --git a/addons/sipanel_sale_scope/views/quote_scope_revision_views.xml b/addons/sipanel_sale_scope/views/quote_scope_revision_views.xml
+index 06ac2cc..5cc9d2b 100644
+--- a/addons/sipanel_sale_scope/views/quote_scope_revision_views.xml
++++ b/addons/sipanel_sale_scope/views/quote_scope_revision_views.xml
+@@ -56,11 +56,19 @@
+                             <field name="fx_source"/>
+                             <field name="currency_id" invisible="1"/>
+                         </group>
+-                        <group string="Customer labels">
+-                            <field name="label_fa"/>
+-                            <field name="label_en"/>
+-                            <field name="customer_description_fa"/>
+-                            <field name="customer_description_en"/>
++                        <group string="Customer text (frozen snapshot)">
++                            <!-- Snapshot of the master text at the moment this revision was
++                                 created. It never follows later master edits, which is why
++                                 these are plain columns and not translatable fields. -->
++                            <field name="resolved_language"/>
++                            <field name="label_resolved"/>
++                            <field name="customer_description_resolved"/>
++                            <field name="source_version_checksum"/>
++                            <field name="translation_provenance" widget="json" optional="hide"/>
++                            <field name="label_fa" optional="hide"/>
++                            <field name="label_en" optional="hide"/>
++                            <field name="customer_description_fa" optional="hide"/>
++                            <field name="customer_description_en" optional="hide"/>
+                         </group>
+                         <group string="Seal">
+                             <field name="sealed_hash"/>
+diff --git a/addons/sipanel_sale_scope/wizards/replace_recipe.py b/addons/sipanel_sale_scope/wizards/replace_recipe.py
+index a3521d2..12883ff 100644
+--- a/addons/sipanel_sale_scope/wizards/replace_recipe.py
++++ b/addons/sipanel_sale_scope/wizards/replace_recipe.py
+@@ -45,10 +45,13 @@ class SipanelWizardReplaceRecipe(models.TransientModel):
+         Comp = self.env['sipanel.quote.scope.component'].sudo()
+         id_map = {}
+         for l in self.version_id.recipe_line_ids.sorted(lambda l: (l.sequence, l.id)):
++            c_terms, c_resolved, c_prov = snapshot_customer_text(l, 'customer_label', rev.language or 'en_US')
++            c_prov['exempt'] = (l.disclosure == 'internal_only') or not l.customer_eligible
+             cvals = {
+                 'revision_id': rev.id, 'source_occurrence_key': l.occurrence_key, 'source_line_id': l.id, 'origin': 'master',
+                 'sequence': l.sequence, 'kind': l.kind, 'product_id': l.product_id.id, 'description': l.internal_description,
+-                'customer_label_fa': l.customer_label_fa, 'customer_label_en': l.customer_label_en, 'spec_json': l.spec_json,
++                'customer_label_fa': c_terms.get('fa_IR', False), 'customer_label_en': c_terms.get('en_US', False),
++                'customer_label_resolved': c_resolved, 'label_provenance': c_prov, 'spec_json': l.spec_json,
+                 'uom_id': l.uom_id.id, 'uom_name_snapshot': l.uom_id.with_context(lang=rev.language or 'en_US').name, 'dimension_family': l.dimension_family,
+                 'basis': l.basis, 'rate': l.rate, 'fixed_qty': l.fixed_qty, 'percent': l.percent,
+                 'manual_qty': l.manual_qty_default, 'manual_qty_set': bool(l.basis == 'manual' and l.manual_qty_default),
+diff --git a/addons/sipanel_sale_scope/wizards/split_move.py b/addons/sipanel_sale_scope/wizards/split_move.py
+index d5391e9..3bad809 100644
+--- a/addons/sipanel_sale_scope/wizards/split_move.py
++++ b/addons/sipanel_sale_scope/wizards/split_move.py
+@@ -158,6 +158,10 @@ class SipanelWizardSplitMove(models.TransientModel):
+             'quote_scope_id': dest.id, 'revision': 1, 'language': src_rev.language, 'quote_uom_id': src_rev.quote_uom_id.id,
+             'base_uom_id': src_rev.base_uom_id.id, 'uom_factor': src_rev.uom_factor,
+             'label_fa': self.new_label or src_rev.label_fa, 'label_en': self.new_label or src_rev.label_en,
++            'label_resolved': self.new_label or src_rev.label_resolved,
++            'customer_description_resolved': src_rev.customer_description_resolved,
++            'resolved_language': src_rev.resolved_language, 'source_version_checksum': src_rev.source_version_checksum,
++            'translation_provenance': src_rev.translation_provenance,
+             'fx_source_currency_id': order.currency_id.id, 'fx_rate': 1.0, 'fx_date': fields.Date.today(), 'fx_source': 'company_currency',
+         })
+         dest.write({'current_revision_id': rev.id})
+diff --git a/addons/sipanel_sale_scope/wizards/treatment_transition.py b/addons/sipanel_sale_scope/wizards/treatment_transition.py
+index d72b681..d7dd9b2 100644
+--- a/addons/sipanel_sale_scope/wizards/treatment_transition.py
++++ b/addons/sipanel_sale_scope/wizards/treatment_transition.py
+@@ -38,6 +38,7 @@ class SipanelWizardTreatmentTransition(models.TransientModel):
+             if vals.get('responsibility') == 'customer':
+                 vals.update({'cost_source': 'not_applicable', 'execution_mode': 'no_action', 'no_action_reason': 'customer_responsibility'})
+             if vals.get('disclosure') == 'internal_only':
++                # keep the frozen label; an internal-only line is simply not published
+                 vals['customer_label_fa'] = c.customer_label_fa
+             c.write(vals)
+             self.env['sipanel.scope.audit.event'].log(c, 'preset_change', before=before,
+diff --git a/test_addons/sipanel_scope_demo/__init__.py b/test_addons/sipanel_scope_demo/__init__.py
+index e69de29..5fae39a 100644
+--- a/test_addons/sipanel_scope_demo/__init__.py
++++ b/test_addons/sipanel_scope_demo/__init__.py
+@@ -0,0 +1,2 @@
++# -*- coding: utf-8 -*-
++from . import hooks
+diff --git a/test_addons/sipanel_scope_demo/__manifest__.py b/test_addons/sipanel_scope_demo/__manifest__.py
+index 03ed892..f02063c 100644
+--- a/test_addons/sipanel_scope_demo/__manifest__.py
++++ b/test_addons/sipanel_scope_demo/__manifest__.py
+@@ -10,6 +10,7 @@
+     'data': [
+         'data/fixture_master.xml',
+     ],
++    'post_init_hook': 'post_init_hook',
+     'installable': True,
+     'auto_install': False,
+     'application': False,
+diff --git a/test_addons/sipanel_scope_demo/data/fixture_master.xml b/test_addons/sipanel_scope_demo/data/fixture_master.xml
+index d17747a..505c61a 100644
+--- a/test_addons/sipanel_scope_demo/data/fixture_master.xml
++++ b/test_addons/sipanel_scope_demo/data/fixture_master.xml
+@@ -29,20 +29,22 @@
+         <record id="scope_gutter" model="sipanel.scope"><field name="code">SIPANEL-PT-GUTTER</field><field name="name">SIPANEL-PT Gutter accessories (متعلقات آبرو)</field></record>
+         <record id="version_v1" model="sipanel.scope.version">
+             <field name="scope_id" ref="scope_gutter"/>
+-            <field name="label_fa">متعلقات آبرو</field>
+-            <field name="label_en">Gutter accessories</field>
++            <!-- STEP 2A: one native translatable field. A data file can only set the
++                 en_US source term; the Persian terms are loaded by the module's
++                 post-init hook so the demo still exercises both languages. -->
++            <field name="customer_label">Gutter accessories</field>
+             <field name="base_uom_id" ref="uom.product_uom_meter"/>
+             <field name="dimension_family">length</field>
+             <field name="anchor_product_id" ref="p_anchor"/>
+             <field name="anchor_owner_mode">component_bridge_owner</field>
+             <field name="all_systems" eval="True"/>
+         </record>
+-        <record id="rl_gutter" model="sipanel.scope.recipe.line"><field name="version_id" ref="version_v1"/><field name="sequence">10</field><field name="product_id" ref="p_gutter"/><field name="uom_id" ref="uom.product_uom_meter"/><field name="dimension_family">length</field><field name="basis">per_scope_qty</field><field name="rate">1</field><field name="activity_id" ref="aa_mfg"/><field name="execution_mode">manufacture</field><field name="customer_label_fa">ناودان</field><field name="customer_label_en">Gutter</field><field name="customer_eligible" eval="True"/></record>
+-        <record id="rl_bracket" model="sipanel.scope.recipe.line"><field name="version_id" ref="version_v1"/><field name="sequence">20</field><field name="product_id" ref="p_bracket"/><field name="uom_id" ref="uom.product_uom_unit"/><field name="dimension_family">count</field><field name="basis">per_scope_qty</field><field name="rate">2</field><field name="activity_id" ref="aa_ins"/><field name="execution_mode">stock_issue</field><field name="customer_label_fa">بست</field><field name="customer_label_en">Bracket</field><field name="customer_eligible" eval="True"/></record>
+-        <record id="rl_screw" model="sipanel.scope.recipe.line"><field name="version_id" ref="version_v1"/><field name="sequence">30</field><field name="product_id" ref="p_screw"/><field name="uom_id" ref="uom.product_uom_unit"/><field name="dimension_family">count</field><field name="basis">per_scope_qty</field><field name="rate">4</field><field name="activity_id" ref="aa_ins"/><field name="execution_mode">stock_issue</field><field name="customer_label_fa">پیچ</field><field name="customer_label_en">Screw</field><field name="customer_eligible" eval="True"/></record>
+-        <record id="rl_sealant" model="sipanel.scope.recipe.line"><field name="version_id" ref="version_v1"/><field name="sequence">40</field><field name="product_id" ref="p_sealant"/><field name="uom_id" ref="uom.product_uom_unit"/><field name="dimension_family">count</field><field name="basis">manual</field><field name="manual_qty_default">10</field><field name="activity_id" ref="aa_ins"/><field name="execution_mode">stock_issue</field><field name="customer_label_fa">درزگیر</field><field name="customer_label_en">Sealant</field><field name="customer_eligible" eval="True"/></record>
+-        <record id="rl_labour" model="sipanel.scope.recipe.line"><field name="version_id" ref="version_v1"/><field name="sequence">50</field><field name="product_id" ref="p_labour"/><field name="uom_id" ref="uom.product_uom_hour"/><field name="dimension_family">time</field><field name="basis">fixed</field><field name="fixed_qty">8</field><field name="activity_id" ref="aa_ins"/><field name="execution_mode">labour</field><field name="customer_label_fa">نصب</field><field name="customer_label_en">Installation</field><field name="customer_eligible" eval="True"/></record>
+-        <record id="rl_crane" model="sipanel.scope.recipe.line"><field name="version_id" ref="version_v1"/><field name="sequence">60</field><field name="product_id" ref="p_crane"/><field name="uom_id" ref="uom.product_uom_unit"/><field name="dimension_family">count</field><field name="basis">fixed</field><field name="fixed_qty">1</field><field name="activity_id" ref="aa_eqp"/><field name="execution_mode">equipment_service</field><field name="customer_label_fa">جرثقیل</field><field name="customer_label_en">Crane</field><field name="customer_eligible" eval="True"/></record>
++        <record id="rl_gutter" model="sipanel.scope.recipe.line"><field name="version_id" ref="version_v1"/><field name="sequence">10</field><field name="product_id" ref="p_gutter"/><field name="uom_id" ref="uom.product_uom_meter"/><field name="dimension_family">length</field><field name="basis">per_scope_qty</field><field name="rate">1</field><field name="activity_id" ref="aa_mfg"/><field name="execution_mode">manufacture</field><field name="customer_label">Gutter</field><field name="customer_eligible" eval="True"/></record>
++        <record id="rl_bracket" model="sipanel.scope.recipe.line"><field name="version_id" ref="version_v1"/><field name="sequence">20</field><field name="product_id" ref="p_bracket"/><field name="uom_id" ref="uom.product_uom_unit"/><field name="dimension_family">count</field><field name="basis">per_scope_qty</field><field name="rate">2</field><field name="activity_id" ref="aa_ins"/><field name="execution_mode">stock_issue</field><field name="customer_label">Bracket</field><field name="customer_eligible" eval="True"/></record>
++        <record id="rl_screw" model="sipanel.scope.recipe.line"><field name="version_id" ref="version_v1"/><field name="sequence">30</field><field name="product_id" ref="p_screw"/><field name="uom_id" ref="uom.product_uom_unit"/><field name="dimension_family">count</field><field name="basis">per_scope_qty</field><field name="rate">4</field><field name="activity_id" ref="aa_ins"/><field name="execution_mode">stock_issue</field><field name="customer_label">Screw</field><field name="customer_eligible" eval="True"/></record>
++        <record id="rl_sealant" model="sipanel.scope.recipe.line"><field name="version_id" ref="version_v1"/><field name="sequence">40</field><field name="product_id" ref="p_sealant"/><field name="uom_id" ref="uom.product_uom_unit"/><field name="dimension_family">count</field><field name="basis">manual</field><field name="manual_qty_default">10</field><field name="activity_id" ref="aa_ins"/><field name="execution_mode">stock_issue</field><field name="customer_label">Sealant</field><field name="customer_eligible" eval="True"/></record>
++        <record id="rl_labour" model="sipanel.scope.recipe.line"><field name="version_id" ref="version_v1"/><field name="sequence">50</field><field name="product_id" ref="p_labour"/><field name="uom_id" ref="uom.product_uom_hour"/><field name="dimension_family">time</field><field name="basis">fixed</field><field name="fixed_qty">8</field><field name="activity_id" ref="aa_ins"/><field name="execution_mode">labour</field><field name="customer_label">Installation</field><field name="customer_eligible" eval="True"/></record>
++        <record id="rl_crane" model="sipanel.scope.recipe.line"><field name="version_id" ref="version_v1"/><field name="sequence">60</field><field name="product_id" ref="p_crane"/><field name="uom_id" ref="uom.product_uom_unit"/><field name="dimension_family">count</field><field name="basis">fixed</field><field name="fixed_qty">1</field><field name="activity_id" ref="aa_eqp"/><field name="execution_mode">equipment_service</field><field name="customer_label">Crane</field><field name="customer_eligible" eval="True"/></record>
+         <record id="rl_allowance" model="sipanel.scope.recipe.line"><field name="version_id" ref="version_v1"/><field name="sequence">70</field><field name="product_id" ref="p_screw"/><field name="uom_id" ref="uom.product_uom_unit"/><field name="dimension_family">count</field><field name="basis">percent_of_quantity</field><field name="percent">5</field><field name="base_line_ids" eval="[(6, 0, [ref('rl_screw')])]"/><field name="activity_id" ref="aa_ins"/><field name="execution_mode">stock_issue</field><field name="disclosure">internal_only</field><field name="internal_description">Quantity allowance screw</field></record>
+         <record id="rl_contingency" model="sipanel.scope.recipe.line"><field name="version_id" ref="version_v1"/><field name="sequence">80</field><field name="product_id" ref="p_gutter"/><field name="uom_id" ref="uom.product_uom_meter"/><field name="dimension_family">length</field><field name="basis">percent_of_cost</field><field name="percent">2</field><field name="base_line_ids" eval="[(6, 0, [ref('rl_gutter'), ref('rl_bracket')])]"/><field name="cost_policy">derived</field><field name="activity_id" ref="aa_gen"/><field name="execution_mode">no_action</field><field name="no_action_reason">allowance</field><field name="disclosure">internal_only</field><field name="internal_description">Internal contingency</field></record>
+ 
+diff --git a/test_addons/sipanel_scope_demo/hooks.py b/test_addons/sipanel_scope_demo/hooks.py
+new file mode 100644
+index 0000000..f4b5875
+--- /dev/null
++++ b/test_addons/sipanel_scope_demo/hooks.py
+@@ -0,0 +1,27 @@
++# -*- coding: utf-8 -*-
++"""STEP 2A: load the demo's Persian terms.
++
++An Odoo data file can only set the `en_US` source of a translatable field, so
++the Persian demo text is stored here through the public translation API. The
++en_US key is always passed explicitly: with only a non-English key Odoo copies
++that term into the English source.
++"""
++FA_TERMS = {
++    'sipanel_scope_demo.version_v1': [('customer_label', 'Gutter accessories', 'متعلقات آبرو')],
++    'sipanel_scope_demo.rl_gutter': [('customer_label', 'Gutter', 'ناودان')],
++    'sipanel_scope_demo.rl_bracket': [('customer_label', 'Bracket', 'بست')],
++    'sipanel_scope_demo.rl_screw': [('customer_label', 'Screw', 'پیچ')],
++    'sipanel_scope_demo.rl_sealant': [('customer_label', 'Sealant', 'درزگیر')],
++    'sipanel_scope_demo.rl_labour': [('customer_label', 'Installation', 'نصب')],
++    'sipanel_scope_demo.rl_crane': [('customer_label', 'Crane', 'جرثقیل')],
++}
++
++
++def post_init_hook(env):
++    env['res.lang'].sudo()._activate_lang('fa_IR')
++    for xmlid, terms in FA_TERMS.items():
++        record = env.ref(xmlid, raise_if_not_found=False)
++        if not record:
++            continue
++        for field_name, en, fa in terms:
++            record.update_field_translations(field_name, {'en_US': en, 'fa_IR': fa})

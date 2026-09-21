@@ -1,0 +1,151 @@
+{
+ "versions": [
+  {
+   "id": 115,
+   "name": "SIPANEL-CUSTOMER-OUTPUT-CHECK-20260920T060817Z v1",
+   "state": "released",
+   "checksum_algo": "v1",
+   "customer_label": {
+    "en_US": "Gutter accessories (validation data)",
+    "fa_IR": "متعلقات آبرو (داده آزمایشی)"
+   },
+   "customer_description": {
+    "en_US": "Customer description: supply and installation of gutter accessories per drawing (validation only).",
+    "fa_IR": "شرح مشتری: تأمین و نصب متعلقات آبرو مطابق نقشه — این پیش‌فاکتور صرفاً برای اعتبارسنجی خروجی است."
+   },
+   "v1_checksum_verifies": true
+  },
+  {
+   "id": 111,
+   "name": "SIPANEL-PT-GUTTER v1",
+   "state": "released",
+   "checksum_algo": "v1",
+   "customer_label": {
+    "en_US": "Gutter accessories",
+    "fa_IR": "متعلقات آبرو"
+   },
+   "customer_description": {},
+   "v1_checksum_verifies": false
+  }
+ ],
+ "recipe_lines": [
+  {
+   "id": 897,
+   "label": {
+    "en_US": "Galvanised gutter",
+    "fa_IR": "ناودان گالوانیزه"
+   }
+  },
+  {
+   "id": 898,
+   "label": {
+    "en_US": "Wall bracket (billed separately)",
+    "fa_IR": "بست دیواری (صورت‌حساب جداگانه)"
+   }
+  },
+  {
+   "id": 899,
+   "label": {
+    "en_US": "Silicone sealant",
+    "fa_IR": "درزگیر سیلیکونی"
+   }
+  },
+  {
+   "id": 900,
+   "label": {
+    "en_US": "Installation",
+    "fa_IR": "نصب و راه‌اندازی"
+   }
+  },
+  {
+   "id": 901,
+   "label": {
+    "en_US": "Scaffolding and site access are the customer’s responsibility (excluded)",
+    "fa_IR": "داربست و دسترسی به محل به عهده کارفرما است (خارج از محدوده)"
+   }
+  },
+  {
+   "id": 902,
+   "label": {
+    "en_US": "INTERNAL-MARKER-LABEL-EN-20260920T060817Z",
+    "fa_IR": "INTERNAL-MARKER-LABEL-FA-20260920T060817Z"
+   }
+  },
+  {
+   "id": 903,
+   "label": {
+    "en_US": "Crane",
+    "fa_IR": "جرثقیل"
+   }
+  }
+ ],
+ "legacy_fields_removed": {
+  "label_fa": true,
+  "label_en": true,
+  "customer_description_fa": true,
+  "customer_description_en": true,
+  "recipe.customer_label_fa": true
+ },
+ "dormant_columns_still_in_db": [],
+ "sealed_revisions": [
+  {
+   "id": 237,
+   "ref": "SI-26/312 / SIPANEL-CUSTOMER-OUTPUT-CHECK-20260920T060817Z r1",
+   "state": "sent_sealed",
+   "stored_hash": "874468afa3ab4d56e88fef680e71d622dcdbc93ca4e2695f2c6afe551dd09cce",
+   "recomputed_matches": false,
+   "label_fa": "متعلقات آبرو (داده آزمایشی)",
+   "label_en": "Gutter accessories (validation data)",
+   "label_resolved": null,
+   "resolved_language": null
+  },
+  {
+   "id": 238,
+   "ref": "SI-26/312 / SIPANEL-CUSTOMER-OUTPUT-CHECK-20260920T060817Z r1",
+   "state": "sent_sealed",
+   "stored_hash": "59deaa8c04398abee9243c618de6ffa4f683d6849cf1ac408b2faf5bb2ccb386",
+   "recomputed_matches": false,
+   "label_fa": "متعلقات آبرو (داده آزمایشی)",
+   "label_en": "Gutter accessories (validation data)",
+   "label_resolved": null,
+   "resolved_language": null
+  }
+ ],
+ "artifacts": [
+  {
+   "id": 255,
+   "kind": "text",
+   "hash": "8aed0b99be83f9b07cd2bfaa34919033d34fbcd5c3287a657080407b7e58299e",
+   "lang": "fa_IR"
+  },
+  {
+   "id": 256,
+   "kind": "pdf",
+   "hash": "a3b1bf44af9590353f4d5ef853395fa70bc28253c3548348d44060c5fc34acae",
+   "lang": "fa_IR"
+  },
+  {
+   "id": 257,
+   "kind": "text",
+   "hash": "b8675e2c050ea493fe1757b99558ac4178bde4e65f50a60001bc0a49fafe4c03",
+   "lang": "fa_IR"
+  },
+  {
+   "id": 258,
+   "kind": "pdf",
+   "hash": "6234f7e6c6dc68942a508ec5a3e9528d3325ddb1afe6f6ee4e2473ba77e759b9",
+   "lang": "fa_IR"
+  }
+ ],
+ "config_unchanged": {
+  "report.url": "http://127.0.0.1:8072",
+  "website_langs": [
+   "en_US",
+   "fa_IR"
+  ],
+  "paperformat_margins": [
+   52.0,
+   32.0
+  ]
+ }
+}
