@@ -1,0 +1,61 @@
+SIPANEL STEP 2B — SEPARATELY BILLABLE SALE AND INVOICE LINES — BUNDLE MANIFEST
+Run:                 sipanel_separately_billable_20260921T021500Z
+Generated (UTC):     2026-09-21T07:19:13Z
+Verdict:             PASS — own-line components are governed, idempotent Sale Lines
+                     that flow natively into invoice lines
+Target:              database sipanel, container odoo-sipanel (RestartCount=0, no restart)
+Other tenants:       NOT touched (avizsazeh, shahbazi, ahantorob, odoo-db untouched)
+Modules upgraded:    sipanel_sale_scope 19.0.1.2.0; sipanel_commercial_scope_core (P1 only)
+Not changed:         sale_shamsi_report (HEAD 5680013, clean), scope_costing, scope_execution,
+                     Product Master, report.url, website languages, paperformat
+
+COMMITS — see SIPANEL_STEP2A_HARDENING_AND_COMMIT_RECONCILIATION.md (P2)
+  Parent commit at bundle build:  c737034b2f1cf7f30c910eb583bdc852a0c34388
+     This is HEAD *before* this run's commit, because the manifest and the ZIP are
+     themselves committed. The commit that CONTAINS this report directory is created
+     immediately after this bundle and is reported in the STEP 2B final response.
+     The STEP 2A manifest recorded its parent the same way; that value was stale,
+     not incorrect, and the old bundle is deliberately not rewritten.
+
+Recovery point:      /opt/odoo/backups/sipanel-pre-sepbill-20260921T021500Z (verified, NOT in this bundle)
+Tests:               SIPANEL 184/184 pass (was 122); sale_shamsi_report 80/80 pass — 264 total
+Live pilot:          Persian quotation -> seal -> optional acceptance -> re-seal -> confirm
+                     -> DRAFT invoice (never posted, deleted in cleanup)
+Temporary records:   draft invoice deleted; order cancelled and retained; Scopes, pilot master,
+                     products and partner archived; sealed revisions and artifacts retained by design
+
+FILES
+  SIPANEL_COMMERCIAL_RECONCILIATION_REPORT.md                                       5881 bytes
+  SIPANEL_INVOICE_LINE_TRACEABILITY_REPORT.md                                       5882 bytes
+  SIPANEL_OPERATOR_QUOTE_TO_INVOICE_GUIDE.md                                        5574 bytes
+  SIPANEL_PROCUREMENT_OWNERSHIP_AND_DOUBLE_COUNTING_REPORT.md                       4806 bytes
+  SIPANEL_SALE_LINE_PROJECTION_DATA_MODEL.md                                        7215 bytes
+  SIPANEL_SEAL_DRIFT_GATE_REPORT.md                                                 5247 bytes
+  SIPANEL_SEPARATELY_BILLABLE_IMPLEMENTATION_REPORT.md                             10159 bytes
+  SIPANEL_SEPARATELY_BILLABLE_TEST_RESULTS.md                                       7630 bytes
+  SIPANEL_STEP2A_HARDENING_AND_COMMIT_RECONCILIATION.md                             8338 bytes
+  SIPANEL_TEMPORARY_DATA_CLEANUP_REPORT.md                                          4816 bytes
+  evidence/logs/recovery_point_SHA256SUMS.txt                                        520 bytes
+  evidence/logs/test_sepbill_run1.log                                             125239 bytes
+  evidence/logs/test_sepbill_run2.log                                              49755 bytes
+  evidence/logs/test_sepbill_run3.log                                              56012 bytes
+  evidence/logs/test_sepbill_run4.log                                              27190 bytes
+  evidence/logs/test_shamsi_after_2b.log                                           17468 bytes
+  evidence/logs/test_shamsi_final_2b.log                                           17468 bytes
+  evidence/logs/test_sipanel_2b_run1.log                                           45480 bytes
+  evidence/logs/test_sipanel_after_2b.log                                          63705 bytes
+  evidence/logs/test_sipanel_final_2b.log                                          64655 bytes
+  evidence/logs/upgrade_2b.log                                                     11050 bytes
+  evidence/logs/upgrade_2b_views.log                                                8469 bytes
+  evidence/pilot/SIPANEL_PILOT_INVOICE_EVIDENCE_REDACTED.md                         2256 bytes
+  evidence/pilot/SIPANEL_PILOT_QUOTATION_AFTER_CONFIRM_REDACTED.pdf               129530 bytes
+  evidence/pilot/SIPANEL_PILOT_QUOTATION_BEFORE_SEAL_REDACTED.pdf                 129591 bytes
+  evidence/pilot/pilot_result.json                                                 12868 bytes
+  evidence/scripts/build_bundle_2b.sh                                               4126 bytes
+  evidence/scripts/cleanup_2b.py                                                    5143 bytes
+  evidence/scripts/pilot_2b.py                                                     10377 bytes
+  evidence/source_diff/sipanel_step2b.diff                                         96136 bytes
+
+EXCLUDED: database dumps, filestore, container config, private keys, portal access tokens.
+REDACTION: every document here was produced from synthetic data created for this run.
+          The invoice evidence redacts the customer identifier; no invoice was posted.

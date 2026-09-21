@@ -1,0 +1,1539 @@
+2026-09-21 06:29:15,768 1614 INFO ? odoo: Odoo version 19.0-20260528 
+2026-09-21 06:29:15,769 1614 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-21 06:29:15,769 1614 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-21 06:29:15,769 1614 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-09-21 06:29:17,021 1614 WARNING ? odoo.service.server: Unit testing in workers mode could fail; use --workers 0. 
+2026-09-21 06:29:17,129 1614 INFO sipanel odoo.tests.common: Importing test framework 
+2026-09-21 06:29:17,222 1614 INFO sipanel odoo.modules.loading: loading 1 modules... 
+2026-09-21 06:29:17,246 1614 INFO sipanel odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-09-21 06:29:17,345 1614 INFO sipanel odoo.modules.loading: updating modules list 
+2026-09-21 06:29:17,352 1614 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-21 06:29:21,424 1614 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['SIPANEL Sale Scope'] to user __system__ #1 via n/a 
+2026-09-21 06:29:21,425 1614 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['SIPANEL Sale Scope'] to user __system__ #1 via n/a 
+2026-09-21 06:29:23,708 1614 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-21 06:29:23,807 1614 INFO sipanel odoo.modules.loading: loading 200 modules... 
+2026-09-21 06:29:29,047 1614 INFO sipanel odoo.modules.loading: Loading module sipanel_sale_scope (180/200) 
+2026-09-21 06:29:30,088 1614 INFO sipanel odoo.registry: module sipanel_sale_scope: creating or updating database tables 
+2026-09-21 06:29:30,747 1614 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_security.xml 
+2026-09-21 06:29:30,970 1614 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/ir.model.access.csv 
+2026-09-21 06:29:33,040 1614 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_record_rules.xml 
+2026-09-21 06:29:33,055 1614 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/add_scope_views.xml 
+2026-09-21 06:29:33,111 1614 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/refresh_cost_views.xml 
+2026-09-21 06:29:33,142 1614 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/split_move_views.xml 
+2026-09-21 06:29:33,178 1614 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/apply_price_views.xml 
+2026-09-21 06:29:33,205 1614 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/regenerate_note_views.xml 
+2026-09-21 06:29:33,233 1614 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/treatment_transition_views.xml 
+2026-09-21 06:29:33,280 1614 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/replace_recipe_views.xml 
+2026-09-21 06:29:33,308 1614 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_views.xml 
+2026-09-21 06:29:33,378 1614 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_revision_views.xml 
+2026-09-21 06:29:33,461 1614 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_component_views.xml 
+2026-09-21 06:29:33,491 1614 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/waiver_views.xml 
+2026-09-21 06:29:33,548 1614 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_order_views.xml 
+2026-09-21 06:29:33,799 1614 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_portal_templates.xml 
+2026-09-21 06:29:33,834 1614 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/menus.xml 
+2026-09-21 06:29:33,901 1614 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language fa_IR 
+2026-09-21 06:29:33,911 1614 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language ru_RU 
+2026-09-21 06:29:34,237 1614 INFO sipanel odoo.modules.loading: Module sipanel_sale_scope loaded in 5.19s, 676 queries (+676 other) 
+2026-09-21 06:29:34,462 1614 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_execution (198/200) 
+2026-09-21 06:29:35,033 1614 INFO sipanel odoo.registry: module sipanel_scope_execution: creating or updating database tables 
+2026-09-21 06:29:35,409 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_security.xml 
+2026-09-21 06:29:35,461 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/ir.model.access.csv 
+2026-09-21 06:29:35,529 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_record_rules.xml 
+2026-09-21 06:29:35,538 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/data/owner_rules.xml 
+2026-09-21 06:29:35,547 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/owner_rule_views.xml 
+2026-09-21 06:29:35,573 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/execution_views.xml 
+2026-09-21 06:29:35,658 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/sale_order_views.xml 
+2026-09-21 06:29:35,993 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/res_config_settings_views.xml 
+2026-09-21 06:29:36,492 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/menus.xml 
+2026-09-21 06:29:36,547 1614 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language fa_IR 
+2026-09-21 06:29:36,553 1614 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language ru_RU 
+2026-09-21 06:29:36,693 1614 INFO sipanel odoo.modules.loading: Module sipanel_scope_execution loaded in 2.23s, 499 queries (+499 other) 
+2026-09-21 06:29:36,698 1614 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_costing (200/200) 
+2026-09-21 06:29:36,820 1614 INFO sipanel odoo.registry: module sipanel_scope_costing: creating or updating database tables 
+2026-09-21 06:29:37,148 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_security.xml 
+2026-09-21 06:29:37,209 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/ir.model.access.csv 
+2026-09-21 06:29:37,282 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_record_rules.xml 
+2026-09-21 06:29:37,291 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/recognition_policies.xml 
+2026-09-21 06:29:37,311 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/ir_cron.xml 
+2026-09-21 06:29:37,317 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/policy_views.xml 
+2026-09-21 06:29:37,359 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/event_views.xml 
+2026-09-21 06:29:37,409 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/variance_views.xml 
+2026-09-21 06:29:37,436 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/sale_order_views.xml 
+2026-09-21 06:29:37,731 1614 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/menus.xml 
+2026-09-21 06:29:37,794 1614 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language fa_IR 
+2026-09-21 06:29:37,800 1614 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language ru_RU 
+2026-09-21 06:29:37,939 1614 INFO sipanel odoo.modules.loading: Module sipanel_scope_costing loaded in 1.24s, 339 queries (+339 other) 
+2026-09-21 06:29:37,939 1614 INFO sipanel odoo.modules.loading: 200 modules loaded in 14.13s, 1514 queries (+1514 extra) 
+2026-09-21 06:29:39,431 1614 INFO sipanel odoo.registry: verifying fields for every extended model 
+2026-09-21 06:29:41,812 1614 INFO sipanel odoo.modules.loading: Modules loaded. 
+2026-09-21 06:29:41,865 1614 INFO sipanel odoo.registry: Registry changed, signaling through the database 
+2026-09-21 06:29:41,870 1614 INFO sipanel odoo.registry: Registry loaded in 24.849s 
+2026-09-21 06:29:41,871 1614 INFO sipanel odoo.service.server: Starting post tests 
+2026-09-21 06:29:42,945 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-21 06:29:43,504 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-21 06:29:43,965 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-21 06:29:47,703 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-21 06:29:48,192 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-21 06:29:48,748 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-21 06:29:49,359 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestProjection.test_customer_scope_creates_no_separate_line ... 
+2026-09-21 06:29:49,885 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:29:49,885 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestProjection.test_customer_scope_creates_no_separate_line
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 171, in test_customer_scope_creates_no_separate_line
+    rev = self._add_scope().current_revision_id
+          ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:29:49,894 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestProjection.test_database_constraint_refuses_a_second_line_for_one_component ... 
+2026-09-21 06:29:50,396 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:29:50,396 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestProjection.test_database_constraint_refuses_a_second_line_for_one_component
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 143, in test_database_constraint_refuses_a_second_line_for_one_component
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:29:50,400 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestProjection.test_deactivated_component_line_is_retired ... 
+2026-09-21 06:29:50,866 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:29:50,866 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestProjection.test_deactivated_component_line_is_retired
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 179, in test_deactivated_component_line_is_retired
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:29:50,871 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestProjection.test_eligible_own_line_component_creates_exactly_one_sale_line ... 
+2026-09-21 06:29:51,347 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:29:51,347 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestProjection.test_eligible_own_line_component_creates_exactly_one_sale_line
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 122, in test_eligible_own_line_component_creates_exactly_one_sale_line
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:29:51,353 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestProjection.test_included_component_creates_no_separate_line ... 
+2026-09-21 06:29:51,830 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:29:51,831 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestProjection.test_included_component_creates_no_separate_line
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 155, in test_included_component_creates_no_separate_line
+    rev = self._add_scope().current_revision_id
+          ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:29:51,834 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestProjection.test_internal_only_creates_no_separate_line ... 
+2026-09-21 06:29:52,358 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:29:52,359 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestProjection.test_internal_only_creates_no_separate_line
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 162, in test_internal_only_creates_no_separate_line
+    rev = self._add_scope().current_revision_id
+          ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:29:52,363 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestProjection.test_product_backed_mapping_uses_the_component_product ... 
+2026-09-21 06:29:52,799 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:29:52,800 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestProjection.test_product_backed_mapping_uses_the_component_product
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 189, in test_product_backed_mapping_uses_the_component_product
+    rev = self._add_scope().current_revision_id
+          ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:29:52,803 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestProjection.test_repeated_synchronisation_creates_no_duplicate ... 
+2026-09-21 06:29:53,406 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:29:53,406 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestProjection.test_repeated_synchronisation_creates_no_duplicate
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 132, in test_repeated_synchronisation_creates_no_duplicate
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:29:54,193 1614 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-09-21 06:29:54,909 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-21 06:29:55,599 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-21 06:29:56,257 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-21 06:30:02,887 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-21 06:30:03,560 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-21 06:30:04,091 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-21 06:30:04,676 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricingReadiness.test_estimate_only_without_product_blocks_readiness ... 
+2026-09-21 06:30:05,198 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:05,199 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestPricingReadiness.test_estimate_only_without_product_blocks_readiness
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 201, in test_estimate_only_without_product_blocks_readiness
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:05,208 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricingReadiness.test_governed_manual_price_wins_over_the_pricelist ... 
+2026-09-21 06:30:05,688 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:05,688 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestPricingReadiness.test_governed_manual_price_wins_over_the_pricelist
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 244, in test_governed_manual_price_wins_over_the_pricelist
+    rev = self._add_scope().current_revision_id
+          ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:05,692 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricingReadiness.test_known_zero_selling_price_is_distinguishable_and_allowed ... 
+2026-09-21 06:30:06,196 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:06,196 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestPricingReadiness.test_known_zero_selling_price_is_distinguishable_and_allowed
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 227, in test_known_zero_selling_price_is_distinguishable_and_allowed
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:06,200 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricingReadiness.test_missing_selling_price_blocks_seal ... 
+2026-09-21 06:30:06,724 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:06,724 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestPricingReadiness.test_missing_selling_price_blocks_seal
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 215, in test_missing_selling_price_blocks_seal
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:06,729 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricingReadiness.test_price_status_is_not_applicable_for_an_included_component ... 
+2026-09-21 06:30:07,268 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:07,269 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestPricingReadiness.test_price_status_is_not_applicable_for_an_included_component
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 238, in test_price_status_is_not_applicable_for_an_included_component
+    rev = self._add_scope().current_revision_id
+          ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:08,221 1614 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-09-21 06:30:08,995 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-21 06:30:09,627 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-21 06:30:10,153 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-21 06:30:14,046 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-21 06:30:14,587 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-21 06:30:15,088 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-21 06:30:15,714 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestAmountsAndReconciliation.test_a_component_is_never_both_included_and_separate ... 
+2026-09-21 06:30:16,250 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:16,250 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestAmountsAndReconciliation.test_a_component_is_never_both_included_and_separate
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 295, in test_a_component_is_never_both_included_and_separate
+    rev = self._add_scope().current_revision_id
+          ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:16,255 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestAmountsAndReconciliation.test_anchor_total_excludes_the_separate_line_amount ... 
+2026-09-21 06:30:16,744 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:16,744 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestAmountsAndReconciliation.test_anchor_total_excludes_the_separate_line_amount
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 268, in test_anchor_total_excludes_the_separate_line_amount
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:16,747 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestAmountsAndReconciliation.test_included_component_stays_out_of_the_customer_note_bullets ... 
+2026-09-21 06:30:16,754 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:16,755 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestAmountsAndReconciliation.test_included_component_stays_out_of_the_customer_note_bullets
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 301, in test_included_component_stays_out_of_the_customer_note_bullets
+    rev = self._add_scope('fa_IR').current_revision_id
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 251, in _create_from_version
+    if version.company_id != order.company_id:
+                             ^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'company_id'
+ 
+2026-09-21 06:30:16,757 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestAmountsAndReconciliation.test_native_taxes_apply_to_the_generated_line ... 
+2026-09-21 06:30:17,409 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:17,410 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestAmountsAndReconciliation.test_native_taxes_apply_to_the_generated_line
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 261, in test_native_taxes_apply_to_the_generated_line
+    rev = self._add_scope().current_revision_id
+          ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:17,416 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestAmountsAndReconciliation.test_reconciliation_reports_no_double_billing ... 
+2026-09-21 06:30:17,965 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:17,965 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestAmountsAndReconciliation.test_reconciliation_reports_no_double_billing
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 283, in test_reconciliation_reports_no_double_billing
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:18,687 1614 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-09-21 06:30:19,418 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-21 06:30:19,961 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-21 06:30:20,456 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-21 06:30:24,204 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-21 06:30:24,717 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-21 06:30:25,209 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-21 06:30:25,788 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestOptionalAndProvisional.test_optional_acceptance_gives_the_line_its_governed_quantity ... 
+2026-09-21 06:30:26,315 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:26,315 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestOptionalAndProvisional.test_optional_acceptance_gives_the_line_its_governed_quantity
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 323, in test_optional_acceptance_gives_the_line_its_governed_quantity
+    scope = self._add_scope(optional=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:26,321 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestOptionalAndProvisional.test_optional_acceptance_is_idempotent ... 
+2026-09-21 06:30:26,897 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:26,898 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestOptionalAndProvisional.test_optional_acceptance_is_idempotent
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 333, in test_optional_acceptance_is_idempotent
+    scope = self._add_scope(optional=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:26,902 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestOptionalAndProvisional.test_optional_unaccepted_line_is_quantity_zero ... 
+2026-09-21 06:30:27,508 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:27,508 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestOptionalAndProvisional.test_optional_unaccepted_line_is_quantity_zero
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 313, in test_optional_unaccepted_line_is_quantity_zero
+    scope = self._add_scope(optional=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:27,512 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestOptionalAndProvisional.test_provisional_line_is_gated_from_invoicing ... 
+2026-09-21 06:30:28,074 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:28,074 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestOptionalAndProvisional.test_provisional_line_is_gated_from_invoicing
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 346, in test_provisional_line_is_gated_from_invoicing
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:28,078 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestOptionalAndProvisional.test_resolving_a_provisional_component_lifts_the_gate ... 
+2026-09-21 06:30:28,654 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:28,654 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestOptionalAndProvisional.test_resolving_a_provisional_component_lifts_the_gate
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 356, in test_resolving_a_provisional_component_lifts_the_gate
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:29,618 1614 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-09-21 06:30:30,623 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-21 06:30:31,228 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-21 06:30:31,738 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-21 06:30:35,560 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-21 06:30:36,083 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-21 06:30:36,600 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-21 06:30:37,335 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSecurityAndLifecycle.test_cost_and_margin_stay_restricted_on_the_generated_line ... 
+2026-09-21 06:30:37,897 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:37,897 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestSecurityAndLifecycle.test_cost_and_margin_stay_restricted_on_the_generated_line
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 418, in test_cost_and_margin_stay_restricted_on_the_generated_line
+    rev = self._add_scope().current_revision_id
+          ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:37,904 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSecurityAndLifecycle.test_duplicate_quotation_gets_independent_projected_lines ... 
+2026-09-21 06:30:38,498 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:38,499 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestSecurityAndLifecycle.test_duplicate_quotation_gets_independent_projected_lines
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 401, in test_duplicate_quotation_gets_independent_projected_lines
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:38,505 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSecurityAndLifecycle.test_provenance_cannot_be_supplied_on_create ... 
+2026-09-21 06:30:38,983 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSecurityAndLifecycle.test_provenance_cannot_be_written_by_sudo_import_or_rpc_context ... 
+2026-09-21 06:30:39,566 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:39,566 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestSecurityAndLifecycle.test_provenance_cannot_be_written_by_sudo_import_or_rpc_context
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 382, in test_provenance_cannot_be_written_by_sudo_import_or_rpc_context
+    rev = self._add_scope().current_revision_id
+          ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:39,569 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSecurityAndLifecycle.test_sealed_generated_line_cannot_be_edited_directly ... 
+2026-09-21 06:30:40,062 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:40,063 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestSecurityAndLifecycle.test_sealed_generated_line_cannot_be_edited_directly
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 392, in test_sealed_generated_line_cannot_be_edited_directly
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:40,819 1614 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-09-21 06:30:41,636 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-21 06:30:42,217 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-21 06:30:42,782 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-21 06:30:46,575 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-21 06:30:47,164 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-21 06:30:47,836 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-21 06:30:48,454 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSealDrift.test_commercial_change_after_sealing_requires_a_new_revision_and_reseal ... 
+2026-09-21 06:30:48,931 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:48,932 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestSealDrift.test_commercial_change_after_sealing_requires_a_new_revision_and_reseal
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 464, in test_commercial_change_after_sealing_requires_a_new_revision_and_reseal
+    scope, rev = self._sealed()
+                 ^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 430, in _sealed
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:48,938 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSealDrift.test_prior_artifacts_are_retained_after_amendment ... 
+2026-09-21 06:30:49,444 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:49,444 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestSealDrift.test_prior_artifacts_are_retained_after_amendment
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 480, in test_prior_artifacts_are_retained_after_amendment
+    scope, rev = self._sealed()
+                 ^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 430, in _sealed
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:49,448 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSealDrift.test_seal_drift_blocks_acceptance ... 
+2026-09-21 06:30:49,941 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:49,941 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestSealDrift.test_seal_drift_blocks_acceptance
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 436, in test_seal_drift_blocks_acceptance
+    scope, rev = self._sealed()
+                 ^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 430, in _sealed
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:49,945 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSealDrift.test_seal_drift_blocks_confirmation ... 
+2026-09-21 06:30:50,479 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:50,479 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestSealDrift.test_seal_drift_blocks_confirmation
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 446, in test_seal_drift_blocks_confirmation
+    scope, rev = self._sealed()
+                 ^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 430, in _sealed
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:50,483 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSealDrift.test_seal_drift_blocks_invoice_creation ... 
+2026-09-21 06:30:50,942 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:50,943 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestSealDrift.test_seal_drift_blocks_invoice_creation
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 453, in test_seal_drift_blocks_invoice_creation
+    scope, rev = self._sealed()
+                 ^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 430, in _sealed
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:51,667 1614 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-09-21 06:30:52,537 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-21 06:30:53,144 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-21 06:30:53,686 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-21 06:30:57,230 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-21 06:30:57,798 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-21 06:30:58,392 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-21 06:30:58,990 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceFlow.test_confirmed_order_produces_the_expected_invoice_line ... 
+2026-09-21 06:30:59,536 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:30:59,536 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestInvoiceFlow.test_confirmed_order_produces_the_expected_invoice_line
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 499, in test_confirmed_order_produces_the_expected_invoice_line
+    scope, rev = self._confirmed()
+                 ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 491, in _confirmed
+    scope = self._add_scope(order=self._order(lang))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:30:59,545 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceFlow.test_customer_scope_and_internal_only_create_no_invoice_line ... 
+2026-09-21 06:31:00,118 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:31:00,118 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestInvoiceFlow.test_customer_scope_and_internal_only_create_no_invoice_line
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 516, in test_customer_scope_and_internal_only_create_no_invoice_line
+    scope, rev = self._confirmed()
+                 ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 491, in _confirmed
+    scope = self._add_scope(order=self._order(lang))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:31:00,122 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceFlow.test_english_quotation_invoices_in_english ... 
+2026-09-21 06:31:00,644 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:31:00,644 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestInvoiceFlow.test_english_quotation_invoices_in_english
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 551, in test_english_quotation_invoices_in_english
+    scope, rev = self._confirmed('en_US')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 491, in _confirmed
+    scope = self._add_scope(order=self._order(lang))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:31:00,648 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceFlow.test_generated_line_appears_in_the_customer_pdf_without_internal_data ... 
+2026-09-21 06:31:01,118 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:31:01,119 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestInvoiceFlow.test_generated_line_appears_in_the_customer_pdf_without_internal_data
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 567, in test_generated_line_appears_in_the_customer_pdf_without_internal_data
+    scope, rev = self._confirmed('fa_IR')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 491, in _confirmed
+    scope = self._add_scope(order=self._order(lang))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:31:01,122 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceFlow.test_included_component_creates_no_invoice_line ... 
+2026-09-21 06:31:01,697 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:31:01,697 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestInvoiceFlow.test_included_component_creates_no_invoice_line
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 509, in test_included_component_creates_no_invoice_line
+    scope, rev = self._confirmed()
+                 ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 491, in _confirmed
+    scope = self._add_scope(order=self._order(lang))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:31:01,701 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceFlow.test_invoice_description_uses_the_frozen_resolved_translation ... 
+2026-09-21 06:31:02,266 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:31:02,267 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestInvoiceFlow.test_invoice_description_uses_the_frozen_resolved_translation
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 543, in test_invoice_description_uses_the_frozen_resolved_translation
+    scope, rev = self._confirmed('fa_IR')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 491, in _confirmed
+    scope = self._add_scope(order=self._order(lang))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:31:02,271 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceFlow.test_invoice_line_carries_source_provenance ... 
+2026-09-21 06:31:02,765 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:31:02,766 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestInvoiceFlow.test_invoice_line_carries_source_provenance
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 532, in test_invoice_line_carries_source_provenance
+    scope, rev = self._confirmed()
+                 ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 491, in _confirmed
+    scope = self._add_scope(order=self._order(lang))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:31:02,769 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceFlow.test_invoice_provenance_cannot_be_forged_on_a_manual_invoice ... 
+2026-09-21 06:31:03,915 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceFlow.test_provisional_component_creates_no_invoice_line ... 
+2026-09-21 06:31:04,353 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:31:04,354 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestInvoiceFlow.test_provisional_component_creates_no_invoice_line
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 524, in test_provisional_component_creates_no_invoice_line
+    scope, rev = self._confirmed()
+                 ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 491, in _confirmed
+    scope = self._add_scope(order=self._order(lang))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:31:05,136 1614 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-09-21 06:31:05,967 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-21 06:31:06,565 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-21 06:31:07,152 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-21 06:31:10,712 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-21 06:31:11,217 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-21 06:31:11,704 1614 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-21 06:31:12,255 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestOperationalOwnership.test_generated_line_does_not_add_a_second_procurement_owner ... 
+2026-09-21 06:31:12,789 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:31:12,789 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestOperationalOwnership.test_generated_line_does_not_add_a_second_procurement_owner
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 582, in test_generated_line_does_not_add_a_second_procurement_owner
+    scope, rev = self._add_scope(), None
+                 ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:31:12,795 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestOperationalOwnership.test_one_component_yields_one_execution_demand ... 
+2026-09-21 06:31:13,387 1614 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-21 06:31:13,387 1614 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestOperationalOwnership.test_one_component_yields_one_execution_demand
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 593, in test_one_component_yields_one_execution_demand
+    scope = self._add_scope()
+            ^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 99, in _add_scope
+    return self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope.py", line 335, in _create_from_version
+    id_map[l.id] = Comp.create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 339, in create
+    recs = super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4709, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4947, in _create
+    records._validate_fields(name for data in data_list for name in data['stored'])
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 328, in _check_component
+    raise ValidationError(_("PROVISIONAL components need a customer-visible basis (%s).", c.display_name))
+odoo.exceptions.ValidationError: PROVISIONAL components need a customer-visible basis (SIPANEL-PT-CORE Base crane service).
+ 
+2026-09-21 06:31:14,146 1614 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-09-21 06:31:14,150 1614 INFO sipanel odoo.service.server: 44 post-tests in 92.28s, 22724 queries 
+2026-09-21 06:31:14,151 1614 INFO sipanel odoo.tests.stats: sipanel_sale_scope: 60 tests 92.25s 22724 queries 
+2026-09-21 06:31:14,151 1614 INFO sipanel odoo.service.server: Stopping workers gracefully 

@@ -1,0 +1,1739 @@
+diff --git a/addons/sipanel_commercial_scope_core/models/sipanel_tools.py b/addons/sipanel_commercial_scope_core/models/sipanel_tools.py
+index e213c77..38b8a5f 100644
+--- a/addons/sipanel_commercial_scope_core/models/sipanel_tools.py
++++ b/addons/sipanel_commercial_scope_core/models/sipanel_tools.py
+@@ -159,8 +159,23 @@ def guard(env, name):
+ # returns the raw jsonb map without applying the fallback
+ # (odoo/orm/fields_textual.py). It is module-private but it is an ORM accessor,
+ # not hand-written translation SQL: it flushes the record and reads back the
+-# column Odoo itself wrote. We keep the dependency in this one place and fall
+-# back to a conservative comparison if a future version removes it.
++# column Odoo itself wrote. The dependency is kept in this one place.
++#
++# If a future Odoo removes it we FAIL CLOSED rather than degrade. The obvious
++# degradation - reading the field under each language context and treating a
++# non-empty value as a stored term - is exactly wrong: that read returns the
++# en_US fallback, so every language would look translated and a Persian
++# customer could be sent English text with no warning. A hard error is
++# recoverable by a developer; a silent mistranslation on a sent quotation is
++# not.
++
++class MissingTranslationAccessor(RuntimeError):
++    """The ORM no longer exposes a raw stored-translation accessor.
++
++    Deliberately a technical error, not a UserError: it means the code must be
++    ported, and no business decision can be taken while it is raised.
++    """
++
+ 
+ def stored_translations(record, field_name):
+     """Raw {lang: term} actually stored for a translatable field, no fallback.
+@@ -175,14 +190,15 @@ def stored_translations(record, field_name):
+     if not record.id:
+         return {}
+     getter = getattr(field, '_get_stored_translations', None)
+-    if getter is None:  # pragma: no cover - guard for a future ORM change
+-        raw = {}
+-        for code, _name in record.env['res.lang'].get_installed():
+-            value = record.with_context(lang=code)[field_name]
+-            if value:
+-                raw[code] = value
+-    else:
+-        raw = getter(record) or {}
++    if getter is None:
++        raise MissingTranslationAccessor(
++            f"This Odoo build has no {type(field).__name__}._get_stored_translations, "
++            f"so a stored translation of {record._name}.{field_name} cannot be told "
++            f"apart from the en_US fallback. SIPANEL refuses to guess: customer-facing "
++            f"language readiness depends on this distinction. Port "
++            f"sipanel_tools.stored_translations() to the new ORM accessor."
++        )
++    raw = getter(record) or {}
+     return {lang: term.strip() for lang, term in raw.items()
+             if isinstance(term, str) and term.strip()}
+ 
+diff --git a/addons/sipanel_commercial_scope_core/tests/test_native_translation.py b/addons/sipanel_commercial_scope_core/tests/test_native_translation.py
+index e53e648..833840d 100644
+--- a/addons/sipanel_commercial_scope_core/tests/test_native_translation.py
++++ b/addons/sipanel_commercial_scope_core/tests/test_native_translation.py
+@@ -4,12 +4,15 @@
+ These tests drive the ORM the way an operator, an import, an RPC client and the
+ translation dialog do. They never assert on template or view source.
+ """
++from unittest.mock import patch
++
+ from odoo.exceptions import UserError
+ from odoo.tests import tagged
+ 
+ from ..models.legacy_translation_backfill import backfill, plan_record
+-from ..models.sipanel_tools import (has_translation, resolve_customer_text,
+-                                    stored_translations, translation_map)
++from ..models.sipanel_tools import (MissingTranslationAccessor, has_translation,
++                                    resolve_customer_text, stored_translations,
++                                    translation_map)
+ from .common import SipanelCoreCase, set_translation
+ 
+ 
+@@ -67,6 +70,30 @@ class TestNativeMasterTranslation(SipanelCoreCase):
+         self.assertEqual(used, 'en_US')
+         self.assertEqual(value, 'Gutter accessories')
+ 
++    def test_accessor_unavailability_fails_closed(self):
++        """P1: if a future Odoo drops the raw accessor we must raise, never guess.
++
++        The tempting fallback - read the field under each language and treat a
++        non-empty value as a stored term - reports the en_US fallback as a
++        translation, so every language would look ready and a Persian customer
++        could be sent English silently. Simulate the accessor being gone and
++        assert we refuse rather than degrade.
++        """
++        version = self._draft_version()
++        set_translation(version, 'customer_label', en='Gutter accessories')
++        field = version._fields['customer_label']
++        self.assertTrue(hasattr(field, '_get_stored_translations'),
++                        'installed Odoo 19 must still expose the accessor')
++        # patch the class, not the instance: Field objects may use __slots__
++        with patch.object(type(field), '_get_stored_translations', None):
++            with self.assertRaises(MissingTranslationAccessor):
++                stored_translations(version, 'customer_label')
++            with self.assertRaises(MissingTranslationAccessor):
++                has_translation(version, 'customer_label', 'fa_IR')
++        # and no behaviour change once it is back
++        self.assertEqual(stored_translations(version, 'customer_label'),
++                         {'en_US': 'Gutter accessories'})
++
+     def test_persian_only_master_does_not_leak_into_the_english_source(self):
+         version = self._draft_version()
+         version.update_field_translations('customer_label', {'en_US': '', 'fa_IR': 'فقط فارسی'})
+diff --git a/addons/sipanel_sale_scope/__manifest__.py b/addons/sipanel_sale_scope/__manifest__.py
+index 7d1dde8..346149c 100644
+--- a/addons/sipanel_sale_scope/__manifest__.py
++++ b/addons/sipanel_sale_scope/__manifest__.py
+@@ -2,7 +2,7 @@
+ {
+     'name': 'SIPANEL Sale Scope',
+     'summary': 'Quote Scope, revisions, component snapshots, quantity/cost engine, pricing & margin, notes, seal, optional/provisional governance, portal guard (Slices B + C)',
+-    'version': '19.0.1.1.0',
++    'version': '19.0.1.2.0',
+     'category': 'Sales/Sales',
+     'author': 'SIPANEL',
+     'license': 'LGPL-3',
+diff --git a/addons/sipanel_sale_scope/models/__init__.py b/addons/sipanel_sale_scope/models/__init__.py
+index 6a95010..0c162ce 100644
+--- a/addons/sipanel_sale_scope/models/__init__.py
++++ b/addons/sipanel_sale_scope/models/__init__.py
+@@ -5,3 +5,5 @@ from . import artifact
+ from . import waiver
+ from . import sale_order
+ from . import sale_order_line
++from . import account_move_line
++from . import separately_billable
+diff --git a/addons/sipanel_sale_scope/models/account_move_line.py b/addons/sipanel_sale_scope/models/account_move_line.py
+new file mode 100644
+index 0000000..374202e
+--- /dev/null
++++ b/addons/sipanel_sale_scope/models/account_move_line.py
+@@ -0,0 +1,61 @@
++# -*- coding: utf-8 -*-
++"""Invoice-line traceability back to the governed Scope (STEP 2B).
++
++Only provenance is added here. Amount, tax, fiscal position, currency and
++rounding stay entirely native: nothing in this file computes money.
++"""
++from odoo import api, fields, models
++from odoo.exceptions import UserError
++
++from odoo.addons.sipanel_commercial_scope_core.models.sipanel_tools import guard
++
++TRACE_FIELDS = {
++    'sipanel_source_component_id', 'sipanel_source_revision_id',
++    'sipanel_source_quote_scope_id', 'sipanel_source_scope_id',
++    'sipanel_origin_key', 'sipanel_source_line_id',
++}
++
++
++class AccountMoveLine(models.Model):
++    _inherit = 'account.move.line'
++
++    sipanel_source_component_id = fields.Many2one('sipanel.quote.scope.component', readonly=True,
++                                                  copy=False, ondelete='restrict', index=True)
++    sipanel_source_revision_id = fields.Many2one('sipanel.quote.scope.revision', readonly=True,
++                                                 copy=False, ondelete='restrict', index=True)
++    sipanel_source_quote_scope_id = fields.Many2one('sipanel.quote.scope', readonly=True,
++                                                    copy=False, ondelete='restrict')
++    sipanel_source_scope_id = fields.Many2one('sipanel.scope', readonly=True, copy=False,
++                                              ondelete='restrict')
++    sipanel_origin_key = fields.Char(readonly=True, copy=False, index=True)
++    sipanel_source_line_id = fields.Many2one('sale.order.line', readonly=True, copy=False,
++                                             ondelete='restrict')
++
++    @api.model
++    def _sipanel_trace_guarded(self):
++        return guard(self.env, 'sipanel_projection') or guard(self.env, 'sipanel_invoice_trace')
++
++    @api.model_create_multi
++    def create(self, vals_list):
++        # The native Sale->Invoice flow fills these through _prepare_invoice_line,
++        # which runs inside Odoo's own create. Anything else - a hand-made invoice,
++        # an import, an RPC payload - must not be able to claim Scope provenance it
++        # does not have.
++        if not self.env.context.get('sipanel_from_sale_invoice'):
++            for vals in vals_list:
++                supplied = TRACE_FIELDS & set(vals)
++                if supplied and not vals.get('sale_line_ids'):
++                    raise UserError(self.env._(
++                        "Fields %s trace an invoice line back to a governed Scope and are set "
++                        "only by the Quotation -> Confirmation -> Create Invoice flow.",
++                        ', '.join(sorted(supplied))))
++        return super().create(vals_list)
++
++    def write(self, vals):
++        if not self._sipanel_trace_guarded():
++            supplied = TRACE_FIELDS & set(vals)
++            if supplied:
++                raise UserError(self.env._(
++                    "Scope provenance on an invoice line is immutable (%s).",
++                    ', '.join(sorted(supplied))))
++        return super().write(vals)
+diff --git a/addons/sipanel_sale_scope/models/quote_scope.py b/addons/sipanel_sale_scope/models/quote_scope.py
+index e53de74..746b5b8 100644
+--- a/addons/sipanel_sale_scope/models/quote_scope.py
++++ b/addons/sipanel_sale_scope/models/quote_scope.py
+@@ -148,6 +148,13 @@ class SipanelQuoteScope(models.Model):
+             add('NOTE_STALE', _("Customer note is stale and not reviewed."))
+         if not rev.final_note:
+             add('NOTE_EMPTY', _("Customer note is empty; generate it."), 'warn')
++        # STEP 2B: a separately-billable component that cannot become a real,
++        # invoiceable customer line keeps the quotation working
++        for code, msg in rev._projection_blocking_issues():
++            add(code, msg)
++        recon = rev.reconciliation_json or {}
++        for problem in recon.get('problems', []):
++            add('SB_RECONCILIATION', _("Scope line reconciliation: %s", problem))
+         return issues
+ 
+     # ------------------------------------------------------------ governed acceptance transition (AM-01-R2, GAP-C02/C03)
+@@ -179,11 +186,29 @@ class SipanelQuoteScope(models.Model):
+             line.with_context(**guard_ctx('sipanel_governed_transition')).write({'product_uom_qty': qty})
+         self.write({'acceptance_state': new_state,
+                     'acceptance_reference': f"{actor}:{rev.id}:{uuid.uuid4().hex[:12]}" if new_state == 'accepted' else self.acceptance_reference})
++        # An optional scope's separately-billable lines follow the same decision:
++        # zero while the option is only offered, governed quantity once accepted.
++        # Repeating the transition is idempotent, so retries cannot duplicate or
++        # double-count anything.
++        self._sync_optional_projection(rev, accepted=new_state == 'accepted')
+         self.env['sipanel.scope.audit.event'].log(
+             self, 'acceptance_transition', before=before, after={'acceptance_state': new_state, 'qty': qty, 'actor': actor},
+             reason=reason, revision_ref=rev.display_name)
+         return True
+ 
++    def _sync_optional_projection(self, rev, accepted):
++        """Propagate an optional acceptance to the projected lines of that scope."""
++        self.ensure_one()
++        lines = self.env['sale.order.line'].search([
++            ('sipanel_source_revision_id', '=', rev.id), ('sipanel_is_generated', '=', True)])
++        for line in lines:
++            comp = line.sipanel_source_component_id
++            qty = (comp.final_qty or 0.0) if accepted else 0.0
++            if abs((line.product_uom_qty or 0.0) - qty) > 1e-6:
++                with self.env.protecting([line._fields['discount'], line._fields['price_unit']], line):
++                    line.with_context(**guard_ctx('sipanel_projection')).write({'product_uom_qty': qty})
++        return True
++
+     # ------------------------------------------------------------ actions
+     def action_amend(self):
+         self.ensure_one()
+@@ -293,6 +318,8 @@ class SipanelQuoteScope(models.Model):
+                 'resolution_owner_id': l.resolution_owner_id.id, 'resolution_note': l.resolution_note,
+                 'resolution_state': 'open' if l.kind == 'estimate_only' else 'not_required',
+             }
++            # governed selling price snapshot: only an own-line component has one
++            cvals.update(Comp._sell_price_snapshot_vals(l.product_id, order, l.uom_id, l.placement))
+             if l.responsibility == 'customer':
+                 cvals['cost_source'] = 'not_applicable'
+             elif l.cost_policy == 'derived':
+diff --git a/addons/sipanel_sale_scope/models/quote_scope_component.py b/addons/sipanel_sale_scope/models/quote_scope_component.py
+index 9f720d2..a4a1942 100644
+--- a/addons/sipanel_sale_scope/models/quote_scope_component.py
++++ b/addons/sipanel_sale_scope/models/quote_scope_component.py
+@@ -21,6 +21,13 @@ ORIGIN = [('master', 'Master'), ('added', 'Added'), ('overridden', 'Overridden')
+ COST_SOURCE = [('product_cost', 'Product cost'), ('manual_estimate', 'Manual estimate'), ('derived', 'Derived'),
+                ('not_applicable', 'Not applicable')]
+ COST_STATUS = [('known', 'Known'), ('known_zero', 'Known zero'), ('missing', 'Missing'), ('not_applicable', 'Not applicable')]
++# Revenue side (STEP 2B). Deliberately mirrors COST_STATUS: a zero selling price
++# with a recorded reason is a commercial decision, a zero with no reason is
++# missing evidence and must never be sent to a customer as if it were free.
++SELL_PRICE_SOURCE = [('product_list', 'Product sales price'), ('manual', 'Manual'),
++                     ('not_applicable', 'Not applicable')]
++SELL_PRICE_STATUS = [('known', 'Known'), ('known_zero', 'Known zero'), ('missing', 'Missing'),
++                     ('not_applicable', 'Not applicable')]
+ RESOLUTION = [('open', 'Open'), ('resolved_product', 'Resolved to product'), ('approved_new_product', 'Approved new product'),
+               ('allowance', 'Allowance'), ('customer', 'Customer'), ('deferred', 'Deferred'), ('not_required', 'Not required')]
+ DRIVER_FIELDS = ('basis', 'rate', 'fixed_qty', 'manual_qty', 'percent', 'base_component_ids', 'uom_id', 'rounding_increment', 'rounding_mode')
+@@ -99,6 +106,22 @@ class SipanelQuoteScopeComponent(models.Model):
+                                   recursive=True, groups=COST_GROUP)
+     eligible_for_rollup = fields.Boolean(compute='_compute_eligible', store=True)
+     stale_cost = fields.Boolean(compute='_compute_stale_cost', groups=COST_GROUP)
++    # ---- governed selling price (STEP 2B). Visible to Sales: this is customer-facing
++    # revenue, not cost, so it is NOT behind COST_GROUP.
++    sell_price_unit = fields.Monetary(currency_field='currency_id',
++                                      help="Governed selling price per component unit, in the quotation currency.")
++    sell_price_source = fields.Selection(SELL_PRICE_SOURCE, required=True, default='product_list')
++    sell_price_status = fields.Selection(SELL_PRICE_STATUS, compute='_compute_sell_price_status', store=True)
++    sell_known_zero_reason = fields.Text(groups=REASON_GROUPS,
++                                         help="Why this component is deliberately sold at zero.")
++    sell_price_user_id = fields.Many2one('res.users', readonly=True)
++    sell_price_date = fields.Datetime(readonly=True)
++    sell_price_snapshot_date = fields.Datetime(readonly=True,
++                                               help="When the selling price was frozen from the product.")
++    separately_billable = fields.Boolean(compute='_compute_separately_billable', store=True,
++                                         help="Derived from the treatment axes; placement=own_line is the authority.")
++    sell_amount = fields.Monetary(currency_field='currency_id', compute='_compute_sell_amount', store=True,
++                                  help="Governed selling amount of this component's own customer line.")
+     # treatment axes (AM-02)
+     responsibility = fields.Selection(RESPONSIBILITY, required=True, default='sipanel')
+     placement = fields.Selection(PLACEMENT, required=True, default='included_parent')
+@@ -201,6 +224,43 @@ class SipanelQuoteScopeComponent(models.Model):
+             else:
+                 c.cost_amount = (c.final_qty or 0.0) * (c.unit_cost or 0.0) * (c.cost_uom_factor or 1.0)
+ 
++    # ------------------------------------------------------------ separately billable (STEP 2B)
++    @api.depends('responsibility', 'placement', 'disclosure', 'active_state')
++    def _compute_separately_billable(self):
++        """placement == 'own_line' is the installed representation of
++        "billed separately"; no second enum is introduced. The other axes are
++        applied orthogonally: a customer-supplied or internal-only component is
++        never a customer revenue line, whatever its placement says."""
++        for c in self:
++            c.separately_billable = (
++                c.placement == 'own_line'
++                and c.responsibility == 'sipanel'
++                and c.disclosure == 'customer_eligible'
++                and c.active_state == 'active'
++            )
++
++    @api.depends('separately_billable', 'sell_price_unit', 'sell_known_zero_reason',
++                 'sell_price_source', 'kind', 'product_id')
++    def _compute_sell_price_status(self):
++        for c in self:
++            if not c.separately_billable or c.sell_price_source == 'not_applicable':
++                c.sell_price_status = 'not_applicable'
++            elif c.kind == 'estimate_only' and not c.product_id:
++                # an unresolved estimate has no governed price by definition
++                c.sell_price_status = 'missing'
++            elif float_is_zero(c.sell_price_unit or 0.0, precision_digits=6):
++                c.sell_price_status = 'known_zero' if c.sell_known_zero_reason else 'missing'
++            else:
++                c.sell_price_status = 'known'
++
++    @api.depends('separately_billable', 'final_qty', 'sell_price_unit', 'sell_price_status')
++    def _compute_sell_amount(self):
++        for c in self:
++            if not c.separately_billable or c.sell_price_status in ('missing', 'not_applicable'):
++                c.sell_amount = 0.0
++            else:
++                c.sell_amount = (c.final_qty or 0.0) * (c.sell_price_unit or 0.0)
++
+     @api.depends('responsibility', 'active_state', 'origin', 'acceptance', 'placement')
+     def _compute_eligible(self):
+         for c in self:
+@@ -279,6 +339,7 @@ class SipanelQuoteScopeComponent(models.Model):
+         recs = super().create(vals_list)
+         recs.mapped('revision_id')._check_working('add components to')
+         recs.mapped('revision_id')._reset_review_if_stale()
++        recs._sipanel_resync_projection()
+         return recs
+ 
+     def write(self, vals):
+@@ -295,10 +356,34 @@ class SipanelQuoteScopeComponent(models.Model):
+                         c, 'override_qty', before={'final_qty': before}, after={'final_qty': c.final_qty},
+                         reason=c.sudo().override_reason, revision_ref=c.revision_id.display_name)
+             self.mapped('revision_id')._reset_review_if_stale()
++            self._sipanel_resync_projection()
+             return True
+         res = super().write(vals)
+         if not guard(self.env, 'sipanel_seal_transaction'):
+             self.mapped('revision_id')._reset_review_if_stale()
++        self._sipanel_resync_projection()
++        return res
++
++    def _sipanel_resync_projection(self):
++        """Keep the separately-billable Sale Lines in step, automatically.
++
++        Every governed transition - add scope, refresh, replace recipe, split,
++        move, treatment change, tombstone - ends in a component create or write,
++        so hooking here covers them all without each wizard remembering to call
++        the projection. The upsert is idempotent, so being called several times
++        in one transaction is harmless.
++        """
++        if guard(self.env, 'sipanel_projection'):
++            return False
++        revisions = self.mapped('revision_id').filtered(lambda r: r.state == 'working')
++        if revisions:
++            revisions._sync_separately_billable_lines()
++        return True
++
++    def unlink(self):
++        revisions = self.mapped('revision_id')
++        res = super().unlink()
++        revisions.exists().filtered(lambda r: r.state == 'working')._sync_separately_billable_lines()
+         return res
+ 
+     @api.ondelete(at_uninstall=False)
+@@ -354,6 +439,54 @@ class SipanelQuoteScopeComponent(models.Model):
+             'cost_source_company_id': company.id, 'product_value_id': pv.id or False,
+         }
+ 
++    @api.model
++    def _sell_price_snapshot_vals(self, product, order, target_uom, placement):
++        """Freeze the governed selling price for a component, with provenance.
++
++        Uses the order's own pricelist through Odoo's native price computation,
++        so currency and any customer pricing stay native - no hardcoded rate and
++        no tax arithmetic here; taxes are applied by the generated Sale Line.
++
++        Only an own-line component has a governed selling price: an INCLUDED
++        component is paid for through the anchor line, so giving it a price of
++        its own is what would create double counting.
++        """
++        if placement != 'own_line' or not product:
++            return {'sell_price_source': 'not_applicable', 'sell_price_unit': 0.0}
++        price = 0.0
++        try:
++            pricelist = order.pricelist_id
++            if pricelist:
++                price = pricelist._get_product_price(
++                    product, 1.0, uom=target_uom, date=order.date_order,
++                    currency=order.currency_id)
++            else:
++                price = product.with_company(order.company_id).list_price
++        except Exception:                      # noqa: BLE001 - pricing must never break the snapshot
++            price = product.with_company(order.company_id).list_price
++        return {
++            'sell_price_source': 'product_list',
++            'sell_price_unit': price or 0.0,
++            'sell_price_snapshot_date': fields.Datetime.now(),
++        }
++
++    def action_set_manual_sell_price(self, price, reason=None):
++        """Governed manual selling price. A zero price needs a recorded reason,
++        otherwise it stays 'missing' and keeps blocking the seal."""
++        for c in self:
++            c.revision_id._check_working('set the selling price of')
++            before = c.sell_price_unit
++            vals = {'sell_price_source': 'manual', 'sell_price_unit': price or 0.0,
++                    'sell_price_user_id': self.env.uid, 'sell_price_date': fields.Datetime.now()}
++            if reason:
++                vals['sell_known_zero_reason'] = reason
++            c.write(vals)
++            self.env['sipanel.scope.audit.event'].log(
++                c, 'sell_price', before={'sell_price_unit': before},
++                after={'sell_price_unit': c.sell_price_unit, 'status': c.sell_price_status},
++                reason=reason, revision_ref=c.revision_id.display_name)
++        return True
++
+     def action_refresh_product_cost(self):
+         for c in self.filtered(lambda c: c.cost_source == 'product_cost' and c.product_id):
+             before = c.sudo().unit_cost
+diff --git a/addons/sipanel_sale_scope/models/quote_scope_revision.py b/addons/sipanel_sale_scope/models/quote_scope_revision.py
+index ca50a69..a0e7619 100644
+--- a/addons/sipanel_sale_scope/models/quote_scope_revision.py
++++ b/addons/sipanel_sale_scope/models/quote_scope_revision.py
+@@ -237,7 +237,14 @@ class SipanelQuoteScopeRevision(models.Model):
+         lines = [head] if head else []
+         if desc:
+             lines.append(desc)
+-        for row in self._eligible_rows():
++        for comp in self.component_ids.sorted(lambda c: (c.sequence, c.id)):
++            # a separately-billable component is now a real customer line; repeating
++            # it as a note bullet would show the customer the same thing twice
++            if comp.separately_billable:
++                continue
++            row = comp._customer_payload(self.language)
++            if not row:
++                continue
+             txt = row['label']
+             if 'qty' in row:
+                 qty = row['qty']
+diff --git a/addons/sipanel_sale_scope/models/sale_order.py b/addons/sipanel_sale_scope/models/sale_order.py
+index 36154bd..f75cda1 100644
+--- a/addons/sipanel_sale_scope/models/sale_order.py
++++ b/addons/sipanel_sale_scope/models/sale_order.py
+@@ -130,6 +130,37 @@ class SaleOrder(models.Model):
+         self._sipanel_accept_current_revisions(reference=guard(self.env, 'sipanel_acceptance_reference'))
+         return super().action_confirm()
+ 
++    # ---------------------------------------------------------- STEP 2B invoice gate
++    def _sipanel_check_seal_integrity_for_invoice(self):
++        """Refuse to invoice governed Scope content that no longer matches what the
++        customer accepted.
++
++        The acceptance and confirmation gates already refuse drift
++        (quote_scope_revision.action_accept and, through it, action_confirm);
++        this is the third and last gate, because an order can still be edited
++        between confirmation and invoicing.
++        """
++        for o in self.filtered('sipanel_has_scopes'):
++            drifted = []
++            for s in o.sipanel_quote_scope_ids.filtered('active'):
++                rev = s.accepted_revision_id or s.current_revision_id
++                if not rev or rev.state == 'working' or not rev.sealed_hash:
++                    continue
++                if rev._current_seal_hash() != rev.sealed_hash:
++                    drifted.append(f"{s.display_name} (sealed {rev.sealed_hash[:12]}…)")
++            if drifted:
++                raise UserError(self.env._(
++                    "Order %(o)s cannot be invoiced: the governed Scope content changed after "
++                    "acceptance:\n%(l)s\nCreate an amendment revision and reseal, then invoice.",
++                    o=o.name, l='\n'.join('- ' + d for d in drifted)))
++
++    def _create_invoices(self, grouped=False, final=False, date=None):
++        self._sipanel_check_seal_integrity_for_invoice()
++        # let the account.move.line provenance guard know this is the governed
++        # Quotation -> Confirmation -> Create Invoice path
++        return super(SaleOrder, self.with_context(sipanel_from_sale_invoice=True))._create_invoices(
++            grouped=grouped, final=final, date=date)
++
+     def _action_cancel(self):
+         for o in self.filtered('sipanel_has_scopes'):
+             self.env['sipanel.scope.audit.event'].log(o, 'order_cancel', summary='Scope revisions retained; nothing deleted.')
+diff --git a/addons/sipanel_sale_scope/models/sale_order_line.py b/addons/sipanel_sale_scope/models/sale_order_line.py
+index c9b948d..982a1bd 100644
+--- a/addons/sipanel_sale_scope/models/sale_order_line.py
++++ b/addons/sipanel_sale_scope/models/sale_order_line.py
+@@ -8,6 +8,19 @@ from odoo.addons.sipanel_commercial_scope_core.models.sipanel_tools import guard
+ STRUCTURE_FIELDS = {'sequence', 'display_type', 'is_optional'}
+ ANCHOR_FROZEN_FIELDS = {'product_id', 'product_uom_id', 'display_type', 'linked_line_id', 'combo_item_id', 'order_id', 'product_template_id'}
+ 
++# STEP 2B. Provenance of a generated separately-billable line. These must never be
++# settable by a user, an import, an RPC context or sudo: they are the audit trail
++# that ties invoice revenue back to a governed Scope component.
++PROJECTION_FIELDS = {
++    'sipanel_is_generated', 'sipanel_origin_key', 'sipanel_source_component_id',
++    'sipanel_source_revision_id', 'sipanel_source_quote_scope_id', 'sipanel_source_scope_id',
++    'sipanel_snapshot_language', 'sipanel_placement_snapshot', 'sipanel_certainty_snapshot',
++    'sipanel_qty_provenance', 'sipanel_price_provenance', 'sipanel_invoice_gate',
++}
++# Commercial fields of a generated line: frozen once the revision is sealed.
++GENERATED_COMMERCIAL_FIELDS = {'product_id', 'product_uom_id', 'product_uom_qty', 'price_unit',
++                               'discount', 'tax_ids', 'name'}
++
+ 
+ class SaleOrderLine(models.Model):
+     _inherit = 'sale.order.line'
+@@ -19,6 +32,32 @@ class SaleOrderLine(models.Model):
+                                            compute='_compute_sipanel_guard', store=True)
+     sipanel_is_scoped_section = fields.Boolean(compute='_compute_sipanel_scoped_section', store=True)
+     sipanel_copied_from_line_id = fields.Integer(copy=False, readonly=True, help="Source line id at duplication (scope copy map).")
++    # ---- STEP 2B: separately-billable projection provenance (copy=False on purpose:
++    # a duplicated quotation must get its OWN projection from its own components)
++    sipanel_is_generated = fields.Boolean(readonly=True, copy=False, index=True,
++                                          help="Projected from a governed Scope component.")
++    sipanel_origin_key = fields.Char(readonly=True, copy=False, index=True,
++                                     help="Stable key of the source component within its revision.")
++    sipanel_source_component_id = fields.Many2one('sipanel.quote.scope.component', readonly=True, copy=False,
++                                                  ondelete='restrict', index=True)
++    sipanel_source_revision_id = fields.Many2one('sipanel.quote.scope.revision', readonly=True, copy=False,
++                                                 ondelete='restrict', index=True)
++    sipanel_source_quote_scope_id = fields.Many2one('sipanel.quote.scope', readonly=True, copy=False,
++                                                    ondelete='restrict')
++    sipanel_source_scope_id = fields.Many2one('sipanel.scope', readonly=True, copy=False, ondelete='restrict')
++    sipanel_snapshot_language = fields.Char(readonly=True, copy=False)
++    sipanel_placement_snapshot = fields.Char(readonly=True, copy=False)
++    sipanel_certainty_snapshot = fields.Char(readonly=True, copy=False)
++    sipanel_qty_provenance = fields.Char(readonly=True, copy=False)
++    sipanel_price_provenance = fields.Char(readonly=True, copy=False)
++    sipanel_invoice_gate = fields.Char(readonly=True, copy=False,
++                                       help="Non-empty when this generated line must not be invoiced yet.")
++
++    # One live projected line per source component, enforced in the database as well
++    # as in the upsert: a retry, a module upgrade or a double click must not be able
++    # to create a second revenue line for the same component.
++    _sipanel_origin_key_unique = models.UniqueIndex(
++        "(sipanel_origin_key) WHERE sipanel_origin_key IS NOT NULL")
+ 
+     @api.depends('sipanel_quote_scope_ids', 'sipanel_quote_scope_ids.active')
+     def _compute_sipanel_scope(self):
+@@ -49,8 +88,45 @@ class SaleOrderLine(models.Model):
+     def _sipanel_sealed_scopes(self):
+         return self.mapped('sipanel_quote_scope_id').filtered(lambda s: s.revision_ids.filtered(lambda r: r.state != 'working'))
+ 
++    # ---------------------------------------------------------- STEP 2B projection guards
++    @api.model
++    def _sipanel_projection_guarded(self):
++        """True only when the projection engine itself is running."""
++        return guard(self.env, 'sipanel_projection') or guard(self.env, 'sipanel_seal_transaction')
++
++    @api.model_create_multi
++    def create(self, vals_list):
++        if not self._sipanel_projection_guarded():
++            for vals in vals_list:
++                spoofed = PROJECTION_FIELDS & set(vals)
++                if spoofed:
++                    # a supplied source id, a crafted origin key or a generated flag from
++                    # an import, an RPC payload or sudo() must not be able to forge the
++                    # provenance that invoice revenue is audited against
++                    raise UserError(self.env._(
++                        "Fields %s are set by the SIPANEL Scope projection only and cannot be "
++                        "supplied when creating a sale order line.", ', '.join(sorted(spoofed))))
++        return super().create(vals_list)
++
+     def write(self, vals):
+         ctx = self.env.context
++        if not self._sipanel_projection_guarded():
++            spoofed = PROJECTION_FIELDS & set(vals)
++            if spoofed:
++                raise UserError(self.env._(
++                    "Fields %s are governed Scope provenance and cannot be written directly.",
++                    ', '.join(sorted(spoofed))))
++            frozen = GENERATED_COMMERCIAL_FIELDS & set(vals)
++            if frozen:
++                sealed = self.filtered(
++                    lambda l: l.sipanel_is_generated and l.sipanel_source_revision_id
++                    and l.sipanel_source_revision_id.state != 'working')
++                if sealed:
++                    raise UserError(self.env._(
++                        "Line %(l)s is projected from sealed Scope revision %(r)s; %(f)s cannot "
++                        "change. Amend the Scope and reseal instead.",
++                        l=sealed[0].display_name, r=sealed[0].sipanel_source_revision_id.display_name,
++                        f=', '.join(sorted(frozen))))
+         if not guard(self.env, 'sipanel_governed_transition') and not guard(self.env, 'sipanel_seal_transaction'):
+             for line in self:
+                 scope = line.sipanel_quote_scope_id
+@@ -77,6 +153,24 @@ class SaleOrderLine(models.Model):
+                     rev.with_context(**guard_ctx('sipanel_note_sync')).write({'final_note': vals['name'], 'note_manually_edited': True})
+         return res
+ 
++    @api.ondelete(at_uninstall=False)
++    def _unlink_except_consumed_projection(self):
++        """A projected line that has been invoiced, delivered or operationally
++        consumed is history, not a draft artefact."""
++        for line in self.filtered('sipanel_is_generated'):
++            if line.invoice_lines:
++                raise UserError(self.env._(
++                    "Line %s is already invoiced; it cannot be removed. Use a credit note or a "
++                    "change order.", line.display_name))
++            if line.qty_delivered:
++                raise UserError(self.env._(
++                    "Line %s has delivered quantity; it cannot be removed.", line.display_name))
++            rev = line.sipanel_source_revision_id
++            if rev and rev.state != 'working' and not self._sipanel_projection_guarded():
++                raise UserError(self.env._(
++                    "Line %s is projected from a sealed Scope revision and cannot be deleted.",
++                    line.display_name))
++
+     @api.ondelete(at_uninstall=False)
+     def _unlink_except_sealed_scope(self):
+         for line in self:
+@@ -104,6 +198,49 @@ class SaleOrderLine(models.Model):
+             vals['sipanel_copied_from_line_id'] = line.id
+         return vals_list
+ 
++    # ---------------------------------------------------------- STEP 2B invoice flow
++    def _prepare_invoice_line(self, **optional_values):
++        """Carry the governed provenance onto the invoice line and keep the
++        frozen resolved description. The rest - taxes, fiscal position, currency,
++        rounding - stays exactly as Odoo prepared it."""
++        vals = super()._prepare_invoice_line(**optional_values)
++        if self.sipanel_is_generated:
++            vals.update({
++                'sipanel_source_component_id': self.sipanel_source_component_id.id,
++                'sipanel_source_revision_id': self.sipanel_source_revision_id.id,
++                'sipanel_source_quote_scope_id': self.sipanel_source_quote_scope_id.id,
++                'sipanel_source_scope_id': self.sipanel_source_scope_id.id,
++                'sipanel_origin_key': self.sipanel_origin_key,
++                'sipanel_source_line_id': self.id,
++            })
++            # the invoice must repeat the text the customer already accepted, not a
++            # freshly translated product name
++            if self.name:
++                vals['name'] = self.name
++        return vals
++
++    # ---------------------------------------------------------- STEP 2B procurement ownership
++    def _action_launch_stock_rule(self, previous_product_uom_qty=False):
++        """Exactly one operational demand owner per component.
++
++        The frozen ownership architecture already decides this per component:
++        COMPONENT_BRIDGE_OWNER means SIPANEL execution creates the demand, and
++        NATIVE_LINE_OWNER means the native Sale line does and SIPANEL only links
++        (see sipanel.execution.adapter.create_or_link). Projecting a component
++        onto a Sale Line must not silently add a second owner, so a generated
++        line whose component is bridge-owned is skipped here.
++        """
++        native = self.browse()
++        for line in self:
++            comp = line.sipanel_source_component_id
++            if line.sipanel_is_generated and comp and comp.execution_owner == 'component_bridge_owner':
++                continue
++            native |= line
++        if not native:
++            return True
++        return super(SaleOrderLine, native)._action_launch_stock_rule(
++            previous_product_uom_qty=previous_product_uom_qty)
++
+     def _sipanel_portal_binding(self):
+         """Data injected in the portal template for anchor lines (revision id + seal hash)."""
+         self.ensure_one()
+diff --git a/addons/sipanel_sale_scope/models/separately_billable.py b/addons/sipanel_sale_scope/models/separately_billable.py
+new file mode 100644
+index 0000000..436cdcf
+--- /dev/null
++++ b/addons/sipanel_sale_scope/models/separately_billable.py
+@@ -0,0 +1,306 @@
++# -*- coding: utf-8 -*-
++"""Separately-billable Sale Line projection (STEP 2B).
++
++A component whose ``placement`` is ``own_line`` is billed on its own customer
++line instead of inside the anchor price. Until now that existed only as a
++sentence in the generated note; here it becomes a real, governed, idempotent
++``sale.order.line`` so that Odoo's native Sale -> Invoice flow can turn it into
++an ``account.move.line``.
++
++Nothing in this module invents a Billing Treatment. ``placement == 'own_line'``
++is the installed representation and stays the authority; the other axes
++(responsibility, disclosure, certainty, acceptance, active state) are applied
++orthogonally on top of it.
++"""
++from odoo import api, fields, models
++from odoo.exceptions import UserError
++
++from odoo.addons.sipanel_commercial_scope_core.models.sipanel_tools import guard_ctx, sha256_of
++
++
++class SipanelQuoteScopeRevision(models.Model):
++    _inherit = 'sipanel.quote.scope.revision'
++
++    projected_line_ids = fields.One2many('sale.order.line', 'sipanel_source_revision_id',
++                                         string='Separately billable lines', readonly=True)
++    projected_line_count = fields.Integer(compute='_compute_projection_totals')
++    anchor_amount = fields.Monetary(currency_field='currency_id', compute='_compute_projection_totals',
++                                    help="Untaxed amount carried by the anchor line.")
++    separate_amount = fields.Monetary(currency_field='currency_id', compute='_compute_projection_totals',
++                                      help="Untaxed amount carried by the projected separately-billable lines.")
++    reconciliation_json = fields.Json(compute='_compute_projection_totals',
++                                      help="Per-revision reconciliation of anchor vs separately billable amounts.")
++    reconciliation_ok = fields.Boolean(compute='_compute_projection_totals')
++
++    # ------------------------------------------------------------------ totals
++    @api.depends('projected_line_ids.price_subtotal', 'projected_line_ids.product_uom_qty',
++                 'quote_scope_id.anchor_line_id.price_subtotal', 'component_ids.separately_billable',
++                 'component_ids.sell_price_status', 'component_ids.active_state')
++    def _compute_projection_totals(self):
++        for rev in self:
++            lines = rev.projected_line_ids
++            anchor = rev.quote_scope_id.anchor_line_id
++            rev.projected_line_count = len(lines)
++            rev.anchor_amount = anchor.price_subtotal if anchor else 0.0
++            rev.separate_amount = sum(lines.mapped('price_subtotal'))
++            rev.reconciliation_json = rev._build_reconciliation()
++            rev.reconciliation_ok = not rev.reconciliation_json.get('problems')
++
++    def _build_reconciliation(self):
++        """Explicit per-revision reconciliation.
++
++        The invariant is not an arithmetic identity on the order total - Odoo
++        already sums its own lines correctly - but that no component is counted
++        on both sides, and that every component that should carry revenue does
++        so exactly once.
++        """
++        self.ensure_one()
++        comps = self.component_ids
++        own = comps.filtered('separately_billable')
++        lines = self.projected_line_ids
++        by_key = {l.sipanel_origin_key: l for l in lines}
++        problems, rows = [], []
++        for comp in own.sorted(lambda c: (c.sequence, c.id)):
++            key = self._origin_key(comp)
++            line = by_key.pop(key, None)
++            rows.append({
++                'component': comp.occurrence_uid, 'label': comp.customer_label_resolved or comp.name,
++                'qty': comp.final_qty, 'sell_price_status': comp.sell_price_status,
++                'line_id': line.id if line else None,
++                'line_qty': line.product_uom_qty if line else None,
++                'line_subtotal': line.price_subtotal if line else None,
++            })
++            if line is None and comp.sell_price_status != 'missing' and comp.product_id:
++                problems.append(f"component {comp.occurrence_uid} is separately billable but has no line")
++        for orphan_key, line in by_key.items():
++            if line.product_uom_qty:
++                problems.append(f"line {line.id} has no eligible component ({orphan_key})")
++        # a consumed line from a superseded revision cannot be withdrawn automatically
++        consumed = self.env['sale.order.line'].search([
++            ('sipanel_source_quote_scope_id', '=', self.quote_scope_id.id),
++            ('sipanel_is_generated', '=', True),
++            ('sipanel_source_revision_id', '!=', self.id),
++        ]).filtered(lambda l: l.invoice_lines or l.qty_delivered)
++        for line in consumed:
++            problems.append(
++                f"line {line.id} from a superseded revision is already invoiced or delivered; "
++                f"settle it through a change order")
++        # a component may never be billed inside the anchor AND on its own line
++        included = comps.filtered(lambda c: c.placement == 'included_parent' and c.separately_billable)
++        if included:
++            problems.append("component is both included and separately billable")
++        return {
++            'revision': self.display_name,
++            'anchor_amount': self.quote_scope_id.anchor_line_id.price_subtotal
++            if self.quote_scope_id.anchor_line_id else 0.0,
++            'separate_amount': sum(lines.mapped('price_subtotal')),
++            'separately_billable_components': len(own),
++            'projected_lines': len(lines),
++            'rows': rows,
++            'problems': problems,
++        }
++
++    # ------------------------------------------------------------------ keys
++    @api.model
++    def _origin_key(self, component):
++        """Stable within a revision, distinct across revisions and duplicates.
++
++        `occurrence_uid` is unique per revision and survives an amendment, and
++        the revision id makes the key globally unique - which is what the
++        database unique index on sale_order_line needs.
++        """
++        return f"{component.revision_id.id}:{component.occurrence_uid}"
++
++    # ------------------------------------------------------------------ readiness
++    def _projection_blocking_issues(self):
++        """Blocking reasons a separately-billable component cannot be sent."""
++        self.ensure_one()
++        _ = self.env._
++        issues = []
++        for comp in self.component_ids.filtered('separately_billable').sorted(lambda c: (c.sequence, c.id)):
++            label = comp.customer_label_resolved or comp.name or comp.occurrence_uid
++            if not comp.product_id:
++                if comp.kind == 'estimate_only':
++                    issues.append(('SB_ESTIMATE_PRODUCT', _(
++                        "%s is separately billable but is an ESTIMATE_ONLY component with no "
++                        "resolved product; it cannot be invoiced. Resolve it to a product or "
++                        "change its placement.", label)))
++                else:
++                    issues.append(('SB_NO_PRODUCT', _(
++                        "%s is separately billable but has no invoiceable product.", label)))
++            if comp.sell_price_status == 'missing':
++                issues.append(('SB_PRICE_MISSING', _(
++                    "%s is separately billable but its selling price is missing. Set a governed "
++                    "price, or record a reason if it is deliberately zero.", label)))
++        return issues
++
++    # ------------------------------------------------------------------ projection
++    def _projected_line_vals(self, component, key):
++        """Customer-facing content of a generated line.
++
++        Everything comes from the frozen quotation snapshot: the already-resolved
++        label, the snapshot quantity, the governed unit and the governed selling
++        price. Master translations are never re-read here. Taxes and the fiscal
++        position are left to Odoo, which computes them from the product.
++        """
++        self.ensure_one()
++        scope = self.quote_scope_id
++        anchor = scope.anchor_line_id
++        name = (component.customer_label_resolved or component.customer_label_fa
++                or component.customer_label_en or component.name or '')
++        return {
++            'order_id': self.order_id.id,
++            'product_id': component.product_id.id,
++            'product_uom_id': component.uom_id.id,
++            'product_uom_qty': self._projected_qty(component),
++            'name': name,
++            'sequence': (anchor.sequence if anchor else 10) + 1,
++            'sipanel_is_generated': True,
++            'sipanel_origin_key': key,
++            'sipanel_source_component_id': component.id,
++            'sipanel_source_revision_id': self.id,
++            'sipanel_source_quote_scope_id': scope.id,
++            'sipanel_source_scope_id': scope.source_scope_id.id,
++            'sipanel_snapshot_language': self.resolved_language or self.language,
++            'sipanel_placement_snapshot': component.placement,
++            'sipanel_certainty_snapshot': component.certainty,
++            'sipanel_qty_provenance': f"{component.basis}:{component.final_qty}",
++            'sipanel_price_provenance': f"{component.sell_price_source}:{component.sell_price_status}",
++            'sipanel_invoice_gate': self._invoice_gate(component),
++        }
++
++    def _projected_qty(self, component):
++        """An unaccepted option is an ordinary line at quantity zero (native Odoo
++        optional-product behaviour); it becomes invoiceable on acceptance."""
++        self.ensure_one()
++        scope = self.quote_scope_id
++        if scope.is_optional and scope.acceptance_state != 'accepted':
++            return 0.0
++        return component.final_qty or 0.0
++
++    def _invoice_gate(self, component):
++        """Why this line must not be invoiced yet, or '' when it may be.
++
++        A provisional component is shown to the customer as provisional but its
++        quantity or price is not final, so it is held back from invoicing until
++        it is resolved to firm. The installed source has no approved revenue
++        recognition policy that could lift this - `sipanel.cost.recognition.policy`
++        governs COST routes - and inventing one is out of scope, so the gate is
++        unconditional until resolution.
++        """
++        if component.certainty == 'provisional':
++            return 'provisional'
++        if component.resolution_state == 'open':
++            return 'unresolved'
++        return ''
++
++    def _sync_separately_billable_lines(self):
++        """Idempotent upsert of the projection. Safe to call as often as you like."""
++        SOL = self.env['sale.order.line']
++        for rev in self:
++            if rev.state != 'working':
++                # sealed projections are frozen; a change needs a new revision
++                continue
++            scope = rev.quote_scope_id
++            if not scope.anchor_line_id or not rev.order_id:
++                continue
++            eligible = rev.component_ids.filtered(
++                lambda c: c.separately_billable and c.product_id)
++            existing = SOL.with_context(active_test=False).search(
++                [('sipanel_source_revision_id', '=', rev.id)])
++            by_key = {l.sipanel_origin_key: l for l in existing}
++            seen = set()
++            ctx = guard_ctx('sipanel_projection')
++            for index, comp in enumerate(eligible.sorted(lambda c: (c.sequence, c.id))):
++                key = rev._origin_key(comp)
++                seen.add(key)
++                vals = rev._projected_line_vals(comp, key)
++                vals['sequence'] = vals['sequence'] + index
++                line = by_key.get(key)
++                if line:
++                    changed = {f: v for f, v in vals.items()
++                               if f not in ('order_id',) and rev._differs(line, f, v)}
++                    if changed:
++                        line.with_context(**ctx).write(changed)
++                else:
++                    line = SOL.with_context(**ctx).create(vals)
++                    by_key[key] = line
++                # the governed price is written after creation so Odoo's native
++                # pricelist computation cannot overwrite a manual decision
++                if rev._differs(line, 'price_unit', comp.sell_price_unit or 0.0):
++                    line.with_context(**ctx).write({'price_unit': comp.sell_price_unit or 0.0})
++            for key, line in by_key.items():
++                if key in seen:
++                    continue
++                rev._retire_projected_line(line)
++            rev._retire_superseded_projection()
++        return True
++
++    def _retire_superseded_projection(self):
++        """Remove the projection of PRIOR revisions of the same quotation Scope.
++
++        An amendment creates a new working revision and a fresh projection. If
++        the previous revision's lines stayed, the same component would be billed
++        twice on one order - which is precisely the double counting this step
++        exists to prevent.
++
++        A prior line that has already been invoiced or delivered is history and
++        is left alone; that is the change-order boundary, and it is reported as a
++        reconciliation problem so an operator handles it deliberately instead of
++        the projection silently guessing.
++        """
++        self.ensure_one()
++        scope = self.quote_scope_id
++        superseded = self.env['sale.order.line'].search([
++            ('sipanel_source_quote_scope_id', '=', scope.id),
++            ('sipanel_is_generated', '=', True),
++            ('sipanel_source_revision_id', '!=', self.id),
++        ])
++        for line in superseded:
++            if line.invoice_lines or line.qty_delivered:
++                continue          # consumed: keep it, and flag it in the reconciliation
++            line.with_context(**guard_ctx('sipanel_projection')).unlink()
++        return True
++
++    @api.model
++    def _differs(self, record, field_name, value):
++        current = record[field_name]
++        if hasattr(current, 'id'):
++            current = current.id
++        if isinstance(current, float) or isinstance(value, float):
++            return abs((current or 0.0) - (value or 0.0)) > 1e-6
++        return (current or False) != (value or False)
++
++    @api.model
++    def _retire_projected_line(self, line):
++        """Remove a projection whose component is gone, or neutralise it when it
++        already carries operational history."""
++        ctx = guard_ctx('sipanel_projection')
++        if line.invoice_lines or line.qty_delivered:
++            if line.product_uom_qty:
++                line.with_context(**ctx).write({'product_uom_qty': 0.0})
++            return False
++        line.with_context(**ctx).unlink()
++        return True
++
++
++class SaleOrder(models.Model):
++    _inherit = 'sale.order'
++
++    def _get_invoiceable_lines(self, final=False):
++        """Hold back generated lines that are not allowed to invoice yet.
++
++        Unaccepted options need no rule here: they are quantity zero and Odoo
++        already skips them. This gate is for provisional or unresolved content.
++        """
++        lines = super()._get_invoiceable_lines(final=final)
++        blocked = lines.filtered(lambda l: l.sipanel_is_generated and l.sipanel_invoice_gate)
++        return lines - blocked
++
++    def action_sipanel_sync_scope_lines(self):
++        """Manual fallback for the operator. Synchronisation is automatic on every
++        governed transition; this button only makes it visible and repeatable."""
++        for order in self:
++            revisions = order.sipanel_quote_scope_ids.mapped('current_revision_id')
++            revisions.filtered(lambda r: r.state == 'working')._sync_separately_billable_lines()
++        return True
+diff --git a/addons/sipanel_sale_scope/tests/__init__.py b/addons/sipanel_sale_scope/tests/__init__.py
+index d318489..8594bb6 100644
+--- a/addons/sipanel_sale_scope/tests/__init__.py
++++ b/addons/sipanel_sale_scope/tests/__init__.py
+@@ -4,3 +4,4 @@ from . import test_governance
+ from . import test_security
+ from . import test_customer_output
+ from . import test_translation_snapshot
++from . import test_separately_billable
+diff --git a/addons/sipanel_sale_scope/tests/test_separately_billable.py b/addons/sipanel_sale_scope/tests/test_separately_billable.py
+new file mode 100644
+index 0000000..2908d43
+--- /dev/null
++++ b/addons/sipanel_sale_scope/tests/test_separately_billable.py
+@@ -0,0 +1,647 @@
++# -*- coding: utf-8 -*-
++"""STEP 2B: separately-billable Sale Lines and Invoice Lines.
++
++`placement == 'own_line'` is the installed representation of "billed
++separately". These tests exercise it through the orthogonal axes, never through
++a product category and never through a new enum.
++"""
++import uuid
++
++from odoo.exceptions import UserError
++from odoo.tests import tagged
++
++from odoo.addons.sipanel_commercial_scope_core.models.sipanel_tools import guard_ctx
++from odoo.addons.sipanel_commercial_scope_core.tests.common import set_translation
++
++from .common import SipanelSaleCase
++
++
++class SeparatelyBillableCase(SipanelSaleCase):
++    """A master carrying one component of every treatment shape."""
++
++    @classmethod
++    def setUpClass(cls):
++        super().setUpClass()
++        env = cls.env
++        env['res.lang'].sudo()._activate_lang('fa_IR')
++        for product in (cls.p_gutter, cls.p_bracket, cls.p_crane, cls.p_labour):
++            product.write({'list_price': 100.0, 'invoice_policy': 'order'})
++        cls.sb_scope, cls.sb_v1 = cls._make_sb_master()
++
++    @classmethod
++    def _make_sb_master(cls):
++        env = cls.env
++        scope = env['sipanel.scope'].create({
++            'code': f'SIPANEL-PT-SB-{uuid.uuid4().hex[:8]}',
++            'name': 'SIPANEL-PT separately billable master',
++            'owner_user_id': cls.steward.id})
++        version = env['sipanel.scope.version'].create({
++            'scope_id': scope.id, 'customer_label': 'Gutter accessories',
++            'base_uom_id': cls.uom_m.id, 'dimension_family': 'length',
++            'anchor_product_id': cls.p_anchor.id,
++            'anchor_owner_mode': 'component_bridge_owner', 'all_systems': True})
++        L = env['sipanel.scope.recipe.line']
++        base = {'version_id': version.id, 'customer_eligible': True}
++
++        # 1. INCLUDED - paid for through the anchor price
++        cls.l_included = L.create(dict(
++            base, sequence=10, product_id=cls.p_gutter.id, uom_id=cls.uom_m.id,
++            dimension_family='length', basis='per_scope_qty', rate=1.0,
++            activity_id=cls.act_ins.id, execution_mode='stock_issue',
++            placement='included_parent', customer_label='Galvanised gutter'))
++        # 2. SEPARATELY BILLABLE, product-backed
++        cls.l_sep = L.create(dict(
++            base, sequence=20, product_id=cls.p_bracket.id, uom_id=cls.uom_unit.id,
++            dimension_family='count', basis='per_scope_qty', rate=2.0,
++            activity_id=cls.act_ins.id, execution_mode='stock_issue',
++            placement='own_line', customer_label='Wall bracket'))
++        # 3. PROVISIONAL + own line
++        cls.l_prov = L.create(dict(
++            base, sequence=30, product_id=cls.p_crane.id, uom_id=cls.uom_unit.id,
++            dimension_family='count', basis='fixed', fixed_qty=1.0,
++            activity_id=cls.act_eqp.id, execution_mode='equipment_service',
++            placement='own_line', customer_label='Crane'))
++        # 4. CUSTOMER SCOPE - customer supplies it, never our revenue
++        cls.l_cust = L.create(dict(
++            base, sequence=40, product_id=cls.p_sealant.id, uom_id=cls.uom_unit.id,
++            dimension_family='count', basis='fixed', fixed_qty=5.0,
++            execution_mode='no_action', no_action_reason='customer_responsibility',
++            responsibility='customer', placement='own_line', customer_label='Customer sealant'))
++        # 5. INTERNAL ONLY - never shown, never billed
++        cls.l_int = L.create(dict(
++            base, sequence=50, product_id=cls.p_screw.id, uom_id=cls.uom_unit.id,
++            dimension_family='count', basis='fixed', fixed_qty=10.0,
++            activity_id=cls.act_ins.id, execution_mode='stock_issue',
++            customer_eligible=False, disclosure='internal_only', placement='own_line',
++            customer_label='Internal screws'))
++        for line, fa in ((cls.l_included, 'ناودان گالوانیزه'), (cls.l_sep, 'بست دیواری'),
++                         (cls.l_prov, 'جرثقیل'), (cls.l_cust, 'درزگیر کارفرما'),
++                         (cls.l_int, 'پیچ داخلی')):
++            set_translation(line, 'customer_label', en=line.customer_label, fa=fa)
++        set_translation(version, 'customer_label', en='Gutter accessories', fa='متعلقات آبرو')
++        version.action_release()
++        return scope, version
++
++    # ------------------------------------------------------------------ helpers
++    def _order(self, lang='en_US'):
++        partner = self.env['res.partner'].create({
++            'name': f'SIPANEL-PT-SB customer {lang} {uuid.uuid4().hex[:6]}',
++            'lang': lang, 'email': False})
++        return self.env['sale.order'].with_user(self.estimator).create({
++            'partner_id': partner.id, 'origin': 'SIPANEL-PT-SB'})
++
++    def _add_scope(self, order=None, optional=False, qty=12.0, section=None):
++        order = order or self._order()
++        if optional and section is None:
++            section = self.env['sale.order.line'].create({
++                'order_id': order.id, 'display_type': 'line_section',
++                'name': 'Options', 'is_optional': True, 'sequence': 100})
++        scope = self.env['sipanel.quote.scope'].with_user(self.estimator)._create_from_version(
++            order, self.sb_v1, qty, self.uom_m, optional=optional, section_line=section)
++        # The master recipe line carries no provisional_basis field, so PROVISIONAL is
++        # expressed on the component - the same way STEP 1C/1D did it.
++        self._comp_of(scope.current_revision_id, self.l_prov).write({
++            'certainty': 'provisional',
++            'provisional_basis': 'Initial allowance; confirmed after the site survey'})
++        # mutating a component correctly marks the note stale; the fixture is not
++        # testing staleness, so bring the note back in step
++        scope.current_revision_id.action_generate_note(accept=True)
++        return scope
++
++    @staticmethod
++    def _comp_of(rev, recipe_line):
++        return rev.component_ids.filtered(lambda c: c.source_line_id == recipe_line)
++
++    def _lines_of(self, rev):
++        return self.env['sale.order.line'].search([
++            ('sipanel_source_revision_id', '=', rev.id), ('sipanel_is_generated', '=', True)])
++
++    def _make_sendable(self, rev):
++        """Clear the blockers that are not the subject of the test."""
++        prov = self._comp_of(rev, self.l_prov)
++        prov.action_set_manual_sell_price(250.0)
++        rev.action_generate_note(accept=True)
++        return rev
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_sepbill')
++class TestProjection(SeparatelyBillableCase):
++    """(1)-(7) which components become a line, and exactly once."""
++
++    def test_eligible_own_line_component_creates_exactly_one_sale_line(self):
++        scope = self._add_scope()
++        rev = scope.current_revision_id
++        comp = self._comp_of(rev, self.l_sep)
++        lines = self._lines_of(rev).filtered(lambda l: l.sipanel_source_component_id == comp)
++        self.assertEqual(len(lines), 1)
++        self.assertEqual(lines.product_id, self.p_bracket)
++        self.assertEqual(lines.product_uom_qty, comp.final_qty)
++        self.assertTrue(lines.sipanel_origin_key)
++
++    def test_repeated_synchronisation_creates_no_duplicate(self):
++        scope = self._add_scope()
++        rev = scope.current_revision_id
++        before = self._lines_of(rev).ids
++        for _i in range(4):
++            rev._sync_separately_billable_lines()
++        scope.order_id.action_sipanel_sync_scope_lines()
++        self.assertEqual(self._lines_of(rev).ids, before)
++
++    def test_database_constraint_refuses_a_second_line_for_one_component(self):
++        """Belt and braces: the upsert is idempotent, and the database says so too."""
++        from psycopg2 import IntegrityError
++        scope = self._add_scope()
++        rev = scope.current_revision_id
++        line = self._lines_of(rev)[:1]
++        with self.assertRaises(IntegrityError):
++            with self.env.cr.savepoint():
++                self.env['sale.order.line'].with_context(**guard_ctx('sipanel_projection')).create({
++                    'order_id': scope.order_id.id, 'product_id': self.p_bracket.id,
++                    'product_uom_qty': 1.0, 'sipanel_is_generated': True,
++                    'sipanel_origin_key': line.sipanel_origin_key,
++                })
++
++    def test_included_component_creates_no_separate_line(self):
++        rev = self._add_scope().current_revision_id
++        comp = self._comp_of(rev, self.l_included)
++        self.assertFalse(comp.separately_billable)
++        self.assertFalse(self._lines_of(rev).filtered(
++            lambda l: l.sipanel_source_component_id == comp))
++
++    def test_internal_only_creates_no_separate_line(self):
++        rev = self._add_scope().current_revision_id
++        comp = self._comp_of(rev, self.l_int)
++        self.assertEqual(comp.disclosure, 'internal_only')
++        self.assertFalse(comp.separately_billable,
++                         'internal-only must never be customer revenue, whatever its placement')
++        self.assertFalse(self._lines_of(rev).filtered(
++            lambda l: l.sipanel_source_component_id == comp))
++
++    def test_customer_scope_creates_no_separate_line(self):
++        rev = self._add_scope().current_revision_id
++        comp = self._comp_of(rev, self.l_cust)
++        self.assertEqual(comp.responsibility, 'customer')
++        self.assertFalse(comp.separately_billable)
++        self.assertFalse(self._lines_of(rev).filtered(
++            lambda l: l.sipanel_source_component_id == comp))
++
++    def test_deactivated_component_line_is_retired(self):
++        scope = self._add_scope()
++        rev = scope.current_revision_id
++        comp = self._comp_of(rev, self.l_sep)
++        self.assertTrue(self._lines_of(rev).filtered(lambda l: l.sipanel_source_component_id == comp))
++        comp.action_tombstone()
++        self.assertFalse(
++            self._lines_of(rev).filtered(lambda l: l.sipanel_source_component_id == comp),
++            'a tombstoned component must not keep a live revenue line')
++
++    def test_product_backed_mapping_uses_the_component_product(self):
++        rev = self._add_scope().current_revision_id
++        line = self._lines_of(rev).filtered(
++            lambda l: l.sipanel_source_component_id == self._comp_of(rev, self.l_sep))
++        self.assertEqual(line.product_id, self._comp_of(rev, self.l_sep).product_id)
++        self.assertEqual(line.product_uom_id, self._comp_of(rev, self.l_sep).uom_id)
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_sepbill')
++class TestPricingReadiness(SeparatelyBillableCase):
++    """(8)(9)(10) product and price readiness."""
++
++    def test_estimate_only_without_product_blocks_readiness(self):
++        scope = self._add_scope()
++        rev = scope.current_revision_id
++        comp = self._comp_of(rev, self.l_sep)
++        comp.write({'kind': 'estimate_only', 'product_id': False,
++                    'resolution_owner_id': self.steward.id, 'description': 'to resolve'})
++        codes = {c for c, _m in rev._projection_blocking_issues()}
++        self.assertIn('SB_ESTIMATE_PRODUCT', codes)
++        blocking = {i['code'] for i in scope._readiness_issues() if i['level'] == 'block'}
++        self.assertIn('SB_ESTIMATE_PRODUCT', blocking)
++        self.assertFalse(
++            self._lines_of(rev).filtered(lambda l: l.sipanel_source_component_id == comp),
++            'an estimate with no product must not silently become a generic invoice line')
++
++    def test_missing_selling_price_blocks_seal(self):
++        scope = self._add_scope()
++        rev = scope.current_revision_id
++        comp = self._comp_of(rev, self.l_sep)
++        comp.write({'sell_price_source': 'manual', 'sell_price_unit': 0.0,
++                    'sell_known_zero_reason': False})
++        self.assertEqual(comp.sell_price_status, 'missing')
++        blocking = {i['code'] for i in scope._readiness_issues() if i['level'] == 'block'}
++        self.assertIn('SB_PRICE_MISSING', blocking)
++        with self.assertRaises(UserError):
++            scope.order_id._sipanel_check_readiness()
++
++    def test_known_zero_selling_price_is_distinguishable_and_allowed(self):
++        scope = self._add_scope()
++        rev = scope.current_revision_id
++        comp = self._comp_of(rev, self.l_sep)
++        comp.action_set_manual_sell_price(0.0, reason='Included free of charge per contract')
++        self.assertEqual(comp.sell_price_status, 'known_zero')
++        codes = {c for c, _m in rev._projection_blocking_issues()}
++        self.assertNotIn('SB_PRICE_MISSING', codes)
++        line = self._lines_of(rev).filtered(lambda l: l.sipanel_source_component_id == comp)
++        self.assertEqual(line.price_unit, 0.0)
++
++    def test_price_status_is_not_applicable_for_an_included_component(self):
++        rev = self._add_scope().current_revision_id
++        comp = self._comp_of(rev, self.l_included)
++        self.assertEqual(comp.sell_price_status, 'not_applicable',
++                         'an included component is paid through the anchor, not priced on its own')
++
++    def test_governed_manual_price_wins_over_the_pricelist(self):
++        rev = self._add_scope().current_revision_id
++        comp = self._comp_of(rev, self.l_sep)
++        comp.action_set_manual_sell_price(777.0)
++        line = self._lines_of(rev).filtered(lambda l: l.sipanel_source_component_id == comp)
++        self.assertEqual(line.price_unit, 777.0)
++        self.assertEqual(line.sipanel_price_provenance, 'manual:known')
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_sepbill')
++class TestAmountsAndReconciliation(SeparatelyBillableCase):
++    """(11)(12)(13) money."""
++
++    def test_native_taxes_apply_to_the_generated_line(self):
++        tax = self.env['account.tax'].create({
++            'name': 'SIPANEL-PT-SB VAT', 'amount_type': 'percent', 'amount': 9.0,
++            'type_tax_use': 'sale'})
++        self.p_bracket.write({'taxes_id': [(6, 0, [tax.id])]})
++        rev = self._add_scope().current_revision_id
++        line = self._lines_of(rev).filtered(
++            lambda l: l.sipanel_source_component_id == self._comp_of(rev, self.l_sep))
++        self.assertIn(tax, line.tax_ids,
++                      'taxes must come from the product and the fiscal position, never hardcoded')
++
++    def test_anchor_total_excludes_the_separate_line_amount(self):
++        scope = self._add_scope()
++        rev = scope.current_revision_id
++        anchor = scope.anchor_line_id
++        anchor.write({'price_unit': 1000.0})
++        line = self._lines_of(rev).filtered(
++            lambda l: l.sipanel_source_component_id == self._comp_of(rev, self.l_sep))
++        self.assertEqual(rev.anchor_amount, anchor.price_subtotal)
++        self.assertNotIn(line.id, [anchor.id])
++        self.assertAlmostEqual(rev.separate_amount, sum(self._lines_of(rev).mapped('price_subtotal')), 2)
++        # the order total is the anchor plus the separate lines, nothing counted twice
++        self.assertAlmostEqual(
++            scope.order_id.amount_untaxed,
++            anchor.price_subtotal + sum(self._lines_of(rev).mapped('price_subtotal')), 2)
++
++    def test_reconciliation_reports_no_double_billing(self):
++        scope = self._add_scope()
++        rev = scope.current_revision_id
++        recon = rev.reconciliation_json
++        self.assertTrue(rev.reconciliation_ok, recon.get('problems'))
++        self.assertEqual(recon['problems'], [])
++        # every separately billable component appears exactly once
++        keys = [r['component'] for r in recon['rows']]
++        self.assertEqual(len(keys), len(set(keys)))
++        billable = rev.component_ids.filtered('separately_billable')
++        self.assertEqual(recon['separately_billable_components'], len(billable))
++
++    def test_a_component_is_never_both_included_and_separate(self):
++        rev = self._add_scope().current_revision_id
++        for comp in rev.component_ids:
++            self.assertFalse(comp.placement == 'included_parent' and comp.separately_billable)
++
++    def test_included_component_stays_out_of_the_customer_note_bullets(self):
++        """The note must not repeat a component that now has its own line."""
++        rev = self._add_scope(order=self._order('fa_IR')).current_revision_id
++        note = rev.final_note or ''
++        self.assertIn('ناودان گالوانیزه', note, 'an included component is still described in the note')
++        self.assertNotIn('بست دیواری', note,
++                         'a separately billable component is a real line, not a note bullet too')
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_sepbill')
++class TestOptionalAndProvisional(SeparatelyBillableCase):
++    """(14)(15)(16) orthogonal combinations."""
++
++    def test_optional_unaccepted_line_is_quantity_zero(self):
++        scope = self._add_scope(optional=True)
++        rev = scope.current_revision_id
++        self.assertEqual(scope.acceptance_state, 'offered')
++        line = self._lines_of(rev).filtered(
++            lambda l: l.sipanel_source_component_id == self._comp_of(rev, self.l_sep))
++        self.assertTrue(line, 'an option is an ordinary line at quantity zero')
++        self.assertEqual(line.product_uom_qty, 0.0)
++        self.assertEqual(line.qty_to_invoice, 0.0)
++
++    def test_optional_acceptance_gives_the_line_its_governed_quantity(self):
++        scope = self._add_scope(optional=True)
++        rev = self._make_sendable(scope.current_revision_id)
++        scope.order_id._sipanel_seal_current_revisions(actor='test')
++        rev = scope.current_revision_id
++        scope._transition_acceptance('accepted', actor='test')
++        line = self._lines_of(rev).filtered(
++            lambda l: l.sipanel_source_component_id == self._comp_of(rev, self.l_sep))
++        self.assertGreater(line.product_uom_qty, 0.0)
++
++    def test_optional_acceptance_is_idempotent(self):
++        scope = self._add_scope(optional=True)
++        rev = self._make_sendable(scope.current_revision_id)
++        scope.order_id._sipanel_seal_current_revisions(actor='test')
++        rev = scope.current_revision_id
++        scope._transition_acceptance('accepted', actor='test')
++        lines_before = self._lines_of(rev)
++        qty_before = lines_before.mapped('product_uom_qty')
++        scope._transition_acceptance('accepted', actor='test')
++        scope._transition_acceptance('accepted', actor='test')
++        self.assertEqual(self._lines_of(rev).ids, lines_before.ids)
++        self.assertEqual(self._lines_of(rev).mapped('product_uom_qty'), qty_before)
++
++    def test_provisional_line_is_gated_from_invoicing(self):
++        scope = self._add_scope()
++        rev = scope.current_revision_id
++        comp = self._comp_of(rev, self.l_prov)
++        comp.action_set_manual_sell_price(250.0)
++        line = self._lines_of(rev).filtered(lambda l: l.sipanel_source_component_id == comp)
++        self.assertEqual(line.sipanel_invoice_gate, 'provisional')
++        self.assertNotIn(line, scope.order_id._get_invoiceable_lines(),
++                         'a provisional component must not invoice before it is resolved')
++
++    def test_resolving_a_provisional_component_lifts_the_gate(self):
++        scope = self._add_scope()
++        rev = scope.current_revision_id
++        comp = self._comp_of(rev, self.l_prov)
++        comp.action_set_manual_sell_price(250.0)
++        comp.write({'certainty': 'firm'})
++        line = self._lines_of(rev).filtered(lambda l: l.sipanel_source_component_id == comp)
++        self.assertFalse(line.sipanel_invoice_gate)
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_sepbill')
++class TestSecurityAndLifecycle(SeparatelyBillableCase):
++    """(22)(23)(27) provenance cannot be forged, sealed lines cannot be edited."""
++
++    def test_provenance_cannot_be_supplied_on_create(self):
++        order = self._order()
++        for payload in (
++            {'sipanel_is_generated': True},
++            {'sipanel_origin_key': 'forged'},
++            {'sipanel_source_component_id': 1},
++        ):
++            with self.assertRaises(UserError):
++                self.env['sale.order.line'].create(dict(
++                    {'order_id': order.id, 'product_id': self.p_bracket.id,
++                     'product_uom_qty': 1.0}, **payload))
++
++    def test_provenance_cannot_be_written_by_sudo_import_or_rpc_context(self):
++        rev = self._add_scope().current_revision_id
++        line = self._lines_of(rev)[:1]
++        for env_ in (line, line.sudo(),
++                     line.with_context(sipanel_projection=True),        # bare context flag
++                     line.with_context(import_file=True)):
++            with self.assertRaises(UserError):
++                env_.write({'sipanel_origin_key': 'forged'})
++        self.assertNotEqual(line.sipanel_origin_key, 'forged')
++
++    def test_sealed_generated_line_cannot_be_edited_directly(self):
++        scope = self._add_scope()
++        rev = self._make_sendable(scope.current_revision_id)
++        scope.order_id._sipanel_seal_current_revisions(actor='test')
++        line = self._lines_of(scope.current_revision_id)[:1]
++        for vals in ({'price_unit': 1.0}, {'product_uom_qty': 99.0}, {'name': 'hand edited'}):
++            with self.assertRaises(UserError):
++                line.write(vals)
++
++    def test_duplicate_quotation_gets_independent_projected_lines(self):
++        scope = self._add_scope()
++        rev = scope.current_revision_id
++        original = self._lines_of(rev)
++        self.assertTrue(original)
++        copy_order = scope.order_id.copy()
++        new_scope = copy_order.sipanel_quote_scope_ids
++        new_rev = new_scope.current_revision_id
++        new_lines = self._lines_of(new_rev)
++        self.assertTrue(new_lines, 'the duplicate gets its own projection')
++        self.assertFalse(set(new_lines.ids) & set(original.ids))
++        self.assertFalse(set(new_lines.mapped('sipanel_origin_key'))
++                         & set(original.mapped('sipanel_origin_key')),
++                         'origin keys must be distinct so the unique index holds')
++        self.assertEqual(new_lines.mapped('name'), original.mapped('name'),
++                         'the duplicate keeps the frozen snapshot text')
++
++    def test_cost_and_margin_stay_restricted_on_the_generated_line(self):
++        rev = self._add_scope().current_revision_id
++        line = self._lines_of(rev)[:1]
++        text = ' '.join(str(line.read()[0].get(f) or '') for f in ('name', 'sipanel_price_provenance'))
++        for forbidden in ('unit_cost', 'cost_amount', 'margin', 'standard_price'):
++            self.assertNotIn(forbidden, text)
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_sepbill')
++class TestSealDrift(SeparatelyBillableCase):
++    """(24)(25)(26) P3: the three drift gates, proven not assumed."""
++
++    def _sealed(self):
++        scope = self._add_scope()
++        self._make_sendable(scope.current_revision_id)
++        scope.order_id._sipanel_seal_current_revisions(actor='test')
++        return scope, scope.current_revision_id
++
++    def test_seal_drift_blocks_acceptance(self):
++        scope, rev = self._sealed()
++        self.assertEqual(rev.state, 'sent_sealed')
++        # a commercial change after sealing
++        scope.anchor_line_id.with_context(**guard_ctx('sipanel_apply_price')).write({'price_unit': 4321.0})
++        self.assertNotEqual(rev._current_seal_hash(), rev.sealed_hash)
++        with self.assertRaises(UserError):
++            rev.action_accept(reference='test')
++        self.assertEqual(rev.state, 'sent_sealed', 'a refused acceptance must not change state')
++
++    def test_seal_drift_blocks_confirmation(self):
++        scope, rev = self._sealed()
++        scope.anchor_line_id.with_context(**guard_ctx('sipanel_apply_price')).write({'price_unit': 4321.0})
++        order = scope.order_id
++        with self.assertRaises(UserError):
++            order.with_context(**guard_ctx('sipanel_no_reseal')).action_confirm()
++
++    def test_seal_drift_blocks_invoice_creation(self):
++        scope, rev = self._sealed()
++        scope.order_id.action_confirm()
++        rev = scope.current_revision_id
++        self.assertEqual(rev.state, 'accepted_sealed')
++        scope.anchor_line_id.with_context(
++            **guard_ctx('sipanel_governed_transition')).write({'price_unit': 9999.0})
++        self.assertNotEqual(rev._current_seal_hash(), rev.sealed_hash)
++        with self.assertRaises(UserError):
++            scope.order_id._create_invoices()
++
++    def test_commercial_change_after_sealing_requires_a_new_revision_and_reseal(self):
++        scope, rev = self._sealed()
++        comp = self._comp_of(rev, self.l_sep)
++        with self.assertRaises(UserError):
++            comp.action_set_manual_sell_price(10.0)
++        new_rev = rev.action_amend()
++        self.assertNotEqual(new_rev.id, rev.id)
++        self.assertEqual(new_rev.state, 'working')
++        self._comp_of(new_rev, self.l_sep).action_set_manual_sell_price(10.0)
++        new_rev.action_generate_note(accept=True)
++        new_rev.action_seal(actor='test')
++        self.assertEqual(new_rev.state, 'sent_sealed')
++        # prior artifacts and hashes are retained for audit
++        self.assertTrue(rev.sealed_hash)
++        self.assertTrue(rev.artifact_ids)
++
++    def test_amendment_does_not_double_bill_the_same_component(self):
++        """Found during the live pilot: an amendment creates a fresh projection,
++        so the superseded revision's lines have to go or the same component is
++        billed twice on one order."""
++        scope, rev = self._sealed()
++        order = scope.order_id
++        comp = self._comp_of(rev, self.l_sep)
++        before_total = order.amount_untaxed
++        before_lines = self.env['sale.order.line'].search_count([
++            ('order_id', '=', order.id), ('sipanel_is_generated', '=', True)])
++        new_rev = rev.action_amend()
++        after_lines = self.env['sale.order.line'].search_count([
++            ('order_id', '=', order.id), ('sipanel_is_generated', '=', True)])
++        self.assertEqual(after_lines, before_lines,
++                         'an amendment must replace the projection, not add a second one')
++        self.assertAlmostEqual(order.amount_untaxed, before_total, 2,
++                               'an amendment alone must not change the commercial total')
++        # exactly one live line per component, and it belongs to the new revision
++        keys = self.env['sale.order.line'].search([
++            ('order_id', '=', order.id), ('sipanel_is_generated', '=', True)])
++        self.assertEqual(len(keys), len(set(keys.mapped('sipanel_origin_key'))))
++        self.assertEqual(set(keys.mapped('sipanel_source_revision_id').ids), {new_rev.id})
++
++    def test_prior_artifacts_are_retained_after_amendment(self):
++        scope, rev = self._sealed()
++        before = sorted(rev.artifact_ids.mapped('content_hash'))
++        rev.action_amend()
++        self.assertEqual(sorted(rev.artifact_ids.mapped('content_hash')), before)
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_sepbill')
++class TestInvoiceFlow(SeparatelyBillableCase):
++    """(17)(18)(19)(28)(29) quotation -> confirmation -> draft invoice."""
++
++    def _confirmed(self, lang='en_US'):
++        scope = self._add_scope(order=self._order(lang))
++        rev = self._make_sendable(scope.current_revision_id)
++        scope.anchor_line_id.write({'price_unit': 1000.0})
++        scope.order_id._sipanel_seal_current_revisions(actor='test')
++        scope.order_id.action_confirm()
++        return scope, scope.current_revision_id
++
++    def test_confirmed_order_produces_the_expected_invoice_line(self):
++        scope, rev = self._confirmed()
++        invoice = scope.order_id._create_invoices()
++        comp = self._comp_of(rev, self.l_sep)
++        sep_lines = invoice.invoice_line_ids.filtered(
++            lambda l: l.sipanel_source_component_id == comp)
++        self.assertEqual(len(sep_lines), 1)
++        self.assertEqual(sep_lines.product_id, self.p_bracket)
++        self.assertEqual(invoice.state, 'draft')
++
++    def test_included_component_creates_no_invoice_line(self):
++        scope, rev = self._confirmed()
++        invoice = scope.order_id._create_invoices()
++        included = self._comp_of(rev, self.l_included)
++        self.assertFalse(invoice.invoice_line_ids.filtered(
++            lambda l: l.sipanel_source_component_id == included))
++
++    def test_customer_scope_and_internal_only_create_no_invoice_line(self):
++        scope, rev = self._confirmed()
++        invoice = scope.order_id._create_invoices()
++        for recipe_line in (self.l_cust, self.l_int):
++            comp = self._comp_of(rev, recipe_line)
++            self.assertFalse(invoice.invoice_line_ids.filtered(
++                lambda l: l.sipanel_source_component_id == comp))
++
++    def test_provisional_component_creates_no_invoice_line(self):
++        scope, rev = self._confirmed()
++        invoice = scope.order_id._create_invoices()
++        prov = self._comp_of(rev, self.l_prov)
++        self.assertFalse(invoice.invoice_line_ids.filtered(
++            lambda l: l.sipanel_source_component_id == prov),
++            'a provisional component is held back from invoicing')
++
++    def test_invoice_line_carries_source_provenance(self):
++        scope, rev = self._confirmed()
++        invoice = scope.order_id._create_invoices()
++        comp = self._comp_of(rev, self.l_sep)
++        line = invoice.invoice_line_ids.filtered(lambda l: l.sipanel_source_component_id == comp)
++        self.assertEqual(line.sipanel_source_revision_id, rev)
++        self.assertEqual(line.sipanel_source_quote_scope_id, scope)
++        self.assertEqual(line.sipanel_source_scope_id, scope.source_scope_id)
++        self.assertTrue(line.sipanel_origin_key)
++        self.assertTrue(line.sipanel_source_line_id.sipanel_is_generated)
++
++    def test_invoice_description_uses_the_frozen_resolved_translation(self):
++        scope, rev = self._confirmed('fa_IR')
++        invoice = scope.order_id._create_invoices()
++        comp = self._comp_of(rev, self.l_sep)
++        line = invoice.invoice_line_ids.filtered(lambda l: l.sipanel_source_component_id == comp)
++        self.assertIn('بست دیواری', line.name)
++        self.assertNotIn('Wall bracket', line.name)
++
++    def test_english_quotation_invoices_in_english(self):
++        scope, rev = self._confirmed('en_US')
++        invoice = scope.order_id._create_invoices()
++        comp = self._comp_of(rev, self.l_sep)
++        line = invoice.invoice_line_ids.filtered(lambda l: l.sipanel_source_component_id == comp)
++        self.assertIn('Wall bracket', line.name)
++        self.assertNotIn('بست دیواری', line.name)
++
++    def test_invoice_provenance_cannot_be_forged_on_a_manual_invoice(self):
++        move = self.env['account.move'].create({
++            'move_type': 'out_invoice', 'partner_id': self.partner.id})
++        with self.assertRaises(UserError):
++            self.env['account.move.line'].create({
++                'move_id': move.id, 'name': 'forged', 'quantity': 1.0,
++                'sipanel_origin_key': 'forged'})
++
++    def test_generated_line_appears_in_the_customer_pdf_without_internal_data(self):
++        import re
++        scope, rev = self._confirmed('fa_IR')
++        report = self.env.ref('sale.action_report_saleorder')
++        html = report._render_qweb_html(report.report_name, scope.order_id.ids)[0]
++        raw = html.decode() if isinstance(html, bytes) else html
++        # compare against the VISIBLE text: the raw document carries the report
++        # stylesheet, where "margin" is a CSS property and means nothing here
++        body = re.sub(r'<(script|style)[^>]*>.*?</\1>', ' ', raw, flags=re.S | re.I)
++        text = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', body))
++        self.assertIn('بست دیواری', text, 'the separate customer line must be visible')
++        internal = self._comp_of(rev, self.l_int)
++        for forbidden in ('Internal screws', 'پیچ داخلی', 'unit_cost', 'cost_amount',
++                          'eligible_cost', 'Margin', 'Cost'):
++            self.assertNotIn(forbidden, text, f'{forbidden!r} leaked into the customer document')
++        # and no internal cost figure appears anywhere in the document
++        internal_cost = internal.sudo().unit_cost
++        if internal_cost:
++            self.assertNotIn(f'{internal_cost:.2f}', text)
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_sepbill')
++class TestOperationalOwnership(SeparatelyBillableCase):
++    """(20)(21) exactly one demand owner, no double booking."""
++
++    def test_generated_line_does_not_add_a_second_procurement_owner(self):
++        scope, rev = self._add_scope(), None
++        rev = scope.current_revision_id
++        comp = self._comp_of(rev, self.l_sep)
++        self.assertEqual(comp.execution_owner, 'component_bridge_owner',
++                         'the frozen ownership architecture decides this, not the new line')
++        line = self._lines_of(rev).filtered(lambda l: l.sipanel_source_component_id == comp)
++        # the native stock rule must skip a bridge-owned generated line
++        self.assertTrue(line._action_launch_stock_rule(),
++                        'the override returns cleanly and launches nothing for a bridge-owned line')
++
++    def test_one_component_yields_one_execution_demand(self):
++        scope = self._add_scope()
++        rev = self._make_sendable(scope.current_revision_id)
++        scope.anchor_line_id.write({'price_unit': 1000.0})
++        scope.order_id._sipanel_seal_current_revisions(actor='test')
++        scope.order_id.action_confirm()
++        comp = self._comp_of(scope.current_revision_id, self.l_sep)
++        demands = self.env['sipanel.execution.demand'].search([('component_id', '=', comp.id)])
++        self.assertLessEqual(len(demands), 1,
++                             'a component must never raise two operational demands')
++        moves = self.env['stock.move'].search([
++            ('sale_line_id', 'in', self._lines_of(scope.current_revision_id).ids)])
++        self.assertFalse(moves, 'a bridge-owned generated line must not create its own stock move')
+diff --git a/addons/sipanel_sale_scope/views/quote_scope_component_views.xml b/addons/sipanel_sale_scope/views/quote_scope_component_views.xml
+index fed72ba..33fbc26 100644
+--- a/addons/sipanel_sale_scope/views/quote_scope_component_views.xml
++++ b/addons/sipanel_sale_scope/views/quote_scope_component_views.xml
+@@ -58,10 +58,22 @@
+                             <field name="provisional_basis"/>
+                             <field name="disclosure"/>
+                             <field name="treatment_preset"/>
++                            <field name="separately_billable"/>
+                             <field name="customer_label_resolved"/>
+                             <field name="customer_label_fa" optional="hide"/>
+                             <field name="customer_label_en" optional="hide"/>
+                         </group>
++                        <group string="Selling price (separately billable)"
++                               invisible="not separately_billable">
++                            <!-- Only an own-line component is priced on its own; an
++                                 included one is paid for through the anchor line. -->
++                            <field name="sell_price_unit"/>
++                            <field name="sell_price_source"/>
++                            <field name="sell_price_status"/>
++                            <field name="sell_known_zero_reason"
++                                   invisible="sell_price_status != 'known_zero'"/>
++                            <field name="sell_amount"/>
++                        </group>
+                         <group string="Execution intent">
+                             <field name="activity_id"/>
+                             <field name="system_id"/>
+diff --git a/addons/sipanel_sale_scope/views/quote_scope_revision_views.xml b/addons/sipanel_sale_scope/views/quote_scope_revision_views.xml
+index 5cc9d2b..e636043 100644
+--- a/addons/sipanel_sale_scope/views/quote_scope_revision_views.xml
++++ b/addons/sipanel_sale_scope/views/quote_scope_revision_views.xml
+@@ -70,6 +70,13 @@
+                             <field name="customer_description_fa" optional="hide"/>
+                             <field name="customer_description_en" optional="hide"/>
+                         </group>
++                        <group string="Separately billable (STEP 2B)">
++                            <field name="projected_line_count"/>
++                            <field name="anchor_amount"/>
++                            <field name="separate_amount"/>
++                            <field name="reconciliation_ok"/>
++                            <field name="reconciliation_json" widget="json" groups="base.group_no_one"/>
++                        </group>
+                         <group string="Seal">
+                             <field name="sealed_hash"/>
+                             <field name="sealed_date"/>
+diff --git a/addons/sipanel_sale_scope/views/sale_order_views.xml b/addons/sipanel_sale_scope/views/sale_order_views.xml
+index 5fc2c1e..2bd4633 100644
+--- a/addons/sipanel_sale_scope/views/sale_order_views.xml
++++ b/addons/sipanel_sale_scope/views/sale_order_views.xml
+@@ -7,6 +7,11 @@
+         <field name="arch" type="xml">
+             <xpath expr="//header" position="inside">
+                 <button name="action_sipanel_add_scope" type="object" string="Add Scope" invisible="state not in ('draft', 'sent')" groups="sipanel_sale_scope.group_scope_sales,sipanel_commercial_scope_core.group_scope_estimator"/>
++                <!-- Synchronisation is automatic on every governed transition; this is a
++                     visible, repeatable fallback, not the primary mechanism. -->
++                <button name="action_sipanel_sync_scope_lines" type="object" string="Synchronise Scope Lines"
++                        invisible="state not in ('draft', 'sent') or not sipanel_has_scopes"
++                        groups="sipanel_sale_scope.group_scope_sales,sipanel_commercial_scope_core.group_scope_estimator"/>
+             </xpath>
+             <xpath expr="//div[@name='button_box']" position="inside">
+                 <button name="action_sipanel_open_scopes" type="object" class="oe_stat_button" icon="fa-cubes" invisible="not sipanel_has_scopes">
+@@ -44,6 +49,14 @@
+             <xpath expr="//field[@name='order_line']/list/field[@name='product_uom_qty']" position="before">
+                 <field name="sipanel_is_anchor" column_invisible="1"/>
+                 <field name="sipanel_guard_state" column_invisible="1"/>
++                <!-- STEP 2B: let the operator tell the line kinds apart at a glance.
++                     The origin key is technical and stays in developer mode. -->
++                <field name="sipanel_is_generated" column_invisible="1"/>
++                <field name="sipanel_placement_snapshot" string="Scope line" optional="show"
++                       widget="badge"/>
++                <field name="sipanel_certainty_snapshot" string="Certainty" optional="hide"/>
++                <field name="sipanel_invoice_gate" string="Invoice hold" optional="show"/>
++                <field name="sipanel_origin_key" optional="hide" groups="base.group_no_one"/>
+             </xpath>
+         </field>
+     </record>
+diff --git a/addons/sipanel_sale_scope/wizards/replace_recipe.py b/addons/sipanel_sale_scope/wizards/replace_recipe.py
+index 12883ff..31f06c3 100644
+--- a/addons/sipanel_sale_scope/wizards/replace_recipe.py
++++ b/addons/sipanel_sale_scope/wizards/replace_recipe.py
+@@ -61,6 +61,7 @@ class SipanelWizardReplaceRecipe(models.TransientModel):
+                 'certainty': l.certainty, 'disclosure': l.disclosure, 'resolution_owner_id': l.resolution_owner_id.id,
+                 'resolution_note': l.resolution_note, 'resolution_state': 'open' if l.kind == 'estimate_only' else 'not_required',
+             }
++            cvals.update(Comp._sell_price_snapshot_vals(l.product_id, rev.order_id, l.uom_id, l.placement))
+             if l.responsibility == 'customer':
+                 cvals['cost_source'] = 'not_applicable'
+             elif l.cost_policy == 'derived':

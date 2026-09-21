@@ -1,0 +1,88 @@
+2026-09-21 06:22:20,383 1590 INFO ? odoo: Odoo version 19.0-20260528 
+2026-09-21 06:22:20,384 1590 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-21 06:22:20,384 1590 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-21 06:22:20,384 1590 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-09-21 06:22:22,143 1590 INFO sipanel odoo.modules.loading: loading 1 modules... 
+2026-09-21 06:22:22,153 1590 INFO sipanel odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-21 06:22:22,264 1590 INFO sipanel odoo.modules.loading: updating modules list 
+2026-09-21 06:22:22,271 1590 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-21 06:22:28,388 1590 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['SIPANEL Commercial Scope Core', 'SIPANEL Sale Scope'] to user __system__ #1 via n/a 
+2026-09-21 06:22:28,388 1590 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['SIPANEL Commercial Scope Core', 'SIPANEL Sale Scope'] to user __system__ #1 via n/a 
+2026-09-21 06:22:31,175 1590 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-21 06:22:31,412 1590 INFO sipanel odoo.modules.loading: loading 200 modules... 
+2026-09-21 06:22:33,613 1590 INFO sipanel odoo.modules.loading: Loading module sipanel_commercial_scope_core (53/200) 
+2026-09-21 06:22:33,893 1590 INFO sipanel odoo.registry: module sipanel_commercial_scope_core: creating or updating database tables 
+2026-09-21 06:22:34,321 1590 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/security/sipanel_security.xml 
+2026-09-21 06:22:34,629 1590 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/security/ir.model.access.csv 
+2026-09-21 06:22:36,300 1590 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/security/sipanel_record_rules.xml 
+2026-09-21 06:22:36,320 1590 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/data/ir_config_parameter.xml 
+2026-09-21 06:22:36,327 1590 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/scope_views.xml 
+2026-09-21 06:22:36,436 1590 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/scope_version_views.xml 
+2026-09-21 06:22:36,478 1590 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/recipe_line_views.xml 
+2026-09-21 06:22:36,497 1590 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/audit_event_views.xml 
+2026-09-21 06:22:36,539 1590 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/uom_family_views.xml 
+2026-09-21 06:22:36,565 1590 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/res_config_settings_views.xml 
+2026-09-21 06:22:36,725 1590 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/menus.xml 
+2026-09-21 06:22:37,316 1590 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_commercial_scope_core: no translation for language fa_IR 
+2026-09-21 06:22:37,322 1590 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_commercial_scope_core: no translation for language ru_RU 
+2026-09-21 06:22:37,365 1590 INFO sipanel odoo.modules.loading: Module sipanel_commercial_scope_core loaded in 3.75s, 444 queries (+444 other) 
+2026-09-21 06:22:41,405 1590 INFO sipanel odoo.modules.loading: Loading module sipanel_sale_scope (180/200) 
+2026-09-21 06:22:42,459 1590 INFO sipanel odoo.registry: module sipanel_sale_scope: creating or updating database tables 
+2026-09-21 06:22:42,548 1590 INFO sipanel odoo.models: Prepare computation of sipanel.quote.scope.component.sell_price_status 
+2026-09-21 06:22:42,550 1590 INFO sipanel odoo.models: Prepare computation of sipanel.quote.scope.component.sell_amount 
+2026-09-21 06:22:42,551 1590 INFO sipanel odoo.models: Prepare computation of sipanel.quote.scope.component.separately_billable 
+2026-09-21 06:22:43,782 1590 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_security.xml 
+2026-09-21 06:22:44,030 1590 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/ir.model.access.csv 
+2026-09-21 06:22:44,158 1590 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_record_rules.xml 
+2026-09-21 06:22:44,183 1590 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/add_scope_views.xml 
+2026-09-21 06:22:44,252 1590 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/refresh_cost_views.xml 
+2026-09-21 06:22:44,318 1590 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/split_move_views.xml 
+2026-09-21 06:22:44,357 1590 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/apply_price_views.xml 
+2026-09-21 06:22:44,386 1590 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/regenerate_note_views.xml 
+2026-09-21 06:22:44,416 1590 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/treatment_transition_views.xml 
+2026-09-21 06:22:44,455 1590 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/replace_recipe_views.xml 
+2026-09-21 06:22:44,486 1590 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_views.xml 
+2026-09-21 06:22:44,548 1590 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_revision_views.xml 
+2026-09-21 06:22:44,652 1590 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_component_views.xml 
+2026-09-21 06:22:44,684 1590 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/waiver_views.xml 
+2026-09-21 06:22:44,728 1590 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_order_views.xml 
+2026-09-21 06:22:44,971 1590 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_portal_templates.xml 
+2026-09-21 06:22:45,012 1590 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/menus.xml 
+2026-09-21 06:22:45,073 1590 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language fa_IR 
+2026-09-21 06:22:45,082 1590 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language ru_RU 
+2026-09-21 06:22:45,295 1590 INFO sipanel odoo.modules.loading: Module sipanel_sale_scope loaded in 3.89s, 814 queries (+814 other) 
+2026-09-21 06:22:45,552 1590 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_execution (198/200) 
+2026-09-21 06:22:46,136 1590 INFO sipanel odoo.registry: module sipanel_scope_execution: creating or updating database tables 
+2026-09-21 06:22:46,598 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_security.xml 
+2026-09-21 06:22:46,655 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/ir.model.access.csv 
+2026-09-21 06:22:46,737 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_record_rules.xml 
+2026-09-21 06:22:46,747 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/data/owner_rules.xml 
+2026-09-21 06:22:46,762 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/owner_rule_views.xml 
+2026-09-21 06:22:46,801 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/execution_views.xml 
+2026-09-21 06:22:46,923 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/sale_order_views.xml 
+2026-09-21 06:22:47,365 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/res_config_settings_views.xml 
+2026-09-21 06:22:47,854 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/menus.xml 
+2026-09-21 06:22:47,918 1590 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language fa_IR 
+2026-09-21 06:22:47,923 1590 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language ru_RU 
+2026-09-21 06:22:48,090 1590 INFO sipanel odoo.modules.loading: Module sipanel_scope_execution loaded in 2.54s, 506 queries (+506 other) 
+2026-09-21 06:22:48,095 1590 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_costing (200/200) 
+2026-09-21 06:22:48,207 1590 INFO sipanel odoo.registry: module sipanel_scope_costing: creating or updating database tables 
+2026-09-21 06:22:48,588 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_security.xml 
+2026-09-21 06:22:48,645 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/ir.model.access.csv 
+2026-09-21 06:22:48,716 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_record_rules.xml 
+2026-09-21 06:22:48,727 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/recognition_policies.xml 
+2026-09-21 06:22:48,745 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/ir_cron.xml 
+2026-09-21 06:22:48,756 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/policy_views.xml 
+2026-09-21 06:22:48,806 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/event_views.xml 
+2026-09-21 06:22:48,862 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/variance_views.xml 
+2026-09-21 06:22:48,912 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/sale_order_views.xml 
+2026-09-21 06:22:49,208 1590 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/menus.xml 
+2026-09-21 06:22:49,271 1590 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language fa_IR 
+2026-09-21 06:22:49,278 1590 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language ru_RU 
+2026-09-21 06:22:49,414 1590 INFO sipanel odoo.modules.loading: Module sipanel_scope_costing loaded in 1.32s, 339 queries (+339 other) 
+2026-09-21 06:22:49,415 1590 INFO sipanel odoo.modules.loading: 200 modules loaded in 18.00s, 2103 queries (+2103 extra) 
+2026-09-21 06:22:50,947 1590 INFO sipanel odoo.registry: verifying fields for every extended model 
+2026-09-21 06:22:53,344 1590 INFO sipanel odoo.modules.loading: Modules loaded. 
+2026-09-21 06:22:53,398 1590 INFO sipanel odoo.registry: Registry changed, signaling through the database 
+2026-09-21 06:22:53,403 1590 INFO sipanel odoo.registry: Registry loaded in 31.422s 
+2026-09-21 06:22:53,404 1590 INFO sipanel odoo.service.server: Stopping workers gracefully 
