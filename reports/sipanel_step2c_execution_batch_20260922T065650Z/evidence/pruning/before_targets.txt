@@ -1,0 +1,100 @@
+--- /opt/odoo/backups/sipanel-pre-customer-output-fix-20260920T062942Z
+realpath: /opt/odoo/backups/sipanel-pre-customer-output-fix-20260920T062942Z
+type=directory owner=root:root mode=700 mtime=2026-09-20 06:30:30.891716572 +0000
+symlink=no
+inner_symlinks=0
+bytes=114887015
+total 112228
+drwx------  2 root root     4096 Sep 20 06:30 .
+drwxr-xr-x 11 root root     4096 Sep 22 05:12 ..
+-rw-------  1 root root      520 Sep 20 06:30 SHA256SUMS
+-rw-------  1 root root       17 Sep 20 06:30 TIMESTAMP
+-rw-------  1 root root 39077363 Sep 20 06:30 addons.tar.gz
+-rw-------  1 root root    10127 Sep 20 06:30 container-inspect.json
+-rw-------  1 root root 53640605 Sep 20 06:30 filestore-sipanel.tar.gz
+-rw-------  1 root root     4904 Sep 20 06:30 installed_modules.txt
+-r--------  1 root root      434 Sep 20 06:30 odoo-sipanel.conf.redacted
+-rw-------  1 root root 22153045 Sep 20 06:30 sipanel.dump
+SHA256SUMS:
+ac665c38749a0fc89b637f46693a4c1b62ca173335186b0203533e3b6473352f  sipanel.dump
+dcd73d2fec6b30e3e0e265af410e0e7948be5adec38af5794ff0ff5ef30ebde6  filestore-sipanel.tar.gz
+40160678d848a422a3393a1dbd0fba9d6ebb9bd1895ca3152e701b380de5cdea  addons.tar.gz
+2a267258222594c563af7ed99a8eacd5580f2ee68aeae9a251bede811f5327aa  installed_modules.txt
+b32521f4144889aafdebb80265e7ec7dc6fc32f58cfc0f1957081482784dfe50  container-inspect.json
+8fd7a7863ef6d789b91cf0741446d646356c7ac02a5009dbd0a4939832890f60  odoo-sipanel.conf.redacted
+TIMESTAMP: 20260920T062942Z
+--- /opt/odoo/backups/sipanel-pre-live-fix-20260920T080013Z
+realpath: /opt/odoo/backups/sipanel-pre-live-fix-20260920T080013Z
+type=directory owner=root:root mode=700 mtime=2026-09-20 08:01:51.705428510 +0000
+symlink=no
+inner_symlinks=0
+bytes=114570881
+total 111924
+drwx------  2 root root     4096 Sep 20 08:01 .
+drwxr-xr-x 11 root root     4096 Sep 22 05:12 ..
+-rw-------  1 root root      520 Sep 20 08:01 SHA256SUMS
+-rw-------  1 root root       17 Sep 20 08:01 TIMESTAMP
+-rw-------  1 root root 39091648 Sep 20 08:01 addons.tar.gz
+-rw-------  1 root root    10127 Sep 20 08:01 container-inspect.json
+-rw-------  1 root root 53314162 Sep 20 08:01 filestore-sipanel.tar.gz
+-rw-------  1 root root     4904 Sep 20 08:01 installed_modules.txt
+-r--------  1 root root      434 Sep 20 08:01 odoo-sipanel.conf.redacted
+-rw-------  1 root root 22149069 Sep 20 08:01 sipanel.dump
+SHA256SUMS:
+4d79c4ab3d76dfe8fef6653f6f4e4cc9c95d38b0b064d962d48b991c0a85b20e  sipanel.dump
+f4ec6442c98a9a4e1dbccb4ef728067dd0fdc9d0ebcfcf6ecc3414f6e27e8baf  filestore-sipanel.tar.gz
+e28a8939a79fcff15038a874e0653a610b6af61547b8dba9d87f9d4acef2a51f  addons.tar.gz
+2a267258222594c563af7ed99a8eacd5580f2ee68aeae9a251bede811f5327aa  installed_modules.txt
+62b61e7aaa173b18be3d6b5cd3f35877d55bf02cfb72198580e0726d6e0df21d  container-inspect.json
+8fd7a7863ef6d789b91cf0741446d646356c7ac02a5009dbd0a4939832890f60  odoo-sipanel.conf.redacted
+TIMESTAMP: 20260920T080105Z
+--- /opt/odoo/backups/sipanel-pre-layout-fix-20260920T084541Z
+realpath: /opt/odoo/backups/sipanel-pre-layout-fix-20260920T084541Z
+type=directory owner=root:root mode=700 mtime=2026-09-20 08:48:26.713655952 +0000
+symlink=no
+inner_symlinks=0
+bytes=114571705
+total 111920
+drwx------  2 root root     4096 Sep 20 08:48 .
+drwxr-xr-x 11 root root     4096 Sep 22 05:12 ..
+-rw-------  1 root root      520 Sep 20 08:48 SHA256SUMS
+-rw-------  1 root root       17 Sep 20 08:48 TIMESTAMP
+-rw-------  1 root root 39091645 Sep 20 08:48 addons.tar.gz
+-rw-------  1 root root    10127 Sep 20 08:48 container-inspect.json
+-rw-------  1 root root 53314162 Sep 20 08:48 filestore-sipanel.tar.gz
+-rw-------  1 root root     4904 Sep 20 08:48 installed_modules.txt
+-r--------  1 root root      434 Sep 20 08:48 odoo-sipanel.conf.redacted
+-rw-------  1 root root 22149896 Sep 20 08:47 sipanel.dump
+SHA256SUMS:
+e35e343af42c88395f5cb5c7052fcf6aa6fd964a36d41f8402b1f4fab63fefe9  sipanel.dump
+f4ec6442c98a9a4e1dbccb4ef728067dd0fdc9d0ebcfcf6ecc3414f6e27e8baf  filestore-sipanel.tar.gz
+ef3ab867ce06984cebebf623e3e3af47512623e83a38e6ab620168907df80db5  addons.tar.gz
+2a267258222594c563af7ed99a8eacd5580f2ee68aeae9a251bede811f5327aa  installed_modules.txt
+62b61e7aaa173b18be3d6b5cd3f35877d55bf02cfb72198580e0726d6e0df21d  container-inspect.json
+8fd7a7863ef6d789b91cf0741446d646356c7ac02a5009dbd0a4939832890f60  odoo-sipanel.conf.redacted
+TIMESTAMP: 20260920T084732Z
+--- /opt/odoo/backups/sipanel-pre-multipage-20260920T104900Z
+realpath: /opt/odoo/backups/sipanel-pre-multipage-20260920T104900Z
+type=directory owner=root:root mode=700 mtime=2026-09-20 10:51:44.216545380 +0000
+symlink=no
+inner_symlinks=0
+bytes=114582630
+total 111936
+drwx------  2 root root     4096 Sep 20 10:51 .
+drwxr-xr-x 11 root root     4096 Sep 22 05:12 ..
+-rw-------  1 root root      520 Sep 20 10:51 SHA256SUMS
+-rw-------  1 root root       17 Sep 20 10:51 TIMESTAMP
+-rw-------  1 root root 39100825 Sep 20 10:51 addons.tar.gz
+-rw-------  1 root root    10127 Sep 20 10:51 container-inspect.json
+-rw-------  1 root root 53314391 Sep 20 10:51 filestore-sipanel.tar.gz
+-rw-------  1 root root     4904 Sep 20 10:51 installed_modules.txt
+-r--------  1 root root      434 Sep 20 10:51 odoo-sipanel.conf.redacted
+-rw-------  1 root root 22151412 Sep 20 10:51 sipanel.dump
+SHA256SUMS:
+5fb48991fe350145dfed6c30a9875c58a2c88862f93fe936c3c29b8237aba71e  sipanel.dump
+1cccb77301c121f4118e42832556b4e12ec3075cd2174b632deeb33dde1139e4  filestore-sipanel.tar.gz
+2116b7b7c2e717ebb5ce3fcc0ec760a9f60cebdd4f50e0fa67aa32a96268307e  addons.tar.gz
+2a267258222594c563af7ed99a8eacd5580f2ee68aeae9a251bede811f5327aa  installed_modules.txt
+62b61e7aaa173b18be3d6b5cd3f35877d55bf02cfb72198580e0726d6e0df21d  container-inspect.json
+8fd7a7863ef6d789b91cf0741446d646356c7ac02a5009dbd0a4939832890f60  odoo-sipanel.conf.redacted
+TIMESTAMP: 20260920T105047Z

@@ -1,0 +1,77 @@
+SIPANEL STEP 2C — EXECUTION BATCH BUNDLE MANIFEST
+Run:                    sipanel_step2c_execution_batch_20260922T065650Z
+Generated (UTC):        2026-09-22T07:54:40Z
+Verdict:                PASS_WITH_DEFECTS_FIXED — one component -> one operational demand owner -> one actual-cost source
+                        holds on the installed release path after CD-2C-01/02/03 were corrected
+Target:                 database sipanel, container odoo-sipanel (RestartCount=0, no restart); odoo-db not restarted
+Other tenants:          NOT touched (avizsazeh, shahbazi, ahantorob)
+
+COMMITS
+  STEP 2B-HARDENING source commit:    3229813d0c0a524c5f282c4ca5618b5b8ad54081
+  STEP 2B-HARDENING evidence commit:  3229813d0c0a524c5f282c4ca5618b5b8ad54081 (same single commit; parent 490eb30)
+  STEP 2C source commit (code+tests): e01da1973784ccfd692ac13a622707e4c3bae576   <- HEAD when this bundle was built
+  STEP 2C evidence/bundle commit:     created AFTER this bundle; it cannot be named here and is given in the final response
+
+MODULES
+  sipanel_commercial_scope_core    19.0.1.1.0   tree-sha256 7560da1be529c5648688d9b568f309cb9d5f7147c96884565c26fd85189c0ade
+  sipanel_sale_scope               19.0.1.2.2   tree-sha256 5dafe66da41412c0c7fb308be0f9f1c47e74a3942b794530e3084a73061408d8
+  sipanel_scope_execution          19.0.1.0.1   tree-sha256 4d5a171a4368dbebacf338d23b585f08b93562bccbafe4913303291397629ef6
+  sipanel_scope_costing            19.0.1.0.0   tree-sha256 47ac2780cc69480f2eedae11bffa5d8344372e6b62cab9b14f4365fb445a877d
+  upgraded: sipanel_sale_scope (19.0.1.2.1 -> 19.0.1.2.2), sipanel_scope_execution (19.0.1.0.0 -> 19.0.1.0.1)
+  sale_shamsi_report: HEAD 5680013, clean, not modified
+
+RECOVERY POINTS
+  pruned (owner-authorised, 458,612,231 bytes by du; df avail 2,635,862,016 -> 3,094,478,848):
+    /opt/odoo/backups/sipanel-pre-customer-output-fix-20260920T062942Z
+    /opt/odoo/backups/sipanel-pre-live-fix-20260920T080013Z
+    /opt/odoo/backups/sipanel-pre-layout-fix-20260920T084541Z
+    /opt/odoo/backups/sipanel-pre-multipage-20260920T104900Z
+  created: /opt/odoo/backups/sipanel-pre-step2c-20260922T065650Z (115,209,271 bytes, verified; NOT in this bundle)
+
+TESTS   SIPANEL 214 / 0 failures (52+141+5+16; 162 methods) | sale_shamsi_report 80 / 0 | STEP 2C tag 8 / 0 (6/8 failed before the fixes)
+PILOT   6 synthetic orders SI-26/1445,1446,1447,1724,1725,1726 (prefix SIPANEL-STEP2C-20260922T065650Z); all cancelled and cleaned;
+        no invoice/bill posted, no email sent, no real stock consumed; retained lineage listed in SIPANEL_STEP2C_TEMPORARY_DATA_CLEANUP.md
+
+FILES
+  SIPANEL_RECOVERY_POINT_PRUNING_REPORT.md                                            7489 bytes
+  SIPANEL_STEP2B_CLOSEOUT_ADDENDUM.md                                                10604 bytes
+  SIPANEL_STEP2C_DEMAND_OWNERSHIP_MATRIX.md                                           5267 bytes
+  SIPANEL_STEP2C_DOUBLE_COUNTING_RECONCILIATION.md                                    3552 bytes
+  SIPANEL_STEP2C_EXECUTION_BATCH_REPORT.md                                           20485 bytes
+  SIPANEL_STEP2C_FAILURE_RETRY_REPORT.md                                              3980 bytes
+  SIPANEL_STEP2C_PILOT_RESULT.json                                                    7535 bytes
+  SIPANEL_STEP2C_PROJECT_SYSTEM_ACTIVITY_TRACE.md                                     4011 bytes
+  SIPANEL_STEP2C_TEMPORARY_DATA_CLEANUP.md                                            4767 bytes
+  SIPANEL_STEP2C_TEST_RESULTS.md                                                      5182 bytes
+  evidence/logs/pg_stat_database_after.txt                                             308 bytes
+  evidence/logs/preflight_db.json                                                     5232 bytes
+  evidence/logs/recovery_point_SHA256SUMS.txt                                          520 bytes
+  evidence/logs/recovery_point_step2c.log                                             1278 bytes
+  evidence/logs/test_shamsi_step2c.log                                               17468 bytes
+  evidence/logs/test_sipanel_full_after_fix.log                                      82368 bytes
+  evidence/logs/test_sipanel_full_final.log                                          78356 bytes
+  evidence/logs/test_step2c_before_fix.log                                           24829 bytes
+  evidence/logs/test_step2c_only_after_fix.log                                       13167 bytes
+  evidence/pilot/stage1_setup.json                                                    8292 bytes
+  evidence/pilot/stage2_release.json                                                 19938 bytes
+  evidence/pilot/stage3a_measure.json                                                 1997 bytes
+  evidence/pilot/stage4_verify_after_fix.json                                        23799 bytes
+  evidence/pilot/stage5_cleanup.json                                                  4034 bytes
+  evidence/pilot/stage5b_cleanup_followup.json                                         464 bytes
+  evidence/pilot/stage5c_welcome_task.json                                             188 bytes
+  evidence/pruning/after_df_and_inventory.txt                                         2102 bytes
+  evidence/pruning/before_df_and_inventory.txt                                        1798 bytes
+  evidence/pruning/before_targets.txt                                                 5768 bytes
+  evidence/pruning/prune_run.log                                                      1022 bytes
+  evidence/scripts/build_bundle_2c.sh                                                 5408 bytes
+  evidence/scripts/pilot_step2c_1_setup.py                                           11578 bytes
+  evidence/scripts/pilot_step2c_2_release.py                                          9769 bytes
+  evidence/scripts/pilot_step2c_3_amend_measure.py                                    4331 bytes
+  evidence/scripts/pilot_step2c_4_verify_after_fix.py                                13242 bytes
+  evidence/scripts/pilot_step2c_5_cleanup.py                                          9926 bytes
+  evidence/scripts/pilot_step2c_5b_cleanup_followup.py                                2008 bytes
+  evidence/scripts/pilot_step2c_5c_welcome_task.py                                     678 bytes
+  evidence/scripts/prune_authorized_recovery_points.sh                                1611 bytes
+  evidence/source_diff/sipanel_step2c.diff                                           11642 bytes
+
+EXCLUDED: database dumps, filestore, private keys, credentials, unredacted configuration, access tokens, customer secrets.

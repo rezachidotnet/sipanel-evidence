@@ -1,0 +1,96 @@
+{
+ "ts": "20260922T065650Z",
+ "stages": {
+  "before": {
+   "revision": 1380,
+   "state": "accepted_sealed",
+   "bracket": 9311,
+   "qty": 20.0,
+   "generated_lines": [
+    [
+     2745,
+     1380,
+     20.0,
+     "sale"
+    ],
+    [
+     2746,
+     1380,
+     1.0,
+     "sale"
+    ]
+   ]
+  },
+  "amend": {
+   "result": "refused",
+   "error": "UserError",
+   "message": "Once a sales order is confirmed, you can't remove one of its lines (we need to track if something gets invoiced or delivered).\n                Set the quantity to 0 instead."
+  },
+  "unlink_generated_line_on_confirmed_order": "refused: Once a sales order is confirmed, you can't remove one of its lines (we need to track if something gets invoiced or delivered).\n                Set the quantity to 0 instead.",
+  "actual_cost_projection": {
+   "A": {
+    "events": [
+     {
+      "source": [
+       "stock.move",
+       848
+      ],
+      "type": "material",
+      "layer": "operational",
+      "inclusion": "excluded_duplicate",
+      "amount": 0.0,
+      "qty": 20.0,
+      "project": 97,
+      "system": 1317,
+      "activity": 1318,
+      "allocations": []
+     },
+     {
+      "source": [
+       "purchase.order.line",
+       164
+      ],
+      "type": "service",
+      "layer": "commitment",
+      "inclusion": "excluded_duplicate",
+      "amount": 0.0,
+      "qty": 1.0,
+      "project": 97,
+      "system": 1317,
+      "activity": 1318,
+      "allocations": []
+     }
+    ],
+    "policies_approved": 9
+   },
+   "B": {
+    "events": [],
+    "policies_approved": 9
+   }
+  },
+  "policy_fields": [
+   "id",
+   "display_name",
+   "name",
+   "company_id",
+   "route",
+   "version",
+   "terminal_event_model",
+   "terminal_event_filter_json",
+   "commitment_model",
+   "operational_qty_model",
+   "excluded_models_json",
+   "wip_reporting",
+   "state",
+   "approved_by_id",
+   "approved_date",
+   "approval_source",
+   "effective_from",
+   "note",
+   "create_uid",
+   "create_date",
+   "write_uid",
+   "write_date"
+  ]
+ }
+}

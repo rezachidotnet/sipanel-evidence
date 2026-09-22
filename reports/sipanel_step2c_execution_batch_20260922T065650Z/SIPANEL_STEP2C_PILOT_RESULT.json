@@ -1,0 +1,306 @@
+{
+ "run": "sipanel_step2c_execution_batch_20260922T065650Z",
+ "generated_utc": "2026-09-22T07:53:47Z",
+ "verdict": "PASS_WITH_DEFECTS_FIXED",
+ "database": "sipanel",
+ "container": "odoo-sipanel",
+ "restart": false,
+ "commits": {
+  "step2b_hardening_source": "3229813d0c0a524c5f282c4ca5618b5b8ad54081",
+  "step2b_hardening_evidence": "3229813d0c0a524c5f282c4ca5618b5b8ad54081",
+  "step2c_source": "e01da1973784ccfd692ac13a622707e4c3bae576",
+  "step2c_evidence": "created after this file (see final response)"
+ },
+ "recovery_point": {
+  "path": "/opt/odoo/backups/sipanel-pre-step2c-20260922T065650Z",
+  "bytes": 115209271,
+  "sha256": {
+   "sipanel.dump": "755c96fb0d4e1cda8340d097f66143a12f5ce6a489653c65113c87a31a739430",
+   "filestore-sipanel.tar.gz": "d81ba636472b517a6d212552c9dac5536fa698e2447cab77dd69a9f7f05bbd7f",
+   "addons.tar.gz": "ed8b44365814f5ce2610d7ef62c83476cf068783c54f6bb3d913f5a0f09f98b3"
+  }
+ },
+ "pruning": {
+  "deleted": [
+   "/opt/odoo/backups/sipanel-pre-customer-output-fix-20260920T062942Z",
+   "/opt/odoo/backups/sipanel-pre-live-fix-20260920T080013Z",
+   "/opt/odoo/backups/sipanel-pre-layout-fix-20260920T084541Z",
+   "/opt/odoo/backups/sipanel-pre-multipage-20260920T104900Z"
+  ],
+  "bytes_recovered_du": 458612231,
+  "df_avail_before": 2635862016,
+  "df_avail_after": 3094478848,
+  "df_avail_end_of_run": 2978095104
+ },
+ "module_versions": {
+  "sipanel_commercial_scope_core": "19.0.1.1.0",
+  "sipanel_sale_scope": "19.0.1.2.2",
+  "sipanel_scope_execution": "19.0.1.0.1",
+  "sipanel_scope_costing": "19.0.1.0.0"
+ },
+ "modules_upgraded": [
+  "sipanel_sale_scope",
+  "sipanel_scope_execution"
+ ],
+ "tests": {
+  "sipanel_full_final": {
+   "stats": {
+    "sipanel_commercial_scope_core": 52,
+    "sipanel_sale_scope": 141,
+    "sipanel_scope_costing": 5,
+    "sipanel_scope_execution": 16,
+    "total": 214
+   },
+   "methods": 162,
+   "failures": 0
+  },
+  "step2c_only": {
+   "methods": 8,
+   "failures": 0
+  },
+  "step2c_before_fix": {
+   "methods": 8,
+   "failures": 6
+  },
+  "sale_shamsi_report": {
+   "tests": 80,
+   "failures": 0
+  }
+ },
+ "pilot": {
+  "prefix": "SIPANEL-STEP2C-20260922T065650Z",
+  "ids": {
+   "system": 1317,
+   "act_ins": 1318,
+   "act_mfg": 1319,
+   "project": 97,
+   "project_account": 1320,
+   "plan_system": 80,
+   "plan_activity": 81,
+   "exec_user": 1376,
+   "products": {
+    "A_anchor": 2644,
+    "B_anchor": 2645,
+    "bracket": 2646,
+    "gutter": 2647,
+    "coil": 2648,
+    "crane": 2649,
+    "labour": 2650
+   },
+   "vendor": 2362,
+   "supplierinfo": 97,
+   "bom": 41,
+   "master_A": 557,
+   "version_A": 663,
+   "lines_A": {
+    "A1_bracket_own_line": 4455,
+    "A2_crane_own_line": 4456,
+    "A3_gutter_included": 4457,
+    "A4_labour_included": 4458
+   },
+   "master_B": 558,
+   "version_B": 664,
+   "lines_B": {
+    "B1_bracket_own_line": 4459,
+    "B2_labour_included": 4460
+   },
+   "customer": 2363
+  },
+  "orders_stage1": {
+   "A": {
+    "order": 1445,
+    "name": "SI-26/1445",
+    "scope": 1280,
+    "accepted_revision": 1380
+   },
+   "A2": {
+    "order": 1446,
+    "name": "SI-26/1446",
+    "scope": 1281,
+    "accepted_revision": 1381
+   },
+   "B": {
+    "order": 1447,
+    "name": "SI-26/1447",
+    "scope": 1282,
+    "accepted_revision": 1382
+   }
+  },
+  "orders_stage4": {
+   "A3": {
+    "order": 1724,
+    "name": "SI-26/1724",
+    "scope": 1547,
+    "accepted_revision": 1676
+   },
+   "C": {
+    "order": 1725,
+    "name": "SI-26/1725",
+    "scope": 1548,
+    "accepted_revision": 1677
+   },
+   "B2": {
+    "order": 1726,
+    "name": "SI-26/1726",
+    "scope": 1549,
+    "accepted_revision": 1678
+   }
+  },
+  "before_fix": {
+   "A_batch": 196,
+   "A2_failed_batch": 197,
+   "A2_empty_released_batch": 198,
+   "B_batch": 195,
+   "B_bracket_demand_linked": "project.task 2438 (anchor) - CD-2C-02"
+  },
+  "after_fix": {
+   "A3": {
+    "failed_batches": [
+     259,
+     260
+    ],
+    "released_batch": 261,
+    "demands": 4,
+    "targets": 5
+   },
+   "C": {
+    "threads": {
+     "t2": {
+      "ok": false,
+      "error": "UserError",
+      "message": "Release still in progress; retry exhausted after 3 attempt(s). (Cannot grab a lock on records)"
+     },
+     "t1": {
+      "ok": true,
+      "batch": 262,
+      "state": "released",
+      "retry_count": 0,
+      "demands": 4
+     }
+    },
+    "batch": 262,
+    "cancelled": true
+   },
+   "B2": {
+    "batch": 263,
+    "bracket_demand_linked": "stock.move 1130 (own generated line)",
+    "labour_demand_linked": "project.task 2749"
+   },
+   "amend_A": {
+    "new_revision": 1679,
+    "delta_batch": 264,
+    "delta_demand": 1522,
+    "delta_qty": 10.0,
+    "occurrence_signed_sum": 30.0
+   },
+   "amend_B2": {
+    "new_revision": 1680,
+    "delta_batch": 265,
+    "delta_demand": 1523,
+    "delta_qty": 10.0,
+    "occurrence_signed_sum": 30.0
+   }
+  }
+ },
+ "counts": {
+  "bridge_owner_demands": {
+   "A": 4,
+   "A3": 4,
+   "C": 4,
+   "A_delta": 1
+  },
+  "native_owner_demands": {
+   "B": 2,
+   "B2": 2,
+   "B2_delta": 1
+  },
+  "duplicates": {
+   "purchase": 0,
+   "stock": 0,
+   "mrp": 0,
+   "project": 0,
+   "cost": 0
+  },
+  "generated_lines_total": 13,
+  "native_moves_from_bridge_generated_lines": 0,
+  "native_moves_from_native_generated_lines_per_line": 1
+ },
+ "defects": {
+  "CD-2C-01": "failed demands blocked the retry (released batch with no demand) - fixed",
+  "CD-2C-02": "native-owner demand of an own-line component linked the anchor documents - fixed",
+  "CD-2C-03": "amendment after confirmation refused by the native unlink rule - fixed"
+ },
+ "cleanup": {
+  "active_leftovers": {
+   "sale.order (not cancelled)": 0,
+   "sipanel.quote.scope": 0,
+   "sipanel.scope": 0,
+   "sipanel.scope.version": 2,
+   "product.product": 0,
+   "res.partner": 1,
+   "res.users": 0,
+   "project.project": 0,
+   "project.task": 0,
+   "account.analytic.account": 0,
+   "stock.picking": 0,
+   "purchase.order": 0,
+   "mrp.production": 0,
+   "mrp.bom": 0,
+   "account.move": 0,
+   "sipanel.execution.demand (not cancelled/failed)": 0,
+   "sipanel.execution.batch (not cancelled/failed)": 0
+  },
+  "retained": {
+   "orders_cancelled": 6,
+   "sealed_revisions": 8,
+   "artifacts": 16,
+   "batches": 11,
+   "demands": 30,
+   "targets": 22,
+   "audit_events": 43,
+   "user_contact_partner_active": 2361,
+   "master_versions_released": [
+    663,
+    664
+   ]
+  },
+  "side_effects": {
+   "mail_mail_total": 36,
+   "posted_account_moves": 0,
+   "done_stock_moves_total": 10,
+   "internal_quant_qty": 0,
+   "purchase_orders_total": 7,
+   "mrp_total": 0,
+   "pickings_total": 13,
+   "tasks_total": 139,
+   "report_url": "http://127.0.0.1:8072",
+   "sipanel_params": {
+    "sipanel_scope.activity_plan_id": "81",
+    "sipanel_scope.company_currency_only": "True",
+    "sipanel_scope.default_project_id": "55",
+    "sipanel_scope.release_retry_count": "3",
+    "sipanel_scope.stock_issue_picking_type_id": "91",
+    "sipanel_scope.system_plan_id": "80"
+   },
+   "owner_rules": 5
+  },
+  "earlier_audit_records_intact": {
+   "SI-26/312": 1,
+   "version_115": 1,
+   "sepbill pilot revisions 886/887": 2
+  }
+ },
+ "invoices_posted": 0,
+ "bills_posted": 0,
+ "emails_sent": 0,
+ "real_stock_consumed": 0,
+ "other_tenants_touched": false,
+ "blockers_for_step2d": [
+  "OBS-2C-07 production analytic plans 80/81 have no accounts",
+  "OBS-2C-08 change-order settlement of invoiced superseded lines (R-3)",
+  "OBS-2C-02 SIPANEL cancel/reduce paths act on native-owned targets",
+  "OBS-2C-05 order cancel needs demand write access",
+  "OBS-2C-04 release backoff unset",
+  "OBS-2C-09 no BoM/vendor configuration for real products"
+ ]
+}

@@ -1,0 +1,30 @@
+# before pruning 2026-09-22T06:57:25Z
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda3        28G   24G  2.5G  91% /
+     Avail
+2635788288
+
+total 18316
+drwxr-xr-x 11 root root     4096 Sep 22 05:12 .
+drwxr-xr-x 13 root root     4096 Sep 15 14:27 ..
+drwxr-xr-x  2 root root     4096 Aug 21 16:44 ahanassa-migration-20260821-1644
+-rw-------  1 root root 18709786 Jul 17 21:44 sipanel-before-kanban-fix-20260717-214400.dump
+drwx------  2 root root     4096 Sep 22 05:13 sipanel-pre-2bhardening-20260922T060000Z
+drwx------  2 root root     4096 Sep 20 06:30 sipanel-pre-customer-output-fix-20260920T062942Z
+drwx------  2 root root     4096 Sep 20 08:48 sipanel-pre-layout-fix-20260920T084541Z
+drwx------  2 root root     4096 Sep 20 08:01 sipanel-pre-live-fix-20260920T080013Z
+drwx------  2 root root     4096 Sep 20 10:51 sipanel-pre-multipage-20260920T104900Z
+drwx------  2 root root     4096 Sep 19 16:47 sipanel-pre-scope-20260919T164558Z
+drwx------  2 root root     4096 Sep 21 06:22 sipanel-pre-sepbill-20260921T021500Z
+drwx------  2 root root     4096 Sep 21 01:27 sipanel-pre-translation-20260921T013000Z
+
+24696190	/opt/odoo/backups/ahanassa-migration-20260821-1644
+18709786	/opt/odoo/backups/sipanel-before-kanban-fix-20260717-214400.dump
+115229870	/opt/odoo/backups/sipanel-pre-2bhardening-20260922T060000Z
+114887015	/opt/odoo/backups/sipanel-pre-customer-output-fix-20260920T062942Z
+114571705	/opt/odoo/backups/sipanel-pre-layout-fix-20260920T084541Z
+114570881	/opt/odoo/backups/sipanel-pre-live-fix-20260920T080013Z
+114582630	/opt/odoo/backups/sipanel-pre-multipage-20260920T104900Z
+113663953	/opt/odoo/backups/sipanel-pre-scope-20260919T164558Z
+114650657	/opt/odoo/backups/sipanel-pre-sepbill-20260921T021500Z
+114611255	/opt/odoo/backups/sipanel-pre-translation-20260921T013000Z

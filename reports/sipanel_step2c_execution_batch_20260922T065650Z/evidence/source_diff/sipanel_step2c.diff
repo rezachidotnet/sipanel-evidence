@@ -1,0 +1,201 @@
+diff --git a/addons/sipanel_sale_scope/__manifest__.py b/addons/sipanel_sale_scope/__manifest__.py
+index 1b7b174..f9403c8 100644
+--- a/addons/sipanel_sale_scope/__manifest__.py
++++ b/addons/sipanel_sale_scope/__manifest__.py
+@@ -2,7 +2,7 @@
+ {
+     'name': 'SIPANEL Sale Scope',
+     'summary': 'Quote Scope, revisions, component snapshots, quantity/cost engine, pricing & margin, notes, seal, optional/provisional governance, portal guard (Slices B + C)',
+-    'version': '19.0.1.2.1',
++    'version': '19.0.1.2.2',
+     'category': 'Sales/Sales',
+     'author': 'SIPANEL',
+     'license': 'LGPL-3',
+diff --git a/addons/sipanel_sale_scope/models/separately_billable.py b/addons/sipanel_sale_scope/models/separately_billable.py
+index 9e071a7..1a3a509 100644
+--- a/addons/sipanel_sale_scope/models/separately_billable.py
++++ b/addons/sipanel_sale_scope/models/separately_billable.py
+@@ -264,7 +264,7 @@ class SipanelQuoteScopeRevision(models.Model):
+         for line in superseded:
+             if line.invoice_lines or line.qty_delivered:
+                 continue          # consumed: keep it, and flag it in the reconciliation
+-            line.with_context(**guard_ctx('sipanel_projection')).unlink()
++            self._retire_projected_line(line)
+         return True
+ 
+     @api.model
+@@ -285,6 +285,16 @@ class SipanelQuoteScopeRevision(models.Model):
+             if line.product_uom_qty:
+                 line.with_context(**ctx).write({'product_uom_qty': 0.0})
+             return False
++        if line._check_line_unlink():
++            # Odoo refuses to delete a line of a confirmed order ("set the quantity
++            # to 0 instead"), so an amendment after confirmation used to be refused
++            # outright (STEP 2C defect CD-2C-03). The line is neutralised the way
++            # Odoo prescribes; native follow-ups (a delivery move of a
++            # NATIVE_LINE_OWNER line) shrink with the quantity, nothing is deleted,
++            # and the new revision's line carries the accepted baseline.
++            if line.product_uom_qty:
++                line.with_context(**ctx).write({'product_uom_qty': 0.0})
++            return False
+         line.with_context(**ctx).unlink()
+         return True
+ 
+diff --git a/addons/sipanel_sale_scope/tests/test_separately_billable.py b/addons/sipanel_sale_scope/tests/test_separately_billable.py
+index 97a6586..2167c5a 100644
+--- a/addons/sipanel_sale_scope/tests/test_separately_billable.py
++++ b/addons/sipanel_sale_scope/tests/test_separately_billable.py
+@@ -811,3 +811,50 @@ class TestPricelistFailsClosed(SeparatelyBillableCase):
+         comp = self._comp_of(self._add_scope().current_revision_id, self.l_sep)
+         self.assertFalse(comp.sell_price_error)
+         self.assertEqual(comp.sell_price_status, 'known')
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_sepbill', 'sipanel_step2c')
++class TestAmendmentAfterConfirmation(SeparatelyBillableCase):
++    """STEP 2C defect CD-2C-03: Odoo refuses to delete a line of a confirmed order,
++    so an amendment after confirmation used to be refused outright. The superseded
++    projection is now neutralised (quantity 0) the way Odoo prescribes; consumed
++    lines are still left alone and flagged."""
++
++    def _confirmed(self):
++        scope = self._add_scope()
++        rev = self._make_sendable(scope.current_revision_id)
++        scope.anchor_line_id.write({'price_unit': 1000.0})
++        scope.order_id._sipanel_seal_current_revisions(actor='test')
++        scope.order_id.action_confirm()
++        return scope, scope.current_revision_id
++
++    def test_amendment_after_confirmation_neutralises_the_superseded_line(self):
++        scope, rev = self._confirmed()
++        order = scope.order_id
++        old_lines = self._lines_of(rev)
++        total_before = order.amount_untaxed
++        new_rev = rev.action_amend()
++        self.assertEqual(new_rev.state, 'working')
++        self.assertEqual(new_rev.prior_revision_id, rev)
++        self.assertTrue(all(l.exists() for l in old_lines), 'superseded lines of a confirmed order are never deleted')
++        self.assertTrue(all(l.product_uom_qty == 0.0 for l in old_lines), 'they are neutralised, as Odoo prescribes')
++        new_lines = self._lines_of(new_rev)
++        self.assertEqual(len(new_lines), len(old_lines))
++        self.assertTrue(all(l.product_uom_qty > 0 for l in new_lines))
++        self.assertAlmostEqual(order.amount_untaxed, total_before, 2, 'the amendment alone does not change the total')
++        live = self.env['sale.order.line'].search([('order_id', '=', order.id), ('sipanel_is_generated', '=', True), ('product_uom_qty', '>', 0)])
++        self.assertEqual(set(live.mapped('sipanel_source_revision_id').ids), {new_rev.id}, 'exactly one live line per component, on the new revision')
++        self.assertFalse(new_rev.reconciliation_json.get('problems'))
++
++    def test_invoiced_superseded_line_is_left_alone_and_flagged(self):
++        scope, rev = self._confirmed()
++        order = scope.order_id
++        invoice = order._create_invoices()
++        self.assertEqual(invoice.state, 'draft')
++        sep_line = self._lines_of(rev).filtered(lambda l: l.sipanel_source_component_id == self._comp_of(rev, self.l_sep))
++        self.assertTrue(sep_line.invoice_lines)
++        qty = sep_line.product_uom_qty
++        new_rev = rev.action_amend()
++        self.assertEqual(sep_line.product_uom_qty, qty, 'invoiced history is not rewritten')
++        problems = new_rev.reconciliation_json.get('problems') or []
++        self.assertTrue(any('superseded revision is already invoiced' in p for p in problems), problems)
+diff --git a/addons/sipanel_scope_execution/__manifest__.py b/addons/sipanel_scope_execution/__manifest__.py
+index bab5aa4..fcc8ceb 100644
+--- a/addons/sipanel_scope_execution/__manifest__.py
++++ b/addons/sipanel_scope_execution/__manifest__.py
+@@ -2,7 +2,7 @@
+ {
+     'name': 'SIPANEL Scope Execution',
+     'summary': 'Owner registry, Release Execution, batches/demands/targets, adapters, LockError retry, amendment/cancel lineage (Slice D)',
+-    'version': '19.0.1.0.0',
++    'version': '19.0.1.0.1',
+     'category': 'Sales/Sales',
+     'author': 'SIPANEL',
+     'license': 'LGPL-3',
+diff --git a/addons/sipanel_scope_execution/models/adapters.py b/addons/sipanel_scope_execution/models/adapters.py
+index d606fc7..0cfbeff 100644
+--- a/addons/sipanel_scope_execution/models/adapters.py
++++ b/addons/sipanel_scope_execution/models/adapters.py
+@@ -175,9 +175,25 @@ class SipanelExecutionAdapter(models.AbstractModel):
+     def _adapt_equipment_service(self, demand):
+         return self._adapt_buy_direct(demand)
+ 
++    @api.model
++    def _native_line_of(self, demand):
++        """The native Sale line that owns this demand's operational documents.
++
++        Since STEP 2B a separately-billable component is projected onto its own
++        generated Sale line, and under NATIVE_LINE_OWNER that line - not the
++        anchor - is what launches the native stock/purchase/task demand. Linking
++        the anchor's documents instead would attach the wrong operational record
++        (STEP 2C defect CD-2C-02). Components without an own line stay covered by
++        the anchor.
++        """
++        own = self.env['sale.order.line'].search([
++            ('sipanel_is_generated', '=', True), ('sipanel_source_component_id', '=', demand.component_id.id),
++            ('order_id', '=', demand.order_id.id)], limit=1)
++        return own or demand.quote_scope_id.anchor_line_id
++
+     @api.model
+     def _adapt_native_anchor_covered(self, demand):
+-        anchor = demand.quote_scope_id.anchor_line_id
++        anchor = self._native_line_of(demand)
+         linked = False
+         if 'move_ids' in anchor._fields:
+             for mv in anchor.move_ids.filtered(lambda m: m.state != 'cancel'):
+diff --git a/addons/sipanel_scope_execution/models/execution_batch.py b/addons/sipanel_scope_execution/models/execution_batch.py
+index c3c570f..a5add98 100644
+--- a/addons/sipanel_scope_execution/models/execution_batch.py
++++ b/addons/sipanel_scope_execution/models/execution_batch.py
+@@ -108,8 +108,8 @@ class SipanelExecutionBatch(models.Model):
+                         continue
+                     d_uid = delta_uid or rev.acceptance_reference or f"rev:{rev.id}"
+                     vals = Demand._prepare_from_component(batch, c, scope, d_uid)
+-                    if Demand.search([('demand_key', '=', vals['demand_key'])], limit=1):
+-                        continue  # already demanded (idempotent by key)
++                    if Demand._live_by_key(vals['demand_key']):
++                        continue  # already demanded by a live batch (idempotent by key; failed demands do not count, CD-2C-01)
+                     demands |= Demand.create(vals)
+             self.env.flush_all()  # unique keys are checked here (IntegrityError => caller retries / returns existing)
+         if issues:
+diff --git a/addons/sipanel_scope_execution/models/execution_demand.py b/addons/sipanel_scope_execution/models/execution_demand.py
+index 4c2720b..342c38d 100644
+--- a/addons/sipanel_scope_execution/models/execution_demand.py
++++ b/addons/sipanel_scope_execution/models/execution_demand.py
+@@ -36,7 +36,17 @@ class SipanelExecutionDemand(models.Model):
+     target_count = fields.Integer(compute='_compute_target_count')
+     signed_qty = fields.Float(digits=(16, 6), readonly=True, help="Negative for cancel deltas.")
+ 
+-    _demand_key_unique = models.Constraint('UNIQUE(demand_key)', 'One demand per (occurrence, delta, mode, owner) (C8-D02).')
++    # One LIVE demand per (occurrence, delta, mode, owner) (C8-D02). A demand that
++    # belongs to a FAILED batch is retained as evidence but must not occupy the key:
++    # otherwise the retry after the cause is fixed skips every component as "already
++    # demanded" and produces a released batch with no demand and no document
++    # (STEP 2C defect CD-2C-01).
++    _demand_key_live_unique = models.UniqueIndex("(demand_key) WHERE state <> 'failed'")
++
++    @api.model
++    def _live_by_key(self, demand_key):
++        """The live demand holding this key, if any (failed demands never count)."""
++        return self.search([('demand_key', '=', demand_key), ('state', '!=', 'failed')], limit=1)
+ 
+     @api.depends('component_id.name', 'execution_mode')
+     def _compute_name(self):
+diff --git a/addons/sipanel_scope_execution/models/sale_order.py b/addons/sipanel_scope_execution/models/sale_order.py
+index b453816..4f64f60 100644
+--- a/addons/sipanel_scope_execution/models/sale_order.py
++++ b/addons/sipanel_scope_execution/models/sale_order.py
+@@ -42,7 +42,7 @@ class SaleOrder(models.Model):
+                 batch = Batch.search([('order_id', '=', self.id), ('revision_set_hash', '=', d_uid)], limit=1) or Batch.create({
+                     'order_id': self.id, 'accepted_revision_ids': [(6, 0, rev.ids)], 'revision_set_hash': d_uid, 'state': 'validated'})
+                 vals = Demand._prepare_from_component(batch, c, scope, d_uid, qty=delta)
+-                if Demand.search([('demand_key', '=', vals['demand_key'])]):
++                if Demand._live_by_key(vals['demand_key']):
+                     continue
+                 d = Demand.create(vals)
+                 if delta > 0:
+diff --git a/addons/sipanel_scope_execution/tests/__init__.py b/addons/sipanel_scope_execution/tests/__init__.py
+index f3bc533..ae3214c 100644
+--- a/addons/sipanel_scope_execution/tests/__init__.py
++++ b/addons/sipanel_scope_execution/tests/__init__.py
+@@ -1,2 +1,3 @@
+ from . import common
+ from . import test_release
++from . import test_step2c
