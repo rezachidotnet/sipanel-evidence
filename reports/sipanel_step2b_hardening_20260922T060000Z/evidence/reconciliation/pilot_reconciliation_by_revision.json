@@ -1,0 +1,149 @@
+{
+ "generated_utc": "2026-09-22T05:14:24.987620Z",
+ "source": "retained STEP 2B pilot records (order cancelled, scopes archived)",
+ "keyed_by": "revision_id",
+ "revisions": [
+  {
+   "revision_id": 886,
+   "revision_display_name": "SI-26/960 / SIPANEL-SEPBILL-PILOT-20260921T021500Z-MASTER r2",
+   "revision_state": "accepted_sealed",
+   "revision_number": 2,
+   "quote_scope_id": 818,
+   "quote_scope_uid": "85639f98-42cc-42ac-b757-9c6d5c6eef52",
+   "quote_scope_is_optional": false,
+   "quote_scope_acceptance_state": "base",
+   "order_id": 960,
+   "order_name": "SI-26/960",
+   "order_state": "cancel",
+   "resolved_language": "fa_IR",
+   "sealed_hash": "a158ed41064f78d0e5be2d322c99dc83029a1874119c07df82b0692b81679df1",
+   "anchor_line_id": 1763,
+   "anchor_amount": 30000000.0,
+   "separate_amount": 12300000.0,
+   "projected_line_count": 2,
+   "reconciliation_ok": true,
+   "component_rows": [
+    {
+     "component": "d2f9a9fe-4c6d-43cd-a80f-cceee47da25c",
+     "label": "بست دیواری",
+     "qty": 24.0,
+     "sell_price_status": "known",
+     "line_id": 1770,
+     "line_qty": 24.0,
+     "line_subtotal": 10800000.0
+    },
+    {
+     "component": "2a8f4ea9-63e6-4c0d-8129-54f7460f2666",
+     "label": "جرثقیل",
+     "qty": 1.0,
+     "sell_price_status": "known",
+     "line_id": 1771,
+     "line_qty": 1.0,
+     "line_subtotal": 1500000.0
+    }
+   ],
+   "separately_billable_components": 2,
+   "projected_sale_lines": [
+    {
+     "line_id": 1770,
+     "origin_key": "886:d2f9a9fe-4c6d-43cd-a80f-cceee47da25c",
+     "component_id": 6118,
+     "name": "بست دیواری",
+     "qty": 24.0,
+     "price_unit": 450000.0,
+     "price_subtotal": 10800000.0,
+     "invoice_gate": "",
+     "placement_snapshot": "own_line",
+     "certainty_snapshot": "firm",
+     "invoiced": false
+    },
+    {
+     "line_id": 1771,
+     "origin_key": "886:2a8f4ea9-63e6-4c0d-8129-54f7460f2666",
+     "component_id": 6119,
+     "name": "جرثقیل",
+     "qty": 1.0,
+     "price_unit": 1500000.0,
+     "price_subtotal": 1500000.0,
+     "invoice_gate": "provisional",
+     "placement_snapshot": "own_line",
+     "certainty_snapshot": "provisional",
+     "invoiced": false
+    }
+   ],
+   "problems": []
+  },
+  {
+   "revision_id": 887,
+   "revision_display_name": "SI-26/960 / SIPANEL-SEPBILL-PILOT-20260921T021500Z-MASTER r2",
+   "revision_state": "accepted_sealed",
+   "revision_number": 2,
+   "quote_scope_id": 819,
+   "quote_scope_uid": "6a307930-f10c-4de4-98e4-d950895f8b2a",
+   "quote_scope_is_optional": true,
+   "quote_scope_acceptance_state": "accepted",
+   "order_id": 960,
+   "order_name": "SI-26/960",
+   "order_state": "cancel",
+   "resolved_language": "fa_IR",
+   "sealed_hash": "59dad12824ec206a0a40b5aa4a4470f755e96195925ce48e6087ba8fc0adc867",
+   "anchor_line_id": 1767,
+   "anchor_amount": 0.0,
+   "separate_amount": 6000000.0,
+   "projected_line_count": 2,
+   "reconciliation_ok": true,
+   "component_rows": [
+    {
+     "component": "f3c2ce29-d3f4-4f3d-9998-7d9398fc3c94",
+     "label": "بست دیواری",
+     "qty": 10.0,
+     "sell_price_status": "known",
+     "line_id": 1772,
+     "line_qty": 10.0,
+     "line_subtotal": 4500000.0
+    },
+    {
+     "component": "ddc60cc4-9bac-432b-ae63-5edd062b7629",
+     "label": "جرثقیل",
+     "qty": 1.0,
+     "sell_price_status": "known",
+     "line_id": 1773,
+     "line_qty": 1.0,
+     "line_subtotal": 1500000.0
+    }
+   ],
+   "separately_billable_components": 2,
+   "projected_sale_lines": [
+    {
+     "line_id": 1772,
+     "origin_key": "887:f3c2ce29-d3f4-4f3d-9998-7d9398fc3c94",
+     "component_id": 6123,
+     "name": "بست دیواری",
+     "qty": 10.0,
+     "price_unit": 450000.0,
+     "price_subtotal": 4500000.0,
+     "invoice_gate": "",
+     "placement_snapshot": "own_line",
+     "certainty_snapshot": "firm",
+     "invoiced": false
+    },
+    {
+     "line_id": 1773,
+     "origin_key": "887:ddc60cc4-9bac-432b-ae63-5edd062b7629",
+     "component_id": 6124,
+     "name": "جرثقیل",
+     "qty": 1.0,
+     "price_unit": 1500000.0,
+     "price_subtotal": 1500000.0,
+     "invoice_gate": "",
+     "placement_snapshot": "own_line",
+     "certainty_snapshot": "firm",
+     "invoiced": false
+    }
+   ],
+   "problems": []
+  }
+ ],
+ "distinct_revision_records_present": true,
+ "all_problems_empty": true
+}

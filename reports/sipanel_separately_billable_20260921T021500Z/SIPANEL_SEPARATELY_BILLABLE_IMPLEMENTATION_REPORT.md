@@ -100,7 +100,15 @@ An own-line component is also removed from the note bullets now that it is a
 real line, so the customer is not shown the same item twice.
 
 Live pilot: 30,000,000 + 10,800,000 + 1,500,000 + 0 + 4,500,000 + 1,500,000 =
-**48,300,000** ✓, with `problems: []` on both Scopes.
+**48,300,000** ✓.
+
+> **CORRECTION (STEP 2B-HARDENING, 2026-09-22).** The original claim of
+> `problems: []` "on both Scopes" rested on evidence keyed by `display_name`,
+> which both revisions share — one entry overwrote the other, so only one
+> revision was actually present. Regenerated per revision id: **886** (Scope 818)
+> anchor 30,000,000 / separate 12,300,000, problems `[]`; **887** (Scope 819,
+> accepted option) anchor 0 / separate 6,000,000, problems `[]`. The conclusion
+> stands; the evidence behind it did not, and now does.
 
 ## 6. Optional and provisional
 

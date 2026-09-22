@@ -93,8 +93,26 @@ governed quantities, and nothing else changed.
 The draft invoice is **46,800,000** untaxed — 48,300,000 less the base Scope's
 provisional crane (1,500,000), which is gated. No amount appears twice anywhere.
 
-Per-revision reconciliation for both Scopes is in
-`evidence/pilot/pilot_result.json` under `reconciliation`, with `problems: []`.
+> **CORRECTION (STEP 2B-HARDENING, 2026-09-22).** The original sentence here
+> claimed `problems: []` for both Scopes on the strength of
+> `evidence/pilot/pilot_result.json` → `reconciliation`. That evidence was a
+> dictionary keyed by `display_name`, and **both revisions of this order share
+> the same display name**, so one entry overwrote the other and only ONE
+> revision was ever present. The claim was not supported by the evidence as
+> written.
+>
+> Regenerated from the retained pilot records, keyed by immutable revision id
+> (`reports/sipanel_step2b_hardening_20260922T060000Z/evidence/reconciliation/pilot_reconciliation_by_revision.json`):
+>
+> | Revision | Quote Scope | Optional | Anchor | Separately billable | Lines | Problems |
+> |---:|---:|---|---:|---:|---:|---|
+> | **886** | 818 | no | 30,000,000 | 12,300,000 | 2 | `[]` |
+> | **887** | 819 | yes, accepted | 0 | 6,000,000 | 2 | `[]` |
+>
+> `30,000,000 + 12,300,000 + 0 + 6,000,000 = 48,300,000` ✓, matching the order
+> total. Both distinct revision records are now present, so the "both Scopes
+> reconcile" statement is supported. See
+> `SIPANEL_RECONCILIATION_EVIDENCE_CORRECTION.md`.
 
 ## 4. What the customer sees versus what is billed
 

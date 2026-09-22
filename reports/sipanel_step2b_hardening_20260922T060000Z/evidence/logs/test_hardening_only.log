@@ -1,0 +1,118 @@
+2026-09-22 05:23:33,865 1996 INFO ? odoo: Odoo version 19.0-20260528 
+2026-09-22 05:23:33,866 1996 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-22 05:23:33,866 1996 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-22 05:23:33,867 1996 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-09-22 05:23:35,194 1996 WARNING ? odoo.service.server: Unit testing in workers mode could fail; use --workers 0. 
+2026-09-22 05:23:35,296 1996 INFO sipanel odoo.tests.common: Importing test framework 
+2026-09-22 05:23:35,412 1996 INFO sipanel odoo.modules.loading: loading 1 modules... 
+2026-09-22 05:23:35,426 1996 INFO sipanel odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-22 05:23:35,518 1996 INFO sipanel odoo.modules.loading: updating modules list 
+2026-09-22 05:23:35,528 1996 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-22 05:23:39,506 1996 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['SIPANEL Sale Scope'] to user __system__ #1 via n/a 
+2026-09-22 05:23:39,507 1996 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['SIPANEL Sale Scope'] to user __system__ #1 via n/a 
+2026-09-22 05:23:42,136 1996 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-22 05:23:42,242 1996 INFO sipanel odoo.modules.loading: loading 200 modules... 
+2026-09-22 05:23:46,700 1996 INFO sipanel odoo.modules.loading: Loading module sipanel_sale_scope (180/200) 
+2026-09-22 05:23:48,097 1996 INFO sipanel odoo.registry: module sipanel_sale_scope: creating or updating database tables 
+2026-09-22 05:23:48,677 1996 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_security.xml 
+2026-09-22 05:23:48,919 1996 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/ir.model.access.csv 
+2026-09-22 05:23:51,448 1996 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_record_rules.xml 
+2026-09-22 05:23:51,463 1996 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/add_scope_views.xml 
+2026-09-22 05:23:51,513 1996 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/refresh_cost_views.xml 
+2026-09-22 05:23:51,552 1996 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/split_move_views.xml 
+2026-09-22 05:23:51,609 1996 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/apply_price_views.xml 
+2026-09-22 05:23:51,644 1996 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/regenerate_note_views.xml 
+2026-09-22 05:23:51,677 1996 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/treatment_transition_views.xml 
+2026-09-22 05:23:51,706 1996 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/replace_recipe_views.xml 
+2026-09-22 05:23:51,728 1996 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_views.xml 
+2026-09-22 05:23:51,784 1996 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_revision_views.xml 
+2026-09-22 05:23:51,859 1996 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_component_views.xml 
+2026-09-22 05:23:51,895 1996 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/waiver_views.xml 
+2026-09-22 05:23:51,947 1996 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_order_views.xml 
+2026-09-22 05:23:52,222 1996 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_portal_templates.xml 
+2026-09-22 05:23:52,271 1996 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/menus.xml 
+2026-09-22 05:23:52,338 1996 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language fa_IR 
+2026-09-22 05:23:52,349 1996 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language ru_RU 
+2026-09-22 05:23:52,629 1996 INFO sipanel odoo.modules.loading: Module sipanel_sale_scope loaded in 5.93s, 676 queries (+676 other) 
+2026-09-22 05:23:52,725 1996 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_execution (198/200) 
+2026-09-22 05:23:53,324 1996 INFO sipanel odoo.registry: module sipanel_scope_execution: creating or updating database tables 
+2026-09-22 05:23:53,805 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_security.xml 
+2026-09-22 05:23:53,886 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/ir.model.access.csv 
+2026-09-22 05:23:54,004 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_record_rules.xml 
+2026-09-22 05:23:54,017 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/data/owner_rules.xml 
+2026-09-22 05:23:54,033 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/owner_rule_views.xml 
+2026-09-22 05:23:54,074 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/execution_views.xml 
+2026-09-22 05:23:54,189 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/sale_order_views.xml 
+2026-09-22 05:23:54,574 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/res_config_settings_views.xml 
+2026-09-22 05:23:55,140 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/menus.xml 
+2026-09-22 05:23:55,202 1996 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language fa_IR 
+2026-09-22 05:23:55,210 1996 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language ru_RU 
+2026-09-22 05:23:55,397 1996 INFO sipanel odoo.modules.loading: Module sipanel_scope_execution loaded in 2.67s, 499 queries (+499 other) 
+2026-09-22 05:23:55,400 1996 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_costing (200/200) 
+2026-09-22 05:23:55,506 1996 INFO sipanel odoo.registry: module sipanel_scope_costing: creating or updating database tables 
+2026-09-22 05:23:55,856 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_security.xml 
+2026-09-22 05:23:55,913 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/ir.model.access.csv 
+2026-09-22 05:23:56,040 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_record_rules.xml 
+2026-09-22 05:23:56,057 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/recognition_policies.xml 
+2026-09-22 05:23:56,071 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/ir_cron.xml 
+2026-09-22 05:23:56,077 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/policy_views.xml 
+2026-09-22 05:23:56,133 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/event_views.xml 
+2026-09-22 05:23:56,203 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/variance_views.xml 
+2026-09-22 05:23:56,236 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/sale_order_views.xml 
+2026-09-22 05:23:56,534 1996 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/menus.xml 
+2026-09-22 05:23:56,589 1996 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language fa_IR 
+2026-09-22 05:23:56,595 1996 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language ru_RU 
+2026-09-22 05:23:56,741 1996 INFO sipanel odoo.modules.loading: Module sipanel_scope_costing loaded in 1.34s, 339 queries (+339 other) 
+2026-09-22 05:23:56,741 1996 INFO sipanel odoo.modules.loading: 200 modules loaded in 14.50s, 1514 queries (+1514 extra) 
+2026-09-22 05:23:58,541 1996 INFO sipanel odoo.registry: verifying fields for every extended model 
+2026-09-22 05:24:04,464 1996 INFO sipanel odoo.modules.loading: Modules loaded. 
+2026-09-22 05:24:04,524 1996 INFO sipanel odoo.registry: Registry changed, signaling through the database 
+2026-09-22 05:24:04,529 1996 INFO sipanel odoo.registry: Registry loaded in 29.334s 
+2026-09-22 05:24:04,531 1996 INFO sipanel odoo.service.server: Starting post tests 
+2026-09-22 05:24:05,463 1996 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-22 05:24:06,237 1996 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-22 05:24:06,782 1996 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-22 05:24:10,985 1996 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-22 05:24:11,542 1996 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-22 05:24:12,093 1996 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-22 05:24:12,819 1996 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceProvenanceAuthorization.test_direct_write_of_provenance_remains_refused ... 
+2026-09-22 05:24:14,718 1996 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceProvenanceAuthorization.test_forged_sale_line_ids_no_longer_exempts_the_payload ... 
+2026-09-22 05:24:15,995 1996 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceProvenanceAuthorization.test_genuine_invoice_creation_still_carries_full_provenance ... 
+2026-09-22 05:24:18,706 1996 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceProvenanceAuthorization.test_guessed_token_is_refused ... 
+2026-09-22 05:24:19,151 1996 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceProvenanceAuthorization.test_import_context_is_refused ... 
+2026-09-22 05:24:19,560 1996 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceProvenanceAuthorization.test_plain_create_with_provenance_is_refused ... 
+2026-09-22 05:24:19,916 1996 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceProvenanceAuthorization.test_raw_sipanel_from_sale_invoice_context_is_refused ... 
+2026-09-22 05:24:20,319 1996 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceProvenanceAuthorization.test_raw_sipanel_invoice_trace_context_is_refused ... 
+2026-09-22 05:24:20,654 1996 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceProvenanceAuthorization.test_sudo_is_refused ... 
+2026-09-22 05:24:21,891 1996 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-22 05:24:22,667 1996 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-22 05:24:23,306 1996 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-22 05:24:23,862 1996 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-22 05:24:27,834 1996 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-22 05:24:28,407 1996 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-22 05:24:28,945 1996 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-22 05:24:29,599 1996 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricelistFailsClosed.test_a_governed_manual_price_clears_the_failure ... 
+2026-09-22 05:24:30,015 1996 WARNING sipanel odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Bracket for order SI-26/1316 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-09-22 05:24:30,101 1996 WARNING sipanel odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Base crane service for order SI-26/1316 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-09-22 05:24:30,183 1996 WARNING sipanel odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Sealant cartridge for order SI-26/1316 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-09-22 05:24:30,200 1996 WARNING sipanel odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Screw for order SI-26/1316 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-09-22 05:24:30,321 1996 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricelistFailsClosed.test_a_known_zero_reason_cannot_mask_a_pricing_failure ... 
+2026-09-22 05:24:30,757 1996 WARNING sipanel odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Bracket for order SI-26/1317 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-09-22 05:24:30,820 1996 WARNING sipanel odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Base crane service for order SI-26/1317 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-09-22 05:24:30,879 1996 WARNING sipanel odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Sealant cartridge for order SI-26/1317 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-09-22 05:24:30,894 1996 WARNING sipanel odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Screw for order SI-26/1317 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-09-22 05:24:30,964 1996 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricelistFailsClosed.test_failed_pricing_blocks_readiness_and_the_seal ... 
+2026-09-22 05:24:31,394 1996 WARNING sipanel odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Bracket for order SI-26/1318 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-09-22 05:24:31,460 1996 WARNING sipanel odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Base crane service for order SI-26/1318 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-09-22 05:24:31,534 1996 WARNING sipanel odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Sealant cartridge for order SI-26/1318 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-09-22 05:24:31,550 1996 WARNING sipanel odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Screw for order SI-26/1318 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-09-22 05:24:31,863 1996 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricelistFailsClosed.test_failed_pricing_leaves_no_governed_price ... 
+2026-09-22 05:24:32,308 1996 WARNING sipanel odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Bracket for order SI-26/1319 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-09-22 05:24:32,376 1996 WARNING sipanel odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Base crane service for order SI-26/1319 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-09-22 05:24:32,446 1996 WARNING sipanel odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Sealant cartridge for order SI-26/1319 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-09-22 05:24:32,464 1996 WARNING sipanel odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Screw for order SI-26/1319 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-09-22 05:24:32,552 1996 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricelistFailsClosed.test_successful_pricing_records_no_error ... 
+2026-09-22 05:24:34,075 1996 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-09-22 05:24:34,077 1996 INFO sipanel odoo.service.server: 14 post-tests in 29.55s, 6417 queries 
+2026-09-22 05:24:34,078 1996 INFO sipanel odoo.tests.stats: sipanel_sale_scope: 18 tests 29.53s 6417 queries 
+2026-09-22 05:24:34,078 1996 INFO sipanel odoo.service.server: Stopping workers gracefully 

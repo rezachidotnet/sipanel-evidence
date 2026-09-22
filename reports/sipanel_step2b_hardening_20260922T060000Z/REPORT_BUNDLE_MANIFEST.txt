@@ -1,0 +1,50 @@
+SIPANEL STEP 2B-HARDENING — BUNDLE MANIFEST
+Run:                 sipanel_step2b_hardening_20260922T060000Z
+Generated (UTC):     2026-09-22T05:39:25Z
+Started from commit: 490eb30
+Verdict:             PASS — invoice provenance guarded by process-local token,
+                     reconciliation evidence keyed by revision id, pricelist fails closed
+Target:              database sipanel, container odoo-sipanel (RestartCount=0, no restart)
+Other tenants:       NOT touched (avizsazeh, shahbazi, ahantorob, odoo-db untouched)
+Module upgraded:     sipanel_sale_scope 19.0.1.2.1 (the only module whose source changed)
+Not changed:         sale_shamsi_report (HEAD 5680013, clean), commercial_scope_core,
+                     scope_costing, scope_execution, report.url, website languages, paperformat
+
+COMMITS
+  Parent commit at bundle build:  490eb30f031bd2a3d2dc4e5143756f6021fb4bc1
+     HEAD *before* this run's commit: the manifest and ZIP are themselves committed,
+     so the commit CONTAINING this report is created immediately after and is given
+     in the final response. Same convention as STEP 2A/2B; see the STEP 2B P2 note.
+
+Recovery point:      /opt/odoo/backups/sipanel-pre-2bhardening-20260922T060000Z (verified, NOT in this bundle)
+Disk:                2642 MB free before, ~2.5 G free after; 9 recovery points before, none deleted
+Tests:               SIPANEL 202/202 pass (was 184); sale_shamsi_report 80/80 pass — 282 total
+Reconciliation:      revision 886 anchor 30,000,000 / separate 12,300,000, problems []
+                     revision 887 anchor 0 / separate 6,000,000, problems []
+Records:             no active synthetic records; nothing created beyond rolled-back test data;
+                     no invoice posted; no email sent
+
+NOTE ON THE STEP 2B DIRECTORY
+  Two STEP 2B markdown files were corrected in place and now diverge from that run's
+  SHA256SUMS. The STEP 2B ZIP was deliberately NOT rewritten; before/after hashes are
+  recorded in SIPANEL_RECONCILIATION_EVIDENCE_CORRECTION.md section 4.
+
+FILES
+  SIPANEL_INVOICE_PROVENANCE_SECURITY_REPORT.md                                   4814 bytes
+  SIPANEL_PRICELIST_FAIL_CLOSED_REPORT.md                                         5706 bytes
+  SIPANEL_RECONCILIATION_EVIDENCE_CORRECTION.md                                   4855 bytes
+  SIPANEL_RECOVERY_POINT_INVENTORY.md                                             3902 bytes
+  SIPANEL_STEP2B_HARDENING_REPORT.md                                              7574 bytes
+  SIPANEL_STEP2B_HARDENING_TEST_RESULTS.md                                        5117 bytes
+  evidence/logs/recovery_point_SHA256SUMS.txt                                      520 bytes
+  evidence/logs/test_hardening_only.log                                          18635 bytes
+  evidence/logs/test_shamsi_hardening.log                                        17468 bytes
+  evidence/logs/test_sipanel_hardening.log                                       74323 bytes
+  evidence/logs/upgrade_hardening.log                                             8469 bytes
+  evidence/logs/upgrade_hardening_final.log                                       8469 bytes
+  evidence/reconciliation/pilot_reconciliation_by_revision.json                   4297 bytes
+  evidence/scripts/build_bundle_2bh.sh                                            3959 bytes
+  evidence/scripts/reconciliation_evidence.py                                     3133 bytes
+  evidence/source_diff/sipanel_step2b_hardening.diff                             22187 bytes
+
+EXCLUDED: database dumps, filestore, container config, private keys, portal access tokens.
