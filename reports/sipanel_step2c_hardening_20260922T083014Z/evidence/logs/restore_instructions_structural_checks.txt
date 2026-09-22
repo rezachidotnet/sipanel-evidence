@@ -1,0 +1,12 @@
+PASS unique rehearsal db name
+PASS rehearsal filestore path
+PASS archive layout inspected before extraction
+PASS extraction into temporary dir
+PASS never extracts onto live filestore
+PASS live db never a restore target
+PASS integrations neutralised before any odoo process
+PASS cleanup commands present and marked destructive
+PASS destructive targets validated
+PASS no broad glob in destructive commands
+PASS no unresolved destructive variable (rm target is the literal rehearsal path)
+PASS old ambiguous one-liner gone from script

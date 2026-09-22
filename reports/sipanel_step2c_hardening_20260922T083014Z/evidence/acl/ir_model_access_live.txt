@@ -1,0 +1,13 @@
+  id  |                      xml_id                       |          model           |      group_name      | perm_read | perm_write | perm_create | perm_unlink | active 
+------+---------------------------------------------------+--------------------------+----------------------+-----------+------------+-------------+-------------+--------
+ 1297 | sipanel_scope_execution.access_batch_user         | sipanel.execution.batch  | Role / User          | t         | f          | f           | f           | t
+ 1298 | sipanel_scope_execution.access_batch_exec         | sipanel.execution.batch  | Execution Owner      | t         | t          | t           | f           | t
+ 1299 | sipanel_scope_execution.access_demand_user        | sipanel.execution.demand | Role / User          | t         | f          | f           | f           | t
+ 1300 | sipanel_scope_execution.access_demand_exec        | sipanel.execution.demand | Execution Owner      | t         | t          | t           | f           | t
+ 1301 | sipanel_scope_execution.access_target_exec        | sipanel.execution.target | Execution Owner      | t         | t          | t           | f           | t
+ 1302 | sipanel_scope_execution.access_target_steward     | sipanel.execution.target | Scope Steward        | t         | f          | f           | f           | t
+ 1303 | sipanel_scope_execution.access_target_estimator   | sipanel.execution.target | Estimator            | t         | f          | f           | f           | t
+ 1304 | sipanel_scope_execution.access_target_auditor     | sipanel.execution.target | Auditor (read-only)  | t         | f          | f           | f           | t
+ 1305 | sipanel_scope_execution.access_target_cost_viewer | sipanel.execution.target | Cost & Margin Viewer | t         | f          | f           | f           | t
+(9 rows)
+

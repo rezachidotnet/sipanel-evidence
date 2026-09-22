@@ -1,0 +1,66 @@
+SIPANEL STEP 2C-HARDENING — BUNDLE MANIFEST
+Run:                    sipanel_step2c_hardening_20260922T083014Z
+Generated (UTC):        2026-09-22T09:12:30Z
+Verdict:                PASS — demand provenance behaviourally immutable; Native Owner boundary enforced in cancel/reduce;
+                        governed Sales cancellation without demand rights; safe restore instructions in the script
+Target:                 database sipanel, container odoo-sipanel (RestartCount=0, no restart); odoo-db not restarted
+Other tenants:          NOT touched (avizsazeh, shahbazi, ahantorob)
+
+COMMITS
+  STEP 2C source:                 e01da1973784ccfd692ac13a622707e4c3bae576
+  STEP 2C evidence:               5dc0f41087fe5b8bdef8f5de9c9d0aaa101c16cb
+  STEP 2C-HARDENING source:       53268efc171c4cdb9640ade494678b601347e1ef   <- HEAD when this bundle was built
+  STEP 2C-HARDENING evidence:     created AFTER this bundle; given in the final response
+
+MODULES
+  sipanel_commercial_scope_core    19.0.1.1.0   tree-sha256(relative) dbcd7e73e4b1d507b703778c595beb6100bdd9e92215e5ec9a9199763ad17570
+  sipanel_sale_scope               19.0.1.2.2   tree-sha256(relative) 1b5d8d5f3810ce263a9c24ca3db1279c1b8d386a031c8b23fcc32b4fce2e8b1a
+  sipanel_scope_execution          19.0.1.0.2   tree-sha256(relative) 4545190ef2de37a33a5addc96008e59ba26b6715e0e56b7701882b679535e6d6
+  sipanel_scope_costing            19.0.1.0.0   tree-sha256(relative) 2097e00f23deae00eb4eb1763c83ee62e6fadd85cede82596bc25e6798557c1a
+  upgraded: sipanel_scope_execution (19.0.1.0.1 -> 19.0.1.0.2); sale_shamsi_report HEAD 5680013, clean
+
+RECOVERY POINT   /opt/odoo/backups/sipanel-pre-2chardening-20260922T083014Z (verified; NOT in this bundle); none pruned
+TESTS            SIPANEL 240 / 0 (52+141+5+42; 182 methods) | hardening tag 20 / 0 (17/20 failed before) | sale_shamsi_report 80 / 0
+PILOT            SI-26/2094 (bridge, Sales-owned) + SI-26/2095 (native); 32 spoof probes refused; Sales cancel OK; native move untouched; 0 duplicates
+SYNTHETIC DATA   2 active synthetic technical contacts retained (2361, 3483); everything else 0 active
+
+FILES
+  SIPANEL_EXECUTION_DEMAND_IMMUTABILITY_REPORT.md                                     4281 bytes
+  SIPANEL_NATIVE_OWNER_CANCELLATION_BOUNDARY_REPORT.md                                3397 bytes
+  SIPANEL_RECOVERY_SCRIPT_CORRECTION_REPORT.md                                        4149 bytes
+  SIPANEL_SALES_CANCELLATION_SECURITY_REPORT.md                                       2991 bytes
+  SIPANEL_STEP2C_EVIDENCE_COMPLETENESS_REPORT.md                                      2253 bytes
+  SIPANEL_STEP2C_HARDENING_CLEANUP_REPORT.md                                          2993 bytes
+  SIPANEL_STEP2C_HARDENING_PILOT_RESULT.json                                          8190 bytes
+  SIPANEL_STEP2C_HARDENING_REPORT.md                                                  7203 bytes
+  SIPANEL_STEP2C_HARDENING_TEST_RESULTS.md                                            2578 bytes
+  evidence/acl/ir.model.access.csv                                                    1393 bytes
+  evidence/acl/ir_model_access_live.txt                                               1837 bytes
+  evidence/acl/ir_rule_live.txt                                                        772 bytes
+  evidence/logs/containers_after.txt                                                   346 bytes
+  evidence/logs/df_after.txt                                                            40 bytes
+  evidence/logs/pg_stat_database_after.txt                                             308 bytes
+  evidence/logs/recovery_point_2ch.log                                                1298 bytes
+  evidence/logs/recovery_point_SHA256SUMS.txt                                          520 bytes
+  evidence/logs/recovery_points_after.txt                                              533 bytes
+  evidence/logs/restore_instructions_output.txt                                       3376 bytes
+  evidence/logs/restore_instructions_structural_checks.txt                             532 bytes
+  evidence/logs/test_hardening_before_fix.log                                        37409 bytes
+  evidence/logs/test_hardening_only_after_fix.log                                    16331 bytes
+  evidence/logs/test_shamsi_2ch.log                                                  17469 bytes
+  evidence/logs/test_sipanel_full_after_fix.log                                      97504 bytes
+  evidence/logs/test_sipanel_full_final.log                                          88435 bytes
+  evidence/pilot/pilot_2ch_cleanup.json                                               3741 bytes
+  evidence/pilot/pilot_2ch_run.json                                                  10701 bytes
+  evidence/scripts/build_bundle_2ch.sh                                                4834 bytes
+  evidence/scripts/pilot_2ch_1_run.py                                                16405 bytes
+  evidence/scripts/pilot_2ch_2_cleanup.py                                             9425 bytes
+  evidence/source_diff/diff_name_status_3229813_to_53268ef.txt                         692 bytes
+  evidence/source_diff/diff_stat_3229813_to_53268ef.txt                               1161 bytes
+  evidence/source_diff/git_show_53268ef_fuller_stat.txt                               4676 bytes
+  evidence/source_diff/git_show_e01da19_fuller_stat.txt                               3950 bytes
+  evidence/source_diff/module_tree_hashes.txt                                         1569 bytes
+  evidence/source_diff/sipanel_step2b_hardening_to_step2c_hardening_full.diff        74542 bytes
+  evidence/source_diff/sipanel_step2c_hardening_only.diff                            52592 bytes
+
+EXCLUDED: database dumps, filestore, private keys, credentials, unredacted configuration, access tokens, customer secrets.

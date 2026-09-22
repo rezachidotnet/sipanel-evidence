@@ -1,0 +1,61 @@
+commit e01da1973784ccfd692ac13a622707e4c3bae576
+Author:     SIPANEL Implementation <cyansanatiranian@gmail.com>
+AuthorDate: Tue Sep 22 07:48:13 2026 +0000
+Commit:     SIPANEL Implementation <cyansanatiranian@gmail.com>
+CommitDate: Tue Sep 22 07:48:13 2026 +0000
+
+    SIPANEL STEP 2C 20260922T065650Z: execution-batch release against separately-billable lines - three defects found by the live pilot
+    
+    Live pilot on database sipanel (synthetic SIPANEL-STEP2C- records only) exercised
+    Release Execution against confirmed quotation Scopes carrying generated
+    (separately billable) Sale Lines under both installed ownership paths. Three
+    defects were measured before any code change, each fixed with the smallest
+    correction consistent with the frozen ownership architecture, each covered by a
+    regression test that failed on the installed source and passes now.
+    
+    CD-2C-01 (sipanel_scope_execution 19.0.1.0.1) - failed demands blocked the retry.
+      sipanel.execution.demand kept UNIQUE(demand_key) and the release idempotency
+      search ignored demand state, so after an adapter failure (batch FAILED, demands
+      FAILED as evidence) the retry skipped every component as "already demanded" and
+      produced a RELEASED batch with no demand and no operational document; the order
+      could never be executed. Now the uniqueness is a partial index over live
+      demands (state <> 'failed'), and both idempotency lookups (release and
+      amendment delta) go through _live_by_key(), which ignores failed demands.
+      Failed batches and their demands are retained unchanged.
+    
+    CD-2C-02 (sipanel_scope_execution) - NATIVE_LINE_OWNER demand of an own-line
+      component linked the anchor's documents. Since STEP 2B a separately billable
+      component is projected onto its own generated Sale Line, and under native
+      ownership that line launches the native delivery/purchase demand. The adapter
+      linked the anchor line's task instead. _native_line_of() now resolves the
+      component's own generated line when it exists, else the anchor; nothing is
+      created, only linked (C8-D01 unchanged).
+    
+    CD-2C-03 (sipanel_sale_scope 19.0.1.2.2) - amendment after confirmation was
+      refused. _retire_superseded_projection() unlinked the prior revision's
+      generated lines, which Odoo refuses on a confirmed order ("set the quantity to
+      0 instead"), so every amendment of a confirmed order carrying generated lines
+      raised. The retire path now neutralises such a line (quantity 0, never deleted)
+      exactly as Odoo prescribes and as the existing "consumed line" branch already
+      did; invoiced or delivered lines are still left untouched and flagged in the
+      reconciliation. No new change-order financial policy is introduced.
+    
+    Tests: sipanel_scope_execution +6 (test_step2c.py), sipanel_sale_scope +2
+    (TestAmendmentAfterConfirmation). Before the fixes 6 of the 8 new tests failed on
+    the installed source; after: SIPANEL 214 tests / 0 failures (52+141+5+16 by
+    module statistics, 162 test methods), sale_shamsi_report 80 / 0 failures. No
+    existing assertion was removed, bypassed or weakened.
+    
+    Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+ addons/sipanel_sale_scope/__manifest__.py          |   2 +-
+ .../models/separately_billable.py                  |  12 +-
+ .../tests/test_separately_billable.py              |  47 ++++
+ addons/sipanel_scope_execution/__manifest__.py     |   2 +-
+ addons/sipanel_scope_execution/models/adapters.py  |  18 +-
+ .../models/execution_batch.py                      |   4 +-
+ .../models/execution_demand.py                     |  12 +-
+ .../sipanel_scope_execution/models/sale_order.py   |   2 +-
+ addons/sipanel_scope_execution/tests/__init__.py   |   1 +
+ .../sipanel_scope_execution/tests/test_step2c.py   | 275 +++++++++++++++++++++
+ 10 files changed, 367 insertions(+), 8 deletions(-)

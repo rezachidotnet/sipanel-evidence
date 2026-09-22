@@ -1,0 +1,9 @@
+SIPANEL module tree hashes at 53268efc171c4cdb9640ade494678b601347e1ef (sha256 of sorted per-file sha256 list; __pycache__ excluded)
+sipanel_commercial_scope_core    19.0.1.1.0   repo-tree 92ee8147cc433cc6b785dfca8f98e133e7c91616e088a02fd2061cc8cdbc9a41
+                                              installed-tree(relative) dbcd7e73e4b1d507b703778c595beb6100bdd9e92215e5ec9a9199763ad17570 repo-tree(relative) dbcd7e73e4b1d507b703778c595beb6100bdd9e92215e5ec9a9199763ad17570 parity=IDENTICAL
+sipanel_sale_scope               19.0.1.2.2   repo-tree b19fba0e887912716e1575cd38d64be9e7d5118751b2a1f8d6909e1222433832
+                                              installed-tree(relative) 1b5d8d5f3810ce263a9c24ca3db1279c1b8d386a031c8b23fcc32b4fce2e8b1a repo-tree(relative) 1b5d8d5f3810ce263a9c24ca3db1279c1b8d386a031c8b23fcc32b4fce2e8b1a parity=IDENTICAL
+sipanel_scope_execution          19.0.1.0.2   repo-tree 8d4bd65d96ae9aaab2d90d44cd45a0b1bfbb3694eda510f1deeddbccb9deca37
+                                              installed-tree(relative) 4545190ef2de37a33a5addc96008e59ba26b6715e0e56b7701882b679535e6d6 repo-tree(relative) 4545190ef2de37a33a5addc96008e59ba26b6715e0e56b7701882b679535e6d6 parity=IDENTICAL
+sipanel_scope_costing            19.0.1.0.0   repo-tree 2f36d33a59fcb568dda9deb19fd92216103f9da34b0ca11a254d6761bb84b318
+                                              installed-tree(relative) 2097e00f23deae00eb4eb1763c83ee62e6fadd85cede82596bc25e6798557c1a repo-tree(relative) 2097e00f23deae00eb4eb1763c83ee62e6fadd85cede82596bc25e6798557c1a parity=IDENTICAL

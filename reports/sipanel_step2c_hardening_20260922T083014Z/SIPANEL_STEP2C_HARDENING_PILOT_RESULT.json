@@ -1,0 +1,394 @@
+{
+ "run": "sipanel_step2c_hardening_20260922T083014Z",
+ "generated_utc": "2026-09-22T09:12:03Z",
+ "verdict": "PASS",
+ "commits": {
+  "step2c_source": "e01da1973784ccfd692ac13a622707e4c3bae576",
+  "step2c_evidence": "5dc0f41087fe5b8bdef8f5de9c9d0aaa101c16cb",
+  "hardening_source": "53268efc171c4cdb9640ade494678b601347e1ef",
+  "hardening_evidence": "created after this file (final response)"
+ },
+ "modules": {
+  "sipanel_commercial_scope_core": "19.0.1.1.0",
+  "sipanel_sale_scope": "19.0.1.2.2",
+  "sipanel_scope_execution": "19.0.1.0.2",
+  "sipanel_scope_costing": "19.0.1.0.0"
+ },
+ "modules_upgraded": [
+  "sipanel_scope_execution"
+ ],
+ "restart": false,
+ "recovery_point": "/opt/odoo/backups/sipanel-pre-2chardening-20260922T083014Z",
+ "tests": {
+  "hardening_before_fix": {
+   "methods": 20,
+   "failures": 17
+  },
+  "hardening_after_fix": {
+   "methods": 20,
+   "failures": 0
+  },
+  "sipanel_full_final": {
+   "stats_total": 240,
+   "by_module": {
+    "sipanel_commercial_scope_core": 52,
+    "sipanel_sale_scope": 141,
+    "sipanel_scope_costing": 5,
+    "sipanel_scope_execution": 42
+   },
+   "methods": 182,
+   "failures": 0
+  },
+  "sale_shamsi_report": {
+   "tests": 80,
+   "failures": 0
+  }
+ },
+ "pilot": {
+  "prefix": "SIPANEL-STEP2CH-20260922T083014Z",
+  "ids": {
+   "system": 1953,
+   "activity": 1954,
+   "project": 135,
+   "exec_user": 1376,
+   "sales_user": 2064,
+   "exec_is_owner": true,
+   "sales_is_owner": false,
+   "products": {
+    "A_anchor": 3525,
+    "B_anchor": 3526,
+    "bracket": 3527,
+    "labour": 3528
+   },
+   "master_A": 800,
+   "version_A": 962,
+   "master_B": 801,
+   "version_B": 963,
+   "customer": 3484,
+   "order_A": [
+    2094,
+    "SI-26/2094",
+    "SIPANEL-STEP2CH-20260922T083014Z-sales"
+   ],
+   "order_B": [
+    2095,
+    "SI-26/2095"
+   ],
+   "scope_A": 1905,
+   "scope_B": 1906
+  },
+  "release": {
+   "A": [
+    [
+     415,
+     "released",
+     2
+    ]
+   ],
+   "B": [
+    [
+     416,
+     "released",
+     2
+    ]
+   ],
+   "again_same": [
+    true,
+    true
+   ]
+  },
+  "provenance_probes": {
+   "count": 32,
+   "all_refused": true,
+   "stored_values_unchanged": true,
+   "demand_count_unchanged": true
+  },
+  "amendment_A": {
+   "new_revision": [
+    2065,
+    "accepted_sealed"
+   ],
+   "delta": [
+    [
+     2508,
+     10.0,
+     "created",
+     "amend:2065",
+     [
+      [
+       "stock.picking",
+       1296
+      ],
+      [
+       "stock.move",
+       1895
+      ]
+     ]
+    ]
+   ],
+   "delta_again": 0
+  },
+  "cancel_A_by_sales": {
+   "result": "cancelled by sales user",
+   "repeats_identical": true,
+   "sales_demand_access": {
+    "write": false,
+    "create": false,
+    "unlink": false
+   },
+   "audit": [
+    [
+     "release_execution",
+     415,
+     "SIPANEL-STEP2C-20260922T065650Z-exec"
+    ],
+    [
+     "execution_cancel",
+     417,
+     "SIPANEL-STEP2CH-20260922T083014Z-sales"
+    ],
+    [
+     "execution_cancel",
+     415,
+     "SIPANEL-STEP2CH-20260922T083014Z-sales"
+    ]
+   ]
+  },
+  "native_boundary_B": {
+   "native_move_before": [
+    "confirmed",
+    20.0,
+    "01_in_progress"
+   ],
+   "native_move_after_batch_cancel": [
+    "confirmed",
+    20.0,
+    "01_in_progress"
+   ],
+   "untouched_by_sipanel": true,
+   "after_order_cancel_by_odoo": [
+    "cancel",
+    20.0
+   ]
+  },
+  "duplicates": {
+   "purchase_orders_for_pilot": 0,
+   "mrp_for_pilot": 0,
+   "sipanel_pickings_A": [
+    [
+     1295,
+     "cancel"
+    ],
+    [
+     1296,
+     "cancel"
+    ]
+   ],
+   "native_moves_from_bridge_generated_lines": 0,
+   "live_demand_keys_unique": true
+  },
+  "counters_before": {
+   "mail_mail": 36,
+   "posted_moves": 0,
+   "done_stock_moves": 10,
+   "purchase_orders": 7,
+   "mrp": 0,
+   "pickings": 13,
+   "internal_quant_qty": 0
+  },
+  "counters_after": {
+   "mail_mail": 36,
+   "posted_moves": 0,
+   "done_stock_moves": 10,
+   "purchase_orders": 7,
+   "mrp": 0,
+   "pickings": 16,
+   "internal_quant_qty": 0
+  }
+ },
+ "cleanup": {
+  "active_leftovers": {
+   "sale.order not cancelled": 0,
+   "quote scopes": 0,
+   "masters": 0,
+   "products": 0,
+   "projects": 0,
+   "tasks": 0,
+   "analytic accounts": 0,
+   "users active": 0,
+   "partners active (all STEP 2C prefixes)": 2,
+   "pickings": 0,
+   "purchase orders": 0,
+   "mrp": 0,
+   "invoices": 0,
+   "live demands": 0,
+   "live batches": 0
+  },
+  "active_synthetic_technical_contacts": [
+   [
+    2361,
+    "[ARCHIVED SYNTHETIC USER] SIPANEL-STEP2C-20260922T065650Z Execution Owner"
+   ],
+   [
+    3483,
+    "[ARCHIVED SYNTHETIC USER] SIPANEL-STEP2CH-20260922T083014Z Sales User"
+   ]
+  ],
+  "retained": {
+   "sale.order (cancelled)": [
+    [
+     2094,
+     "SI-26/2094"
+    ],
+    [
+     2095,
+     "SI-26/2095"
+    ]
+   ],
+   "quote scopes (archived)": [
+    1906,
+    1905
+   ],
+   "revisions": [
+    [
+     2064,
+     "accepted_sealed"
+    ],
+    [
+     2065,
+     "accepted_sealed"
+    ],
+    [
+     2063,
+     "accepted_sealed"
+    ]
+   ],
+   "artifacts": [
+    1978,
+    1977,
+    1980,
+    1979,
+    1976,
+    1975
+   ],
+   "generated lines": [
+    4106,
+    4104,
+    4107
+   ],
+   "batches": [
+    [
+     417,
+     "cancelled"
+    ],
+    [
+     416,
+     "cancelled"
+    ],
+    [
+     415,
+     "cancelled"
+    ]
+   ],
+   "demands": {
+    "count": 5,
+    "states": {
+     "cancelled": 5
+    }
+   },
+   "targets": 7,
+   "audit events (this pilot)": 20,
+   "master versions (released, no archive flag)": [
+    962,
+    963
+   ]
+  },
+  "finding7": {
+   "SIPANEL-STEP2C-20260922T065650Z-exec": {
+    "user": [
+     1376,
+     "SIPANEL-STEP2C-20260922T065650Z-exec",
+     false,
+     false
+    ],
+    "partner": [
+     2361,
+     "SIPANEL-STEP2C-20260922T065650Z Execution Owner",
+     true
+    ],
+    "email": null,
+    "phone": null,
+    "portal_or_login": false,
+    "groups_count": 9,
+    "referenced_by": {
+     "audit actor rows": 18,
+     "batches released/requested": 13,
+     "mail.message author": 52,
+     "mail.followers": 13
+    },
+    "partner_archive": "refused by Odoo guard: RedirectWarning",
+    "user_unlink_safe": false,
+    "user_unlink": "NOT attempted: user is the actor of immutable audit rows / released batches (ondelete set-null would rewrite lineage)",
+    "renamed": "[ARCHIVED SYNTHETIC USER] SIPANEL-STEP2C-20260922T065650Z Execution Owner"
+   },
+   "SIPANEL-STEP2CH-20260922T083014Z-sales": {
+    "user": [
+     2064,
+     "SIPANEL-STEP2CH-20260922T083014Z-sales",
+     false,
+     false
+    ],
+    "partner": [
+     3483,
+     "SIPANEL-STEP2CH-20260922T083014Z Sales User",
+     true
+    ],
+    "email": null,
+    "phone": null,
+    "portal_or_login": false,
+    "groups_count": 3,
+    "referenced_by": {
+     "audit actor rows": 4,
+     "batches released/requested": 0,
+     "mail.message author": 3,
+     "mail.followers": 1
+    },
+    "partner_archive": "refused by Odoo guard: RedirectWarning",
+    "user_unlink_safe": false,
+    "user_unlink": "NOT attempted: user is the actor of immutable audit rows / released batches (ondelete set-null would rewrite lineage)",
+    "renamed": "[ARCHIVED SYNTHETIC USER] SIPANEL-STEP2CH-20260922T083014Z Sales User"
+   }
+  },
+  "side_effects": {
+   "mail_mail": 36,
+   "posted_moves": 0,
+   "done_stock_moves": 10,
+   "purchase_orders_total": 7,
+   "mrp_total": 0,
+   "pickings_total": 13,
+   "internal_quant_qty": 0,
+   "sipanel_params": {
+    "sipanel_scope.activity_plan_id": "81",
+    "sipanel_scope.company_currency_only": "True",
+    "sipanel_scope.default_project_id": "55",
+    "sipanel_scope.release_retry_count": "3",
+    "sipanel_scope.stock_issue_picking_type_id": "91",
+    "sipanel_scope.system_plan_id": "80"
+   }
+  }
+ },
+ "statement_active_synthetic_records": "2 active synthetic technical contacts retained (partners 2361 and 3483); all other synthetic records: 0 active",
+ "invoices_posted": 0,
+ "bills_posted": 0,
+ "emails_sent": 0,
+ "real_stock_consumed": 0,
+ "supplier_commitments": 0,
+ "other_tenants_touched": false,
+ "remaining_step2d_blockers": [
+  "OBS-2C-07 analytic plans 80/81 without accounts",
+  "OBS-2C-08 change-order settlement for invoiced superseded lines (R-3)",
+  "OBS-2CH-01 plain Sales users cannot seal on send (cost-group field)",
+  "OBS-2C-04 release backoff unset",
+  "OBS-2C-09 no BoM/vendor configuration for real products"
+ ]
+}

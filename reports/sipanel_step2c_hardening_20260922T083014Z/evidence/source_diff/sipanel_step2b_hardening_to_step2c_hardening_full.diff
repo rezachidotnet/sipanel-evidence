@@ -1,0 +1,1215 @@
+diff --git a/addons/sipanel_sale_scope/__manifest__.py b/addons/sipanel_sale_scope/__manifest__.py
+index 1b7b174..f9403c8 100644
+--- a/addons/sipanel_sale_scope/__manifest__.py
++++ b/addons/sipanel_sale_scope/__manifest__.py
+@@ -2,7 +2,7 @@
+ {
+     'name': 'SIPANEL Sale Scope',
+     'summary': 'Quote Scope, revisions, component snapshots, quantity/cost engine, pricing & margin, notes, seal, optional/provisional governance, portal guard (Slices B + C)',
+-    'version': '19.0.1.2.1',
++    'version': '19.0.1.2.2',
+     'category': 'Sales/Sales',
+     'author': 'SIPANEL',
+     'license': 'LGPL-3',
+diff --git a/addons/sipanel_sale_scope/models/separately_billable.py b/addons/sipanel_sale_scope/models/separately_billable.py
+index 9e071a7..1a3a509 100644
+--- a/addons/sipanel_sale_scope/models/separately_billable.py
++++ b/addons/sipanel_sale_scope/models/separately_billable.py
+@@ -264,7 +264,7 @@ class SipanelQuoteScopeRevision(models.Model):
+         for line in superseded:
+             if line.invoice_lines or line.qty_delivered:
+                 continue          # consumed: keep it, and flag it in the reconciliation
+-            line.with_context(**guard_ctx('sipanel_projection')).unlink()
++            self._retire_projected_line(line)
+         return True
+ 
+     @api.model
+@@ -285,6 +285,16 @@ class SipanelQuoteScopeRevision(models.Model):
+             if line.product_uom_qty:
+                 line.with_context(**ctx).write({'product_uom_qty': 0.0})
+             return False
++        if line._check_line_unlink():
++            # Odoo refuses to delete a line of a confirmed order ("set the quantity
++            # to 0 instead"), so an amendment after confirmation used to be refused
++            # outright (STEP 2C defect CD-2C-03). The line is neutralised the way
++            # Odoo prescribes; native follow-ups (a delivery move of a
++            # NATIVE_LINE_OWNER line) shrink with the quantity, nothing is deleted,
++            # and the new revision's line carries the accepted baseline.
++            if line.product_uom_qty:
++                line.with_context(**ctx).write({'product_uom_qty': 0.0})
++            return False
+         line.with_context(**ctx).unlink()
+         return True
+ 
+diff --git a/addons/sipanel_sale_scope/tests/test_separately_billable.py b/addons/sipanel_sale_scope/tests/test_separately_billable.py
+index 97a6586..2167c5a 100644
+--- a/addons/sipanel_sale_scope/tests/test_separately_billable.py
++++ b/addons/sipanel_sale_scope/tests/test_separately_billable.py
+@@ -811,3 +811,50 @@ class TestPricelistFailsClosed(SeparatelyBillableCase):
+         comp = self._comp_of(self._add_scope().current_revision_id, self.l_sep)
+         self.assertFalse(comp.sell_price_error)
+         self.assertEqual(comp.sell_price_status, 'known')
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_sepbill', 'sipanel_step2c')
++class TestAmendmentAfterConfirmation(SeparatelyBillableCase):
++    """STEP 2C defect CD-2C-03: Odoo refuses to delete a line of a confirmed order,
++    so an amendment after confirmation used to be refused outright. The superseded
++    projection is now neutralised (quantity 0) the way Odoo prescribes; consumed
++    lines are still left alone and flagged."""
++
++    def _confirmed(self):
++        scope = self._add_scope()
++        rev = self._make_sendable(scope.current_revision_id)
++        scope.anchor_line_id.write({'price_unit': 1000.0})
++        scope.order_id._sipanel_seal_current_revisions(actor='test')
++        scope.order_id.action_confirm()
++        return scope, scope.current_revision_id
++
++    def test_amendment_after_confirmation_neutralises_the_superseded_line(self):
++        scope, rev = self._confirmed()
++        order = scope.order_id
++        old_lines = self._lines_of(rev)
++        total_before = order.amount_untaxed
++        new_rev = rev.action_amend()
++        self.assertEqual(new_rev.state, 'working')
++        self.assertEqual(new_rev.prior_revision_id, rev)
++        self.assertTrue(all(l.exists() for l in old_lines), 'superseded lines of a confirmed order are never deleted')
++        self.assertTrue(all(l.product_uom_qty == 0.0 for l in old_lines), 'they are neutralised, as Odoo prescribes')
++        new_lines = self._lines_of(new_rev)
++        self.assertEqual(len(new_lines), len(old_lines))
++        self.assertTrue(all(l.product_uom_qty > 0 for l in new_lines))
++        self.assertAlmostEqual(order.amount_untaxed, total_before, 2, 'the amendment alone does not change the total')
++        live = self.env['sale.order.line'].search([('order_id', '=', order.id), ('sipanel_is_generated', '=', True), ('product_uom_qty', '>', 0)])
++        self.assertEqual(set(live.mapped('sipanel_source_revision_id').ids), {new_rev.id}, 'exactly one live line per component, on the new revision')
++        self.assertFalse(new_rev.reconciliation_json.get('problems'))
++
++    def test_invoiced_superseded_line_is_left_alone_and_flagged(self):
++        scope, rev = self._confirmed()
++        order = scope.order_id
++        invoice = order._create_invoices()
++        self.assertEqual(invoice.state, 'draft')
++        sep_line = self._lines_of(rev).filtered(lambda l: l.sipanel_source_component_id == self._comp_of(rev, self.l_sep))
++        self.assertTrue(sep_line.invoice_lines)
++        qty = sep_line.product_uom_qty
++        new_rev = rev.action_amend()
++        self.assertEqual(sep_line.product_uom_qty, qty, 'invoiced history is not rewritten')
++        problems = new_rev.reconciliation_json.get('problems') or []
++        self.assertTrue(any('superseded revision is already invoiced' in p for p in problems), problems)
+diff --git a/addons/sipanel_scope_execution/__manifest__.py b/addons/sipanel_scope_execution/__manifest__.py
+index bab5aa4..cbec9bd 100644
+--- a/addons/sipanel_scope_execution/__manifest__.py
++++ b/addons/sipanel_scope_execution/__manifest__.py
+@@ -2,7 +2,7 @@
+ {
+     'name': 'SIPANEL Scope Execution',
+     'summary': 'Owner registry, Release Execution, batches/demands/targets, adapters, LockError retry, amendment/cancel lineage (Slice D)',
+-    'version': '19.0.1.0.0',
++    'version': '19.0.1.0.2',
+     'category': 'Sales/Sales',
+     'author': 'SIPANEL',
+     'license': 'LGPL-3',
+diff --git a/addons/sipanel_scope_execution/models/adapters.py b/addons/sipanel_scope_execution/models/adapters.py
+index d606fc7..74efdbb 100644
+--- a/addons/sipanel_scope_execution/models/adapters.py
++++ b/addons/sipanel_scope_execution/models/adapters.py
+@@ -19,32 +19,84 @@ class SipanelExecutionAdapter(models.AbstractModel):
+             return self._adapt_native_anchor_covered(demand)
+         return handler(demand)
+ 
++    # ------------------------------------------------------------------ ownership boundary
++    # Targets SIPANEL only LINKS (native owner's documents, or an existing project) are
++    # observed, never cancelled, reduced, rewritten or deleted by SIPANEL (C8-D01;
++    # STEP 2C-HARDENING finding 2). Only targets SIPANEL CREATED are under its control.
++    NATIVE_LINK_KINDS = ('native_anchor_covered', 'linked_existing')
++
++    @api.model
++    def _target_executed(self, target, rec):
++        """True when the target document is done / posted / consumed, i.e. cannot be
++        withdrawn any more and needs a governed reversal or change order."""
++        model = target.target_model
++        if model in ('stock.move', 'stock.picking'):
++            return rec.state == 'done'
++        if model == 'mrp.production':
++            return rec.state == 'done' or bool(rec.qty_produced)
++        if model == 'purchase.order.line':
++            return rec.order_id.state in ('purchase', 'done') or bool(rec.qty_received) or bool(rec.qty_invoiced)
++        if model == 'account.analytic.line':
++            return True
++        if model == 'hr.expense':
++            return rec.state in ('approved', 'done')
++        # project.project / project.task / stock.reference: links without a reversible SIPANEL transaction
++        return False
++
+     @api.model
+     def cancel_delta(self, demand):
+-        """Reduce unreserved planned demand; done documents are never deleted (PT-19)."""
++        """Cancel planned demand. Bridge-created draft documents are withdrawn by SIPANEL;
++        executed documents are protected (reversal_required); native-owned targets are
++        observed only. Idempotent: a cancelled demand is left untouched (PT-19)."""
++        if demand.state == 'cancelled':
++            return True
++        reversal = False
+         for t in demand.target_ids:
+             rec = t.target_record().exists()
+             if not rec:
+                 continue
++            executed = self._target_executed(t, rec)
++            if t.link_kind in self.NATIVE_LINK_KINDS:
++                # the native Sale line (or the linked project) owns this document
++                reversal = reversal or executed
++                continue
++            if executed:
++                reversal = True
++                continue
+             if t.target_model == 'purchase.order.line' and rec.order_id.state in ('draft', 'sent'):
+                 rec.write({'product_qty': 0.0})
+-            elif t.target_model == 'mrp.production' and rec.state in ('draft', 'confirmed') and not rec.qty_produced:
++            elif t.target_model == 'purchase.order.line':
++                reversal = True          # e.g. a cancelled PO whose line SIPANEL cannot touch: nothing planned remains
++            elif t.target_model == 'mrp.production' and rec.state not in ('done', 'cancel'):
+                 rec.action_cancel()
+             elif t.target_model == 'stock.move' and rec.state not in ('done', 'cancel'):
+                 rec._action_cancel()
+-            else:
+-                demand.write({'reversal_required': True})
+-        demand.write({'state': 'cancelled'})
++            elif t.target_model == 'stock.picking' and rec.state not in ('done', 'cancel'):
++                rec.action_cancel()
++        demand.write({'state': 'cancelled', 'reversal_required': reversal})
+         return True
+ 
+     @api.model
+     def reduce_planned(self, demand, qty):
+-        """Reduce unreserved planned quantity on the demand's draft targets by `qty`; cancel when nothing remains; never delete."""
++        """Reduce unreserved planned quantity on the demand's draft targets by `qty`; cancel when nothing remains; never delete.
++        Native-owned targets are never reduced by SIPANEL: the native Sale line already carries the new quantity,
++        so only the demand lineage is updated."""
++        if demand.state == 'cancelled':
++            return True
++        if demand.target_ids and all(t.link_kind in self.NATIVE_LINK_KINDS for t in demand.target_ids):
++            executed = any(self._target_executed(t, t.target_record().exists()) for t in demand.target_ids if t.target_record().exists())
++            vals = {'reversal_required': executed}
++            if demand.normalized_qty - qty <= 1e-6:
++                vals['state'] = 'cancelled'
++            demand.write(vals)
++            return True
+         remaining = qty
+         for t in demand.target_ids:
+             rec = t.target_record().exists()
+             if not rec or remaining <= 0:
+                 continue
++            if t.link_kind in self.NATIVE_LINK_KINDS or self._target_executed(t, rec):
++                continue
+             if t.target_model == 'stock.move' and rec.state not in ('done', 'cancel'):
+                 cut = min(rec.product_uom_qty, remaining)
+                 rec.write({'product_uom_qty': rec.product_uom_qty - cut})
+@@ -175,9 +227,25 @@ class SipanelExecutionAdapter(models.AbstractModel):
+     def _adapt_equipment_service(self, demand):
+         return self._adapt_buy_direct(demand)
+ 
++    @api.model
++    def _native_line_of(self, demand):
++        """The native Sale line that owns this demand's operational documents.
++
++        Since STEP 2B a separately-billable component is projected onto its own
++        generated Sale line, and under NATIVE_LINE_OWNER that line - not the
++        anchor - is what launches the native stock/purchase/task demand. Linking
++        the anchor's documents instead would attach the wrong operational record
++        (STEP 2C defect CD-2C-02). Components without an own line stay covered by
++        the anchor.
++        """
++        own = self.env['sale.order.line'].search([
++            ('sipanel_is_generated', '=', True), ('sipanel_source_component_id', '=', demand.component_id.id),
++            ('order_id', '=', demand.order_id.id)], limit=1)
++        return own or demand.quote_scope_id.anchor_line_id
++
+     @api.model
+     def _adapt_native_anchor_covered(self, demand):
+-        anchor = demand.quote_scope_id.anchor_line_id
++        anchor = self._native_line_of(demand)
+         linked = False
+         if 'move_ids' in anchor._fields:
+             for mv in anchor.move_ids.filtered(lambda m: m.state != 'cancel'):
+diff --git a/addons/sipanel_scope_execution/models/execution_batch.py b/addons/sipanel_scope_execution/models/execution_batch.py
+index c3c570f..588bfc9 100644
+--- a/addons/sipanel_scope_execution/models/execution_batch.py
++++ b/addons/sipanel_scope_execution/models/execution_batch.py
+@@ -8,7 +8,9 @@ import psycopg2
+ from odoo import api, fields, models
+ from odoo.exceptions import LockError, UserError
+ 
+-from odoo.addons.sipanel_commercial_scope_core.models.sipanel_tools import sha256_of
++from odoo.addons.sipanel_commercial_scope_core.models.sipanel_tools import guard_ctx, sha256_of
++
++from .execution_demand import DEMAND_ENGINE_GUARD
+ 
+ 
+ class SipanelExecutionBatch(models.Model):
+@@ -88,6 +90,9 @@ class SipanelExecutionBatch(models.Model):
+         return self.search([('order_id', '=', order.id), ('revision_set_hash', '=', h), ('state', 'in', ('released', 'planned', 'validated'))], limit=1)
+ 
+     def _release_locked(self, order, delta_uid=None):
++        # the engine token: every demand created or transitioned below carries it
++        self = self.with_context(**guard_ctx(DEMAND_ENGINE_GUARD))
++        order = order.with_env(self.env)
+         _ = self.env._
+         if order.state != 'sale':
+             raise UserError(_("Order %s must be confirmed before Release Execution.", order.name))
+@@ -108,8 +113,8 @@ class SipanelExecutionBatch(models.Model):
+                         continue
+                     d_uid = delta_uid or rev.acceptance_reference or f"rev:{rev.id}"
+                     vals = Demand._prepare_from_component(batch, c, scope, d_uid)
+-                    if Demand.search([('demand_key', '=', vals['demand_key'])], limit=1):
+-                        continue  # already demanded (idempotent by key)
++                    if Demand._live_by_key(vals['demand_key']):
++                        continue  # already demanded by a live batch (idempotent by key; failed demands do not count, CD-2C-01)
+                     demands |= Demand.create(vals)
+             self.env.flush_all()  # unique keys are checked here (IntegrityError => caller retries / returns existing)
+         if issues:
+@@ -142,8 +147,21 @@ class SipanelExecutionBatch(models.Model):
+         return text[:2000]
+ 
+     def action_cancel_planned(self):
+-        for b in self:
+-            for d in b.demand_ids:
+-                self.env['sipanel.execution.adapter'].cancel_delta(d)
++        """Governed cancellation of planned execution. Idempotent: cancelled batches and
++        demands are skipped, so a repeated cancellation performs no second document action.
++        Opens the engine token for the demand transitions; the caller's own access to the
++        batch and demands still applies unless the order-cancel service (sale.order._action_cancel)
++        has established the native permission to cancel the order and runs it as sudo."""
++        eng = self.with_context(**guard_ctx(DEMAND_ENGINE_GUARD))
++        Adapter = eng.env['sipanel.execution.adapter']
++        for b in eng:
++            if b.state == 'cancelled':
++                continue
++            demands = b.demand_ids.filtered(lambda d: d.state not in ('cancelled', 'failed'))
++            for d in demands:
++                Adapter.cancel_delta(d)
+             b.write({'state': 'cancelled'})
++            eng.env['sipanel.scope.audit.event'].log(
++                b, 'execution_cancel', after={'demands': len(demands), 'initiator_login': eng.env.user.login},
++                correlation_uid=b.action_uid, summary=eng.env._("Planned execution cancelled by %s", eng.env.user.login))
+         return True
+diff --git a/addons/sipanel_scope_execution/models/execution_demand.py b/addons/sipanel_scope_execution/models/execution_demand.py
+index 4c2720b..8ff9f29 100644
+--- a/addons/sipanel_scope_execution/models/execution_demand.py
++++ b/addons/sipanel_scope_execution/models/execution_demand.py
+@@ -1,8 +1,22 @@
+ # -*- coding: utf-8 -*-
+ """Execution demand (GAP-D03, D07, D08; C8-D02, C8-D04)."""
+ from odoo import api, fields, models
++from odoo.exceptions import AccessError
+ 
+-from odoo.addons.sipanel_commercial_scope_core.models.sipanel_tools import EXECUTION_MODE, sha256_of
++from odoo.addons.sipanel_commercial_scope_core.models.sipanel_tools import EXECUTION_MODE, guard, sha256_of
++
++# Process-local guard opened only by the genuine execution engine (release,
++# amendment delta, governed cancellation). A raw context flag, a guessed token,
++# sudo() or an import context never opens it (STEP 2C-HARDENING, finding 1).
++DEMAND_ENGINE_GUARD = 'sipanel_demand_engine'
++
++# Provenance and ownership: fixed at creation, never writable afterwards - not
++# even by the engine. A change of any of these is a new demand (a delta).
++DEMAND_IMMUTABLE_FIELDS = (
++    'batch_id', 'quote_scope_id', 'component_id', 'delta_uid', 'execution_mode', 'owner', 'demand_key',
++    'normalized_qty', 'signed_qty', 'uom_id', 'product_id', 'project_id', 'system_id', 'activity_id',
++    'reversal_of_id', 'cancelled_by_delta_uid',
++)
+ 
+ 
+ class SipanelExecutionDemand(models.Model):
+@@ -36,7 +50,17 @@ class SipanelExecutionDemand(models.Model):
+     target_count = fields.Integer(compute='_compute_target_count')
+     signed_qty = fields.Float(digits=(16, 6), readonly=True, help="Negative for cancel deltas.")
+ 
+-    _demand_key_unique = models.Constraint('UNIQUE(demand_key)', 'One demand per (occurrence, delta, mode, owner) (C8-D02).')
++    # One LIVE demand per (occurrence, delta, mode, owner) (C8-D02). A demand that
++    # belongs to a FAILED batch is retained as evidence but must not occupy the key:
++    # otherwise the retry after the cause is fixed skips every component as "already
++    # demanded" and produces a released batch with no demand and no document
++    # (STEP 2C defect CD-2C-01).
++    _demand_key_live_unique = models.UniqueIndex("(demand_key) WHERE state <> 'failed'")
++
++    @api.model
++    def _live_by_key(self, demand_key):
++        """The live demand holding this key, if any (failed demands never count)."""
++        return self.search([('demand_key', '=', demand_key), ('state', '!=', 'failed')], limit=1)
+ 
+     @api.depends('component_id.name', 'execution_mode')
+     def _compute_name(self):
+@@ -48,6 +72,33 @@ class SipanelExecutionDemand(models.Model):
+         for d in self:
+             d.target_count = len(d.target_ids)
+ 
++    # ------------------------------------------------------------- behavioural immutability
++    def _sipanel_engine_guarded(self):
++        return guard(self.env, DEMAND_ENGINE_GUARD)
++
++    @api.model_create_multi
++    def create(self, vals_list):
++        if not self._sipanel_engine_guarded():
++            raise AccessError(self.env._(
++                "Execution demands are created only by Release Execution or an amendment delta; "
++                "direct creation (including sudo, import or a context flag) is refused."))
++        return super().create(vals_list)
++
++    def write(self, vals):
++        frozen = sorted(f for f in vals if f in DEMAND_IMMUTABLE_FIELDS)
++        if frozen:
++            raise AccessError(self.env._(
++                "Execution demand provenance is immutable after creation (%s). A change of scope, "
++                "quantity or owner is a new delta demand.", ', '.join(frozen)))
++        if not self._sipanel_engine_guarded():
++            raise AccessError(self.env._(
++                "Execution demand state changes only through governed execution actions "
++                "(release, failure, cancellation, amendment); direct writes are refused."))
++        return super().write(vals)
++
++    def unlink(self):
++        raise AccessError(self.env._("Execution demands are lineage evidence and are never deleted."))
++
+     @api.model
+     def _make_key(self, occurrence_uid, delta_uid, mode, owner):
+         return sha256_of([occurrence_uid, delta_uid, mode, owner])
+diff --git a/addons/sipanel_scope_execution/models/sale_order.py b/addons/sipanel_scope_execution/models/sale_order.py
+index b453816..e3febe4 100644
+--- a/addons/sipanel_scope_execution/models/sale_order.py
++++ b/addons/sipanel_scope_execution/models/sale_order.py
+@@ -3,6 +3,10 @@
+ from odoo import api, fields, models
+ from odoo.exceptions import UserError
+ 
++from odoo.addons.sipanel_commercial_scope_core.models.sipanel_tools import guard_ctx
++
++from .execution_demand import DEMAND_ENGINE_GUARD
++
+ 
+ class SaleOrder(models.Model):
+     _inherit = 'sale.order'
+@@ -25,8 +29,9 @@ class SaleOrder(models.Model):
+     def action_sipanel_release_amendment_delta(self):
+         """Compute per-occurrence deltas between the last released quantities and the new accepted revision (PT-22)."""
+         self.ensure_one()
+-        Demand = self.env['sipanel.execution.demand']
+-        Batch = self.env['sipanel.execution.batch']
++        eng = self.with_context(**guard_ctx(DEMAND_ENGINE_GUARD))
++        Demand = eng.env['sipanel.execution.demand']
++        Batch = eng.env['sipanel.execution.batch']
+         created = Demand
+         for scope in self.sipanel_quote_scope_ids.filtered('active'):
+             rev = scope.accepted_revision_id
+@@ -42,27 +47,44 @@ class SaleOrder(models.Model):
+                 batch = Batch.search([('order_id', '=', self.id), ('revision_set_hash', '=', d_uid)], limit=1) or Batch.create({
+                     'order_id': self.id, 'accepted_revision_ids': [(6, 0, rev.ids)], 'revision_set_hash': d_uid, 'state': 'validated'})
+                 vals = Demand._prepare_from_component(batch, c, scope, d_uid, qty=delta)
+-                if Demand.search([('demand_key', '=', vals['demand_key'])]):
++                if Demand._live_by_key(vals['demand_key']):
+                     continue
+-                d = Demand.create(vals)
+-                if delta > 0:
+-                    self.env['sipanel.execution.adapter'].create_or_link(d)
+-                else:
++                prior = Demand
++                if delta < 0:
+                     prior = Demand.search([('component_id.occurrence_uid', '=', c.occurrence_uid), ('quote_scope_id', '=', scope.id), ('signed_qty', '>', 0),
+                                            ('state', 'not in', ('cancelled', 'failed'))], order='id desc', limit=1)
+-                    d.write({'reversal_of_id': prior.id, 'cancelled_by_delta_uid': d_uid, 'state': 'planned'})
+-                    if prior:
+-                        self.env['sipanel.execution.adapter'].reduce_planned(prior, -delta)
++                    # lineage is provenance: fixed at creation, never written afterwards
++                    vals.update({'reversal_of_id': prior.id or False, 'cancelled_by_delta_uid': d_uid})
++                d = Demand.create(vals)
++                if delta > 0:
++                    eng.env['sipanel.execution.adapter'].create_or_link(d)
++                elif prior:
++                    eng.env['sipanel.execution.adapter'].reduce_planned(prior, -delta)
+                 created |= d
+                 batch.write({'state': 'released', 'released_by_id': self.env.uid, 'released_date': fields.Datetime.now()})
+         return created
+ 
+     def _action_cancel(self):
++        """Governed order cancellation (STEP 2C-HARDENING finding 4).
++
++        The user must hold the native permission to cancel this order (ACL and
++        record rules on sale.order, checked here before anything else). Only
++        then does the internal service transition the demands of exactly this
++        order, as sudo with the engine token; the initiating user stays the
++        actor of the audit event because sudo() keeps env.uid. Sales users get
++        no general access to execution demands.
++        """
++        Adapter = self.env['sipanel.execution.adapter']
+         for o in self:
+-            done = self.env['sipanel.execution.target'].search([('demand_id.order_id', '=', o.id)]).filtered(
+-                lambda t: t.target_model in ('stock.move', 'mrp.production') and getattr(t.target_record().exists(), 'state', '') == 'done')
++            o.check_access('write')
++            targets = self.env['sipanel.execution.target'].sudo().search([('demand_id.order_id', '=', o.id)])
++            # executed documents SIPANEL created itself block a plain order cancel; native-owned
++            # documents are the native line's responsibility and are only observed
++            done = targets.filtered(lambda t: t.link_kind == 'created' and t.target_record().exists()
++                                    and Adapter._target_executed(t, t.target_record()))
+             if done:
+                 raise UserError(self.env._("Order %s has executed (done) targets; cancel through native returns/reversals, not order cancel.", o.name))
+-            for b in o.sipanel_execution_batch_ids.filtered(lambda b: b.state in ('released', 'validated', 'planned')):
+-                b.action_cancel_planned()
++            batches = o.sipanel_execution_batch_ids.filtered(lambda b: b.state in ('released', 'validated', 'planned'))
++            if batches:
++                batches.sudo().action_cancel_planned()
+         return super()._action_cancel()
+diff --git a/addons/sipanel_scope_execution/tests/__init__.py b/addons/sipanel_scope_execution/tests/__init__.py
+index f3bc533..95b90fa 100644
+--- a/addons/sipanel_scope_execution/tests/__init__.py
++++ b/addons/sipanel_scope_execution/tests/__init__.py
+@@ -1,2 +1,4 @@
+ from . import common
+ from . import test_release
++from . import test_step2c
++from . import test_step2c_hardening
+diff --git a/addons/sipanel_scope_execution/tests/common.py b/addons/sipanel_scope_execution/tests/common.py
+index 4fec847..b05ee20 100644
+--- a/addons/sipanel_scope_execution/tests/common.py
++++ b/addons/sipanel_scope_execution/tests/common.py
+@@ -41,3 +41,54 @@ class SipanelExecutionCase(SipanelSaleCase):
+         order.action_quotation_sent()
+         order.action_confirm()
+         return order, scope
++
++    # ------------------------------------------------------------ STEP 2C fixtures (own-line components)
++    def _bridge_order_with_own_line(self, qty=85.0, user=None):
++        """PT master (bridge owner) whose bracket component is billed on its own line."""
++        order, scope = self._make_order(qty, user=user)
++        scope.write({'project_id': self.project.id, 'system_id': self.system_a.id})
++        bracket = self._comp(scope, self.p_bracket)
++        bracket.write({'placement': 'own_line'})
++        bracket.action_set_manual_sell_price(5.0)
++        scope.current_revision_id.action_generate_note(accept=True)
++        scope.anchor_line_id.write({'price_unit': 12000.0 / qty, 'tax_ids': [(5, 0, 0)]})
++        order.action_quotation_sent()
++        order.action_confirm()
++        return order, scope, bracket
++
++    def _native_order_with_own_line(self, qty=85.0):
++        """Anchor creates a task natively (NATIVE_LINE_OWNER); the bracket is billed on its own line."""
++        self.p_anchor.write({'service_tracking': 'task_global_project', 'project_id': self.project.id})
++        v2 = self.env['sipanel.scope.version'].browse(self.v1.action_new_version()['res_id'])
++        v2.write({'anchor_owner_mode': 'native_line_owner'})
++        for l in v2.recipe_line_ids.filtered(lambda l: l.execution_mode != 'no_action'):
++            l.write({'execution_mode': 'native_anchor_covered'})
++        v2.action_release()
++        order = self.env['sale.order'].create({'partner_id': self.partner.id})
++        scope = self.env['sipanel.quote.scope']._create_from_version(order, v2, qty, self.uom_m)
++        scope.write({'project_id': self.project.id, 'system_id': self.system_a.id})
++        bracket = self._comp(scope, self.p_bracket)
++        bracket.write({'placement': 'own_line'})
++        bracket.action_set_manual_sell_price(5.0)
++        scope.current_revision_id.action_generate_note(accept=True)
++        scope.anchor_line_id.write({'price_unit': 200, 'tax_ids': [(5, 0, 0)]})
++        order.action_quotation_sent()
++        order.action_confirm()
++        return order, scope, bracket
++
++    def _generated_line(self, comp):
++        return self.env['sale.order.line'].search([('sipanel_is_generated', '=', True), ('sipanel_source_component_id', '=', comp.id)])
++
++    def _release(self, order):
++        res = order.with_user(self.exec_owner).action_sipanel_release_execution()
++        return self.env['sipanel.execution.batch'].browse(res['res_id'])
++
++    def _docs(self, order):
++        return {
++            'pickings': self.env['stock.picking'].search_count([('origin', '=', order.name)]),
++            'moves': self.env['stock.move'].search_count([('origin', '=', order.name)]),
++            'po_lines': self.env['purchase.order.line'].search_count([('order_id.origin', '=', order.name)]),
++            'mos': self.env['mrp.production'].search_count([('origin', '=', order.name)]),
++            'tasks': self.env['project.task'].search_count([('sale_line_id', 'in', order.order_line.ids)]),
++            'targets': self.env['sipanel.execution.target'].search_count([('demand_id.order_id', '=', order.id)]),
++        }
+diff --git a/addons/sipanel_scope_execution/tests/test_step2c.py b/addons/sipanel_scope_execution/tests/test_step2c.py
+new file mode 100644
+index 0000000..84fecd0
+--- /dev/null
++++ b/addons/sipanel_scope_execution/tests/test_step2c.py
+@@ -0,0 +1,226 @@
++# -*- coding: utf-8 -*-
++"""STEP 2C: Execution Batch release against separately-billable generated Sale Lines.
++
++Principal invariant: one component -> one operational demand owner -> one
++actual-cost source. A generated (separately billable) Sale Line is a customer
++revenue projection and must never become a second demand owner.
++
++Regression coverage for the defects found by the live pilot:
++  CD-2C-01  failed demands blocked the retry (released batch with no demand);
++  CD-2C-02  NATIVE_LINE_OWNER demand of an own-line component linked the anchor's
++            documents instead of its own line's native demand;
++  CD-2C-03  (sipanel_sale_scope) amendment after confirmation was refused by the
++            native unlink rule - covered here through the amendment-delta lineage.
++"""
++from odoo.exceptions import UserError
++from odoo.tests import tagged
++
++from .common import SipanelExecutionCase
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_step2c')
++class TestStep2CDemandOwnership(SipanelExecutionCase):
++
++    # fixtures (_bridge_order_with_own_line, _native_order_with_own_line, _generated_line, _release, _docs) live in common.py
++
++    # ------------------------------------------------------------------ Scenario A: bridge owner
++    def test_bridge_owner_generated_line_yields_one_demand_and_zero_native_demand(self):
++        order, scope, bracket = self._bridge_order_with_own_line()
++        line = self._generated_line(bracket)
++        self.assertEqual(len(line), 1, 'quotation projection creates exactly one generated Sale Line')
++        self.assertEqual(bracket.execution_owner, 'component_bridge_owner')
++        self.assertFalse(line.move_ids, 'confirmation must not launch a native stock demand from a bridge-owned generated line')
++        self.assertFalse(line.purchase_line_ids)
++        Demand = self.env['sipanel.execution.demand']
++        batch = self._release(order)
++        self.assertEqual(batch.state, 'released')
++        demands = Demand.search([('component_id', '=', bracket.id)])
++        self.assertEqual(len(demands), 1, 'exactly one SIPANEL execution demand per component')
++        rev = scope.accepted_revision_id
++        expected_key = Demand._make_key(bracket.occurrence_uid, rev.acceptance_reference or f"rev:{rev.id}", 'stock_issue', 'component_bridge_owner')
++        self.assertEqual(demands.demand_key, expected_key, 'source key is derived from the Scope revision/component, not from the batch')
++        self.assertTrue(Demand._fields['demand_key'].readonly, 'the key is declared immutable; no user write path exists')
++        self.assertEqual(demands.delta_uid, rev.acceptance_reference or f"rev:{rev.id}")
++        targets = demands.target_ids
++        self.assertEqual(sorted(targets.mapped('target_model')), ['stock.move', 'stock.picking'], 'the stock adapter creates one picking with one move')
++        move = targets.filtered(lambda t: t.target_model == 'stock.move').target_record()
++        self.assertEqual(move.product_id, self.p_bracket)
++        self.assertEqual(move.product_uom_qty, bracket.final_qty)
++        self.assertEqual(move.state, 'draft')
++        self.assertEqual(self.env['stock.move'].search_count([('product_id', '=', self.p_bracket.id), ('origin', '=', order.name)]), 1)
++        self.assertFalse(line.move_ids, 'the generated line still owns no native move after release')
++        docs = self._docs(order)
++        # release again, retry after completion, and the explicit action: nothing additional
++        self.assertEqual(self._release(order), batch)
++        self.assertEqual(self.env['sipanel.execution.batch'].with_user(self.exec_owner).release_for_order(order), batch)
++        self.assertEqual(self._release(order), batch)
++        self.assertEqual(self._docs(order), docs, 'repeat release creates nothing additional')
++        self.assertEqual(Demand.search_count([('order_id', '=', order.id)]), 7)
++        keys = Demand.search([('order_id', '=', order.id)]).mapped('demand_key')
++        self.assertEqual(len(keys), len(set(keys)), 'unique source keys')
++
++    # ------------------------------------------------------------------ Scenario B: native line owner
++    def test_native_owner_own_line_links_its_own_native_demand_and_creates_none(self):
++        order, scope, bracket = self._native_order_with_own_line()
++        line = self._generated_line(bracket)
++        self.assertEqual(len(line), 1)
++        self.assertEqual(bracket.execution_owner, 'native_line_owner')
++        self.assertEqual(len(line.move_ids), 1, 'the native Sale line creates the normal Odoo delivery demand once')
++        native_move = line.move_ids
++        task = scope.anchor_line_id.task_id
++        self.assertTrue(task, 'the anchor created its task natively')
++        docs_before = self._docs(order)
++        batch = self._release(order)
++        self.assertEqual(batch.state, 'released')
++        d = self.env['sipanel.execution.demand'].search([('component_id', '=', bracket.id)])
++        self.assertEqual(len(d), 1)
++        self.assertEqual(d.owner, 'native_line_owner')
++        self.assertEqual(d.state, 'linked')
++        links = {(t.target_model, t.target_res_id, t.link_kind) for t in d.target_ids}
++        self.assertIn(('stock.move', native_move.id, 'native_anchor_covered'), links,
++                      'CD-2C-02: the demand links the native demand of ITS OWN generated line')
++        self.assertNotIn(('project.task', task.id, 'native_anchor_covered'), links,
++                         "an own-line component is not covered by the anchor's task")
++        # components without an own line stay covered by the anchor
++        labour = self.env['sipanel.execution.demand'].search([('order_id', '=', order.id), ('component_id.product_id', '=', self.p_labour.id)])
++        self.assertEqual({(t.target_model, t.target_res_id) for t in labour.target_ids}, {('project.task', task.id)})
++        # SIPANEL created no second operational demand anywhere
++        docs_after = self._docs(order)
++        for k in ('pickings', 'moves', 'po_lines', 'mos', 'tasks'):
++            self.assertEqual(docs_after[k], docs_before[k], f'no additional {k} from the bridge')
++        self.assertEqual(len(line.move_ids), 1)
++        self.assertFalse(self.env['stock.picking'].search([('origin', '=', order.name), ('picking_type_id', '=', self.picking_type.id)]))
++        self.assertEqual(self._release(order), batch)
++        self.assertEqual(self._docs(order), docs_after)
++        # provenance: Scope, revision, component, Sale Line, operational document
++        self.assertEqual(line.sipanel_source_quote_scope_id, scope)
++        self.assertEqual(line.sipanel_source_revision_id, scope.accepted_revision_id)
++        self.assertEqual(d.quote_scope_id, scope)
++        self.assertEqual(d.component_id.revision_id, scope.accepted_revision_id)
++        self.assertEqual(native_move.sale_line_id, line)
++        self.p_anchor.write({'service_tracking': 'no'})
++
++    # ------------------------------------------------------------------ C3 partial failure and retry
++    def test_retry_after_failure_creates_the_full_demand_set_exactly_once(self):
++        order, scope, bracket = self._bridge_order_with_own_line()
++        Demand = self.env['sipanel.execution.demand']
++        self.env['product.supplierinfo'].search([('product_tmpl_id', '=', self.p_crane.product_tmpl_id.id)]).unlink()
++        failed = self._release(order)
++        self.assertEqual(failed.state, 'failed')
++        self.assertIn('vendor', failed.error_summary)
++        self.assertTrue(failed.demand_ids and all(d.state == 'failed' for d in failed.demand_ids))
++        self.assertEqual(self._docs(order)['targets'], 0)
++        self.assertEqual(self._docs(order)['pickings'], 0)
++        # retrying without fixing the cause fails again - it must not "succeed" with nothing
++        failed2 = self._release(order)
++        self.assertEqual(failed2.state, 'failed', 'CD-2C-01: a retry with the cause still present is a failed batch, not an empty release')
++        self.assertNotEqual(failed2, failed)
++        self.assertTrue(failed2.demand_ids, 'the retry re-demands every component')
++        self.assertEqual(self._docs(order)['targets'], 0)
++        # fix the cause and retry: the whole demand set is created exactly once
++        self.env['product.supplierinfo'].create({'partner_id': self.vendor.id, 'product_tmpl_id': self.p_crane.product_tmpl_id.id, 'price': 400.0, 'min_qty': 0})
++        ok = self._release(order)
++        self.assertEqual(ok.state, 'released')
++        self.assertEqual(len(ok.demand_ids), 7, 'the retry creates the full demand set')
++        self.assertTrue(all(d.target_ids for d in ok.demand_ids), 'every demand of the successful batch has its operational record')
++        docs = self._docs(order)
++        self.assertEqual(docs['po_lines'], 1)
++        self.assertEqual(docs['mos'], 1)
++        self.assertEqual(docs['pickings'], 4)
++        # exactly one LIVE demand per key; failed demands are retained as evidence but never hold the key
++        for key in set(Demand.search([('order_id', '=', order.id)]).mapped('demand_key')):
++            self.assertEqual(Demand.search_count([('demand_key', '=', key), ('state', '!=', 'failed')]), 1, key)
++        self.assertEqual(Demand.search_count([('order_id', '=', order.id), ('state', '=', 'failed')]), 14)
++        self.assertEqual(self._release(order), ok)
++        self.assertEqual(self._docs(order), docs, 'retry after completion creates nothing additional')
++
++    # ------------------------------------------------------------------ C5 propagation
++    def test_project_system_activity_propagate_to_every_execution_record(self):
++        order, scope, bracket = self._bridge_order_with_own_line()
++        batch = self._release(order)
++        for d in batch.demand_ids:
++            self.assertEqual(d.project_id, self.project)
++            self.assertEqual(d.system_id, self.system_a)
++            self.assertEqual(d.activity_id, d.component_id.activity_id)
++            self.assertEqual(d.quote_scope_id, scope)
++            self.assertEqual(d.component_id.revision_id, scope.accepted_revision_id)
++            self.assertEqual(d.batch_id, batch)
++            self.assertTrue(d.demand_key)
++        pol = batch.demand_ids.filtered(lambda d: d.execution_mode == 'equipment_service').target_ids.target_record()
++        dist_ids = {int(i) for k in pol.analytic_distribution for i in k.split(',')}
++        self.assertIn(self.system_a.id, dist_ids)
++        self.assertIn(self.act_eqp.id, dist_ids)
++        if self.project.account_id:
++            self.assertIn(self.project.account_id.id, dist_ids)
++        mo = batch.demand_ids.filtered(lambda d: d.execution_mode == 'manufacture').target_ids.target_record()
++        self.assertEqual(mo.project_id, self.project)
++        for d in batch.demand_ids.filtered(lambda d: d.execution_mode == 'stock_issue'):
++            picking = d.target_ids.filtered(lambda t: t.target_model == 'stock.picking').target_record()
++            self.assertEqual(picking.origin, order.name)
++            self.assertTrue(d.target_ids.mapped('stock_reference_id'))
++
++    # ------------------------------------------------------------------ C6 one actual-cost source, no duplicate project cost
++    def test_actual_cost_projection_is_idempotent_and_never_double_allocates(self):
++        order, scope, bracket = self._bridge_order_with_own_line()
++        self._release(order)
++        Proj = self.env['sipanel.actual.projection']
++        first = Proj.refresh_order(order)
++        second = Proj.refresh_order(order)
++        self.assertEqual(set(first.ids), set(second.ids), 'refreshing twice creates no new event')
++        keys = first.mapped('source_key')
++        self.assertEqual(len(keys), len(set(keys)), 'one event per source document')
++        for ev in first:
++            per_demand = {}
++            for a in ev.allocation_ids:
++                per_demand[a.demand_id.id] = per_demand.get(a.demand_id.id, 0) + 1
++            self.assertTrue(all(n == 1 for n in per_demand.values()), 'no event is allocated twice to the same demand')
++        # a generated line contributes no cost source of its own: the bracket has exactly one operational target
++        d = self.env['sipanel.execution.demand'].search([('component_id', '=', bracket.id)])
++        self.assertEqual(len(d.target_ids.filtered(lambda t: t.target_model == 'stock.move')), 1)
++
++    # ------------------------------------------------------------------ C4 amendment and cancellation lineage
++    def test_amendment_after_release_with_generated_lines_keeps_lineage_and_adds_one_delta(self):
++        order, scope, bracket = self._bridge_order_with_own_line()
++        b = self._release(order)
++        line_v1 = self._generated_line(bracket)
++        qty_v1 = bracket.final_qty
++        new_rev = scope.current_revision_id.action_amend()      # CD-2C-03: allowed on a confirmed order
++        bracket2 = new_rev.component_ids.filtered(lambda c: c.product_id == self.p_bracket)
++        bracket2.write({'qty_override': True, 'override_qty': qty_v1 + 10.0, 'override_reason': 'site survey'})
++        scope.action_accept_change_order('CO-2C')
++        line_v2 = self._generated_line(bracket2)
++        self.assertTrue(line_v1.exists(), 'the superseded generated line is neutralised, never deleted')
++        self.assertEqual(line_v1.product_uom_qty, 0.0)
++        self.assertEqual(line_v2.product_uom_qty, qty_v1 + 10.0)
++        live = self.env['sale.order.line'].search([('order_id', '=', order.id), ('sipanel_is_generated', '=', True), ('product_uom_qty', '>', 0)])
++        self.assertEqual(live, line_v2, 'exactly one live generated line per component')
++        self.assertFalse(line_v1.move_ids | line_v2.move_ids, 'no generated line owns a native demand under the bridge owner')
++        created = order.with_user(self.exec_owner).action_sipanel_release_amendment_delta()
++        self.assertEqual(len(created), 1)
++        self.assertEqual(created.signed_qty, 10.0)
++        self.assertEqual(created.component_id, bracket2)
++        Demand = self.env['sipanel.execution.demand']
++        for_occurrence = Demand.search([('component_id.occurrence_uid', '=', bracket.occurrence_uid), ('state', 'not in', ('cancelled', 'failed'))])
++        self.assertEqual(sum(for_occurrence.mapped('signed_qty')), qty_v1 + 10.0, 'demand follows the accepted baseline exactly once')
++        self.assertEqual(len(for_occurrence), 2, 'original demand + one delta, no re-demand of the superseded revision')
++        self.assertFalse(order.with_user(self.exec_owner).action_sipanel_release_amendment_delta(), 'the delta is idempotent')
++        self.assertEqual(self.env['stock.move'].search_count([('product_id', '=', self.p_bracket.id), ('origin', '=', order.name)]), 2)
++        # cancellation: lineage retained, planned documents cancelled, nothing deleted
++        moves = self.env['stock.move'].search([('origin', '=', order.name)])
++        mo = self.env['mrp.production'].search([('origin', '=', order.name)])
++        pol = self.env['purchase.order.line'].search([('order_id.origin', '=', order.name)])
++        # the order recordset carries the estimator's environment; cancelling released
++        # execution is an Execution Owner action (demand write access)
++        order = order.with_user(self.exec_owner)
++        order.action_unlock() if order.locked else None
++        order.action_cancel()
++        self.assertEqual(order.state, 'cancel')
++        self.assertTrue(all(m.exists() for m in moves))
++        self.assertTrue(all(m.state == 'cancel' for m in moves))
++        self.assertEqual(mo.state, 'cancel')
++        self.assertEqual(pol.product_qty, 0.0)
++        self.assertTrue(all(bt.state == 'cancelled' for bt in order.sipanel_execution_batch_ids))
++        self.assertTrue(all(d.state == 'cancelled' for d in Demand.search([('order_id', '=', order.id)])))
++        self.assertEqual(self.env['sipanel.execution.target'].search_count([('demand_id.order_id', '=', order.id)]), len(b.demand_ids.mapped('target_ids')) + len(created.target_ids))
++        self.assertEqual(scope.accepted_revision_id, new_rev)
++        self.assertEqual(new_rev.prior_revision_id, b.accepted_revision_ids)
+diff --git a/addons/sipanel_scope_execution/tests/test_step2c_hardening.py b/addons/sipanel_scope_execution/tests/test_step2c_hardening.py
+new file mode 100644
+index 0000000..6d5b660
+--- /dev/null
++++ b/addons/sipanel_scope_execution/tests/test_step2c_hardening.py
+@@ -0,0 +1,363 @@
++# -*- coding: utf-8 -*-
++"""STEP 2C-HARDENING: behavioural immutability of execution-demand provenance, the
++Native Owner boundary in cancellation/reduction, and governed Sale Order cancellation
++without general demand write access."""
++import inspect
++from unittest.mock import patch
++
++from odoo.exceptions import AccessError, UserError
++from odoo.tests import tagged
++
++from odoo.addons.sipanel_commercial_scope_core.models.sipanel_tools import guard_ctx
++try:
++    from odoo.addons.sipanel_scope_execution.models.execution_demand import DEMAND_ENGINE_GUARD, DEMAND_IMMUTABLE_FIELDS
++except ImportError:  # pre-hardening source: lets the suite show per-test failures instead of an import error
++    DEMAND_ENGINE_GUARD = 'sipanel_demand_engine'
++    DEMAND_IMMUTABLE_FIELDS = ('batch_id', 'quote_scope_id', 'component_id', 'delta_uid', 'execution_mode', 'owner', 'demand_key',
++                               'normalized_qty', 'signed_qty', 'uom_id', 'product_id', 'project_id', 'system_id', 'activity_id',
++                               'reversal_of_id', 'cancelled_by_delta_uid')
++
++from .common import SipanelExecutionCase
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_step2c_hardening')
++class TestDemandImmutability(SipanelExecutionCase):
++
++    def _released(self):
++        order, scope, bracket = self._bridge_order_with_own_line()
++        batch = self._release(order)
++        self.assertEqual(batch.state, 'released')
++        demand = self.env['sipanel.execution.demand'].search([('component_id', '=', bracket.id)])
++        self.assertEqual(len(demand), 1)
++        return order, scope, batch, demand
++
++    def _value_of(self, demand, field):
++        val = demand[field]
++        return val.id if hasattr(val, 'id') else val
++
++    def test_direct_demand_key_modification_is_refused_and_value_unchanged(self):
++        order, scope, batch, d = self._released()
++        key = d.demand_key
++        for rs in (d.with_user(self.exec_owner), d.sudo(), d.with_context(**guard_ctx(DEMAND_ENGINE_GUARD))):
++            with self.assertRaises(AccessError):
++                rs.write({'demand_key': 'tampered'})
++        self.env.invalidate_all()
++        self.assertEqual(d.demand_key, key)
++        self.assertEqual(self.env['sipanel.execution.demand'].search_count([('demand_key', '=', key)]), 1)
++
++    def test_every_provenance_field_is_immutable(self):
++        order, scope, batch, d = self._released()
++        snapshot = {f: self._value_of(d, f) for f in DEMAND_IMMUTABLE_FIELDS}
++        for f in DEMAND_IMMUTABLE_FIELDS:
++            # even re-writing the SAME value is refused: the field is closed, not validated
++            with self.assertRaises(AccessError, msg=f):
++                d.with_user(self.exec_owner).write({f: snapshot[f]})
++            with self.assertRaises(AccessError, msg=f):
++                d.sudo().with_context(**guard_ctx(DEMAND_ENGINE_GUARD)).write({f: snapshot[f]})
++        self.env.invalidate_all()
++        self.assertEqual({f: self._value_of(d, f) for f in DEMAND_IMMUTABLE_FIELDS}, snapshot)
++
++    def test_raw_context_flag_does_not_open_the_engine(self):
++        order, scope, batch, d = self._released()
++        with self.assertRaises(AccessError):
++            d.with_user(self.exec_owner).with_context(sipanel_demand_engine=True).write({'state': 'cancelled'})
++        self.assertEqual(d.state, 'created')
++
++    def test_guessed_token_does_not_open_the_engine(self):
++        order, scope, batch, d = self._released()
++        with self.assertRaises(AccessError):
++            d.with_user(self.exec_owner).with_context(sipanel_demand_engine=True, sipanel_guard_token='guess').write({'state': 'cancelled'})
++        self.assertEqual(d.state, 'created')
++
++    def test_sudo_does_not_open_the_engine(self):
++        order, scope, batch, d = self._released()
++        with self.assertRaises(AccessError):
++            d.sudo().write({'state': 'cancelled'})
++        with self.assertRaises(AccessError):
++            d.sudo().write({'reversal_required': True})
++        self.assertEqual(d.state, 'created')
++        self.assertFalse(d.reversal_required)
++
++    def test_import_context_does_not_open_the_engine(self):
++        order, scope, batch, d = self._released()
++        with self.assertRaises(AccessError):
++            d.with_user(self.exec_owner).with_context(import_file=True).write({'state': 'cancelled'})
++        with self.assertRaises(AccessError):
++            d.sudo().with_context(import_file=True, sipanel_demand_engine=True).write({'state': 'cancelled'})
++        self.assertEqual(d.state, 'created')
++
++    def test_forged_demand_creation_is_refused(self):
++        order, scope, batch, d = self._released()
++        Demand = self.env['sipanel.execution.demand']
++        rev = scope.accepted_revision_id
++        comp = rev.component_ids.filtered(lambda c: c.product_id == self.p_screw)[:1]
++        vals = Demand._prepare_from_component(batch, comp, scope, 'forged:1')
++        n = Demand.search_count([])
++        for rs in (Demand.with_user(self.exec_owner), Demand.sudo(),
++                   Demand.with_user(self.exec_owner).with_context(sipanel_demand_engine=True),
++                   Demand.sudo().with_context(sipanel_demand_engine=True, sipanel_guard_token='guess'),
++                   Demand.sudo().with_context(import_file=True)):
++            with self.assertRaises(AccessError):
++                rs.create(dict(vals))
++        self.assertEqual(Demand.search_count([]), n)
++
++    def test_demands_are_never_deleted(self):
++        order, scope, batch, d = self._released()
++        for rs in (d.with_user(self.exec_owner), d.sudo(), d.sudo().with_context(**guard_ctx(DEMAND_ENGINE_GUARD))):
++            with self.assertRaises(AccessError):
++                rs.unlink()
++        self.assertTrue(d.exists())
++
++    def test_genuine_release_failure_retry_and_cancellation_still_work(self):
++        order, scope, bracket = self._bridge_order_with_own_line()
++        Demand = self.env['sipanel.execution.demand']
++        self.env['product.supplierinfo'].search([('product_tmpl_id', '=', self.p_crane.product_tmpl_id.id)]).unlink()
++        failed = self._release(order)
++        self.assertEqual(failed.state, 'failed')
++        self.assertTrue(failed.demand_ids and all(x.state == 'failed' for x in failed.demand_ids), 'genuine failure marks the demands failed')
++        self.env['product.supplierinfo'].create({'partner_id': self.vendor.id, 'product_tmpl_id': self.p_crane.product_tmpl_id.id, 'price': 400.0, 'min_qty': 0})
++        ok = self._release(order)
++        self.assertEqual(ok.state, 'released')
++        self.assertEqual(len(ok.demand_ids), 7, 'genuine retry creates the live demand set')
++        for key in set(Demand.search([('order_id', '=', order.id)]).mapped('demand_key')):
++            self.assertEqual(Demand.search_count([('demand_key', '=', key), ('state', '!=', 'failed')]), 1, 'one live demand per key (partial unique index)')
++        self.assertEqual(self._release(order), ok, 'idempotent')
++        ok.with_user(self.exec_owner).action_cancel_planned()
++        self.assertTrue(all(x.state == 'cancelled' for x in ok.demand_ids), 'governed cancellation transitions the state')
++        self.assertEqual(ok.state, 'cancelled')
++        ev = self.env['sipanel.scope.audit.event'].sudo().search([('res_model', '=', 'sipanel.execution.batch'), ('res_id', '=', ok.id), ('action', '=', 'execution_cancel')])
++        self.assertEqual(len(ev), 1)
++        self.assertEqual(ev.actor_user_id, self.exec_owner, 'the initiating user is the actor')
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_step2c_hardening')
++class TestNativeOwnerBoundary(SipanelExecutionCase):
++
++    def _bridge_released(self):
++        order, scope, bracket = self._bridge_order_with_own_line()
++        batch = self._release(order)
++        by_mode = {d.execution_mode: d for d in batch.demand_ids if d.execution_mode != 'stock_issue'}
++        by_mode['stock_issue'] = batch.demand_ids.filtered(lambda d: d.component_id == bracket)
++        return order, scope, batch, by_mode
++
++    def test_bridge_owned_cancel_withdraws_sipanel_documents_and_classifies_reversal(self):
++        order, scope, batch, dm = self._bridge_released()
++        move = dm['stock_issue'].target_ids.filtered(lambda t: t.target_model == 'stock.move').target_record()
++        picking = dm['stock_issue'].target_ids.filtered(lambda t: t.target_model == 'stock.picking').target_record()
++        pol = dm['equipment_service'].target_ids.target_record()
++        mo = dm['manufacture'].target_ids.target_record()
++        order.with_user(self.exec_owner).action_cancel()
++        self.assertEqual(order.state, 'cancel')
++        self.assertEqual(move.state, 'cancel')
++        self.assertEqual(picking.state, 'cancel')
++        self.assertEqual(pol.product_qty, 0.0)
++        self.assertEqual(mo.state, 'cancel')
++        self.assertTrue(all(d.state == 'cancelled' for d in batch.demand_ids))
++        # nothing executed: no reversal noise on the picking/move demand, nor on the linked project
++        self.assertFalse(dm['stock_issue'].reversal_required)
++        self.assertFalse(dm['labour'].reversal_required, 'a linked project has no reversible SIPANEL transaction')
++        self.assertFalse(dm['equipment_service'].reversal_required)
++        self.assertFalse(dm['manufacture'].reversal_required)
++        self.assertTrue(all(t.exists() for t in batch.demand_ids.mapped('target_ids')), 'lineage retained')
++
++    def test_native_owned_cancel_leaves_native_documents_untouched(self):
++        order, scope, bracket = self._native_order_with_own_line()
++        line = self._generated_line(bracket)
++        native_move = line.move_ids
++        task = scope.anchor_line_id.task_id
++        batch = self._release(order)
++        d = self.env['sipanel.execution.demand'].search([('component_id', '=', bracket.id)])
++        self.assertEqual(d.owner, 'native_line_owner')
++        move_state, move_qty, n_moves = native_move.state, native_move.product_uom_qty, self._docs(order)['moves']
++        cancelled_calls = []
++        orig = type(self.env['stock.move'])._action_cancel
++
++        def spy(self_, *a, **kw):
++            cancelled_calls.append([f.filename for f in inspect.stack()[1:6]])
++            return orig(self_, *a, **kw)
++        with patch.object(type(self.env['stock.move']), '_action_cancel', spy):
++            batch.with_user(self.exec_owner).action_cancel_planned()
++            batch.with_user(self.exec_owner).action_cancel_planned()   # repeated: idempotent
++        self.assertFalse(cancelled_calls, 'SIPANEL never cancels a native-owned move')
++        self.assertEqual(native_move.state, move_state)
++        self.assertEqual(native_move.product_uom_qty, move_qty)
++        self.assertTrue(task.exists())
++        self.assertEqual(task.state, task.state)
++        self.assertEqual(self._docs(order)['moves'], n_moves)
++        self.assertEqual(d.state, 'cancelled')
++        self.assertFalse(d.reversal_required, 'observed native document: nothing for SIPANEL to reverse')
++        self.assertEqual(batch.state, 'cancelled')
++        self.assertEqual(self.env['sipanel.scope.audit.event'].sudo().search_count(
++            [('res_model', '=', 'sipanel.execution.batch'), ('res_id', '=', batch.id), ('action', '=', 'execution_cancel')]), 1,
++            'the second cancellation performed nothing')
++        # native cancellation stays native: cancelling the order lets Odoo cancel its own delivery
++        order.with_user(self.exec_owner).action_cancel()
++        self.assertEqual(native_move.state, 'cancel')
++        self.p_anchor.write({'service_tracking': 'no'})
++
++    def test_native_amendment_reduction_never_touches_native_documents(self):
++        order, scope, bracket = self._native_order_with_own_line()
++        batch = self._release(order)
++        line_v1 = self._generated_line(bracket)
++        qty_v1 = bracket.final_qty
++        new_rev = scope.current_revision_id.action_amend()
++        b2 = new_rev.component_ids.filtered(lambda c: c.product_id == self.p_bracket)
++        b2.write({'qty_override': True, 'override_qty': qty_v1 - 10.0, 'override_reason': 'less'})
++        scope.action_accept_change_order('CO-NATIVE-DOWN')
++        line_v2 = self._generated_line(b2)
++        # Odoo (the native owner) already re-shaped the delivery: old line 0 (move cancelled), new line qty - 10
++        self.assertEqual(line_v1.product_uom_qty, 0.0)
++        self.assertEqual(line_v2.product_uom_qty, qty_v1 - 10.0)
++        self.assertEqual(line_v2.move_ids.product_uom_qty, qty_v1 - 10.0)
++        calls = []
++        orig_cancel = type(self.env['stock.move'])._action_cancel
++        orig_write = type(self.env['stock.move']).write
++
++        def spy_cancel(self_, *a, **kw):
++            calls.append('cancel'); return orig_cancel(self_, *a, **kw)
++
++        def spy_write(self_, vals):
++            if 'product_uom_qty' in vals:
++                calls.append('qty')
++            return orig_write(self_, vals)
++        with patch.object(type(self.env['stock.move']), '_action_cancel', spy_cancel), patch.object(type(self.env['stock.move']), 'write', spy_write):
++            created = order.with_user(self.exec_owner).action_sipanel_release_amendment_delta()
++        self.assertFalse(calls, 'the SIPANEL delta neither cancels nor reduces a native move')
++        self.assertEqual(created.signed_qty, -10.0)
++        self.assertEqual(created.reversal_of_id, batch.demand_ids.filtered(lambda d: d.component_id == bracket))
++        self.assertFalse(created.target_ids)
++        self.assertFalse(created.reversal_required)
++        self.assertEqual(line_v2.move_ids.product_uom_qty, qty_v1 - 10.0)
++        self.assertEqual(self.env['stock.move'].search_count([('product_id', '=', self.p_bracket.id), ('sale_line_id', 'in', (line_v1 | line_v2).ids), ('state', '!=', 'cancel')]), 1, 'one live native move')
++        self.assertFalse(self.env['stock.picking'].search([('origin', '=', order.name), ('picking_type_id', '=', self.picking_type.id)]), 'no bridge document')
++        self.p_anchor.write({'service_tracking': 'no'})
++
++    def test_repeated_cancellation_is_idempotent(self):
++        order, scope, batch, dm = self._bridge_released()
++        batch.with_user(self.exec_owner).action_cancel_planned()
++        docs = self._docs(order)
++        states = {d.id: (d.state, d.reversal_required) for d in batch.demand_ids}
++        calls = []
++        orig = type(self.env['stock.move'])._action_cancel
++
++        def spy(self_, *a, **kw):
++            # only SIPANEL-originated cancellations count; Odoo's own order cancel legitimately re-visits its pickings
++            if any('sipanel_scope_execution/models/adapters.py' in f.filename for f in inspect.stack()[1:8]):
++                calls.append(1)
++            return orig(self_, *a, **kw)
++        with patch.object(type(self.env['stock.move']), '_action_cancel', spy):
++            batch.with_user(self.exec_owner).action_cancel_planned()
++            order.with_user(self.exec_owner).action_cancel()
++        self.assertFalse(calls, 'no second SIPANEL document action')
++        self.assertEqual(self._docs(order), docs)
++        self.assertEqual({d.id: (d.state, d.reversal_required) for d in batch.demand_ids}, states)
++        self.assertEqual(self.env['sipanel.scope.audit.event'].sudo().search_count(
++            [('res_model', '=', 'sipanel.execution.batch'), ('res_id', '=', batch.id), ('action', '=', 'execution_cancel')]), 1)
++
++    def test_completed_bridge_target_refuses_plain_cancel_and_requires_reversal(self):
++        order, scope, batch, dm = self._bridge_released()
++        move = dm['stock_issue'].target_ids.filtered(lambda t: t.target_model == 'stock.move').target_record()
++        move.picking_id.action_confirm()
++        move.write({'quantity': move.product_uom_qty, 'picked': True})
++        move.picking_id.button_validate()
++        self.assertEqual(move.state, 'done')
++        order.action_unlock() if order.locked else None
++        with self.assertRaises(UserError):
++            order.with_user(self.exec_owner).action_cancel()
++        self.assertEqual(dm['stock_issue'].state, 'created', 'nothing was cancelled')
++        # the governed cancellation of the batch classifies the executed target as requiring reversal
++        batch.with_user(self.exec_owner).action_cancel_planned()
++        self.assertTrue(dm['stock_issue'].reversal_required)
++        self.assertEqual(move.state, 'done', 'a done move is never touched')
++        self.assertFalse(dm['labour'].reversal_required)
++        self.assertFalse(dm['manufacture'].reversal_required)
++
++    def test_zero_duplicate_records_after_cancel_and_recount(self):
++        order, scope, batch, dm = self._bridge_released()
++        before = self._docs(order)
++        order.with_user(self.exec_owner).action_cancel()
++        after = self._docs(order)
++        for k in ('pickings', 'moves', 'po_lines', 'mos', 'targets'):
++            self.assertEqual(after[k], before[k], f'cancellation creates no {k}')
++        events = self.env['sipanel.actual.projection'].refresh_order(order)
++        self.assertEqual(len(events.mapped('source_key')), len(set(events.mapped('source_key'))))
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_step2c_hardening')
++class TestSalesCancellation(SipanelExecutionCase):
++
++    def _sales_order_released(self):
++        # The order is the Sales user's own document (user_id); it is prepared and sealed by the
++        # estimator because sealing writes cost-viewer fields (net_revenue_projection) that a plain
++        # Sales user cannot write - a pre-existing restriction outside this pass (OBS-2CH-01).
++        order, scope, bracket = self._bridge_order_with_own_line()
++        order.write({'user_id': self.sales.id})
++        self.assertEqual(order.user_id, self.sales)
++        self.assertTrue(order.with_user(self.sales).has_access('write'), 'the Sales user may cancel their own order natively')
++        batch = self._release(order)
++        self.assertEqual(batch.state, 'released')
++        return order, scope, batch
++
++    def test_authorized_sales_user_cancels_own_order_with_released_execution(self):
++        order, scope, batch = self._sales_order_released()
++        self.assertFalse(self.sales.has_group('sipanel_scope_execution.group_scope_execution_owner'))
++        Demand = self.env['sipanel.execution.demand']
++        with self.assertRaises(AccessError):
++            batch.demand_ids[0].with_user(self.sales).write({'state': 'cancelled'})
++        order.with_user(self.sales).action_cancel()
++        self.assertEqual(order.state, 'cancel')
++        self.assertEqual(batch.state, 'cancelled')
++        self.assertTrue(all(d.state == 'cancelled' for d in batch.demand_ids))
++        ev = self.env['sipanel.scope.audit.event'].sudo().search([('res_model', '=', 'sipanel.execution.batch'), ('res_id', '=', batch.id), ('action', '=', 'execution_cancel')])
++        self.assertEqual(ev.actor_user_id, self.sales, 'the initiating Sales user is the actor, not the service')
++        # no general demand rights were granted
++        self.assertFalse(Demand.with_user(self.sales).has_access('write'))
++        self.assertFalse(Demand.with_user(self.sales).has_access('create'))
++        self.assertFalse(Demand.with_user(self.sales).has_access('unlink'))
++
++    def test_unauthorized_user_cannot_cancel_the_order(self):
++        order, scope, batch = self._sales_order_released()
++        with self.assertRaises(AccessError):
++            order.with_user(self.plain_user).action_cancel()
++        self.assertEqual(order.state, 'sale')
++        self.assertTrue(all(d.state != 'cancelled' for d in batch.demand_ids))
++        self.assertEqual(batch.state, 'released')
++
++    def test_sales_user_cannot_write_a_demand_directly(self):
++        order, scope, batch = self._sales_order_released()
++        d = batch.demand_ids[0]
++        for rs in (d.with_user(self.sales), d.with_user(self.sales).with_context(sipanel_demand_engine=True),
++                   d.with_user(self.sales).with_context(sipanel_demand_engine=True, sipanel_guard_token='guess')):
++            with self.assertRaises(AccessError):
++                rs.write({'state': 'cancelled'})
++            with self.assertRaises(AccessError):
++                rs.write({'demand_key': 'x'})
++        self.assertEqual(d.state, 'created')
++
++    def test_sales_user_cannot_cancel_another_orders_demand(self):
++        mine, scope_m, batch_m = self._sales_order_released()
++        other, scope_o, bracket_o = self._bridge_order_with_own_line()      # estimator's order
++        batch_o = self._release(other)
++        for rs in (batch_o.with_user(self.sales), batch_o.with_user(self.sales).with_context(sipanel_demand_engine=True),
++                   batch_o.with_user(self.sales).with_context(**guard_ctx(DEMAND_ENGINE_GUARD))):
++            with self.assertRaises(AccessError):
++                rs.action_cancel_planned()
++        with self.assertRaises(AccessError):
++            other.with_user(self.sales).action_cancel()
++        with self.assertRaises(AccessError):
++            other.with_user(self.sales).with_context(**guard_ctx(DEMAND_ENGINE_GUARD)).action_cancel()
++        self.assertEqual(batch_o.state, 'released')
++        self.assertTrue(all(d.state != 'cancelled' for d in batch_o.demand_ids))
++        # the sales user's own order is unaffected by the refused attempts
++        self.assertEqual(batch_m.state, 'released')
++
++    def test_execution_owner_cancellation_remains_valid(self):
++        order, scope, bracket = self._bridge_order_with_own_line()
++        batch = self._release(order)
++        batch.with_user(self.exec_owner).action_cancel_planned()
++        self.assertEqual(batch.state, 'cancelled')
++        order2, scope2, bracket2 = self._bridge_order_with_own_line()
++        batch2 = self._release(order2)
++        order2.with_user(self.exec_owner).action_cancel()
++        self.assertEqual(order2.state, 'cancel')
++        self.assertEqual(batch2.state, 'cancelled')
+diff --git a/scripts/sipanel_recovery_point.sh b/scripts/sipanel_recovery_point.sh
+index 2813ac4..36685e4 100755
+--- a/scripts/sipanel_recovery_point.sh
++++ b/scripts/sipanel_recovery_point.sh
+@@ -3,6 +3,76 @@
+ # Scope: database `sipanel` + filestore + custom addons + container config refs + installed module list + checksums.
+ # Never touches other tenants. Stores OUTSIDE the git repository. Requires sudo (filestore/config are root-only).
+ set -euo pipefail
++
++# ---------------------------------------------------------------------------------------------
++# Safe restore REHEARSAL procedure (printed, never executed by this script).
++# Rules: unique rehearsal database + filestore names; dump restored only into the rehearsal
++# database; archive layout inspected before extraction; extraction into a temporary directory;
++# installation only as /opt/odoo/data/filestore/<rehearsal name>; the live filestore
++# /opt/odoo/data/filestore/sipanel is never a target; integrations neutralised before any Odoo
++# process opens the rehearsal database; cleanup commands validate their exact resolved target.
++# Usage of this mode alone:  scripts/sipanel_recovery_point.sh restore-instructions <point-dir>
++# ---------------------------------------------------------------------------------------------
++print_restore_instructions() {
++  local point="$1"
++  cat <<EOF_RESTORE
++
++== RESTORE REHEARSAL PROCEDURE for $point (not executed) ==
++# 0. Fix and validate the targets ONCE; every later command uses these exact values
++TS=\$(date -u +%Y%m%dT%H%M%SZ)
++POINT=\$(sudo realpath -e "$point")
++RDB="sipanel_restore_rehearsal_\${TS}"
++RFS="/opt/odoo/data/filestore/\${RDB}"
++[ "\$RDB" != "sipanel" ] && [ "\$RFS" != "/opt/odoo/data/filestore/sipanel" ] || { echo REFUSED; exit 1; }
++(cd "\$POINT" && sudo sha256sum -c SHA256SUMS)                       # every artefact must print OK
++
++# 1. Database: restore ONLY into the rehearsal database (never into sipanel)
++docker exec -i odoo-db psql -U odoo -d postgres -tAc "select 1 from pg_database where datname='\${RDB}'" | grep -q 1 && { echo "exists"; exit 1; }
++docker exec -i odoo-db psql -U odoo -d postgres -c "CREATE DATABASE \\"\${RDB}\\" OWNER odoo"
++docker exec -i odoo-db pg_restore -U odoo -d "\${RDB}" --no-owner --role=odoo < "\$POINT/sipanel.dump"
++docker exec -i odoo-db psql -U odoo -d "\${RDB}" -tAc "select count(*) from ir_module_module where state='installed'"
++
++# 2. Filestore: inspect the archive layout BEFORE extracting anything (expect exactly one top-level dir: sipanel)
++sudo tar -tzf "\$POINT/filestore-sipanel.tar.gz" | awk -F/ '{print \$1}' | sort -u
++
++# 3. Extract into a temporary directory first - NEVER with -C /opt/odoo/data/filestore
++TMP=\$(sudo mktemp -d "/opt/odoo/restore_rehearsal_\${TS}.XXXX")
++sudo tar -C "\$TMP" -xzf "\$POINT/filestore-sipanel.tar.gz"
++sudo test -d "\$TMP/sipanel" || { echo "unexpected layout"; exit 1; }
++
++# 4. Install ONLY under the rehearsal name, with the live owner and permissions
++OWNER=\$(sudo stat -c '%u:%g' /opt/odoo/data/filestore/sipanel)
++sudo test ! -e "\$RFS" || { echo "target exists"; exit 1; }
++sudo mv "\$TMP/sipanel" "\$RFS" && sudo chown -R "\$OWNER" "\$RFS" && sudo chmod -R u+rwX,go-rwx "\$RFS" && sudo rmdir "\$TMP"
++
++# 5. Neutralise integrations BEFORE any Odoo process opens the rehearsal database
++docker exec -i odoo-db psql -U odoo -d "\${RDB}" <<'SQL'
++UPDATE ir_mail_server SET active = false;
++UPDATE ir_cron SET active = false;
++UPDATE ir_config_parameter SET value = 'http://127.0.0.1:8072' WHERE key = 'report.url';
++UPDATE ir_config_parameter SET value = 'http://localhost' WHERE key = 'web.base.url';
++DELETE FROM ir_config_parameter WHERE key = 'web.base.url.freeze';
++SQL
++# (fetchmail_server / payment providers: disable likewise if those tables exist)
++
++# 6. Optional: a THROW-AWAY process against the rehearsal DB only (never the production service, --no-http)
++#    docker run --rm --network container:odoo-db -v /opt/odoo/addons:/mnt/extra-addons:ro -v /opt/odoo/data:/var/lib/odoo <odoo-sipanel image> \\
++#      odoo -d "\${RDB}" --db_host=db --db_user=odoo --db_password=<from config> --no-http --stop-after-init --list-db=false
++
++# 7. Cleanup - DESTRUCTIVE, exact rehearsal targets only, each validated first
++[ "\$RDB" != "sipanel" ] && [ -n "\$TS" ] || exit 1
++docker exec -i odoo-db psql -U odoo -d postgres -c "DROP DATABASE \\"\${RDB}\\""                         # DESTRUCTIVE: rehearsal DB only
++[ "\$(sudo realpath -e "\$RFS")" = "/opt/odoo/data/filestore/\${RDB}" ] || exit 1
++sudo rm -rf --one-file-system -- "/opt/odoo/data/filestore/\${RDB}"                                       # DESTRUCTIVE: rehearsal filestore only
++== END OF RESTORE REHEARSAL PROCEDURE ==
++EOF_RESTORE
++}
++if [ "${1:-}" = "restore-instructions" ]; then
++  P=${2:?recovery point directory required}
++  [ -d "$P" ] || sudo test -d "$P" || { echo "not a directory: $P" >&2; exit 2; }
++  print_restore_instructions "$(sudo realpath -e "$P")"
++  exit 0
++fi
+ TS=$(date -u +%Y%m%dT%H%M%SZ)
+ DEST=${DEST:-/opt/odoo/backups/sipanel-pre-scope-${TS}}
+ DB=sipanel
+@@ -40,4 +110,4 @@ sudo tar -tzf "$DEST/addons.tar.gz" > /dev/null
+ (cd "$DEST" && sudo sha256sum ${DB}.dump filestore-${DB}.tar.gz addons.tar.gz installed_modules.txt container-inspect.json odoo-${DB}.conf.redacted | sudo tee SHA256SUMS)
+ sudo chmod -R go-rwx "$DEST"
+ echo "RECOVERY_POINT_OK $DEST"
+-echo "Restore: docker exec -i $PGC psql -U odoo -d postgres -c \"CREATE DATABASE ${DB}_restore\" && docker exec -i $PGC pg_restore -U odoo -d ${DB}_restore < $DEST/${DB}.dump ; sudo tar -C /opt/odoo/data/filestore -xzf $DEST/filestore-${DB}.tar.gz"
++print_restore_instructions "$DEST"

@@ -1,0 +1,7 @@
+ id  |          name           |          model           |            domain_force             | global | perm_read | perm_write | perm_create | perm_unlink 
+-----+-------------------------+--------------------------+-------------------------------------+--------+-----------+------------+-------------+-------------
+ 374 | SIPANEL batch: company  | sipanel.execution.batch  | [('company_id', 'in', company_ids)] | t      | t         | t          | t           | t
+ 375 | SIPANEL demand: company | sipanel.execution.demand | [('company_id', 'in', company_ids)] | t      | t         | t          | t           | t
+ 376 | SIPANEL target: company | sipanel.execution.target | [('company_id', 'in', company_ids)] | t      | t         | t          | t           | t
+(3 rows)
+

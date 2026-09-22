@@ -1,0 +1,72 @@
+commit 53268efc171c4cdb9640ade494678b601347e1ef
+Author:     SIPANEL Implementation <cyansanatiranian@gmail.com>
+AuthorDate: Tue Sep 22 09:09:20 2026 +0000
+Commit:     SIPANEL Implementation <cyansanatiranian@gmail.com>
+CommitDate: Tue Sep 22 09:09:20 2026 +0000
+
+    SIPANEL STEP 2C-HARDENING 20260922T083014Z: immutable demand provenance, Native Owner boundary, governed Sales cancellation, safe restore instructions
+    
+    Four independent-review findings on STEP 2C (e01da19), corrected on top of it.
+    
+    1. Execution-demand provenance is now behaviourally immutable
+       (sipanel_scope_execution 19.0.1.0.2). readonly=True never prevented ORM,
+       RPC, sudo or import writes. sipanel.execution.demand.create() now requires
+       the process-local engine token (guard(env, 'sipanel_demand_engine')), opened
+       only by _release_locked, the amendment-delta engine and the governed batch
+       cancellation. write() refuses every provenance/ownership field after
+       creation - batch, Scope, component, delta uid, mode, owner, demand_key,
+       quantities, uom, product, Project/System/Activity, reversal lineage - for
+       everyone including the engine (a change is a new delta demand), and refuses
+       any other field (state, reversal_required) unless the engine token is
+       present. unlink() is always refused. A raw context flag, a guessed token,
+       sudo() and import_file open nothing. reversal_of_id / cancelled_by_delta_uid
+       are now part of the delta demand's creation values instead of a later write.
+    
+    2. Native Owner boundary in cancellation and reduction. cancel_delta() and
+       reduce_planned() no longer cancel, reduce or rewrite targets SIPANEL only
+       linked (native_anchor_covered / linked_existing): the native Sale line owns
+       its delivery move, task or purchase line and SIPANEL only records its own
+       lineage. Bridge-created draft documents are still withdrawn (PO line qty 0,
+       MO cancel, move cancel, picking cancel). reversal_required is now a
+       classification of executed targets (done move/picking, produced MO,
+       confirmed/received PO line, posted analytic line) instead of an else-branch:
+       a linked project or an already-cancelled picking no longer raises operator
+       noise. Repeated cancellation is idempotent (cancelled batches and demands
+       are skipped, one audit row per real cancellation). Order cancel refuses only
+       on executed documents SIPANEL created itself.
+    
+    3. Governed Sale Order cancellation without broad demand rights.
+       sale.order._action_cancel now checks the caller's native write access on the
+       order (ACL + record rules) first, then transitions only that order's
+       batches as sudo with the engine token. sudo() keeps env.uid, so the
+       initiating Sales user is the actor of the 'execution_cancel' audit row.
+       Sales users keep no create/write/unlink access on demands; a direct
+       demand write, a batch action on another order, or a forged engine context
+       are all refused with AccessError.
+    
+    4. scripts/sipanel_recovery_point.sh prints a safe restore REHEARSAL procedure
+       (unique rehearsal database and filestore names, archive layout inspection,
+       extraction into a temporary directory, installation only under the
+       rehearsal filestore name, integration neutralisation before any Odoo
+       process, validated and marked DESTRUCTIVE cleanup) and gains a
+       non-destructive `restore-instructions <point>` mode. The unsafe one-liner
+       that extracted onto the live filestore is gone.
+    
+    Tests: sipanel_scope_execution +20 (test_step2c_hardening.py; 17 failed on the
+    unfixed source, 3 are regression guards), STEP 2C fixtures moved to
+    tests/common.py. Full SIPANEL suite 240 tests / 182 methods / 0 failures;
+    sale_shamsi_report 80 / 0. No existing assertion removed or weakened.
+    
+    Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+ addons/sipanel_scope_execution/__manifest__.py     |   2 +-
+ addons/sipanel_scope_execution/models/adapters.py  |  64 +++-
+ .../models/execution_batch.py                      |  26 +-
+ .../models/execution_demand.py                     |  43 ++-
+ .../sipanel_scope_execution/models/sale_order.py   |  48 ++-
+ addons/sipanel_scope_execution/tests/__init__.py   |   1 +
+ addons/sipanel_scope_execution/tests/common.py     |  51 +++
+ .../sipanel_scope_execution/tests/test_step2c.py   |  51 +--
+ .../tests/test_step2c_hardening.py                 | 363 +++++++++++++++++++++
+ scripts/sipanel_recovery_point.sh                  |  72 +++-
+ 10 files changed, 645 insertions(+), 76 deletions(-)
