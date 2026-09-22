@@ -1,0 +1,22 @@
+PASS unique rehearsal database name
+PASS rehearsal filestore under the exact rehearsal name
+PASS live database never a restore target
+PASS archive layout inspected before extraction
+PASS extraction into a temporary directory
+PASS never extracts onto the live filestore
+PASS live filestore path refused as target
+PASS optional tables detected before use (to_regclass)
+PASS fetchmail disabled when installed
+PASS payment providers/acquirers disabled when installed
+PASS automation rules and outgoing webhooks disabled when installed
+PASS IAP tokens removed when installed
+PASS outgoing mail servers and crons disabled
+PASS neutralisation is one transaction with ON_ERROR_STOP
+PASS neutralisation before any Odoo process
+PASS neutralisation targets the rehearsal database only
+PASS cleanup commands present and marked DESTRUCTIVE
+PASS destructive targets validated first
+PASS no broad glob in destructive commands
+PASS no unresolved destructive variable
+PASS old ambiguous one-liner absent from the script
+21/21 checks passed

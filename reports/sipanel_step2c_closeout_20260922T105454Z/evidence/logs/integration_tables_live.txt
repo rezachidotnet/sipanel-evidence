@@ -1,0 +1,13 @@
+fetchmail_server
+iap_account
+ir_act_server
+ir_cron
+ir_mail_server
+mail_alias
+payment_provider
+ir_act_server webhook actions: 0
+active crons: 34
+active mail servers: 1
+iap accounts: 4
+enabled payment providers: 1
+fetchmail servers: 1

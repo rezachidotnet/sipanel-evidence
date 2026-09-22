@@ -1,0 +1,337 @@
+{
+ "run": "sipanel_step2c_closeout_20260922T105454Z",
+ "generated_utc": "2026-09-22T11:37:13Z",
+ "verdict": "PASS",
+ "commits": {
+  "baseline_source": "53268efc171c4cdb9640ade494678b601347e1ef",
+  "baseline_evidence": "6709dcfebb40348af5831fab13f2679b28a94d41",
+  "closeout_source": "84748b22ac43f6a292a5f8662d139aeca63fa653",
+  "closeout_evidence": "created after this file (final response)"
+ },
+ "modules": {
+  "sipanel_commercial_scope_core": "19.0.1.1.0",
+  "sipanel_sale_scope": "19.0.1.2.3",
+  "sipanel_scope_execution": "19.0.1.0.2",
+  "sipanel_scope_costing": "19.0.1.0.0"
+ },
+ "modules_upgraded": [
+  "sipanel_sale_scope"
+ ],
+ "restart": false,
+ "disk": {
+  "avail_bytes_start": 1159946240,
+  "avail_bytes_after_image_removal": 2852151296,
+  "bytes_reclaimed": 1692835840,
+  "images_deleted": [
+   "sha256:77b3686f46a16375004985b522cef8f66e27fabc4a7d80209609bbb20fdfb362 fathyb/carbonyl:latest",
+   "sha256:6f64eca9946b16f83a8f560093c4bde84205ea507fd55ecba50d5d728533b9b6 browsh/browsh:latest"
+  ],
+  "capacity_gate_before": "FAIL headroom 645 MB",
+  "capacity_gate_after": "PASS headroom 2258 MB"
+ },
+ "recovery_point": {
+  "valid": "/opt/odoo/backups/sipanel-pre-2ccloseout-20260922T111500Z",
+  "invalid_marked": "/opt/odoo/backups/sipanel-pre-2ccloseout-20260922T105454Z"
+ },
+ "tests": {
+  "sales_seal_before_fix": {
+   "methods": 11,
+   "failures": 10
+  },
+  "sales_seal_after_fix": {
+   "methods": 11,
+   "failures": 0
+  },
+  "sipanel_full": {
+   "stats_total": 253,
+   "methods": 193,
+   "failures": 0
+  },
+  "sale_shamsi_report": {
+   "tests": 80,
+   "failures": 0
+  },
+  "restore_structural": "21/21"
+ },
+ "pilot": {
+  "prefix": "SIPANEL-STEP2CCO-20260922T105454Z",
+  "ids": {
+   "sales_user_groups": [
+    "Role / User",
+    "SIPANEL Commercial Scope / Scope Sales",
+    "Sales / User: Own Documents Only"
+   ],
+   "sales_user": [
+    2064,
+    "SIPANEL-STEP2CH-20260922T083014Z-sales",
+    {
+     "sipanel_commercial_scope_core.group_scope_cost_viewer": false,
+     "sipanel_sale_scope.group_scope_waiver_finance": false,
+     "sipanel_scope_execution.group_scope_execution_owner": false,
+     "account.group_account_manager": false,
+     "sales_team.group_sale_manager": false
+    }
+   ],
+   "activity": 2130,
+   "products": {
+    "anchor": 3770,
+    "bracket": 3771,
+    "labour": 3772
+   },
+   "master": 865,
+   "version": 1040,
+   "customer": 3788,
+   "order": [
+    2314,
+    "SI-26/2314"
+   ],
+   "scope": 2117,
+   "revision": 2288,
+   "other_order": [
+    2315,
+    "SI-26/2315",
+    "amirmousa1983@gmail.com"
+   ]
+  },
+  "permissions": {
+   "sales_can_write_order": true,
+   "sales_can_write_revision": true,
+   "revision_state_before": "working"
+  },
+  "seal_send": {
+   "result": "sealed by the Sales user",
+   "order_state": "sent",
+   "revision_state": "sent_sealed",
+   "sealed_hash": "1591d1fb1361c4b806594541ac1587727cecb976a2acbdd1effdb53b4a0ab21d",
+   "sealed_by": "SIPANEL-STEP2CH-20260922T083014Z-sales",
+   "audit_seal_actor": [
+    "SIPANEL-STEP2CH-20260922T083014Z-sales"
+   ],
+   "checksum_valid_now": true,
+   "net_revenue_projection_sudo": 25000000.0,
+   "anchor_subtotal": 25000000.0,
+   "artifacts": [
+    "pdf",
+    "text"
+   ],
+   "groups_after": {
+    "sipanel_commercial_scope_core.group_scope_cost_viewer": false,
+    "sipanel_sale_scope.group_scope_waiver_finance": false,
+    "sipanel_scope_execution.group_scope_execution_owner": false,
+    "account.group_account_manager": false,
+    "sales_team.group_sale_manager": false
+   }
+  },
+  "probes": {
+   "probes": [
+    [
+     "sales reads net_revenue_projection",
+     "refused AccessError"
+    ],
+    [
+     "sales search_read margin_amount",
+     "refused AccessError"
+    ],
+    [
+     "sales export eligible_cost_total",
+     "refused UserError: You don't have the rights to export data. Please contact an Administrator."
+    ],
+    [
+     "sales writes net_revenue_projection",
+     "refused AccessError"
+    ],
+    [
+     "sales writes commercial_projection_json",
+     "refused AccessError"
+    ],
+    [
+     "sudo writes net_revenue_projection (no guard)",
+     "refused AccessError"
+    ],
+    [
+     "sudo with seal_transaction flag only",
+     "refused AccessError"
+    ],
+    [
+     "raw context flags",
+     "refused AccessError"
+    ],
+    [
+     "guessed token",
+     "refused AccessError"
+    ],
+    [
+     "import context",
+     "refused AccessError"
+    ],
+    [
+     "sudo same-value write of commercial_projection_json",
+     "refused AccessError"
+    ],
+    [
+     "sudo same-value write of net_revenue_projection",
+     "refused AccessError"
+    ],
+    [
+     "sudo same-value write of fx_source_currency_id",
+     "refused AccessError"
+    ],
+    [
+     "sudo same-value write of fx_rate",
+     "refused AccessError"
+    ],
+    [
+     "sudo same-value write of fx_date",
+     "refused AccessError"
+    ],
+    [
+     "sudo same-value write of fx_source",
+     "refused AccessError"
+    ],
+    [
+     "sales seals another salesperson order",
+     "refused AccessError"
+    ]
+   ],
+   "all_refused": true,
+   "stored_unchanged": true,
+   "fields_visible_to_sales": [
+    "missing_cost_count"
+   ]
+  },
+  "other_order": {
+   "probe": [
+    "sales seals another salesperson order",
+    "refused AccessError"
+   ],
+   "revision_state": "working"
+  },
+  "customer_output": {
+   "pdf_format": "pdf",
+   "pdf_bytes": 43632,
+   "html_tokens_found": {
+    "net_revenue": false,
+    "Net revenue": false,
+    "margin_amount": false,
+    "Margin": false,
+    "eligible_cost": false,
+    "unit_cost": false,
+    "Cost": false,
+    "cost figure": false
+   },
+   "any_leak": false,
+   "portal_binding_keys": [
+    "revision_id",
+    "seal_hash"
+   ],
+   "artifact_text_has_cost_tokens": false
+  },
+  "no_release": {
+   "batches_for_order": 0
+  },
+  "counters_before": {
+   "mail_mail": 36,
+   "posted_moves": 0,
+   "done_stock_moves": 10,
+   "purchase_orders": 7,
+   "batches": 14,
+   "demands": 35,
+   "analytic_lines": 2
+  },
+  "counters_after": {
+   "mail_mail": 36,
+   "posted_moves": 0,
+   "done_stock_moves": 10,
+   "purchase_orders": 7,
+   "batches": 14,
+   "demands": 35,
+   "analytic_lines": 2
+  }
+ },
+ "cleanup": {
+  "orders": [
+   [
+    2314,
+    "SI-26/2314",
+    "cancel"
+   ],
+   [
+    2315,
+    "SI-26/2315",
+    "cancel"
+   ]
+  ],
+  "archived": {
+   "quote scopes": [
+    2118,
+    2117
+   ],
+   "master": 865,
+   "version (released, retained)": 1040,
+   "products": [
+    3770,
+    3772,
+    3771
+   ],
+   "customer": 3788,
+   "activity account": 2130,
+   "sales user re-archived": 2064
+  },
+  "retained": {
+   "revisions": [
+    [
+     2289,
+     "working"
+    ],
+    [
+     2288,
+     "sent_sealed"
+    ]
+   ],
+   "artifacts": [
+    2200,
+    2199
+   ],
+   "audit events (this pilot)": 6
+  },
+  "active_leftovers": {
+   "orders not cancelled": 0,
+   "quote scopes": 0,
+   "masters": 0,
+   "products": 0,
+   "partners": 0,
+   "analytic accounts": 0,
+   "users active": 0,
+   "invoices": 0,
+   "pickings": 0
+  },
+  "technical_contacts_active": [
+   [
+    2361,
+    "[ARCHIVED SYNTHETIC USER] SIPANEL-STEP2C-20260922T065650Z Execution Owner"
+   ],
+   [
+    3483,
+    "[ARCHIVED SYNTHETIC USER] SIPANEL-STEP2CH-20260922T083014Z Sales User"
+   ]
+  ],
+  "counters_final": {
+   "mail_mail": 36,
+   "posted_moves": 0,
+   "done_stock_moves": 10,
+   "purchase_orders": 7,
+   "batches": 14,
+   "demands": 35,
+   "analytic_lines": 2
+  }
+ },
+ "statement_active_synthetic_records": "2 active synthetic technical contacts retained (partners 2361 and 3483); all other synthetic records: 0 active",
+ "invoices_posted": 0,
+ "bills_posted": 0,
+ "emails_sent": 0,
+ "supplier_commitments": 0,
+ "stock_movements": 0,
+ "project_costs": 0,
+ "execution_releases": 0,
+ "other_tenants_touched": false
+}

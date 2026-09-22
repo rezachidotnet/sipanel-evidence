@@ -1,0 +1,44 @@
+commit 84748b22ac43f6a292a5f8662d139aeca63fa653
+Author:     SIPANEL Implementation <cyansanatiranian@gmail.com>
+AuthorDate: Tue Sep 22 11:34:52 2026 +0000
+Commit:     SIPANEL Implementation <cyansanatiranian@gmail.com>
+CommitDate: Tue Sep 22 11:34:52 2026 +0000
+
+    SIPANEL STEP 2C-CLOSEOUT 20260922T105454Z: Sales seal/send service (OBS-2CH-01), complete restore neutralisation, structural restore tests
+    
+    OBS-2CH-01 (sipanel_sale_scope 19.0.1.2.3). A plain Sales user (group_scope_sales,
+    no Cost & Margin Viewer) could not seal/send their own quotation because
+    action_seal wrote net_revenue_projection, a COST_GROUP field. The seal now runs
+    as a narrow service: _check_seal_permission() first verifies, as the real user,
+    native write access on the revision and on the exact sale.order (ACL + record
+    rules); only then is the internally computed projection written for that one
+    revision with sudo() plus the process-local token 'sipanel_seal_projection_service'
+    opened by guard_ctx() inside action_seal alone. sudo() keeps env.uid, so
+    sealed_by_id and the audit actor remain the initiating Sales user. The write()
+    override refuses the projection fields (commercial_projection_json,
+    net_revenue_projection, fx_*) for anyone without that token - sudo, a raw
+    context flag, a guessed token, an import context or a direct write. Field-level
+    security on net_revenue_projection and the other COST_GROUP fields is untouched;
+    no group is granted to Sales users; Taleghani's permissions are unchanged.
+    
+    Tests: tests/test_sales_seal.py (11; 10 failed on the unfixed source, 1 was a
+    fixture correction). Full SIPANEL suite 253 tests / 193 methods / 0 failures;
+    sale_shamsi_report 80 / 0.
+    
+    scripts/sipanel_recovery_point.sh: the printed rehearsal procedure now
+    neutralises, inside one ON_ERROR_STOP transaction against the rehearsal
+    database only and after to_regclass() detection of every optional table:
+    outgoing mail servers, crons, fetchmail servers, payment providers/acquirers,
+    base_automation rules, outgoing webhook server actions (webhook_url), IAP
+    account tokens and incoming mail aliases. scripts/test_restore_instructions.py
+    adds 21 structural checks of the generated procedure (21/21 pass).
+    
+    Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+ addons/sipanel_sale_scope/__manifest__.py          |   2 +-
+ .../models/quote_scope_revision.py                 |  31 +++-
+ addons/sipanel_sale_scope/tests/__init__.py        |   1 +
+ addons/sipanel_sale_scope/tests/test_sales_seal.py | 199 +++++++++++++++++++++
+ scripts/sipanel_recovery_point.sh                  |  54 +++++-
+ scripts/test_restore_instructions.py               |  58 ++++++
+ 6 files changed, 334 insertions(+), 11 deletions(-)

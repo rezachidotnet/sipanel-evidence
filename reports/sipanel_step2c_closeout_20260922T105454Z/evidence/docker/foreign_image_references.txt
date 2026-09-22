@@ -1,0 +1,12 @@
+/home/ubuntu/.claude/paste-cache/28253724d17e15cc.txt
+/home/ubuntu/.claude/paste-cache/534d4666b6c47665.txt
+/home/ubuntu/.claude/projects/-home-ubuntu/4f7e8fa4-83ac-4e7a-9530-01eaa981c2c7.jsonl
+/home/ubuntu/.claude/projects/-home-ubuntu-sipanel-odoo-addons/memory/sipanel-step2c-hardening.md
+/home/ubuntu/.claude/projects/-home-ubuntu-sipanel-odoo-addons/c08df342-c062-4445-a9e4-2e2bfe634348.jsonl
+/home/ubuntu/.claude/projects/-home-ubuntu-work-SEO-Control-Center/775bd30c-70fe-4eae-9ba1-80a6e1e04a1f.jsonl
+/home/ubuntu/sipanel_odoo_addons/reports/sipanel_step2c_closeout_20260922T105454Z/evidence/docker/docker_images_digests_before.txt
+/home/ubuntu/sipanel_odoo_addons/reports/sipanel_step2c_closeout_20260922T105454Z/evidence/docker/image_layers.txt
+/home/ubuntu/sipanel_odoo_addons/reports/sipanel_step2c_closeout_20260922T105454Z/evidence/docker/docker_system_df_v_before.txt
+/home/ubuntu/sipanel_odoo_addons/reports/sipanel_step2c_closeout_20260922T105454Z/evidence/docker/images_summary_before.txt
+(grep end)
+(process end)

@@ -1,0 +1,19 @@
+                     xml_id                      |             model             |      grp      | r | w | c | u 
+-------------------------------------------------+-------------------------------+---------------+---+---+---+---
+ sipanel_sale_scope.access_quote_scope_user      | sipanel.quote.scope           | Role / User   | t | f | f | f
+ sipanel_sale_scope.access_quote_scope_sales     | sipanel.quote.scope           | Scope Sales   | t | t | t | f
+ sipanel_sale_scope.access_quote_scope_estimator | sipanel.quote.scope           | Estimator     | t | t | t | f
+ sipanel_sale_scope.access_quote_scope_manager   | sipanel.quote.scope           | Administrator | t | t | t | t
+ sipanel_sale_scope.access_artifact_user         | sipanel.quote.scope.artifact  | Role / User   | t | f | f | f
+ sipanel_sale_scope.access_artifact_sales        | sipanel.quote.scope.artifact  | Scope Sales   | t | f | t | f
+ sipanel_sale_scope.access_artifact_portal       | sipanel.quote.scope.artifact  | Role / Portal | t | f | f | f
+ sipanel_sale_scope.access_component_user        | sipanel.quote.scope.component | Role / User   | t | f | f | f
+ sipanel_sale_scope.access_component_sales       | sipanel.quote.scope.component | Scope Sales   | t | t | t | f
+ sipanel_sale_scope.access_component_estimator   | sipanel.quote.scope.component | Estimator     | t | t | t | t
+ sipanel_sale_scope.access_component_manager     | sipanel.quote.scope.component | Administrator | t | t | t | t
+ sipanel_sale_scope.access_revision_user         | sipanel.quote.scope.revision  | Role / User   | t | f | f | f
+ sipanel_sale_scope.access_revision_sales        | sipanel.quote.scope.revision  | Scope Sales   | t | t | t | f
+ sipanel_sale_scope.access_revision_estimator    | sipanel.quote.scope.revision  | Estimator     | t | t | t | f
+ sipanel_sale_scope.access_revision_manager      | sipanel.quote.scope.revision  | Administrator | t | t | t | t
+(15 rows)
+

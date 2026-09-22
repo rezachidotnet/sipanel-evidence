@@ -1,0 +1,10 @@
+ahanassa|243416|10322|86760|7705
+ahanassa_phase6j12_test|19206|0|7|0
+avizsazeh|117504|1337|7269|1219
+cyancoat|19195|0|7|0
+cyansanat|19199|0|21|0
+cyansteel|19203|0|28|0
+raw-database|19937|0|7|0
+shahbazi|117993|1432|7210|1188
+sipanel|231659|303452|395561|20805
+sipanel_staging_rehearsal|38727|198517|13775|221

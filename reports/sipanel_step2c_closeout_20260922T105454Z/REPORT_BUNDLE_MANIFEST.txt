@@ -1,0 +1,86 @@
+SIPANEL STEP 2C-CLOSEOUT — BUNDLE MANIFEST
+Run:                    sipanel_step2c_closeout_20260922T105454Z
+Generated (UTC):        2026-09-22T11:37:44Z
+Verdict:                PASS — capacity recovered by exact-ID image removal (1,692,835,840 bytes); OBS-2CH-01 Sales seal/send
+                        service; complete restore neutralisation (21/21 structural checks); live Sales seal pilot clean
+Target:                 database sipanel, container odoo-sipanel (RestartCount=0, no restart; /web/health 200); odoo-db not restarted
+Other tenants:          NOT touched (avizsazeh, shahbazi, ahantorob; all container states identical before/after)
+
+COMMITS
+  STEP 2C-HARDENING source (baseline):  53268efc171c4cdb9640ade494678b601347e1ef
+  STEP 2C-HARDENING evidence:           6709dcfebb40348af5831fab13f2679b28a94d41
+  STEP 2C-CLOSEOUT source:              84748b22ac43f6a292a5f8662d139aeca63fa653   <- HEAD when this bundle was built
+  STEP 2C-CLOSEOUT evidence:            created AFTER this bundle; given in the final response
+
+MODULES
+  sipanel_commercial_scope_core    19.0.1.1.0   tree-sha256(relative) dbcd7e73e4b1d507b703778c595beb6100bdd9e92215e5ec9a9199763ad17570  installed=IDENTICAL
+  sipanel_sale_scope               19.0.1.2.3   tree-sha256(relative) 6a7c6ac30da1438975df12108b38037b6c8537bc5407ae5f05a7cbb608fd3266  installed=IDENTICAL
+  sipanel_scope_execution          19.0.1.0.2   tree-sha256(relative) 4545190ef2de37a33a5addc96008e59ba26b6715e0e56b7701882b679535e6d6  installed=IDENTICAL
+  sipanel_scope_costing            19.0.1.0.0   tree-sha256(relative) 2097e00f23deae00eb4eb1763c83ee62e6fadd85cede82596bc25e6798557c1a  installed=IDENTICAL
+  upgraded: sipanel_sale_scope (19.0.1.2.2 -> 19.0.1.2.3); sale_shamsi_report HEAD 5680013, clean
+
+DISK             1.1 G free (96%) at start -> 2.7 G after removing fathyb/carbonyl (77b3686f46a1) and browsh/browsh (6f64eca9946b) -> see df_after.txt at end
+RECOVERY POINT   /opt/odoo/backups/sipanel-pre-2ccloseout-20260922T111500Z (verified; NOT in this bundle); none pruned;
+                 sipanel-pre-2ccloseout-20260922T105454Z marked INVALID (concurrent run), not deleted
+TESTS            sales-seal tag 11/0 (10/11 failed before) | SIPANEL 253/0 (52+154+5+42; 193 methods) | sale_shamsi_report 80/0 | restore structural 21/21
+PILOT            SI-26/2314 sealed/sent by a plain Sales user; 17 probes refused; no cost/margin/net-revenue in PDF/portal data/artifacts; no release/invoice/email
+SYNTHETIC DATA   2 active synthetic technical contacts retained (2361, 3483); everything else 0 active
+
+FILES
+  SIPANEL_DISK_CAPACITY_AND_IMAGE_CLEANUP_REPORT.md                                   4674 bytes
+  SIPANEL_RESTORE_NEUTRALISATION_REPORT.md                                            2909 bytes
+  SIPANEL_SALES_SEAL_SECURITY_REPORT.md                                               5296 bytes
+  SIPANEL_STEP2C_CLOSEOUT_CLEANUP_REPORT.md                                           2053 bytes
+  SIPANEL_STEP2C_CLOSEOUT_PILOT_RESULT.json                                           7703 bytes
+  SIPANEL_STEP2C_CLOSEOUT_REPORT.md                                                   6950 bytes
+  SIPANEL_STEP2C_CLOSEOUT_TEST_RESULTS.md                                             2289 bytes
+  SIPANEL_STEP2D_READINESS_REPORT.md                                                  2254 bytes
+  evidence/acl/ir_model_access_scope_models.txt                                       1934 bytes
+  evidence/acl/ir_rule_sale_and_scope.txt                                             3631 bytes
+  evidence/acl/protected_fields_groups.txt                                            2546 bytes
+  evidence/acl/taleghani_uid2_groups_after.txt                                         442 bytes
+  evidence/acl/taleghani_uid2_groups_before.txt                                        442 bytes
+  evidence/docker/bytes_reclaimed.txt                                                  359 bytes
+  evidence/docker/capacity_gate_after.txt                                               66 bytes
+  evidence/docker/containers_image_ids_after.txt                                      1729 bytes
+  evidence/docker/containers_image_ids_before.txt                                     2202 bytes
+  evidence/docker/df_B1_after.txt                                                      123 bytes
+  evidence/docker/df_B1_before.txt                                                     123 bytes
+  evidence/docker/docker_images_digests_after.txt                                     1077 bytes
+  evidence/docker/docker_images_digests_before.txt                                    1543 bytes
+  evidence/docker/docker_ps_a_before.txt                                              4980 bytes
+  evidence/docker/docker_system_df_v_after.txt                                        9815 bytes
+  evidence/docker/docker_system_df_v_before.txt                                      10058 bytes
+  evidence/docker/docker_system_df_v_before_rmi.txt                                  10058 bytes
+  evidence/docker/foreign_image_pull_journal.txt                                       516 bytes
+  evidence/docker/foreign_image_references.txt                                        1031 bytes
+  evidence/docker/foreign_images_inspect.txt                                             2 bytes
+  evidence/docker/http_health_after.txt                                                 30 bytes
+  evidence/docker/image_layers.txt                                                    4500 bytes
+  evidence/docker/images_summary_before.txt                                            807 bytes
+  evidence/docker/pre_deletion_verification.txt                                        995 bytes
+  evidence/docker/rmi_output.txt                                                       259 bytes
+  evidence/logs/containers_after.txt                                                   421 bytes
+  evidence/logs/df_after.txt                                                            97 bytes
+  evidence/logs/integration_tables_live.txt                                            233 bytes
+  evidence/logs/pg_stat_database_after.txt                                             308 bytes
+  evidence/logs/preflight.txt                                                         5138 bytes
+  evidence/logs/recovery_point_SHA256SUMS.txt                                          520 bytes
+  evidence/logs/recovery_point_closeout.log                                           4310 bytes
+  evidence/logs/recovery_point_closeout_INVALID_concurrent_run.log                    4480 bytes
+  evidence/logs/recovery_point_verification.txt                                        788 bytes
+  evidence/logs/recovery_points_after_creation.txt                                     669 bytes
+  evidence/logs/restore_instructions_output.txt                                       5451 bytes
+  evidence/logs/restore_instructions_structural_checks.txt                            1023 bytes
+  evidence/logs/test_sales_seal_after_fix.log                                        17744 bytes
+  evidence/logs/test_sales_seal_before_fix.log                                       29469 bytes
+  evidence/logs/test_shamsi_closeout.log                                             17468 bytes
+  evidence/logs/test_sipanel_full_final.log                                          97208 bytes
+  evidence/pilot/pilot_closeout_sales_seal.json                                       4693 bytes
+  evidence/scripts/build_bundle_2cco.sh                                               5456 bytes
+  evidence/scripts/pilot_closeout_sales_seal.py                                      14612 bytes
+  evidence/source_diff/diff_name_status.txt                                            277 bytes
+  evidence/source_diff/git_show_source_commit_fuller_stat.txt                         2813 bytes
+  evidence/source_diff/sipanel_step2c_closeout.diff                                  26729 bytes
+
+EXCLUDED: database dumps, filestore, private keys, credentials, unredacted configuration, access tokens, customer secrets.

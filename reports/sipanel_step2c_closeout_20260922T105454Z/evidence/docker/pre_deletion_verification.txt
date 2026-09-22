@@ -1,0 +1,10 @@
+== pre-deletion verification 2026-09-22T11:09:26Z
+id=sha256:77b3686f46a16375004985b522cef8f66e27fabc4a7d80209609bbb20fdfb362 tags=[fathyb/carbonyl:latest] digests=[fathyb/carbonyl@sha256:77b3686f46a16375004985b522cef8f66e27fabc4a7d80209609bbb20fdfb362] size=117719069 created=2023-02-18T00:20:06.779330791Z
+containers using it (running+stopped): 0
+0
+id=sha256:6f64eca9946b16f83a8f560093c4bde84205ea507fd55ecba50d5d728533b9b6 tags=[browsh/browsh:latest] digests=[browsh/browsh@sha256:6f64eca9946b16f83a8f560093c4bde84205ea507fd55ecba50d5d728533b9b6] size=334497402 created=2025-07-19T16:15:48.127550152Z
+containers using it (running+stopped): 0
+0
+shared layers with other images: 0 (image_layers.txt)
+references in compose/scripts/cron/services/processes: none (foreign_image_references.txt: only Claude session transcripts and this run's evidence files)
+introduced: pulled by dockerd 2026-09-22T09:00:49Z and 09:01:48Z (journal), during the STEP 2C-HARDENING test run, not by any SIPANEL script

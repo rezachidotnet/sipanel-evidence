@@ -1,0 +1,119 @@
+Images space usage:
+
+REPOSITORY    TAG                 IMAGE ID       CREATED        SIZE      SHARED SIZE   UNIQUE SIZE   CONTAINERS
+odoo-custom   19-linkpreview      653997642a6c   3 weeks ago    3.38GB    2.67GB        705.9MB       1
+odoo-custom   19-linkpreview-r2   22ec8c598145   3 weeks ago    3.42GB    2.67GB        752.1MB       1
+<none>        <none>              1cd111414896   2 months ago   3.38GB    2.67GB        705.3MB       8
+postgres      15                  1b92e7a80c02   4 months ago   633MB     0B            632.8MB       1
+
+Containers space usage:
+
+CONTAINER ID   IMAGE                           COMMAND                  LOCAL VOLUMES   SIZE      CREATED        STATUS                     NAMES
+3b2465fceab0   1cd111414896                    "/entrypoint.sh odoo…"   0               8.19kB    6 days ago     Exited (0) 6 days ago      odoo-sipanel-staging
+ec0e73f719d0   odoo-custom:19-linkpreview-r2   "/entrypoint.sh odoo…"   0               821MB     3 weeks ago    Up 3 days                  odoo-ahantorob
+ec0f095e198f   odoo-custom:19-linkpreview      "/entrypoint.sh odoo…"   0               8.19kB    3 weeks ago    Up 2 weeks                 odoo-shahbazi
+57f3b3cb897b   1cd111414896                    "/entrypoint.sh odoo…"   0               20.5kB    6 weeks ago    Exited (137) 3 weeks ago   odoo-admin
+f1caedd77733   1cd111414896                    "/entrypoint.sh odoo…"   0               49.2kB    6 weeks ago    Up 2 days                  odoo-sipanel
+6a27c521e8cc   1cd111414896                    "/entrypoint.sh odoo…"   0               12.3kB    7 weeks ago    Up 2 weeks                 odoo-avizsazeh
+4c84997e4562   1cd111414896                    "/entrypoint.sh odoo…"   0               12.3kB    7 weeks ago    Exited (137) 3 weeks ago   odoo-cyansteel
+4a7af6b85ea6   1cd111414896                    "/entrypoint.sh odoo…"   0               12.3kB    7 weeks ago    Exited (137) 3 weeks ago   odoo-cyansanat
+197f959bb32b   1cd111414896                    "/entrypoint.sh odoo…"   0               12.3kB    7 weeks ago    Exited (137) 3 weeks ago   odoo-cyancoat
+14e7bf7038ae   1cd111414896                    "/entrypoint.sh odoo…"   0               8.19kB    8 weeks ago    Exited (137) 6 weeks ago   odoo-app
+cb0771d0671b   postgres:15                     "docker-entrypoint.s…"   0               386MB     3 months ago   Up 2 months                odoo-db
+
+Local Volumes space usage:
+
+VOLUME NAME                                                        LINKS     SIZE
+e72161ff7b4c68c10363118a16d49f1f61186855601b5dc9cf643e3c740f347a   0         69.38MB
+a7d5c96b520942cede36a31396942245313d55545c77003f0a1d7c0196fa12af   0         0B
+2c49bc88c28bae2dae9f32253cd773d61229246de256f089cd20c6c87dc2fc2a   0         0B
+417465ee5a7d0e13af711460e1ed45aa607b5c343d15117fbb61cde743fbd19c   0         0B
+14b5a4a6a4f2240167674a6e4fd66bcd0a1f2e737f81f605ea90897b410558c5   0         0B
+f93ab3cf9e9c50214ffecd834eb0045b9db47182292aa4fae47edbb4cfc1fc71   0         69.86MB
+8cdf4505a32a4a2c9db186428246be8702d982555f8140fb58690b9004498c4b   0         0B
+802256560ab7478bf5c79d8752c5aeebc21c7b0111ab85fca7a058139c10bbe1   0         0B
+7fdb4a296545c8743fe203f2e77f2849c402ff1263ee733208fa32aff7e9bdb4   0         0B
+0164836348f3c0beca4370b50c4996094059ddbb543206ebf8a9ed3cab71054a   0         0B
+8f9563d66afe022178059c5e0365ac33e02c0ea6dd6c8734fce08e8f320f9543   0         191.3MB
+e3b5ab1dec8d4009549442a12a2326b3132aa0cfae6777c1f819cc380c1ee425   0         0B
+0a2637629e862c893cda43b13efd2bde293ab0c116c77f7bace9c4a768678a6b   0         0B
+c5ded97f934bc2f925da8a0b7ae914bcf87401190eecad2e967393ce408cad78   0         212.9MB
+158dee2b989b5a639ae5d23f5acb1c9ab14fe48012015ea82a2f2825aaa64a00   0         0B
+bf17f7b1361c4c1fe3db118e04db23d2ff4939432826a667cfccbc1e0b49d78b   0         0B
+908946de529f5a310fbf9faed98dedb94bdd6ef26eb39a7ac0e2ef4a9a4d25a7   0         0B
+6c735d745f2f199e1c21b0cdf6c28a8e6587b468509ccb0985c203c77900d246   0         0B
+b5e652ed8522eec9628c8f3bdb1e0fbb764b2ccc54ef71218fe51172ac350bbc   0         243MB
+64cded409477b240d3b2447182ef146d0c6f81baddba434c8d99c148b77539d1   0         0B
+b1f673e196008c3439f1e058df2c10a3b38316092bbf878fee7393f233cd5427   0         0B
+2b0830e1cc2722e98a9acd67ea4c4538553f17d09dc050256d8e000089f01b18   0         0B
+5954fa11572db47735f0d4065a24d308313d1f55e0744be04089888e9e705aab   0         0B
+890fffb4a369e7ee8b1615468595d2b75e08903a336fc3f89ef81be3475426c8   0         0B
+0d219eb9d61856b5a8a164ad13f524839551959783b798dadfb813f2572d86c3   0         0B
+98671b9725b31da78cc87a8e26566f10014a7b94cdb1d355fe7085d0b0372056   0         0B
+823945d8a039777015f83e6c1541fae697b567cdaf3f83d4da232f432b336027   0         0B
+cab531c9cf2c94ca7731dbd56ead8fa626ff4f8980afd8d727fa0c07e509d2ee   0         0B
+87875e71df13aab71764b1bc66ebedb4898f1df2e1988495dc35ad2c88ee0c46   0         0B
+48831f48f8b5b5750a47fc93f2c94595e0fa9858c20e5fdae99cbd4061859a2a   0         0B
+7d4e7b4f057420bc775bbdac4ce1ce2eb9bf5d27fe525c07691a786785f170f2   0         0B
+510c40ac10d9989c868754a5bd2c1be0a7190b02b93950517a70f1f7ff831423   0         0B
+cd3e57af727f5f4a7b742601a7835e4c99bd2bd036d3673f3e194f668cd8c7b9   0         0B
+3ce673d28d0464945ef5d79c824440d4692dfa6f38b28009cb51e9aac955e42e   0         0B
+6e164b2aebd3ebc539e71b81f39088f4b8f3b5017dcdb9f9901ec26709d8acb7   0         69.38MB
+b5580f8308a1bb1293e7da206a5947e250aabb7fc264d714fa430c55d45e7d2e   0         0B
+a1b096e84dbb35a8cd4f8519bc78a32d87dc1438f4b44e900f1863595069e9b7   0         0B
+a9136e7af5d1cddbb6019cbaf7a2ce68baaa0288e3049d19c72e17d4304261bb   0         0B
+560c5b16dfbde60345d17780a76b22aa5cfa1644e0fe5d85540ff009604b8391   0         0B
+748b2cde3c357916ee21dc26410f3b5875f09604b3ef0c2d415ac9913e5a5912   0         0B
+b21d5d30929b1ce7a98918c4c1341f1f7909935547c64405c1a137c4b83509dd   0         0B
+b3ea639020e2f06003188f739a682a5c8c1ae5d2436fe65cb433b725b7c55c6e   0         0B
+90db6d0633741976819a0b8f163468365eedbc4527d1ca5a74e8cbc87328d464   0         0B
+6e30d19959168e0d849a5f8535e5482055d010272f5cedf73009064c02a28e04   0         0B
+2f80a9fb265a82103d15db34ad83766d20ea37003d093d8204eec020f250854e   0         0B
+14a2ea21284ea243b243e2f040838f410f8968f7f430ad2513d2bd3b0f16547a   0         0B
+5359105f465b1e455cee41a091b40f9c2fcc7fa0b59b0fa8936258c8fc8df42c   0         0B
+5167d795b39ca106e76d831edda2c017b0cc0b37e32df4f562221fecabe8023d   0         270.2kB
+abf4236f8a13e161c8e760d5cfefccced5661b415a1dafed1e1f50ff58f04197   0         0B
+6548344e8ef3ce3deee3d8c41a953dc13c7728e604b040d2c1269ef051c31af1   0         0B
+ad504becbaf3c96e61a69fb07fdd84e43c8f85d8ee73361ddb10e926f68d9986   0         0B
+ea5eed5bdbfed039c0d69aa447725be11443a20c35c2430d321cae478b0ab1d9   0         0B
+885900b6805c5f3c18021a171297b238d9f45b8492d436503447a23953a18fdf   0         0B
+2c8e24bd2cda3386c7e5a33d70bfc5d9d0003a1ce6ab5e1e3d6b452a4a0a411e   0         0B
+24496845455c7c30cc997b1b0107d6fe63deb8b1964fcabaad25b2e085e3f7e4   0         0B
+20f7dad85bc88737ebbe0fa08018ad4b52e4aba3a5eb5a2c88978fa584119b39   0         0B
+4108ec60ada93f236e2ecd1c0ac6cd39a9ef77b32905bb01a10e26c5ddb25f46   0         0B
+b4bdb03df2ba0e56603fa0365b300955f426f5f6cb343c462200dfc15499327d   0         0B
+167c1f2385f9f6dfd6e28948354edc4dc27ce70a53c429ff16a8e6973a5f1ead   0         0B
+3d0b8bf03f7dded74458c3901fab7ee2da98a1c6ab5ae0f291653496a67cc082   0         0B
+294c54e128ae971cda35fa2b0ddf4c891f42e16d6fd96edf2722761f59f4ed87   0         0B
+abd8c308f4930c31192e82f910f2be96f635d1f4a87a5a91c9c2c41cec080e3f   0         0B
+58d38c196eb3ce109f51fb0826a652c15b21ee087036b1e91f32629d5b12fc80   0         0B
+54b61aaea3b475201c9ec12866d087c39807094b3986c9f67f8125d71a698706   0         69.38MB
+3e151d340170416fb36ca28f5865ad8288b85533bdb662b65f36638467df5824   0         0B
+3b8f6b1d21953fd63fe79b29cbd02caaecd89f27d1021df5447d16700c4d1f3f   0         0B
+f9c0248aa47958945bdd5ac3a123a99f854ca2f3bb436ec0994d802c2eff01ef   0         0B
+5c774dd947be7613e11b4a7989ed48fb4c851704b22b3ba97c333b460c7fb7bc   0         0B
+24f53a68385b60f4844e0ef2b183199c1e17c9273c8bf3cd4046e9df67301be6   0         0B
+d7acdad851d85ce47271c152ec23ff08d9f9d3bf7db2edf255a65dc89f8e1f28   0         0B
+b9b28ee12e6cd1472699c404440b25cab9b2e86afd09ab95ae951dc1f1a7ac91   0         0B
+c3364cf320bb71493a23b328f9a407766103227ecf45ae856c40f4397ae1c9cd   0         0B
+58e7dd3a4eaf6a36827b5ce0c87fc83d288a46af311f02bc9cf8957eb3f8c0e3   0         0B
+1513f73cc4709df772ed0af640a0d67756106b0f102d24094bb2782ba277f866   0         192.5MB
+62d8127b6668834e3da92193e699c4b771b7e1088499f837cbd38a6b0a1bf640   0         0B
+5c672b8a9da5513d32932719bb24c5bd9ff3294be4a42ea925d709efb9904a45   0         0B
+1c7e97db200ac93db8c44aecc95e9eacfbb5fdab6b3be6527bba19e19032ef22   0         0B
+30ca490abda36a879ef176fda7945f25e8b76a8d748985e9de1933036e3e045d   0         0B
+dc920f906b9d10a2d50eb67dc682e27a3b250c3b274f620fa193b270099c1479   0         0B
+5499e31575d7ae4bad4f810f33f8d0377df72fa68b5c6469fab7a005c42e6417   0         0B
+6801f1be6a1ff540b6c257ebfbc6427e77166be8a5c4bc767ef67eef4a4d6b02   0         0B
+9b5f0c53640355d05b1404d9c6a767ec0bd07c2ad14dbe332ebf755b848a712d   0         0B
+f623bc9cbc08098ac430daaeac5123a1974b5b2545eca0ab5bbc79083b0905a9   0         0B
+bd33852a13e44a1f490e36fcff68925e2609147e9a9d42305823f2766d3d8908   0         0B
+8651ef1ebf38d4cf4ec0926ac5f250b193d77541d98b7b7c2541d8503ca76a29   0         197.6MB
+9e3bbf2cd8530a6bb62d71782b55de952285c4912cbfc101f79276ec2e8e9e5a   0         0B
+e85c3601d0d1fd63095b9d8cb9263b7dcc48ed0745d613d67016797d21a9de9f   0         0B
+02fc1412f1ba13de25db8674a6e9997a9251ffff64fa429f03963aa3e7217d07   0         213.4MB
+74df11205a17864b60949797b16c8f6e8f6aaa382b7a94a3899b3df507fa5ce3   0         0B
+
+Build cache usage: 0B
+
+CACHE ID   CACHE TYPE   SIZE      CREATED   LAST USED   USAGE     SHARED

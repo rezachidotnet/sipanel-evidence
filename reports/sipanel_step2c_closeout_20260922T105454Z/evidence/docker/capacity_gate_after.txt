@@ -1,0 +1,1 @@
+need_mb=462 free_mb=2720 headroom_mb=2258 rule_min=1500 gate=PASS

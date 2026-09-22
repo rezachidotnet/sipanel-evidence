@@ -1,0 +1,2 @@
+Filesystem       1B-blocks        Used  Available Use% Mounted on
+/dev/vda3      29658075136 27199905792 1159884800  96% /

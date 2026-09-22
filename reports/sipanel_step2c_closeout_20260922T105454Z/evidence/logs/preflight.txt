@@ -1,0 +1,60 @@
+== repo
+/home/ubuntu/sipanel_odoo_addons
+master
+6709dcfebb40348af5831fab13f2679b28a94d41
+1
+53268ef in HEAD
+6709dcf in HEAD
+6709dcf SIPANEL STEP 2C-HARDENING 20260922T083014Z: reports, complete source diff, ACL evidence, logs, pilot JSON and bundle
+53268ef SIPANEL STEP 2C-HARDENING 20260922T083014Z: immutable demand provenance, Native Owner boundary, governed Sales cancellation, safe restore instructions
+5dc0f41 SIPANEL STEP 2C 20260922T065650Z: closeout addendum, recovery-point pruning, execution-batch reports, evidence and bundle
+== parity
+sipanel_commercial_scope_core: IDENTICAL
+sipanel_sale_scope: IDENTICAL
+sipanel_scope_execution: IDENTICAL
+sipanel_scope_costing: IDENTICAL
+== versions (db)
+sipanel_commercial_scope_core 19.0.1.1.0 installed
+sipanel_partner_autocomplete_guard 19.0.1.0.0 installed
+sipanel_sale_scope 19.0.1.2.2 installed
+sipanel_scope_costing 19.0.1.0.0 installed
+sipanel_scope_execution 19.0.1.0.2 installed
+
+sipanel|150 MB
+== containers
+odoo-sipanel-staging	3b2465fceab0284549b1a05ce3c3b04923cf87b9213df4a0c62daf181e051d31	sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac	Exited (0) 6 days ago
+odoo-ahantorob	ec0e73f719d0feaa0376268aa9dc57c1b98b2e8637b7494ca17ca9f24f730884	odoo-custom:19-linkpreview-r2	Up 3 days
+odoo-shahbazi	ec0f095e198fdd0d1b857df5acdcdf4a25d921fcdb42ac7aed601c9ccbbaafe7	odoo-custom:19-linkpreview	Up 2 weeks
+odoo-admin	57f3b3cb897b5f28043a045182d970366c8df3fabf2df1f3b1778af1ff5713a0	sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac	Exited (137) 3 weeks ago
+odoo-sipanel	f1caedd77733a3edc855468645540385ac0c75eb746c07b717630c526815421e	sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac	Up 2 days
+odoo-avizsazeh	6a27c521e8ccc3d298060077732486a6012c1927ebe7c6fc3317b69b25c7ba7c	sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac	Up 2 weeks
+odoo-cyansteel	4c84997e4562e5b860afa39a00f99537e55efec7e1665c103ae87dc80aab9289	sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac	Exited (137) 3 weeks ago
+odoo-cyansanat	4a7af6b85ea611961f26dc884a8b390bae5d916956de7fdd1454e68b0612c5b7	sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac	Exited (137) 3 weeks ago
+odoo-cyancoat	197f959bb32b6b98f248d8c66b65610834d0fd5550c7f9581856b58e6b141551	sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac	Exited (137) 3 weeks ago
+odoo-app	14e7bf7038aebf518e7b8d66a986f737b8487a8935074a75d2a823082946a5cf	sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac	Exited (137) 6 weeks ago
+odoo-db	cb0771d0671b274b910b2fbc0de6b17d87cba0648c9cc66b3a99fa868d59d9cb	postgres:15	Up 2 months
+/odoo-sipanel-staging image=sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac restarts=0 started=2026-09-15T19:44:28.544732205Z status=exited
+/odoo-ahantorob image=sha256:22ec8c59814500ee49b884e988a6ae5cf9289497e879402d721cffd0f00f65de restarts=0 started=2026-09-18T20:32:01.914502478Z status=running
+/odoo-shahbazi image=sha256:653997642a6c69f04b7854696335975231f3f3759dae6cca62e62a014fdc72ee restarts=74 started=2026-09-03T18:05:37.500093289Z status=running
+/odoo-admin image=sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac restarts=0 started=2026-08-04T13:46:19.911465253Z status=exited
+/odoo-sipanel image=sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac restarts=0 started=2026-09-20T06:40:08.986387315Z status=running
+/odoo-avizsazeh image=sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac restarts=74 started=2026-09-03T18:05:40.24002542Z status=running
+/odoo-cyansteel image=sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac restarts=0 started=2026-08-09T16:42:35.332030574Z status=exited
+/odoo-cyansanat image=sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac restarts=0 started=2026-08-09T16:42:11.325717238Z status=exited
+/odoo-cyancoat image=sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac restarts=0 started=2026-08-09T16:41:44.919886152Z status=exited
+/odoo-app image=sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac restarts=2 started=2026-07-27T20:02:21.123637339Z status=exited
+/odoo-db image=sha256:1b92e7a80c021647bf70f5d3eb66066a998e4f5cf43c07bb9dc9f729782cf88e restarts=0 started=2026-07-16T14:59:27.234504744Z status=running
+== disk
+/dev/vda3        28G   26G  1.1G  96% /
+1159946240
+== recovery points
+24696190	/opt/odoo/backups/ahanassa-migration-20260821-1644
+18709786	/opt/odoo/backups/sipanel-before-kanban-fix-20260717-214400.dump
+115229870	/opt/odoo/backups/sipanel-pre-2bhardening-20260922T060000Z
+116198398	/opt/odoo/backups/sipanel-pre-2chardening-20260922T083014Z
+113663953	/opt/odoo/backups/sipanel-pre-scope-20260919T164558Z
+114650657	/opt/odoo/backups/sipanel-pre-sepbill-20260921T021500Z
+115209271	/opt/odoo/backups/sipanel-pre-step2c-20260922T065650Z
+114611255	/opt/odoo/backups/sipanel-pre-translation-20260921T013000Z
+== capacity
+db=157269351 fs=280308082 addons=47069251 need_mb=462 free_mb=1107 headroom_mb=645 rule_min=1500 gate=FAIL

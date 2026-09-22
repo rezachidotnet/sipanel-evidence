@@ -1,0 +1,7 @@
+avail_after=2852151296 reclaimed_bytes=1692835840
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          4         4         5.334GB   5.334GB (100%)
+Containers      11        5         1.207GB   73.73kB (0%)
+Local Volumes   89        0         1.529GB   1.529GB (100%)
+Build Cache     0         0         0B        0B
+CONTAINERS_UNCHANGED
