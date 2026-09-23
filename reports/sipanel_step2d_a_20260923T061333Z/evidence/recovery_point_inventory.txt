@@ -1,0 +1,54 @@
+# Recovery-point inventory 20260923T061333Z (read-only)
+total 18316
+drwxr-xr-x 11 root root     4096 Sep 23 05:22 .
+drwxr-xr-x 13 root root     4096 Sep 15 14:27 ..
+drwxr-xr-x  2 root root     4096 Aug 21 16:44 ahanassa-migration-20260821-1644
+-rw-------  1 root root 18709786 Jul 17 21:44 sipanel-before-kanban-fix-20260717-214400.dump
+drwx------  2 root root     4096 Sep 22 05:13 sipanel-pre-2bhardening-20260922T060000Z
+drwx------  2 root root     4096 Sep 22 11:13 sipanel-pre-2ccloseout-20260922T111500Z
+drwx------  2 root root     4096 Sep 23 05:23 sipanel-pre-2ccloseouthard-20260923T051626Z
+drwx------  2 root root     4096 Sep 22 08:31 sipanel-pre-2chardening-20260922T083014Z
+drwx------  2 root root     4096 Sep 19 16:47 sipanel-pre-scope-20260919T164558Z
+drwx------  2 root root     4096 Sep 21 06:22 sipanel-pre-sepbill-20260921T021500Z
+drwx------  2 root root     4096 Sep 22 07:06 sipanel-pre-step2c-20260922T065650Z
+drwx------  2 root root     4096 Sep 21 01:27 sipanel-pre-translation-20260921T013000Z
+
+## INVALID markers
+(none above = no invalid marker)
+
+## latest valid point: sipanel-pre-2ccloseouthard-20260923T051626Z
+total 113864
+drwx------  2 root root     4096 Sep 23 05:23 .
+drwxr-xr-x 11 root root     4096 Sep 23 05:22 ..
+-rw-------  1 root root      520 Sep 23 05:23 SHA256SUMS
+-rw-------  1 root root       17 Sep 23 05:23 TIMESTAMP
+-rw-------  1 root root 39287397 Sep 23 05:23 addons.tar.gz
+-rw-------  1 root root    10127 Sep 23 05:23 container-inspect.json
+-rw-------  1 root root 55006059 Sep 23 05:23 filestore-sipanel.tar.gz
+-rw-------  1 root root     4904 Sep 23 05:23 installed_modules.txt
+-r--------  1 root root      434 Sep 23 05:23 odoo-sipanel.conf.redacted
+-rw-------  1 root root 22245445 Sep 23 05:23 sipanel.dump
+TIMESTAMP=20260923T052249Z
+/bin/bash: line 62: cd: /opt/odoo/backups/sipanel-pre-2ccloseouthard-20260923T051626Z: Permission denied
+dump toc entries: 17574
+filestore archive top-level: sipanel 
+addons archive top-level: addons 
+redacted conf secrets: 1 lines redacted
+/bin/bash: line 62: /opt/odoo/backups/sipanel-pre-2ccloseouthard-20260923T051626Z/installed_modules.txt: Permission denied
+installed modules listed: 
+sipanel_commercial_scope_core:19.0.1.1.0
+sipanel_partner_autocomplete_guard:19.0.1.0.0
+sipanel_sale_scope:19.0.1.2.3
+sipanel_scope_costing:19.0.1.0.0
+sipanel_scope_execution:19.0.1.0.2
+
+## re-run of the two permission-denied checks with sudo sh -c
+sipanel.dump: OK
+filestore-sipanel.tar.gz: OK
+addons.tar.gz: OK
+installed_modules.txt: OK
+container-inspect.json: OK
+odoo-sipanel.conf.redacted: OK
+installed modules listed: 200
+redacted keys: db_password = <redacted>;
+note: point lists sipanel_sale_scope 19.0.1.2.3 because it was taken BEFORE the 2C-CLOSEOUT-HARDENING upgrade to 19.0.1.2.4 (expected)

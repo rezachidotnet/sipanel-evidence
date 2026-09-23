@@ -1,0 +1,4 @@
+# Capacity gate (exact replica of scripts/sipanel_recovery_point.sh step 1) 20260923T061333Z
+db_bytes=158236007 filestore_bytes=280395415 addons_bytes=47137906 need_mb~=463 free_mb=1923 MIN_FREE_MB=1500 margin_mb=1460
+RESULT: BLOCKED_BACKUP_CAPACITY (script would exit 3): need ~463 MB plus 1500 MB headroom, free 1923 MB, shortfall 40 MB
+note: the script was NOT executed, because it reserves DEST (mkdir) before the capacity check and would leave an INVALID-marked directory on failure.

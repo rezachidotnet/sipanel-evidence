@@ -1,0 +1,86 @@
+# Master-data inventory for gutter pilot 20260923T061333Z (read-only)
+## gutter-related products
+36|645|{"en_US": "Strip Sheet"}|consu|t|t|t|16|2||63
+38|392|{"en_US": "Gutter Installation", "fa_IR": "نصب آبرو"}|service|t|t|t|9|1||94
+62|619|{"en_US": "Custom Gutter"}|consu|t|t|t|9|1||78
+62|615|{"en_US": "Custom Gutter"}|consu|t|t|t|9|1||78
+68|649|{"en_US": "Downspout Installation", "fa_IR": "نصب ناودان"}|service|t|t|t|9|1||94
+158|762|{"en_US": "Roof Sandwich Panel"}|consu|t|t|t|11|0.0||87
+158|763|{"en_US": "Roof Sandwich Panel"}|consu|t|t|t|11|0.0||87
+158|767|{"en_US": "Roof Sandwich Panel"}|consu|t|t|t|11|0.0||87
+158|765|{"en_US": "Roof Sandwich Panel"}|consu|t|t|t|11|0.0||87
+158|764|{"en_US": "Roof Sandwich Panel"}|consu|t|t|t|11|0.0||87
+158|766|{"en_US": "Roof Sandwich Panel"}|consu|t|t|t|11|0.0||87
+1349|1974|{"en_US": "SIPANEL-SEPBILL-PILOT-20260921T021500Z Gutter accessories (anchor)"}|consu|t|t|t|9|0.0||
+1350|1975|{"en_US": "SIPANEL-SEPBILL-PILOT-20260921T021500Z Galvanised gutter"}|consu|t|t|t|9|0.0|{"1": 120000.0}|
+## routes on active templates
+86|{"en_US": "Dropship", "ru_RU": "Dropship"}
+## routes available
+1|{"en_US": "Replenish on Order (MTO)", "fa_IR": "پر کردن به سفارش (ساخت به سفارش)", "ru_RU": "Восполнение под заказ (MTO)", "ar_001": "تجديد المخزون عند الطلب (الإنتاج حسب الطلب)"}|t|t
+2|{"en_US": "My Company: Receive in 1 step (stock)"}|t|f
+3|{"en_US": "My Company: Deliver in 1 step (ship)"}|t|f
+4|{"en_US": "Manufacture", "fa_IR": "تولید", "ru_RU": "Производство", "ar_001": "تصنيع"}|t|f
+5|{"en_US": "My Company: Manufacture (1 step)"}|f|f
+6|{"en_US": "Buy", "fa_IR": "خرید", "ru_RU": "Купить", "ar_001": "شراء"}|t|f
+7|{"en_US": "Dropship", "ru_RU": "Dropship"}|t|t
+## supplierinfo (all)
+17|65|ماموت پانل|158|762|||86|1.0|1|11||
+18|67|غرب پانل|158|762|||86|2.0|1|11||
+19|60|ماهان پانل|158|762|||86|3.0|1|11||
+## supplier partners
+65|ماموت پانل|7|t
+60|ماهان پانل|3|t
+## BoMs
+8||62|{"en_US": "Custom Gutter"}|normal|1|9|t
+## BoM lines
+8|10|645|{"en_US": "Strip Sheet"}|1|16
+## BoM operations
+0
+## workcenters
+0
+## employees / hourly cost
+1|Taleghani|t|0.0|2
+2|iliya taleghani|t|0.0|5
+19|shahrzad dayyani|t|0|10
+## uoms referenced
+9|{"en_US": "m"}
+11|{"en_US": "m²", "fa_IR": "مترمربع", "ru_RU": "м²", "ar_001": "متر مربع"}
+16|{"en_US": "kg", "fa_IR": "کیلوگرم", "ru_RU": "кг", "ar_001": "كجم"}
+## internal stock for Strip Sheet(645)/Custom Gutter(615,619)/Roof panel(762)
+(empty = no on-hand)
+## pricelists
+1|{"en_US": "Default"}|86|f
+2|{"en_US": "Default"}|86|t
+## currency
+86|IRR
+## SIPANEL scopes named gutter
+91|SIPANEL-PT-GUTTER|SIPANEL-PT Gutter accessories (متعلقات آبرو)|f
+348|SIPANEL-SEPBILL-PILOT-20260921T021500Z-MASTER|SIPANEL-SEPBILL-PILOT-20260921T021500Z gutter accessories (pilot)|f
+## security groups
+102|sipanel_commercial_scope_core.group_scope_cost_viewer|{"en_US": "Cost & Margin Viewer"}
+103|sipanel_commercial_scope_core.group_scope_steward|{"en_US": "Scope Steward"}
+104|sipanel_commercial_scope_core.group_scope_estimator|{"en_US": "Estimator"}
+105|sipanel_commercial_scope_core.group_scope_auditor|{"en_US": "Auditor (read-only)"}
+106|sipanel_sale_scope.group_scope_sales|{"en_US": "Scope Sales"}
+107|sipanel_sale_scope.group_scope_waiver_sales|{"en_US": "Waiver — Sales approver"}
+108|sipanel_sale_scope.group_scope_waiver_finance|{"en_US": "Waiver — Finance approver"}
+109|sipanel_scope_execution.group_scope_execution_owner|{"en_US": "Execution Owner"}
+110|sipanel_scope_costing.group_scope_finance|{"en_US": "Finance (cost recognition)"}
+## Taleghani (uid 2) groups
+account.group_account_manager
+base.group_system
+hr_timesheet.group_hr_timesheet_user
+hr_timesheet.group_timesheet_manager
+mrp.group_mrp_manager
+project.group_project_manager
+purchase.group_purchase_manager
+sales_team.group_sale_manager
+sipanel_commercial_scope_core.group_scope_cost_viewer
+sipanel_commercial_scope_core.group_scope_estimator
+sipanel_commercial_scope_core.group_scope_steward
+sipanel_sale_scope.group_scope_sales
+sipanel_sale_scope.group_scope_waiver_finance
+sipanel_sale_scope.group_scope_waiver_sales
+sipanel_scope_costing.group_scope_finance
+sipanel_scope_execution.group_scope_execution_owner
+stock.group_stock_manager

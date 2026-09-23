@@ -1,0 +1,22 @@
+REPORT BUNDLE MANIFEST — sipanel_step2d_a_20260923T061333Z — generated 2026-09-23T06:21:02Z
+Verdict: BLOCKED (BLOCKED_DISK_CAPACITY)
+Source commit (unchanged baseline): 7dbbd54f8641091712eb9ca500c55bc17eb7a11c
+
+SIPANEL_STEP2D_A_ANALYTIC_CONFIGURATION_REPORT.md                           943 bytes
+SIPANEL_STEP2D_A_CHANGE_ORDER_SETTLEMENT_REPORT.md                          577 bytes
+SIPANEL_STEP2D_A_CLEANUP_REPORT.md                                          600 bytes
+SIPANEL_STEP2D_A_IMPLEMENTATION_REPORT.md                                  6988 bytes
+SIPANEL_STEP2D_A_PILOT_RESULT.json                                         1953 bytes
+SIPANEL_STEP2D_A_RECOVERY_POINT_REPORT.md                                  3091 bytes
+SIPANEL_STEP2D_A_RELEASE_BACKOFF_REPORT.md                                  473 bytes
+SIPANEL_STEP2D_A_ROLE_WORKFLOW_REPORT.md                                    893 bytes
+SIPANEL_STEP2D_A_TEST_RESULTS.md                                           1011 bytes
+SIPANEL_STEP2D_A_VENDOR_BOM_COST_READINESS_REGISTER.md                     5538 bytes
+SIPANEL_STEP2D_B_READINESS_REPORT.md                                       1612 bytes
+evidence/baseline_verification.txt                                         2977 bytes
+evidence/capacity_gate.txt                                                  489 bytes
+evidence/disk_inventory.txt                                                4029 bytes
+evidence/master_data_inventory.txt                                         4388 bytes
+evidence/recovery_point_inventory.txt                                      2784 bytes
+
+Contents: reports and redacted read-only evidence only. No source change, no database dump, no filestore, no key, no password, no token, no unredacted configuration.

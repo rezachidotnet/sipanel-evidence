@@ -1,0 +1,51 @@
+# Baseline verification (read-only) 20260923T061333Z
+## git
+?? reports/sipanel_step2d_a_20260923T061333Z/
+7dbbd54 SIPANEL STEP 2C-CLOSEOUT-HARDENING 20260923T051626Z: sudo-seal security, recovery concurrency, invalid-point removal, test results, pilot, readiness, evidence and bundle
+fce346b SIPANEL STEP 2C-CLOSEOUT-HARDENING 20260923T051626Z: non-sudo seal permission gate, concurrency-safe recovery script
+a025c2a SIPANEL STEP 2C-CLOSEOUT 20260922T105454Z: capacity/image-cleanup, Sales seal security, restore neutralisation, test results, pilot, cleanup, STEP 2D readiness, evidence and bundle
+fce346b93af4da937cb3bcafa4aaca99ef8d1ef5 is ancestor of HEAD
+evidence commit after source: 7dbbd54f8641091712eb9ca500c55bc17eb7a11c SIPANEL STEP 2C-CLOSEOUT-HARDENING 20260923T051626Z: sudo-seal security, recovery concurrency, invalid-point removal, test results, pilot, readiness, evidence and bundle
+## installed tree vs repo
+sipanel_commercial_scope_core: identical
+sipanel_sale_scope: identical
+sipanel_scope_execution: identical
+sipanel_scope_costing: identical
+## module versions (repo manifest / db latest_version)
+sipanel_commercial_scope_core repo=19.0.1.1.0 db=installed 19.0.1.1.0
+sipanel_sale_scope repo=19.0.1.2.4 db=installed 19.0.1.2.4
+sipanel_scope_execution repo=19.0.1.0.2 db=installed 19.0.1.0.2
+sipanel_scope_costing repo=19.0.1.0.0 db=installed 19.0.1.0.0
+## containers
+odoo-sipanel	Up 3 days	1cd111414896
+odoo-db	Up 2 months	postgres:15
+/odoo-sipanel RestartCount=0 StartedAt=2026-09-20T06:40:08.986387315Z
+/odoo-db RestartCount=0 StartedAt=2026-07-16T14:59:27.234504744Z
+## target db
+sipanel|151 MB
+## RAM
+               total        used        free      shared  buff/cache   available
+Mem:            1970        1321         111          33         843         648
+Swap:           4095        2797        1298
+## Taleghani
+2|amirmousa1983@gmail.com|t|Taleghani|1
+## analytic plans
+80|{"en_US": "SIPANEL System"}||
+81|{"en_US": "SIPANEL Activity"}||
+## analytic accounts in plans 80/81
+1317|80|{"en_US": "SIPANEL-STEP2C-20260922T065650Z System"}|f|1
+1953|80|{"en_US": "SIPANEL-STEP2CH-20260922T083014Z System"}|f|1
+249|81|{"en_US": "SIPANEL-CUSTOMER-OUTPUT-CHECK-20260920T060817Z ACT-MFG INTERNAL-MARKER-ANALYTIC-20260920T060817Z"}|f|1
+250|81|{"en_US": "SIPANEL-CUSTOMER-OUTPUT-CHECK-20260920T060817Z ACT-INS INTERNAL-MARKER-ANALYTIC-20260920T060817Z"}|f|1
+1318|81|{"en_US": "SIPANEL-STEP2C-20260922T065650Z Activity INS"}|f|1
+1319|81|{"en_US": "SIPANEL-STEP2C-20260922T065650Z Activity MFG"}|f|1
+1954|81|{"en_US": "SIPANEL-STEP2CH-20260922T083014Z Activity"}|f|1
+2130|81|{"en_US": "SIPANEL-STEP2CCO-20260922T105454Z Activity"}|f|1
+2309|81|{"en_US": "SIPANEL-STEP2CCOH-20260923T051626Z Activity"}|f|1
+## sipanel config parameters
+sipanel_scope.activity_plan_id=81
+sipanel_scope.company_currency_only=True
+sipanel_scope.default_project_id=55
+sipanel_scope.release_retry_count=3
+sipanel_scope.stock_issue_picking_type_id=91
+sipanel_scope.system_plan_id=80

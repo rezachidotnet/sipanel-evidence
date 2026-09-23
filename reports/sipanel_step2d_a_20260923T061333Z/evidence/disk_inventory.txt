@@ -1,0 +1,117 @@
+# Disk inventory 20260923T061333Z (read-only; nothing deleted)
+## df
+Filesystem     1048576-blocks  Used Available Capacity Mounted on
+/dev/vda3               28285 25124      1923      93% /
+
+## top-level (MB)
+7295	/var
+4587	/opt
+4097	/swapfile
+3776	/home
+2390	/usr
+2227	/tmp
+137	/root
+117	/boot
+
+## /tmp (MB)
+612	/tmp/claude-1000
+78	/tmp/ahanassa-backup-20260830T174445Z
+78	/tmp/ahanassa-backup-20260830T171825Z
+78	/tmp/ahanassa-backup-20260830T171705Z
+78	/tmp/ahanassa-backup-20260830T171012Z
+78	/tmp/ahanassa-backup-20260830T143415Z
+78	/tmp/ahanassa-backup-20260830T143018Z
+78	/tmp/ahanassa-backup-20260830T141234Z
+78	/tmp/ahanassa-backup-20260830T141114Z
+78	/tmp/ahanassa-backup-20260830T140708Z
+78	/tmp/ahanassa-backup-20260830T134533Z
+78	/tmp/ahanassa-backup-20260830T133720Z
+78	/tmp/ahanassa-backup-20260830T133659Z
+47	/tmp/phase6g11.ahlhcj
+21	/tmp/ahanassa-phase6f2-purchase-core-pre-20260831T043122Z.tar.gz
+21	/tmp/ahanassa-phase6f2-purchase-core-post-20260831T043648Z.tar.gz
+21	/tmp/ahanassa-phase6e22-dynamic-policy-pre-20260830T193721Z.tar.gz
+21	/tmp/ahanassa-phase6e22-dynamic-policy-post-20260830T194203Z.tar.gz
+21	/tmp/ahanassa-phase6e21-commercial-policy-pre-20260830T190834Z.tar.gz
+21	/tmp/ahanassa-phase6e21-commercial-policy-post-20260830T191119Z.tar.gz
+
+## /var (MB)
+1456	/var/lib/docker/volumes
+320	/var/log
+143	/var/cache
+137	/var/lib/apt
+92	/var/lib/docker/containers
+1	/var/lib/docker/tmp
+1	/var/lib/docker/swarm
+1	/var/lib/docker/runtimes
+
+## /opt/odoo (MB)
+2486	/opt/odoo/data
+1085	/opt/odoo/postgres
+922	/opt/odoo/backups
+55	/opt/odoo/addons
+20	/opt/odoo/data-shahbazi
+20	/opt/odoo/addons_restore
+2	/opt/odoo/worktrees
+1	/opt/odoo/test-tools
+1374	/opt/odoo/data/backups
+1097	/opt/odoo/data/filestore
+2	/opt/odoo/data/sessions
+1	/opt/odoo/data/addons
+
+## /opt/odoo/backups (MB)
+112	/opt/odoo/backups/sipanel-pre-2ccloseouthard-20260923T051626Z
+112	/opt/odoo/backups/sipanel-pre-2ccloseout-20260922T111500Z
+111	/opt/odoo/backups/sipanel-pre-2chardening-20260922T083014Z
+110	/opt/odoo/backups/sipanel-pre-translation-20260921T013000Z
+110	/opt/odoo/backups/sipanel-pre-step2c-20260922T065650Z
+110	/opt/odoo/backups/sipanel-pre-sepbill-20260921T021500Z
+110	/opt/odoo/backups/sipanel-pre-2bhardening-20260922T060000Z
+109	/opt/odoo/backups/sipanel-pre-scope-20260919T164558Z
+24	/opt/odoo/backups/ahanassa-migration-20260821-1644
+18	/opt/odoo/backups/sipanel-before-kanban-fix-20260717-214400.dump
+
+## /home/ubuntu (MB)
+835	/home/ubuntu/ahanassa-phase6g2-hybrid-fulfillment-pre-20260831T101817Z
+783	/home/ubuntu/.nvm
+321	/home/ubuntu/.npm
+308	/home/ubuntu/sipanel_audit
+289	/home/ubuntu/.codex
+288	/home/ubuntu/architecture
+259	/home/ubuntu/odoo-production-backups
+164	/home/ubuntu/ahanassa-phase6g2-hybrid-fulfillment-pre-20260831T101817Z.tar.gz
+164	/home/ubuntu/ahanassa-phase6g2-hybrid-fulfillment-post-20260831T102922Z.tar.gz
+155	/home/ubuntu/.claude
+113	/home/ubuntu/sipanel_odoo_addons
+77	/home/ubuntu/ahanassa-rollback-verify.tUcaun
+9	/home/ubuntu/ahanassa-rfq500-pre-20260901T090729Z.tar.gz
+9	/home/ubuntu/ahanassa-rfq500-post-20260901T090903Z.tar.gz
+
+## docker
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          4         4         5.334GB   5.334GB (100%)
+Containers      11        5         1.207GB   73.73kB (0%)
+Local Volumes   89        0         1.529GB   1.529GB (100%)
+Build Cache     0         0         0B        0B
+dangling volumes: 89
+odoo-custom:19-linkpreview	653997642a6c	3.38GB
+odoo-custom:19-linkpreview-jdatetime-test	653997642a6c	3.38GB
+odoo-custom:19-linkpreview-r2	22ec8c598145	3.42GB
+postgres:15	1b92e7a80c02	633MB
+odoo-sipanel-staging	Exited (0) 7 days ago
+odoo-admin	Exited (137) 3 weeks ago
+odoo-cyansteel	Exited (137) 3 weeks ago
+odoo-cyansanat	Exited (137) 3 weeks ago
+odoo-cyancoat	Exited (137) 3 weeks ago
+odoo-app	Exited (137) 7 weeks ago
+
+## container json logs (MB)
+odoo-sipanel 25
+odoo-db 28
+odoo-ahantorob 28
+odoo-shahbazi 2
+odoo-avizsazeh 3
+
+## journal / apt
+Archived and active journals take up 171.7M in the file system.
+107	/var/cache/apt

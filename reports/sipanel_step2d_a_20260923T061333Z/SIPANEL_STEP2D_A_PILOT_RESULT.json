@@ -1,0 +1,40 @@
+{
+  "step": "2D-A",
+  "run_utc": "20260923T061333Z",
+  "verdict": "BLOCKED",
+  "block_reason": "BLOCKED_DISK_CAPACITY",
+  "target": {"database": "sipanel", "app_container": "odoo-sipanel", "db_container": "odoo-db"},
+  "baseline": {
+    "source_commit": "fce346b93af4da937cb3bcafa4aaca99ef8d1ef5",
+    "evidence_commit": "7dbbd54f8641091712eb9ca500c55bc17eb7a11c",
+    "head_at_start": "7dbbd54f8641091712eb9ca500c55bc17eb7a11c",
+    "installed_tree_matches_repo": true,
+    "module_versions": {
+      "sipanel_commercial_scope_core": "19.0.1.1.0",
+      "sipanel_sale_scope": "19.0.1.2.4",
+      "sipanel_scope_execution": "19.0.1.0.2",
+      "sipanel_scope_costing": "19.0.1.0.0"
+    }
+  },
+  "capacity_gate": {"need_mb": 463, "free_mb": 1923, "min_free_mb": 1500, "margin_mb": 1460, "shortfall_mb": 40, "result": "BLOCKED_BACKUP_CAPACITY"},
+  "recovery_point": {"created": false, "latest_valid": "/opt/odoo/backups/sipanel-pre-2ccloseouthard-20260923T051626Z", "latest_valid_verified": true, "invalid_markers": 0},
+  "modules_upgraded": [],
+  "odoo_sipanel_restarted": false,
+  "restart_count": {"odoo-sipanel": 0, "odoo-db": 0},
+  "disk_mb": {"before": {"used": 25123, "avail": 1924}, "after": {"used": 25123, "avail": 1923}},
+  "role_workflow": "NOT_EXECUTED",
+  "analytic_accounts_created": [],
+  "analytic_accounts_reused": [],
+  "r3_implemented": false,
+  "release_backoff_ms": null,
+  "tests": {"focused": "NOT_EXECUTED", "full_sipanel": "NOT_EXECUTED", "sale_shamsi_report": "NOT_EXECUTED", "recovery_structural": "NOT_EXECUTED"},
+  "live_smoke": "NOT_EXECUTED",
+  "posted_invoices_or_bills": 0,
+  "emails_sent": 0,
+  "purchase_commitments": 0,
+  "real_stock_consumed": 0,
+  "retained_synthetic_records": [],
+  "other_tenants_touched": false,
+  "deleted_to_free_space": [],
+  "step_2d_b_blockers": ["STEP 2D-A not executed (disk capacity)", "missing real vendor prices, BoM quantities, workcenter and labour costs (see readiness register)"]
+}
