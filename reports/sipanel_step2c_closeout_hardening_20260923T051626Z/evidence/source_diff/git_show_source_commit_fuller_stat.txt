@@ -1,0 +1,51 @@
+commit fce346b93af4da937cb3bcafa4aaca99ef8d1ef5
+Author:     SIPANEL Implementation <cyansanatiranian@gmail.com>
+AuthorDate: Wed Sep 23 05:42:27 2026 +0000
+Commit:     SIPANEL Implementation <cyansanatiranian@gmail.com>
+CommitDate: Wed Sep 23 05:42:27 2026 +0000
+
+    SIPANEL STEP 2C-CLOSEOUT-HARDENING 20260923T051626Z: non-sudo seal permission gate, concurrency-safe recovery script
+    
+    1. Sudo action_seal bypass (sipanel_sale_scope 19.0.1.2.4). _check_seal_permission()
+       ran check_access() on self, which is a no-op when env.su is True, so a
+       pre-sudoed recordset (rev.with_user(x).sudo().action_seal(), or
+       order.with_user(x).sudo().action_quotation_sent()) sealed without any
+       permission. Reproduced by 7 new tests on the unfixed source. The gate now
+       captures the initiating uid, rebuilds a NON-sudo environment for it
+       (self.env(user=uid, su=False)) and checks native write access, ACL and record
+       rules on the exact revision, its sale.order and its quotation Scope in that
+       environment; self.env.su, context flags, tokens, import and server-action
+       contexts are never consulted. The only uid that cannot be checked non-sudo is
+       SUPERUSER_ID, because Odoo's Environment.__new__ forces su=True for it - that is
+       Odoo's design, documented and tested, not a SIPANEL bypass (the previous
+       explicit root shortcut was removed). Elevation stays limited to the projection
+       and seal fields; sealed_by_id and the audit actor remain the initiating user;
+       COST_GROUP field security untouched; no group or ACL granted.
+       Tests: tests/test_sales_seal_sudo.py (11): authorised Sales/Estimator/Sales
+       Manager/root paths, seven refused pre-sudoed paths with stored state asserted
+       unchanged, leakage after the authorised seal.
+    
+    2. scripts/sipanel_recovery_point.sh: non-blocking flock on
+       /run/lock/sipanel_recovery_point.lock (RECOVERY_POINT_BUSY, exit 6), atomic
+       DEST reservation with mkdir without -p (DEST_ALREADY_EXISTS, exit 7, nothing
+       written), EXIT trap that marks an incomplete DEST INVALID_DO_NOT_USE.txt and
+       never prints RECOVERY_POINT_OK, never reuses or deletes anything. Capacity rule
+       and restore-instructions mode unchanged. Test hooks RP_SIMULATE/RP_SIM_SRC/
+       RP_SIMULATE_DELAY/RP_FAIL_AT/RP_LOCK make the reservation and locking logic
+       testable in temporary directories: scripts/test_recovery_point_concurrency.py
+       (11 checks: existing destination, two concurrent invocations (same and
+       different DEST), failure before completion, failed destination not reused,
+       unique success, no mixed checksums, no overwrite of a valid point).
+    
+    Full SIPANEL suite 266 tests / 204 methods / 0 failures; sale_shamsi_report 80 / 0;
+    restore structural checks 21/21; concurrency checks 11/11.
+    
+    Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+ addons/sipanel_sale_scope/__manifest__.py          |   2 +-
+ .../models/quote_scope_revision.py                 |  24 +++-
+ addons/sipanel_sale_scope/tests/__init__.py        |   1 +
+ .../tests/test_sales_seal_sudo.py                  | 155 +++++++++++++++++++++
+ scripts/sipanel_recovery_point.sh                  | 115 ++++++++++++---
+ scripts/test_recovery_point_concurrency.py         |  90 ++++++++++++
+ 6 files changed, 356 insertions(+), 31 deletions(-)

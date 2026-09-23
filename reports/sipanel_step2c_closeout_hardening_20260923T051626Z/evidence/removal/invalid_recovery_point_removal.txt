@@ -1,0 +1,30 @@
+== proofs (re-run, directory-scoped fuser) 2026-09-23T05:19:52Z
+realpath=/opt/odoo/backups/sipanel-pre-2ccloseout-20260922T105454Z
+PASS realpath equals authorised path
+PASS basename prefix
+PASS marker exists
+PASS not the valid point /opt/odoo/backups/sipanel-pre-2ccloseout-20260922T111500Z
+PASS not a symlink
+PASS not a mount point
+lsof_lines=0 fuser_processes=0
+PASS no process references the directory or its files
+latest valid recovery point: 20260922T111233Z /opt/odoo/backups/sipanel-pre-2ccloseout-20260922T111500Z
+PASS not the latest valid recovery point
+marker contents: INVALID RECOVERY POINT - DO NOT USE. Written by two concurrent runs of scripts/sipanel_recovery_point.sh at 2026-09-22T11:11Z (operator error in the STEP 2C-CLOSEOUT run); sipanel.dump and the archives may be interleaved. Superseded by sipanel-pre-2ccloseout-20260922T111500Z. Left in place because recovery points are never deleted by the implementation run.
+size_bytes_before=116489664
+df_avail_before=2254774272
+ALL_PROOFS_OK=1
+DELETED exact path /opt/odoo/backups/sipanel-pre-2ccloseout-20260922T105454Z
+df_avail_after=2371297280 bytes_reclaimed=116523008 du_size=116489664
+== valid point intact
+6
+24696190	/opt/odoo/backups/ahanassa-migration-20260821-1644
+18709786	/opt/odoo/backups/sipanel-before-kanban-fix-20260717-214400.dump
+115229870	/opt/odoo/backups/sipanel-pre-2bhardening-20260922T060000Z
+116489304	/opt/odoo/backups/sipanel-pre-2ccloseout-20260922T111500Z
+116198398	/opt/odoo/backups/sipanel-pre-2chardening-20260922T083014Z
+113663953	/opt/odoo/backups/sipanel-pre-scope-20260919T164558Z
+114650657	/opt/odoo/backups/sipanel-pre-sepbill-20260921T021500Z
+115209271	/opt/odoo/backups/sipanel-pre-step2c-20260922T065650Z
+114611255	/opt/odoo/backups/sipanel-pre-translation-20260921T013000Z
+/dev/vda3        28G   25G  2.3G  92% /

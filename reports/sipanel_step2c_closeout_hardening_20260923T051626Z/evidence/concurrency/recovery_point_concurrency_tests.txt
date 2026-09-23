@@ -1,0 +1,12 @@
+PASS successful unique destination
+PASS destination already exists is refused
+PASS no overwrite of a valid recovery point
+PASS two concurrent invocations: exactly one succeeds
+PASS concurrent loser wrote nothing and winner verifies
+PASS concurrent different destinations: loser is BUSY and creates nothing
+PASS failure before completion is marked INVALID without RECOVERY_POINT_OK
+PASS failed run does not delete or touch the valid point
+PASS failed destination is not reused
+PASS no mixed checksums across points
+PASS failure at verification is marked INVALID
+11/11 checks passed

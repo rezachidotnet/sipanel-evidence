@@ -1,0 +1,10 @@
+24696190	/opt/odoo/backups/ahanassa-migration-20260821-1644
+18709786	/opt/odoo/backups/sipanel-before-kanban-fix-20260717-214400.dump
+115229870	/opt/odoo/backups/sipanel-pre-2bhardening-20260922T060000Z
+116489304	/opt/odoo/backups/sipanel-pre-2ccloseout-20260922T111500Z
+116554903	/opt/odoo/backups/sipanel-pre-2ccloseouthard-20260923T051626Z
+116198398	/opt/odoo/backups/sipanel-pre-2chardening-20260922T083014Z
+113663953	/opt/odoo/backups/sipanel-pre-scope-20260919T164558Z
+114650657	/opt/odoo/backups/sipanel-pre-sepbill-20260921T021500Z
+115209271	/opt/odoo/backups/sipanel-pre-step2c-20260922T065650Z
+114611255	/opt/odoo/backups/sipanel-pre-translation-20260921T013000Z

@@ -1,0 +1,453 @@
+diff --git a/addons/sipanel_sale_scope/__manifest__.py b/addons/sipanel_sale_scope/__manifest__.py
+index 0d8ebca..b8783a3 100644
+--- a/addons/sipanel_sale_scope/__manifest__.py
++++ b/addons/sipanel_sale_scope/__manifest__.py
+@@ -2,7 +2,7 @@
+ {
+     'name': 'SIPANEL Sale Scope',
+     'summary': 'Quote Scope, revisions, component snapshots, quantity/cost engine, pricing & margin, notes, seal, optional/provisional governance, portal guard (Slices B + C)',
+-    'version': '19.0.1.2.3',
++    'version': '19.0.1.2.4',
+     'category': 'Sales/Sales',
+     'author': 'SIPANEL',
+     'license': 'LGPL-3',
+diff --git a/addons/sipanel_sale_scope/models/quote_scope_revision.py b/addons/sipanel_sale_scope/models/quote_scope_revision.py
+index 62bb34a..440aca4 100644
+--- a/addons/sipanel_sale_scope/models/quote_scope_revision.py
++++ b/addons/sipanel_sale_scope/models/quote_scope_revision.py
+@@ -343,14 +343,24 @@ class SipanelQuoteScopeRevision(models.Model):
+         return sha256_of(payload)
+ 
+     def _check_seal_permission(self):
+-        """The initiating user must hold native write access on this revision AND on the exact
+-        sale.order (ACL + record rules, e.g. a salesperson's own documents) before the seal
+-        service elevates anything. Evaluated as the real user, never as sudo."""
++        """The initiating user must hold native write access on this revision, on its exact
++        sale.order and on its quotation Scope (ACL + record rules, e.g. a salesperson's own
++        documents) before the seal service elevates anything.
++
++        The check is made in a NON-sudo environment rebuilt for the initiating uid: Odoo's
++        check_access() is a no-op when env.su is True, so a pre-sudoed recordset
++        (rev.with_user(x).sudo().action_seal()) must not be trusted. Neither self.env.su, a
++        context flag, a token nor an import/server-action context is consulted here. The only
++        uid that cannot be checked non-sudo is SUPERUSER_ID (1): Odoo's Environment forces
++        su=True for it (orm/environments.py) - that is Odoo's design, not a SIPANEL bypass.
++        """
+         self.ensure_one()
+-        if self.env.su and self.env.uid == self.env.ref('base.user_root').id:
+-            return True
+-        self.check_access('write')
+-        self.order_id.check_access('write')
++        initiating_uid = self.env.uid
++        plain_env = self.env(user=initiating_uid, su=False)
++        rev = self.with_env(plain_env)
++        rev.check_access('write')
++        rev.order_id.check_access('write')
++        rev.quote_scope_id.check_access('write')
+         return True
+ 
+     def action_seal(self, actor='operator'):
+diff --git a/addons/sipanel_sale_scope/tests/__init__.py b/addons/sipanel_sale_scope/tests/__init__.py
+index 79f9654..1410439 100644
+--- a/addons/sipanel_sale_scope/tests/__init__.py
++++ b/addons/sipanel_sale_scope/tests/__init__.py
+@@ -6,3 +6,4 @@ from . import test_customer_output
+ from . import test_translation_snapshot
+ from . import test_separately_billable
+ from . import test_sales_seal
++from . import test_sales_seal_sudo
+diff --git a/addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py b/addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py
+new file mode 100644
+index 0000000..ba9bbcb
+--- /dev/null
++++ b/addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py
+@@ -0,0 +1,155 @@
++# -*- coding: utf-8 -*-
++"""STEP 2C-CLOSEOUT-HARDENING: the seal service must check the INITIATING uid in a non-sudo
++environment. A pre-sudoed recordset (rev.with_user(x).sudo()) carries env.su=True, under
++which check_access() is a no-op in Odoo - so the permission gate must rebuild a non-sudo
++environment for env.uid before any elevated write."""
++import re
++
++from odoo.exceptions import AccessError
++from odoo.tests import tagged
++
++from odoo.addons.sipanel_commercial_scope_core.models.sipanel_tools import guard_ctx
++
++from .common import SipanelSaleCase
++
++COST_GROUPS = ('sipanel_commercial_scope_core.group_scope_cost_viewer', 'sipanel_sale_scope.group_scope_waiver_finance',
++               'sipanel_scope_execution.group_scope_execution_owner', 'account.group_account_manager', 'sales_team.group_sale_manager')
++
++
++@tagged('post_install', '-at_install', 'sipanel', 'sipanel_sales_seal', 'sipanel_sales_seal_sudo')
++class TestSealPermissionUnderSudo(SipanelSaleCase):
++
++    def _quotation(self, owner=None, qty=85.0):
++        order, scope = self._make_order(qty)
++        scope.current_revision_id.action_generate_note(accept=True)
++        scope.anchor_line_id.write({'price_unit': 12000.0 / qty, 'tax_ids': [(5, 0, 0)]})
++        if owner is not None:
++            order.write({'user_id': owner.id})
++        return order, scope, scope.current_revision_id
++
++    def _snapshot(self, rev):
++        rs = rev.sudo()
++        return (rs.state, rs.sealed_hash, rs.sealed_by_id.id, len(rs.artifact_ids), rs.net_revenue_projection, rs.commercial_projection_json,
++                rs.order_id.state)
++
++    def _assert_refused_and_unchanged(self, rev, fn, msg):
++        before = self._snapshot(rev)
++        with self.assertRaises(AccessError, msg=msg):
++            fn()
++        self.env.invalidate_all()
++        self.assertEqual(self._snapshot(rev), before, f'{msg}: stored state changed after a refused attempt')
++        self.assertEqual(rev.sudo().state, 'working')
++
++    # ------------------------------------------------------------------ A. authorised paths
++    def test_plain_sales_user_seals_own_quotation(self):
++        order, scope, rev = self._quotation(owner=self.sales)
++        for g in COST_GROUPS:
++            self.assertFalse(self.sales.has_group(g), g)
++        order.with_user(self.sales).action_quotation_sent()
++        self.assertEqual(rev.state, 'sent_sealed')
++        self.assertEqual(rev.sealed_by_id, self.sales)
++        ev = self.env['sipanel.scope.audit.event'].sudo().search([('res_model', '=', rev._name), ('res_id', '=', rev.id), ('action', '=', 'seal')])
++        self.assertEqual(ev.actor_user_id, self.sales)
++        self.assertEqual(rev._current_seal_hash(), rev.sealed_hash)
++
++    def test_estimator_and_sales_manager_paths_succeed(self):
++        order, scope, rev = self._quotation()
++        order.with_user(self.estimator).action_quotation_sent()
++        self.assertEqual(rev.state, 'sent_sealed')
++        self.assertEqual(rev.sealed_by_id, self.estimator)
++        order2, scope2, rev2 = self._quotation(owner=self.sales)
++        order2.with_user(self.sales_mgr).action_quotation_sent()
++        self.assertEqual(rev2.state, 'sent_sealed')
++        self.assertEqual(rev2.sealed_by_id, self.sales_mgr)
++        self.assertEqual(rev2._current_seal_hash(), rev2.sealed_hash)
++        order2.with_user(self.sales_mgr).action_confirm()
++        self.assertEqual(rev2.state, 'accepted_sealed')
++
++    def test_root_uid_is_superuser_by_odoo_design(self):
++        """Odoo forces su=True for SUPERUSER_ID in Environment.__new__ (orm/environments.py),
++        so uid 1 is the only uid whose permission check cannot be made non-sudo. No explicit
++        bypass exists in SIPANEL code; this test documents the inherent behaviour."""
++        order, scope, rev = self._quotation()
++        root = self.env.ref('base.user_root')
++        env_root = self.env(user=root.id, su=False)
++        self.assertTrue(env_root.su, 'Odoo itself makes uid 1 superuser')
++        rev.with_user(root).action_seal()
++        self.assertEqual(rev.state, 'sent_sealed')
++        self.assertEqual(rev.sealed_by_id, root)
++
++    # ------------------------------------------------------------------ B. unauthorised pre-sudoed paths
++    def test_unauthorized_user_sudo_action_seal_is_refused(self):
++        order, scope, rev = self._quotation(owner=self.sales)
++        with self.assertRaises(AccessError):
++            rev.with_user(self.plain_user).action_seal()                 # plain, no su
++        self._assert_refused_and_unchanged(rev, lambda: rev.with_user(self.plain_user).sudo().action_seal(),
++                                           'unauthorized_user.sudo().action_seal()')
++        self._assert_refused_and_unchanged(rev, lambda: rev.with_user(self.steward).sudo().action_seal(),
++                                           'steward (no sales rights) sudo action_seal')
++
++    def test_inaccessible_revision_with_sales_sudo_is_refused(self):
++        order, scope, rev = self._quotation()                            # the estimator's order, not the Sales user's
++        self.assertFalse(order.with_user(self.sales).has_access('write'))
++        self._assert_refused_and_unchanged(rev, lambda: rev.with_user(self.sales).sudo().action_seal(),
++                                           'inaccessible_revision.with_user(sales).sudo().action_seal()')
++
++    def test_inaccessible_order_with_sales_sudo_send_is_refused(self):
++        order, scope, rev = self._quotation()
++        self._assert_refused_and_unchanged(rev, lambda: order.with_user(self.sales).sudo().action_quotation_sent(),
++                                           'inaccessible_order.with_user(sales).sudo().action_quotation_sent()')
++        self.assertEqual(order.state, 'draft')
++        self._assert_refused_and_unchanged(rev, lambda: order.with_user(self.sales).sudo().action_quotation_send(),
++                                           'inaccessible_order.with_user(sales).sudo().action_quotation_send()')
++
++    def test_sudo_with_raw_context_flags_is_refused(self):
++        order, scope, rev = self._quotation()
++        self._assert_refused_and_unchanged(
++            rev, lambda: rev.with_user(self.sales).sudo().with_context(sipanel_seal_projection_service=True, sipanel_seal_transaction=True).action_seal(),
++            'sudo + raw context flags')
++
++    def test_sudo_with_guessed_token_is_refused(self):
++        order, scope, rev = self._quotation()
++        self._assert_refused_and_unchanged(
++            rev, lambda: rev.with_user(self.sales).sudo().with_context(sipanel_seal_projection_service=True, sipanel_seal_transaction=True,
++                                                                      sipanel_guard_token='guess').action_seal(),
++            'sudo + guessed token')
++
++    def test_sudo_with_import_context_is_refused(self):
++        order, scope, rev = self._quotation()
++        self._assert_refused_and_unchanged(rev, lambda: rev.with_user(self.sales).sudo().with_context(import_file=True).action_seal(),
++                                           'sudo + import_file')
++        self._assert_refused_and_unchanged(rev, lambda: rev.with_user(self.plain_user).sudo().with_context(import_file=True, active_test=False).action_seal(),
++                                           'sudo + import_file (plain user)')
++
++    def test_sudo_with_genuine_transaction_flag_but_no_service_token_is_refused(self):
++        order, scope, rev = self._quotation()
++        # the genuine seal-transaction flag (real token) opened by unrelated code does not confer the seal permission
++        self._assert_refused_and_unchanged(rev, lambda: rev.with_user(self.sales).sudo().with_context(**guard_ctx('sipanel_seal_transaction')).action_seal(),
++                                           'sudo + genuine seal_transaction flag, no service token, no permission')
++        # and a direct projection write under that flag alone is refused (service token missing)
++        with self.assertRaises(AccessError):
++            rev.sudo().with_context(**guard_ctx('sipanel_seal_transaction')).write({'net_revenue_projection': 1.0})
++        # server-action-like context (active_model/active_id) confers nothing either
++        self._assert_refused_and_unchanged(
++            rev, lambda: rev.with_user(self.plain_user).sudo().with_context(active_model=rev._name, active_id=rev.id, active_ids=rev.ids).action_seal(),
++            'sudo + server action context')
++
++    # ------------------------------------------------------------------ C. leakage after the authorised seal
++    def test_sales_still_cannot_read_protected_fields_and_outputs_stay_clean(self):
++        order, scope, rev = self._quotation(owner=self.sales)
++        order.with_user(self.sales).action_quotation_sent()
++        as_sales = rev.with_user(self.sales)
++        for f in ('net_revenue_projection', 'commercial_projection_json', 'margin_amount', 'margin_percent', 'eligible_cost_total', 'direct_cost_total'):
++            if f == 'commercial_projection_json':
++                continue      # not a COST_GROUP field (anchor line projection); its write is service-only
++            with self.assertRaises(AccessError, msg=f):
++                as_sales.read([f])
++        report = self.env.ref('sale.action_report_saleorder')
++        html = report.with_user(self.sales)._render_qweb_html(report.report_name, order.ids)[0]
++        raw = html.decode() if isinstance(html, bytes) else html
++        text = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', re.sub(r'<(script|style)[^>]*>.*?</\1>', ' ', raw, flags=re.S | re.I)))
++        for token in ('net_revenue', 'Net revenue', 'margin_amount', 'Margin', 'eligible_cost', 'unit_cost', 'Cost'):
++            self.assertNotIn(token, text)
++        self.assertEqual(set(scope.anchor_line_id._sipanel_portal_binding()), {'revision_id', 'seal_hash'})
++        for art in rev.artifact_ids:
++            self.assertFalse(any(t in (art.content_text or '') for t in ('cost', 'margin', 'net_revenue')))
+diff --git a/scripts/sipanel_recovery_point.sh b/scripts/sipanel_recovery_point.sh
+index 344ad47..27e27d7 100755
+--- a/scripts/sipanel_recovery_point.sh
++++ b/scripts/sipanel_recovery_point.sh
+@@ -111,41 +111,110 @@ if [ "${1:-}" = "restore-instructions" ]; then
+   print_restore_instructions "$(sudo realpath -e "$P")"
+   exit 0
+ fi
++# ---------------------------------------------------------------------------------------------
++# Concurrency-safe execution (STEP 2C-CLOSEOUT-HARDENING):
++#   * one non-blocking flock on RP_LOCK serialises recovery operations (second invocation exits 6, RECOVERY_POINT_BUSY);
++#   * DEST is reserved atomically with mkdir WITHOUT -p (an existing DEST exits 7, DEST_ALREADY_EXISTS, nothing written);
++#   * any failure after the reservation marks DEST with INVALID_DO_NOT_USE.txt, never prints RECOVERY_POINT_OK,
++#     never reuses or deletes anything.
++#   Test hooks (never set in production use): RP_SIMULATE=1 replaces docker/sudo work with small simulated artefacts
++#   under a caller-supplied DEST (RP_SIM_SRC = directory holding "sipanel/" and "addons/" trees), RP_SIMULATE_DELAY
++#   sleeps between steps, RP_FAIL_AT=<dump|filestore|addons|verify> injects a failure. See scripts/test_recovery_point_concurrency.py.
++# ---------------------------------------------------------------------------------------------
+ TS=$(date -u +%Y%m%dT%H%M%SZ)
+ DEST=${DEST:-/opt/odoo/backups/sipanel-pre-scope-${TS}}
+ DB=sipanel
+ PGC=odoo-db
+ APPC=odoo-sipanel
+ MIN_FREE_MB=${MIN_FREE_MB:-1500}
++RP_LOCK=${RP_LOCK:-/run/lock/sipanel_recovery_point.lock}
++RP_SIMULATE=${RP_SIMULATE:-0}
++RP_FAIL_AT=${RP_FAIL_AT:-}
++RP_SIMULATE_DELAY=${RP_SIMULATE_DELAY:-0}
++SUDO=sudo
++[ "$RP_SIMULATE" = "1" ] && SUDO=""
++case "$DEST" in /*) ;; *) echo "DEST must be an absolute path: $DEST" >&2; exit 2;; esac
++
++echo "== 0. lock + reservation"
++exec 9>>"$RP_LOCK" || { echo "RECOVERY_POINT_BUSY: cannot open lock file $RP_LOCK" >&2; exit 6; }
++if ! flock -n 9; then
++  echo "RECOVERY_POINT_BUSY: another recovery operation holds $RP_LOCK (pid $(cat "$RP_LOCK" 2>/dev/null || echo ?)); nothing written" >&2
++  exit 6
++fi
++echo $$ >&9 2>/dev/null || true
++if $SUDO test -e "$DEST"; then
++  echo "DEST_ALREADY_EXISTS: $DEST exists; refusing to write into an existing recovery point" >&2
++  exit 7
++fi
++if ! $SUDO mkdir "$DEST" 2>/dev/null; then      # atomic reservation: no -p, fails if it appeared meanwhile
++  echo "DEST_ALREADY_EXISTS: atomic reservation of $DEST failed; nothing written" >&2
++  exit 7
++fi
++COMPLETED=0
++on_exit() {
++  rc=$?
++  if [ "$COMPLETED" != "1" ]; then
++    echo "RECOVERY_POINT_FAILED rc=$rc dest=$DEST (marked INVALID, not deleted, not reused)" >&2
++    printf 'INVALID RECOVERY POINT - DO NOT USE. Creation failed or was interrupted at %s (rc=%s). Nothing here is verified.\n' \
++      "$(date -u +%FT%TZ)" "$rc" | $SUDO tee "$DEST/INVALID_DO_NOT_USE.txt" >/dev/null 2>&1 || true
++  fi
++  exit $rc
++}
++trap on_exit EXIT
++step() {   # test hook: optional delay and injected failure
++  if [ "$RP_SIMULATE" = "1" ]; then
++    [ "$RP_SIMULATE_DELAY" != "0" ] && sleep "$RP_SIMULATE_DELAY"
++    if [ "$RP_FAIL_AT" = "$1" ]; then echo "SIMULATED FAILURE at step $1" >&2; return 1; fi
++  fi
++  return 0
++}
+ 
+ echo "== 1. identity"
+-docker inspect "$APPC" --format 'container={{.Name}} image={{.Image}} status={{.State.Status}}'
+-DBSIZE=$(docker exec "$PGC" psql -U odoo -d postgres -tAc "select pg_database_size('${DB}')")
+-FSSIZE=$(sudo du -sb /opt/odoo/data/filestore/${DB} | cut -f1)
+-ADSIZE=$(du -sb /opt/odoo/addons | cut -f1)
+-NEED=$(( (DBSIZE + FSSIZE + ADSIZE) / 1024 / 1024 ))
+-FREE=$(df -Pm /opt | awk 'NR==2{print $4}')
+-echo "db_bytes=$DBSIZE filestore_bytes=$FSSIZE addons_bytes=$ADSIZE need_mb~=$NEED free_mb=$FREE"
+-if [ $((FREE - NEED)) -lt "$MIN_FREE_MB" ]; then
+-  echo "BLOCKED_BACKUP_CAPACITY: need ~${NEED} MB plus ${MIN_FREE_MB} MB headroom, free ${FREE} MB" >&2
+-  exit 3
++if [ "$RP_SIMULATE" = "1" ]; then
++  SRC=${RP_SIM_SRC:?RP_SIM_SRC required in simulate mode}
++  echo "simulate=1 src=$SRC dest=$DEST"
++else
++  docker inspect "$APPC" --format 'container={{.Name}} image={{.Image}} status={{.State.Status}}'
++  DBSIZE=$(docker exec "$PGC" psql -U odoo -d postgres -tAc "select pg_database_size('${DB}')")
++  FSSIZE=$(sudo du -sb /opt/odoo/data/filestore/${DB} | cut -f1)
++  ADSIZE=$(du -sb /opt/odoo/addons | cut -f1)
++  NEED=$(( (DBSIZE + FSSIZE + ADSIZE) / 1024 / 1024 ))
++  FREE=$(df -Pm /opt | awk 'NR==2{print $4}')
++  echo "db_bytes=$DBSIZE filestore_bytes=$FSSIZE addons_bytes=$ADSIZE need_mb~=$NEED free_mb=$FREE"
++  if [ $((FREE - NEED)) -lt "$MIN_FREE_MB" ]; then
++    echo "BLOCKED_BACKUP_CAPACITY: need ~${NEED} MB plus ${MIN_FREE_MB} MB headroom, free ${FREE} MB" >&2
++    exit 3
++  fi
+ fi
+ 
+ echo "== 2. create $DEST"
+-sudo mkdir -p "$DEST"
+-docker exec "$PGC" pg_dump -U odoo -Fc "$DB" | sudo tee "$DEST/${DB}.dump" > /dev/null
+-sudo tar -C /opt/odoo/data/filestore -czf "$DEST/filestore-${DB}.tar.gz" "$DB"
+-sudo tar -C /opt/odoo -czf "$DEST/addons.tar.gz" addons
+-sudo cp /opt/odoo/odoo-${DB}.conf "$DEST/odoo-${DB}.conf.redacted" && sudo sed -i -E 's/(db_password|admin_passwd)\s*=.*/\1 = <redacted>/' "$DEST/odoo-${DB}.conf.redacted"
+-docker inspect "$APPC" | sudo tee "$DEST/container-inspect.json" > /dev/null
+-docker exec "$PGC" psql -U odoo -d "$DB" -tAc "select name||':'||coalesce(latest_version,'') from ir_module_module where state='installed' order by name" | sudo tee "$DEST/installed_modules.txt" > /dev/null
+-echo "$TS" | sudo tee "$DEST/TIMESTAMP" > /dev/null
++if [ "$RP_SIMULATE" = "1" ]; then
++  step dump;      echo "simulated pg_dump ${TS} $$" > "$DEST/${DB}.dump"
++  step filestore; tar -C "$SRC" -czf "$DEST/filestore-${DB}.tar.gz" sipanel
++  step addons;    tar -C "$SRC" -czf "$DEST/addons.tar.gz" addons
++  printf 'db_password = <redacted>\nadmin_passwd = <redacted>\n' > "$DEST/odoo-${DB}.conf.redacted"
++  echo '{"simulated": true}' > "$DEST/container-inspect.json"
++  echo "base:19.0.1.3" > "$DEST/installed_modules.txt"
++else
++  docker exec "$PGC" pg_dump -U odoo -Fc "$DB" | sudo tee "$DEST/${DB}.dump" > /dev/null
++  sudo tar -C /opt/odoo/data/filestore -czf "$DEST/filestore-${DB}.tar.gz" "$DB"
++  sudo tar -C /opt/odoo -czf "$DEST/addons.tar.gz" addons
++  sudo cp /opt/odoo/odoo-${DB}.conf "$DEST/odoo-${DB}.conf.redacted" && sudo sed -i -E 's/(db_password|admin_passwd)\s*=.*/\1 = <redacted>/' "$DEST/odoo-${DB}.conf.redacted"
++  docker inspect "$APPC" | sudo tee "$DEST/container-inspect.json" > /dev/null
++  docker exec "$PGC" psql -U odoo -d "$DB" -tAc "select name||':'||coalesce(latest_version,'') from ir_module_module where state='installed' order by name" | sudo tee "$DEST/installed_modules.txt" > /dev/null
++fi
++echo "$TS" | $SUDO tee "$DEST/TIMESTAMP" > /dev/null
+ 
+ echo "== 3. verify readability + checksums"
+-sudo pg_restore --list "$DEST/${DB}.dump" > /dev/null 2>&1 || docker run --rm -v "$DEST":/rp postgres:15 pg_restore --list /rp/${DB}.dump > /dev/null
+-sudo tar -tzf "$DEST/filestore-${DB}.tar.gz" > /dev/null
+-sudo tar -tzf "$DEST/addons.tar.gz" > /dev/null
+-(cd "$DEST" && sudo sha256sum ${DB}.dump filestore-${DB}.tar.gz addons.tar.gz installed_modules.txt container-inspect.json odoo-${DB}.conf.redacted | sudo tee SHA256SUMS)
+-sudo chmod -R go-rwx "$DEST"
++step verify
++if [ "$RP_SIMULATE" != "1" ]; then
++  sudo pg_restore --list "$DEST/${DB}.dump" > /dev/null 2>&1 || docker run --rm -v "$DEST":/rp postgres:15 pg_restore --list /rp/${DB}.dump > /dev/null
++fi
++$SUDO tar -tzf "$DEST/filestore-${DB}.tar.gz" > /dev/null
++$SUDO tar -tzf "$DEST/addons.tar.gz" > /dev/null
++(cd "$DEST" && $SUDO sha256sum ${DB}.dump filestore-${DB}.tar.gz addons.tar.gz installed_modules.txt container-inspect.json odoo-${DB}.conf.redacted | $SUDO tee SHA256SUMS)
++(cd "$DEST" && $SUDO sha256sum -c SHA256SUMS > /dev/null)
++$SUDO chmod -R go-rwx "$DEST"
++COMPLETED=1
+ echo "RECOVERY_POINT_OK $DEST"
+ print_restore_instructions "$DEST"
+diff --git a/scripts/test_recovery_point_concurrency.py b/scripts/test_recovery_point_concurrency.py
+new file mode 100755
+index 0000000..ee6567d
+--- /dev/null
++++ b/scripts/test_recovery_point_concurrency.py
+@@ -0,0 +1,90 @@
++#!/usr/bin/env python3
++"""Reservation / locking / failure tests for scripts/sipanel_recovery_point.sh, run entirely in temporary
++directories with RP_SIMULATE=1 (no docker, no sudo, no real backup). Usage: python3 scripts/test_recovery_point_concurrency.py"""
++import hashlib
++import os
++import subprocess
++import sys
++import tempfile
++import time
++
++HERE = os.path.dirname(os.path.abspath(__file__))
++SCRIPT = os.path.join(HERE, 'sipanel_recovery_point.sh')
++ARTEFACTS = ['sipanel.dump', 'filestore-sipanel.tar.gz', 'addons.tar.gz', 'installed_modules.txt', 'container-inspect.json', 'odoo-sipanel.conf.redacted']
++
++
++def run(dest, lock, src, delay=0, fail_at='', wait=True):
++    env = dict(os.environ, DEST=dest, RP_LOCK=lock, RP_SIMULATE='1', RP_SIM_SRC=src, RP_SIMULATE_DELAY=str(delay), RP_FAIL_AT=fail_at)
++    proc = subprocess.Popen(['bash', SCRIPT], env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
++    if not wait:
++        return proc
++    out, _ = proc.communicate()
++    return proc.returncode, out
++
++
++def tree(d):
++    return {f: hashlib.sha256(open(os.path.join(d, f), 'rb').read()).hexdigest() for f in sorted(os.listdir(d))} if os.path.isdir(d) else None
++
++
++def verify_sums(d):
++    sums = dict(line.split('  ', 1)[::-1] for line in open(os.path.join(d, 'SHA256SUMS')).read().splitlines())
++    return set(sums) == set(ARTEFACTS) and all(hashlib.sha256(open(os.path.join(d, f), 'rb').read()).hexdigest() == h for f, h in sums.items())
++
++
++def main():
++    results = {}
++    with tempfile.TemporaryDirectory() as tmp:
++        src = os.path.join(tmp, 'src'); os.makedirs(os.path.join(src, 'sipanel')); os.makedirs(os.path.join(src, 'addons'))
++        open(os.path.join(src, 'sipanel', 'f1'), 'w').write('filestore'); open(os.path.join(src, 'addons', 'a1'), 'w').write('addons')
++        base = os.path.join(tmp, 'backups'); os.makedirs(base)
++        lock = os.path.join(tmp, 'recovery.lock')
++        # 1. successful unique destination
++        d1 = os.path.join(base, 'sipanel-pre-test-1')
++        rc, out = run(d1, lock, src)
++        results['successful unique destination'] = rc == 0 and 'RECOVERY_POINT_OK' in out and verify_sums(d1) and os.path.exists(os.path.join(d1, 'TIMESTAMP')) \
++            and not os.path.exists(os.path.join(d1, 'INVALID_DO_NOT_USE.txt'))
++        snap1 = tree(d1); mtime1 = os.stat(os.path.join(d1, 'SHA256SUMS')).st_mtime
++        # 2. destination already exists: refused, nothing written, valid point untouched
++        rc, out = run(d1, lock, src)
++        results['destination already exists is refused'] = rc == 7 and 'DEST_ALREADY_EXISTS' in out and 'RECOVERY_POINT_OK' not in out
++        results['no overwrite of a valid recovery point'] = tree(d1) == snap1 and os.stat(os.path.join(d1, 'SHA256SUMS')).st_mtime == mtime1
++        # 3. two concurrent invocations, same destination
++        d3 = os.path.join(base, 'sipanel-pre-test-3')
++        pa = run(d3, lock, src, delay=1, wait=False); time.sleep(0.2); pb = run(d3, lock, src, delay=1, wait=False)
++        oa, _ = pa.communicate(); ob, _ = pb.communicate()
++        outs = [(pa.returncode, oa), (pb.returncode, ob)]
++        winners = [o for o in outs if o[0] == 0 and 'RECOVERY_POINT_OK' in o[1]]
++        losers = [o for o in outs if o[0] in (6, 7) and ('RECOVERY_POINT_BUSY' in o[1] or 'DEST_ALREADY_EXISTS' in o[1])]
++        results['two concurrent invocations: exactly one succeeds'] = len(winners) == 1 and len(losers) == 1
++        results['concurrent loser wrote nothing and winner verifies'] = verify_sums(d3) and not os.path.exists(os.path.join(d3, 'INVALID_DO_NOT_USE.txt')) \
++            and all('SIMULATED' not in o[1] for o in losers)
++        # 4. two concurrent invocations, different destinations: the lock serialises them (loser BUSY, its DEST not created)
++        d4a, d4b = os.path.join(base, 'sipanel-pre-test-4a'), os.path.join(base, 'sipanel-pre-test-4b')
++        pa = run(d4a, lock, src, delay=1, wait=False); time.sleep(0.2); pb = run(d4b, lock, src, delay=0, wait=False)
++        oa, _ = pa.communicate(); ob, _ = pb.communicate()
++        results['concurrent different destinations: loser is BUSY and creates nothing'] = pa.returncode == 0 and pb.returncode == 6 and 'RECOVERY_POINT_BUSY' in ob \
++            and not os.path.exists(d4b) and verify_sums(d4a)
++        # 5. failure before completion: no OK, INVALID marker, no SHA256SUMS, earlier valid point untouched
++        d5 = os.path.join(base, 'sipanel-pre-test-5')
++        rc, out = run(d5, lock, src, fail_at='filestore')
++        results['failure before completion is marked INVALID without RECOVERY_POINT_OK'] = rc != 0 and 'RECOVERY_POINT_OK' not in out \
++            and 'RECOVERY_POINT_FAILED' in out and os.path.exists(os.path.join(d5, 'INVALID_DO_NOT_USE.txt')) and not os.path.exists(os.path.join(d5, 'SHA256SUMS'))
++        results['failed run does not delete or touch the valid point'] = tree(d1) == snap1 and os.path.isdir(d5)
++        # 5b. the failed directory is never silently reused
++        rc, out = run(d5, lock, src)
++        results['failed destination is not reused'] = rc == 7 and 'DEST_ALREADY_EXISTS' in out and not os.path.exists(os.path.join(d5, 'SHA256SUMS'))
++        # 6. no mixed checksums: every SHA256SUMS references exactly its own six artefacts and verifies
++        results['no mixed checksums across points'] = all(verify_sums(d) for d in (d1, d3, d4a)) and \
++            open(os.path.join(d1, 'sipanel.dump')).read() != open(os.path.join(d3, 'sipanel.dump')).read()
++        # 7. failure at verify keeps the marker too
++        d7 = os.path.join(base, 'sipanel-pre-test-7')
++        rc, out = run(d7, lock, src, fail_at='verify')
++        results['failure at verification is marked INVALID'] = rc != 0 and os.path.exists(os.path.join(d7, 'INVALID_DO_NOT_USE.txt')) and 'RECOVERY_POINT_OK' not in out
++    for k, v in results.items():
++        print(('PASS' if v else 'FAIL'), k)
++    print(f"{sum(results.values())}/{len(results)} checks passed")
++    return 0 if all(results.values()) else 1
++
++
++if __name__ == '__main__':
++    sys.exit(main())

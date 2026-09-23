@@ -1,0 +1,6 @@
+M	addons/sipanel_sale_scope/__manifest__.py
+M	addons/sipanel_sale_scope/models/quote_scope_revision.py
+M	addons/sipanel_sale_scope/tests/__init__.py
+A	addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py
+M	scripts/sipanel_recovery_point.sh
+A	scripts/test_recovery_point_concurrency.py

@@ -1,0 +1,19 @@
+sipanel.dump: OK
+filestore-sipanel.tar.gz: OK
+addons.tar.gz: OK
+installed_modules.txt: OK
+container-inspect.json: OK
+odoo-sipanel.conf.redacted: OK
+20260923T052249Z
+total 113864
+drwx------  2 root root     4096 Sep 23 05:23 .
+drwxr-xr-x 11 root root     4096 Sep 23 05:22 ..
+-rw-------  1 root root      520 Sep 23 05:23 SHA256SUMS
+-rw-------  1 root root       17 Sep 23 05:23 TIMESTAMP
+-rw-------  1 root root 39287397 Sep 23 05:23 addons.tar.gz
+-rw-------  1 root root    10127 Sep 23 05:23 container-inspect.json
+-rw-------  1 root root 55006059 Sep 23 05:23 filestore-sipanel.tar.gz
+-rw-------  1 root root     4904 Sep 23 05:23 installed_modules.txt
+-r--------  1 root root      434 Sep 23 05:23 odoo-sipanel.conf.redacted
+-rw-------  1 root root 22245445 Sep 23 05:23 sipanel.dump
+NO_INVALID_MARKER

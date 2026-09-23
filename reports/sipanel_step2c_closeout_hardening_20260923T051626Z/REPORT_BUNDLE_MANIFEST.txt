@@ -1,0 +1,71 @@
+SIPANEL STEP 2C-CLOSEOUT-HARDENING — BUNDLE MANIFEST
+Run:                    sipanel_step2c_closeout_hardening_20260923T051626Z
+Generated (UTC):        2026-09-23T05:44:28Z
+Verdict:                PASS — sudo action_seal bypass reproduced (7/11 before) and closed (11/11 after, 8/8 live probes refused);
+                        concurrency-safe recovery script (11/11); invalid recovery point removed (116,523,008 bytes)
+Target:                 database sipanel, container odoo-sipanel (RestartCount=0, no restart; /web/health 200); odoo-db not restarted
+Other tenants:          NOT touched (avizsazeh, shahbazi, ahantorob; container states identical before/after)
+
+COMMITS
+  baseline: 53268efc171c4cdb9640ade494678b601347e1ef (2C-HARDENING src), 6709dcfebb40348af5831fab13f2679b28a94d41 (2C-HARDENING evidence),
+            84748b22ac43f6a292a5f8662d139aeca63fa653 (2C-CLOSEOUT src)
+  STEP 2C-CLOSEOUT-HARDENING source:    fce346b93af4da937cb3bcafa4aaca99ef8d1ef5   <- HEAD when this bundle was built
+  STEP 2C-CLOSEOUT-HARDENING evidence:  created AFTER this bundle; given in the final response
+
+MODULES
+  sipanel_commercial_scope_core    19.0.1.1.0   tree-sha256(relative) dbcd7e73e4b1d507b703778c595beb6100bdd9e92215e5ec9a9199763ad17570  installed=IDENTICAL
+  sipanel_sale_scope               19.0.1.2.4   tree-sha256(relative) d9a97b1285a298550484c818c4ce1433f878383ac247cbac89bfacbbcd419290  installed=IDENTICAL
+  sipanel_scope_execution          19.0.1.0.2   tree-sha256(relative) 4545190ef2de37a33a5addc96008e59ba26b6715e0e56b7701882b679535e6d6  installed=IDENTICAL
+  sipanel_scope_costing            19.0.1.0.0   tree-sha256(relative) 2097e00f23deae00eb4eb1763c83ee62e6fadd85cede82596bc25e6798557c1a  installed=IDENTICAL
+  upgraded: sipanel_sale_scope (19.0.1.2.3 -> 19.0.1.2.4); sale_shamsi_report HEAD 5680013, clean
+
+RECOVERY POINT   /opt/odoo/backups/sipanel-pre-2ccloseouthard-20260923T051626Z (verified; NOT in this bundle); none pruned except the authorised
+                 invalid directory sipanel-pre-2ccloseout-20260922T105454Z (8 proofs, 116,523,008 bytes reclaimed)
+TESTS            sudo tag 11/0 (7/11 failed before) | sales-seal all 22/0 | SIPANEL 266/0 (52+167+5+42; 204 methods) | sale_shamsi_report 80/0 | restore structural 21/21 | concurrency 11/11
+PILOT            SI-26/2544 sealed by a plain Sales user; 8 pre-sudo probes on SI-26/2545 refused, state unchanged; no leak; no release/invoice/email
+SYNTHETIC DATA   2 active synthetic technical contacts retained (2361, 3483); everything else 0 active
+
+FILES
+  SIPANEL_INVALID_RECOVERY_POINT_REMOVAL_REPORT.md                                    1800 bytes
+  SIPANEL_RECOVERY_POINT_CONCURRENCY_REPORT.md                                        3159 bytes
+  SIPANEL_STEP2C_CLOSEOUT_HARDENING_PILOT_RESULT.json                                 6533 bytes
+  SIPANEL_STEP2C_CLOSEOUT_HARDENING_REPORT.md                                         5797 bytes
+  SIPANEL_STEP2C_CLOSEOUT_HARDENING_TEST_RESULTS.md                                   1949 bytes
+  SIPANEL_STEP2D_FINAL_READINESS_REPORT.md                                            2004 bytes
+  SIPANEL_SUDO_SEAL_BYPASS_SECURITY_REPORT.md                                         5397 bytes
+  evidence/acl/ir_model_access_scope_models.txt                                       1934 bytes
+  evidence/acl/ir_rule_sale_and_scope.txt                                             3631 bytes
+  evidence/acl/protected_fields_groups.txt                                            2546 bytes
+  evidence/acl/taleghani_uid2_groups_after.txt                                         442 bytes
+  evidence/acl/taleghani_uid2_groups_after_hardening.txt                               442 bytes
+  evidence/acl/taleghani_uid2_groups_before.txt                                        442 bytes
+  evidence/concurrency/recovery_point_concurrency_tests.txt                            581 bytes
+  evidence/docker/all_containers_after.txt                                            1301 bytes
+  evidence/docker/containers_after.txt                                                 421 bytes
+  evidence/logs/df_after.txt                                                            97 bytes
+  evidence/logs/pg_stat_database_after.txt                                             308 bytes
+  evidence/logs/preflight.txt                                                         4962 bytes
+  evidence/logs/recovery_point_SHA256SUMS.txt                                          520 bytes
+  evidence/logs/recovery_point_closeout_hardening.log                                 6426 bytes
+  evidence/logs/recovery_point_verification.txt                                        806 bytes
+  evidence/logs/recovery_points_after.txt                                              673 bytes
+  evidence/logs/restore_instructions_output.txt                                       5449 bytes
+  evidence/logs/restore_instructions_structural_checks.txt                              20 bytes
+  evidence/logs/test_sales_seal_all_after_fix.log                                    24612 bytes
+  evidence/logs/test_sales_seal_sudo_after_fix.log                                   15837 bytes
+  evidence/logs/test_sales_seal_sudo_before_fix.log                                  23007 bytes
+  evidence/logs/test_shamsi_closeout_hardening.log                                   17468 bytes
+  evidence/logs/test_sipanel_full_final.log                                         104074 bytes
+  evidence/pilot/pilot_closeout_hardening.json                                        3616 bytes
+  evidence/removal/invalid_recovery_point_removal.txt                                 1823 bytes
+  evidence/scripts/build_bundle_2ccoh.sh                                              5456 bytes
+  evidence/scripts/pilot_closeout_hardening.py                                       12633 bytes
+  evidence/source_diff/diff_name_status.txt                                            288 bytes
+  evidence/source_diff/git_show_source_commit_fuller_stat.txt                         3401 bytes
+  evidence/source_diff/quote_scope_revision_after.py                                 30370 bytes
+  evidence/source_diff/quote_scope_revision_before_84748b2.py                        29756 bytes
+  evidence/source_diff/sipanel_recovery_point_after.sh                               12543 bytes
+  evidence/source_diff/sipanel_recovery_point_before_84748b2.sh                       9098 bytes
+  evidence/source_diff/sipanel_step2c_closeout_hardening.diff                        27716 bytes
+
+EXCLUDED: database dumps, filestore, private keys, credentials, unredacted configuration, access tokens, customer secrets.

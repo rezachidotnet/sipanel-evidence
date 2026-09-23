@@ -1,0 +1,308 @@
+{
+ "run": "sipanel_step2c_closeout_hardening_20260923T051626Z",
+ "generated_utc": "2026-09-23T05:44:02Z",
+ "verdict": "PASS",
+ "commits": {
+  "baseline": [
+   "53268efc171c4cdb9640ade494678b601347e1ef",
+   "6709dcfebb40348af5831fab13f2679b28a94d41",
+   "84748b22ac43f6a292a5f8662d139aeca63fa653"
+  ],
+  "source": "fce346b93af4da937cb3bcafa4aaca99ef8d1ef5",
+  "evidence": "created after this file (final response)"
+ },
+ "modules": {
+  "sipanel_commercial_scope_core": "19.0.1.1.0",
+  "sipanel_sale_scope": "19.0.1.2.4",
+  "sipanel_scope_execution": "19.0.1.0.2",
+  "sipanel_scope_costing": "19.0.1.0.0"
+ },
+ "modules_upgraded": [
+  "sipanel_sale_scope"
+ ],
+ "restart": false,
+ "security": {
+  "bypass_before_fix": "7/11 new tests failed: pre-sudoed action_seal / action_quotation_sent sealed without permission",
+  "after_fix": "11/11 pass; 8/8 live pre-sudo probes refused with state unchanged"
+ },
+ "recovery_point": {
+  "concurrency_tests": "11/11",
+  "new_valid": "/opt/odoo/backups/sipanel-pre-2ccloseouthard-20260923T051626Z",
+  "invalid_removed": "/opt/odoo/backups/sipanel-pre-2ccloseout-20260922T105454Z",
+  "bytes_reclaimed": 116523008
+ },
+ "disk": {
+  "avail_bytes_start": 2254901248,
+  "avail_bytes_after_removal": 2371297280,
+  "end": "2.1 G free (93 %)"
+ },
+ "tests": {
+  "sudo_tag_before": {
+   "methods": 11,
+   "failures": 7
+  },
+  "sudo_tag_after": {
+   "methods": 11,
+   "failures": 0
+  },
+  "sales_seal_all": {
+   "methods": 22,
+   "failures": 0
+  },
+  "sipanel_full": {
+   "stats_total": 266,
+   "methods": 204,
+   "failures": 0
+  },
+  "sale_shamsi_report": {
+   "tests": 80,
+   "failures": 0
+  },
+  "restore_structural": "21/21",
+  "concurrency": "11/11"
+ },
+ "pilot": {
+  "prefix": "SIPANEL-STEP2CCOH-20260923T051626Z",
+  "ids": {
+   "sales_user": [
+    2064,
+    "SIPANEL-STEP2CH-20260922T083014Z-sales",
+    [
+     "Role / User",
+     "SIPANEL Commercial Scope / Scope Sales",
+     "Sales / User: Own Documents Only"
+    ]
+   ],
+   "plain_user": [
+    1376,
+    "SIPANEL-STEP2C-20260922T065650Z-exec",
+    [
+     "Role / User"
+    ]
+   ],
+   "activity": 2309,
+   "products": {
+    "anchor": 4021,
+    "bracket": 4022,
+    "labour": 4023
+   },
+   "master": 930,
+   "version": 1118,
+   "customer": 4098,
+   "order_A": [
+    2544,
+    "SI-26/2544",
+    "SIPANEL-STEP2CH-20260922T083014Z-sales"
+   ],
+   "order_B": [
+    2545,
+    "SI-26/2545",
+    "amirmousa1983@gmail.com"
+   ],
+   "revision_A": 2522,
+   "revision_B": 2523
+  },
+  "refused_pre_sudo_probes": {
+   "probes": [
+    [
+     "B.with_user(sales).sudo().action_seal()",
+     "refused AccessError",
+     "state unchanged"
+    ],
+    [
+     "B order.with_user(sales).sudo().action_quotation_sent()",
+     "refused AccessError",
+     "state unchanged"
+    ],
+    [
+     "B.with_user(plain).sudo().action_seal()",
+     "refused AccessError",
+     "state unchanged"
+    ],
+    [
+     "B.with_user(sales).sudo() + raw flags",
+     "refused AccessError",
+     "state unchanged"
+    ],
+    [
+     "B.with_user(sales).sudo() + guessed token",
+     "refused AccessError",
+     "state unchanged"
+    ],
+    [
+     "B.with_user(sales).sudo() + import_file",
+     "refused AccessError",
+     "state unchanged"
+    ],
+    [
+     "B.with_user(sales).sudo() + genuine seal_transaction flag",
+     "refused AccessError",
+     "state unchanged"
+    ],
+    [
+     "B plain (no sudo) sales action_seal",
+     "refused AccessError",
+     "state unchanged"
+    ]
+   ],
+   "all_refused_and_unchanged": true,
+   "B_revision_state": "working"
+  },
+  "seal_send_A": {
+   "result": "sealed by the Sales user",
+   "order_state": "sent",
+   "revision_state": "sent_sealed",
+   "sealed_hash": "e634c6214c886157d2ace10713de3cfcc1d7ac8f8c5eae0de1e27ec580dfe48a",
+   "sealed_by": "SIPANEL-STEP2CH-20260922T083014Z-sales",
+   "audit_seal_actor": [
+    "SIPANEL-STEP2CH-20260922T083014Z-sales"
+   ],
+   "checksum_valid_now": true,
+   "net_revenue_projection_sudo": 25000000.0,
+   "anchor_subtotal": 25000000.0,
+   "artifacts": [
+    "pdf",
+    "text"
+   ]
+  },
+  "leakage": {
+   "field_reads": [
+    [
+     "net_revenue_projection",
+     "refused"
+    ],
+    [
+     "margin_amount",
+     "refused"
+    ],
+    [
+     "eligible_cost_total",
+     "refused"
+    ]
+   ],
+   "pdf_html_tokens": {
+    "net_revenue": false,
+    "Net revenue": false,
+    "margin_amount": false,
+    "Margin": false,
+    "eligible_cost": false,
+    "unit_cost": false,
+    "Cost": false
+   },
+   "any_leak": false,
+   "portal_binding_keys": [
+    "revision_id",
+    "seal_hash"
+   ],
+   "artifact_text_has_cost_tokens": false
+  },
+  "no_release": 0,
+  "counters_before": {
+   "mail_mail": 36,
+   "posted_moves": 0,
+   "done_stock_moves": 10,
+   "purchase_orders": 7,
+   "batches": 14,
+   "demands": 35,
+   "analytic_lines": 2
+  },
+  "counters_after": {
+   "mail_mail": 36,
+   "posted_moves": 0,
+   "done_stock_moves": 10,
+   "purchase_orders": 7,
+   "batches": 14,
+   "demands": 35,
+   "analytic_lines": 2
+  }
+ },
+ "cleanup": {
+  "orders": [
+   [
+    2544,
+    "SI-26/2544",
+    "cancel"
+   ],
+   [
+    2545,
+    "SI-26/2545",
+    "cancel"
+   ]
+  ],
+  "archived": {
+   "quote scopes": [
+    2340,
+    2339
+   ],
+   "master": 930,
+   "version (released, retained)": 1118,
+   "products": [
+    4021,
+    4023,
+    4022
+   ],
+   "customer": 4098,
+   "activity account": 2309,
+   "users re-archived": [
+    2064,
+    1376
+   ]
+  },
+  "retained": {
+   "revisions": [
+    [
+     2523,
+     "working"
+    ],
+    [
+     2522,
+     "sent_sealed"
+    ]
+   ],
+   "artifacts": [
+    2450,
+    2449
+   ],
+   "audit events (this pilot)": 6
+  },
+  "active_leftovers": {
+   "orders not cancelled": 0,
+   "quote scopes": 0,
+   "masters": 0,
+   "products": 0,
+   "partners": 0,
+   "analytic accounts": 0,
+   "users active": 0,
+   "invoices": 0,
+   "pickings": 0
+  },
+  "technical_contacts_active": [
+   [
+    2361,
+    "[ARCHIVED SYNTHETIC USER] SIPANEL-STEP2C-20260922T065650Z Execution Owner"
+   ],
+   [
+    3483,
+    "[ARCHIVED SYNTHETIC USER] SIPANEL-STEP2CH-20260922T083014Z Sales User"
+   ]
+  ],
+  "counters_final": {
+   "mail_mail": 36,
+   "posted_moves": 0,
+   "done_stock_moves": 10,
+   "purchase_orders": 7,
+   "batches": 14,
+   "demands": 35,
+   "analytic_lines": 2
+  }
+ },
+ "statement_active_synthetic_records": "2 active synthetic technical contacts retained (partners 2361 and 3483); all other synthetic records: 0 active",
+ "invoices_posted": 0,
+ "bills_posted": 0,
+ "emails_sent": 0,
+ "supplier_commitments": 0,
+ "stock_movements": 0,
+ "project_costs": 0,
+ "execution_releases": 0,
+ "other_tenants_touched": false
+}
