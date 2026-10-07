@@ -1,0 +1,246 @@
+2026-09-22 07:18:18,710 2169 INFO ? odoo: Odoo version 19.0-20260528 
+2026-09-22 07:18:18,711 2169 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-22 07:18:18,712 2169 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-22 07:18:18,712 2169 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-09-22 07:18:19,682 2169 WARNING ? odoo.service.server: Unit testing in workers mode could fail; use --workers 0. 
+2026-09-22 07:18:19,817 2169 INFO sipanel odoo.tests.common: Importing test framework 
+2026-09-22 07:18:20,427 2169 INFO sipanel odoo.modules.loading: loading 1 modules... 
+2026-09-22 07:18:20,441 2169 INFO sipanel odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-22 07:18:20,529 2169 INFO sipanel odoo.modules.loading: updating modules list 
+2026-09-22 07:18:20,537 2169 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-22 07:18:26,523 2169 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['SIPANEL Sale Scope', 'SIPANEL Scope Execution'] to user __system__ #1 via n/a 
+2026-09-22 07:18:26,524 2169 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['SIPANEL Sale Scope', 'SIPANEL Scope Execution'] to user __system__ #1 via n/a 
+2026-09-22 07:18:29,586 2169 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-22 07:18:29,888 2169 INFO sipanel odoo.modules.loading: loading 200 modules... 
+2026-09-22 07:18:34,418 2169 INFO sipanel odoo.modules.loading: Loading module sipanel_sale_scope (180/200) 
+2026-09-22 07:18:35,458 2169 INFO sipanel odoo.registry: module sipanel_sale_scope: creating or updating database tables 
+2026-09-22 07:18:36,548 2169 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_security.xml 
+2026-09-22 07:18:36,830 2169 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/ir.model.access.csv 
+2026-09-22 07:18:38,868 2169 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_record_rules.xml 
+2026-09-22 07:18:38,884 2169 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/add_scope_views.xml 
+2026-09-22 07:18:38,973 2169 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/refresh_cost_views.xml 
+2026-09-22 07:18:39,021 2169 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/split_move_views.xml 
+2026-09-22 07:18:39,058 2169 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/apply_price_views.xml 
+2026-09-22 07:18:39,089 2169 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/regenerate_note_views.xml 
+2026-09-22 07:18:39,118 2169 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/treatment_transition_views.xml 
+2026-09-22 07:18:39,157 2169 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/replace_recipe_views.xml 
+2026-09-22 07:18:39,200 2169 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_views.xml 
+2026-09-22 07:18:39,297 2169 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_revision_views.xml 
+2026-09-22 07:18:39,377 2169 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_component_views.xml 
+2026-09-22 07:18:39,410 2169 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/waiver_views.xml 
+2026-09-22 07:18:39,461 2169 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_order_views.xml 
+2026-09-22 07:18:39,794 2169 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_portal_templates.xml 
+2026-09-22 07:18:39,847 2169 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/menus.xml 
+2026-09-22 07:18:39,939 2169 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language fa_IR 
+2026-09-22 07:18:39,949 2169 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language ru_RU 
+2026-09-22 07:18:40,783 2169 INFO sipanel odoo.modules.loading: Module sipanel_sale_scope loaded in 6.36s, 676 queries (+676 other) 
+2026-09-22 07:18:40,993 2169 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_execution (198/200) 
+2026-09-22 07:18:41,472 2169 INFO sipanel odoo.registry: module sipanel_scope_execution: creating or updating database tables 
+2026-09-22 07:18:42,054 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_security.xml 
+2026-09-22 07:18:42,115 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/ir.model.access.csv 
+2026-09-22 07:18:42,209 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_record_rules.xml 
+2026-09-22 07:18:42,219 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/data/owner_rules.xml 
+2026-09-22 07:18:42,231 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/owner_rule_views.xml 
+2026-09-22 07:18:42,261 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/execution_views.xml 
+2026-09-22 07:18:42,389 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/sale_order_views.xml 
+2026-09-22 07:18:42,779 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/res_config_settings_views.xml 
+2026-09-22 07:18:43,341 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/menus.xml 
+2026-09-22 07:18:43,399 2169 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language fa_IR 
+2026-09-22 07:18:43,404 2169 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language ru_RU 
+2026-09-22 07:18:43,545 2169 INFO sipanel odoo.modules.loading: Module sipanel_scope_execution loaded in 2.55s, 499 queries (+499 other) 
+2026-09-22 07:18:43,549 2169 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_costing (200/200) 
+2026-09-22 07:18:43,641 2169 INFO sipanel odoo.registry: module sipanel_scope_costing: creating or updating database tables 
+2026-09-22 07:18:44,066 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_security.xml 
+2026-09-22 07:18:44,123 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/ir.model.access.csv 
+2026-09-22 07:18:44,193 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_record_rules.xml 
+2026-09-22 07:18:44,203 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/recognition_policies.xml 
+2026-09-22 07:18:44,220 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/ir_cron.xml 
+2026-09-22 07:18:44,231 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/policy_views.xml 
+2026-09-22 07:18:44,274 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/event_views.xml 
+2026-09-22 07:18:44,332 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/variance_views.xml 
+2026-09-22 07:18:44,361 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/sale_order_views.xml 
+2026-09-22 07:18:44,686 2169 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/menus.xml 
+2026-09-22 07:18:44,777 2169 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language fa_IR 
+2026-09-22 07:18:44,785 2169 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language ru_RU 
+2026-09-22 07:18:44,962 2169 INFO sipanel odoo.modules.loading: Module sipanel_scope_costing loaded in 1.41s, 339 queries (+339 other) 
+2026-09-22 07:18:44,962 2169 INFO sipanel odoo.modules.loading: 200 modules loaded in 15.07s, 1514 queries (+1514 extra) 
+2026-09-22 07:18:46,887 2169 INFO sipanel odoo.registry: verifying fields for every extended model 
+2026-09-22 07:18:49,830 2169 INFO sipanel odoo.modules.loading: Modules loaded. 
+2026-09-22 07:18:49,953 2169 INFO sipanel odoo.registry: Registry changed, signaling through the database 
+2026-09-22 07:18:49,962 2169 INFO sipanel odoo.registry: Registry loaded in 30.279s 
+2026-09-22 07:18:49,962 2169 INFO sipanel odoo.service.server: Starting post tests 
+2026-09-22 07:18:51,459 2169 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-22 07:18:52,562 2169 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-22 07:18:53,161 2169 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-22 07:18:57,339 2169 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-22 07:18:57,945 2169 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-22 07:18:58,556 2169 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-22 07:18:59,257 2169 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestAmendmentAfterConfirmation.test_amendment_after_confirmation_neutralises_the_superseded_line ... 
+2026-09-22 07:19:01,804 2169 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-22 07:19:01,804 2169 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestAmendmentAfterConfirmation.test_amendment_after_confirmation_neutralises_the_superseded_line
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 836, in test_amendment_after_confirmation_neutralises_the_superseded_line
+    new_rev = rev.action_amend()
+              ^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 428, in action_amend
+    self._copy_components_to(new, keep_uids=True)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 449, in _copy_components_to
+    id_map[c.id] = Comp.sudo().create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 353, in create
+    recs._sipanel_resync_projection()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 391, in _sipanel_resync_projection
+    revisions._sync_separately_billable_lines()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/separately_billable.py", line 241, in _sync_separately_billable_lines
+    rev._retire_superseded_projection()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/separately_billable.py", line 267, in _retire_superseded_projection
+    line.with_context(**guard_ctx('sipanel_projection')).unlink()
+  File "/usr/lib/python3/dist-packages/odoo/addons/pos_sale/models/sale_order.py", line 239, in unlink
+    return super(SaleOrderLine, self - pos_downpayment_lines).unlink()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/delivery/models/sale_order_line.py", line 30, in unlink
+    return super().unlink()
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/mail/models/models.py", line 49, in unlink
+    result = super().unlink()
+             ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4209, in unlink
+    func(self)
+  File "/usr/lib/python3/dist-packages/odoo/addons/sale/models/sale_order_line.py", line 1456, in _unlink_except_confirmed
+    raise UserError(_("Once a sales order is confirmed, you can't remove one of its lines (we need to track if something gets invoiced or delivered).\n\
+odoo.exceptions.UserError: Once a sales order is confirmed, you can't remove one of its lines (we need to track if something gets invoiced or delivered).
+                Set the quantity to 0 instead.
+ 
+2026-09-22 07:19:01,814 2169 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestAmendmentAfterConfirmation.test_invoiced_superseded_line_is_left_alone_and_flagged ... 
+2026-09-22 07:19:06,475 2169 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-09-22 07:19:06,476 2169 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestAmendmentAfterConfirmation.test_invoiced_superseded_line_is_left_alone_and_flagged
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 857, in test_invoiced_superseded_line_is_left_alone_and_flagged
+    new_rev = rev.action_amend()
+              ^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 428, in action_amend
+    self._copy_components_to(new, keep_uids=True)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 449, in _copy_components_to
+    id_map[c.id] = Comp.sudo().create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 353, in create
+    recs._sipanel_resync_projection()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 391, in _sipanel_resync_projection
+    revisions._sync_separately_billable_lines()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/separately_billable.py", line 241, in _sync_separately_billable_lines
+    rev._retire_superseded_projection()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/separately_billable.py", line 267, in _retire_superseded_projection
+    line.with_context(**guard_ctx('sipanel_projection')).unlink()
+  File "/usr/lib/python3/dist-packages/odoo/addons/pos_sale/models/sale_order.py", line 239, in unlink
+    return super(SaleOrderLine, self - pos_downpayment_lines).unlink()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/delivery/models/sale_order_line.py", line 30, in unlink
+    return super().unlink()
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/mail/models/models.py", line 49, in unlink
+    result = super().unlink()
+             ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4209, in unlink
+    func(self)
+  File "/usr/lib/python3/dist-packages/odoo/addons/sale/models/sale_order_line.py", line 1456, in _unlink_except_confirmed
+    raise UserError(_("Once a sales order is confirmed, you can't remove one of its lines (we need to track if something gets invoiced or delivered).\n\
+odoo.exceptions.UserError: Once a sales order is confirmed, you can't remove one of its lines (we need to track if something gets invoiced or delivered).
+                Set the quantity to 0 instead.
+ 
+2026-09-22 07:19:07,828 2169 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 12 checked, 8 removed 
+2026-09-22 07:19:08,763 2169 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-22 07:19:09,402 2169 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-22 07:19:09,894 2169 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-22 07:19:13,894 2169 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-22 07:19:14,523 2169 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-22 07:19:15,077 2169 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-22 07:19:15,979 2169 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_exec> to <s.s@example.com> 
+2026-09-22 07:19:16,500 2169 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c: Starting TestStep2CDemandOwnership.test_actual_cost_projection_is_idempotent_and_never_double_allocates ... 
+2026-09-22 07:19:19,460 2169 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c: Starting TestStep2CDemandOwnership.test_amendment_after_release_with_generated_lines_keeps_lineage_and_adds_one_delta ... 
+2026-09-22 07:19:22,349 2169 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c: ====================================================================== 
+2026-09-22 07:19:22,349 2169 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c: ERROR: TestStep2CDemandOwnership.test_amendment_after_release_with_generated_lines_keeps_lineage_and_adds_one_delta
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c.py", line 236, in test_amendment_after_release_with_generated_lines_keeps_lineage_and_adds_one_delta
+    new_rev = scope.current_revision_id.action_amend()      # CD-2C-03: allowed on a confirmed order
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 428, in action_amend
+    self._copy_components_to(new, keep_uids=True)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 449, in _copy_components_to
+    id_map[c.id] = Comp.sudo().create(cvals).id
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 353, in create
+    recs._sipanel_resync_projection()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 391, in _sipanel_resync_projection
+    revisions._sync_separately_billable_lines()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/separately_billable.py", line 241, in _sync_separately_billable_lines
+    rev._retire_superseded_projection()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/separately_billable.py", line 267, in _retire_superseded_projection
+    line.with_context(**guard_ctx('sipanel_projection')).unlink()
+  File "/usr/lib/python3/dist-packages/odoo/addons/pos_sale/models/sale_order.py", line 239, in unlink
+    return super(SaleOrderLine, self - pos_downpayment_lines).unlink()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/delivery/models/sale_order_line.py", line 30, in unlink
+    return super().unlink()
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/mail/models/models.py", line 49, in unlink
+    result = super().unlink()
+             ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4209, in unlink
+    func(self)
+  File "/usr/lib/python3/dist-packages/odoo/addons/sale/models/sale_order_line.py", line 1456, in _unlink_except_confirmed
+    raise UserError(_("Once a sales order is confirmed, you can't remove one of its lines (we need to track if something gets invoiced or delivered).\n\
+odoo.exceptions.UserError: Once a sales order is confirmed, you can't remove one of its lines (we need to track if something gets invoiced or delivered).
+                Set the quantity to 0 instead.
+ 
+2026-09-22 07:19:22,358 2169 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c: Starting TestStep2CDemandOwnership.test_bridge_owner_generated_line_yields_one_demand_and_zero_native_demand ... 
+2026-09-22 07:19:25,603 2169 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c: ====================================================================== 
+2026-09-22 07:19:25,604 2169 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c: FAIL: TestStep2CDemandOwnership.test_bridge_owner_generated_line_yields_one_demand_and_zero_native_demand
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c.py", line 91, in test_bridge_owner_generated_line_yields_one_demand_and_zero_native_demand
+    with self.assertRaises(Exception):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: Exception not raised
+ 
+2026-09-22 07:19:25,612 2169 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c: Starting TestStep2CDemandOwnership.test_native_owner_own_line_links_its_own_native_demand_and_creates_none ... 
+2026-09-22 07:19:28,713 2169 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c: ====================================================================== 
+2026-09-22 07:19:28,714 2169 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c: FAIL: TestStep2CDemandOwnership.test_native_owner_own_line_links_its_own_native_demand_and_creates_none
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c.py", line 129, in test_native_owner_own_line_links_its_own_native_demand_and_creates_none
+    self.assertIn(('stock.move', native_move.id, 'native_anchor_covered'), links,
+AssertionError: ('stock.move', 870, 'native_anchor_covered') not found in {('project.task', 2452, 'native_anchor_covered')} : CD-2C-02: the demand links the native demand of ITS OWN generated line
+ 
+2026-09-22 07:19:28,733 2169 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c: Starting TestStep2CDemandOwnership.test_project_system_activity_propagate_to_every_execution_record ... 
+2026-09-22 07:19:31,689 2169 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c: Starting TestStep2CDemandOwnership.test_retry_after_failure_creates_the_full_demand_set_exactly_once ... 
+2026-09-22 07:19:33,714 2169 INFO sipanel odoo.models.unlink: User #1 deleted product.supplierinfo records with IDs: [99] 
+2026-09-22 07:19:34,896 2169 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c: ====================================================================== 
+2026-09-22 07:19:34,897 2169 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c: FAIL: TestStep2CDemandOwnership.test_retry_after_failure_creates_the_full_demand_set_exactly_once
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c.py", line 165, in test_retry_after_failure_creates_the_full_demand_set_exactly_once
+    self.assertEqual(failed2.state, 'failed', 'CD-2C-01: a retry with the cause still present is a failed batch, not an empty release')
+AssertionError: 'released' != 'failed'
+- released
++ failed
+ : CD-2C-01: a retry with the cause still present is a failed batch, not an empty release
+ 
+2026-09-22 07:19:35,781 2169 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 13 checked, 13 removed 
+2026-09-22 07:19:35,785 2169 INFO sipanel odoo.service.server: 8 post-tests in 45.82s, 9083 queries 
+2026-09-22 07:19:35,786 2169 INFO sipanel odoo.tests.stats: sipanel_sale_scope: 4 tests 17.86s 2725 queries 
+2026-09-22 07:19:35,787 2169 INFO sipanel odoo.tests.stats: sipanel_scope_execution: 8 tests 27.95s 6358 queries 
+2026-09-22 07:19:35,788 2169 INFO sipanel odoo.service.server: Stopping workers gracefully 

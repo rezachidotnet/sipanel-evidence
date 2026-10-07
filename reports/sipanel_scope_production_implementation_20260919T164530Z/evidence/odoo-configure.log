@@ -1,0 +1,38 @@
+2026-09-19 17:35:28,330 3506 INFO ? odoo: Odoo version 19.0-20260528 
+2026-09-19 17:35:28,331 3506 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-19 17:35:28,331 3506 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-19 17:35:28,332 3506 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-09-19 17:35:29,104 3506 INFO ? odoo.service.server: Stopping workers gracefully 
+2026-09-19 17:35:29,183 3506 INFO sipanel odoo.modules.loading: loading 1 modules... 
+2026-09-19 17:35:29,197 3506 INFO sipanel odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-19 17:35:29,340 3506 INFO sipanel odoo.modules.loading: loading 200 modules... 
+2026-09-19 17:35:33,006 3506 INFO sipanel odoo.modules.loading: 200 modules loaded in 3.66s, 0 queries (+0 extra) 
+2026-09-19 17:35:34,496 3506 INFO sipanel odoo.modules.loading: Modules loaded. 
+2026-09-19 17:35:34,858 3506 INFO sipanel odoo.registry: Registry loaded in 5.754s 
+2026-09-19 17:35:41,939 3506 WARNING sipanel py.warnings: <string>:86: DeprecationWarning: Since 19.0, read_group is deprecated. Please use _read_group in the backend code or formatted_read_group for a complete formatted result
+  File "/usr/bin/odoo", line 6, in <module>
+    odoo.cli.main()
+  File "/usr/lib/python3/dist-packages/odoo/cli/command.py", line 133, in main
+    command().run(args)
+  File "/usr/lib/python3/dist-packages/odoo/cli/shell.py", line 162, in run
+    self.shell(dbnames[0])
+  File "/usr/lib/python3/dist-packages/odoo/cli/shell.py", line 148, in shell
+    self.console(local_vars)
+  File "/usr/lib/python3/dist-packages/odoo/cli/shell.py", line 82, in console
+    exec(sys.stdin.read(), local_vars)
+  File "<string>", line 86, in <module>
+ 
+2026-09-19 17:35:41,945 3506 WARNING sipanel py.warnings: <string>:87: DeprecationWarning: Since 19.0, read_group is deprecated. Please use _read_group in the backend code or formatted_read_group for a complete formatted result
+  File "/usr/bin/odoo", line 6, in <module>
+    odoo.cli.main()
+  File "/usr/lib/python3/dist-packages/odoo/cli/command.py", line 133, in main
+    command().run(args)
+  File "/usr/lib/python3/dist-packages/odoo/cli/shell.py", line 162, in run
+    self.shell(dbnames[0])
+  File "/usr/lib/python3/dist-packages/odoo/cli/shell.py", line 148, in shell
+    self.console(local_vars)
+  File "/usr/lib/python3/dist-packages/odoo/cli/shell.py", line 82, in console
+    exec(sys.stdin.read(), local_vars)
+  File "<string>", line 87, in <module>
+ 
+SIPANEL_CONFIGURE_OK {"sipanel_scope.system_plan_id": "80:SIPANEL System", "sipanel_scope.activity_plan_id": "81:SIPANEL Activity", "uom_families_added": ["m=length", "cm=length", "km=length", "mm=length", "Units=count", "Dozens=count", "Hours=time", "Days=time", "kg=mass", "g=mass", "Ton=mass", "L=volume", "m³=volume", "m²=area"], "stock_issue_picking_type": "91:SIPANEL Site Issue", "default_project": "55:SIPANEL Execution (default)", "role_holder": "2:Taleghani share=False active=True", "groups_added": ["sipanel_commercial_scope_core.group_scope_steward", "sipanel_commercial_scope_core.group_scope_estimator", "sipanel_commercial_scope_core.group_scope_cost_viewer", "sipanel_sale_scope.group_scope_sales", "sipanel_sale_scope.group_scope_waiver_sales", "sipanel_sale_scope.group_scope_waiver_finance", "sipanel_scope_execution.group_scope_execution_owner", "sipanel_scope_costing.group_scope_finance"], "policies_approved": ["company_equipment v1", "direct_purchase v1", "equipment_service v1", "freight_landed v1", "mfg_labour v1", "mfg_material v1", "return_credit v1", "shared_stock v1", "site_labour v1"], "policies_state": {"approved": 9}}

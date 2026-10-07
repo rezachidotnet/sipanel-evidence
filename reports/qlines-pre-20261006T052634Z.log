@@ -1,0 +1,18 @@
+2026-10-06 05:28:33,811 459 INFO ? odoo: Odoo version 19.0-20260528 
+2026-10-06 05:28:33,812 459 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-10-06 05:28:33,812 459 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-10-06 05:28:33,812 459 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-10-06 05:28:36,587 459 INFO ? odoo.service.server: Stopping workers gracefully 
+2026-10-06 05:28:36,751 459 INFO sipanel_qlines_clone_20261006T052634Z odoo.modules.loading: loading 1 modules... 
+2026-10-06 05:28:36,764 459 INFO sipanel_qlines_clone_20261006T052634Z odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-10-06 05:28:40,239 459 INFO sipanel_qlines_clone_20261006T052634Z odoo.modules.loading: loading 201 modules... 
+2026-10-06 05:28:50,121 459 INFO sipanel_qlines_clone_20261006T052634Z odoo.modules.loading: 201 modules loaded in 9.88s, 0 queries (+0 extra) 
+2026-10-06 05:28:51,654 459 INFO sipanel_qlines_clone_20261006T052634Z odoo.modules.loading: Modules loaded. 
+2026-10-06 05:28:52,020 459 INFO sipanel_qlines_clone_20261006T052634Z odoo.registry: Registry loaded in 15.432s 
+2026-10-06 05:28:52,560 459 INFO sipanel_qlines_clone_20261006T052634Z odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-10-06 05:28:53,412 459 INFO sipanel_qlines_clone_20261006T052634Z odoo.addons.base.models.ir_actions_report: You need to start Odoo with at least two workers to print a pdf version of the reports. 
+2026-10-06 05:28:53,511 459 INFO sipanel_qlines_clone_20261006T052634Z odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2026-10-06 05:28:54,412 459 INFO sipanel_qlines_clone_20261006T052634Z odoo.addons.base.models.ir_actions_report: You need to start Odoo with at least two workers to convert images to html. 
+2026-10-06 05:29:04,385 459 INFO sipanel_qlines_clone_20261006T052634Z odoo.addons.base.models.ir_actions_report: The PDF report has been generated for model: sale.order, records [2547]. 
+2026-10-06 05:29:08,646 459 INFO sipanel_qlines_clone_20261006T052634Z odoo.addons.base.models.ir_actions_report: The PDF report has been generated for model: sale.order, records [2547]. 
+QLINES_PRE {"all_ok": true, "failed": [], "error": ""}

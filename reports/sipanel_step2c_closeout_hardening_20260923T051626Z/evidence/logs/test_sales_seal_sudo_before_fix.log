@@ -1,0 +1,228 @@
+2026-09-23 05:24:02,856 2615 INFO ? odoo: Odoo version 19.0-20260528 
+2026-09-23 05:24:02,856 2615 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-23 05:24:02,856 2615 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-23 05:24:02,856 2615 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-09-23 05:24:04,587 2615 WARNING ? odoo.service.server: Unit testing in workers mode could fail; use --workers 0. 
+2026-09-23 05:24:04,711 2615 INFO sipanel odoo.tests.common: Importing test framework 
+2026-09-23 05:24:04,935 2615 INFO sipanel odoo.modules.loading: loading 1 modules... 
+2026-09-23 05:24:04,953 2615 INFO sipanel odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-09-23 05:24:05,134 2615 INFO sipanel odoo.modules.loading: updating modules list 
+2026-09-23 05:24:05,147 2615 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-23 05:24:12,686 2615 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['SIPANEL Sale Scope'] to user __system__ #1 via n/a 
+2026-09-23 05:24:12,687 2615 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['SIPANEL Sale Scope'] to user __system__ #1 via n/a 
+2026-09-23 05:24:16,115 2615 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-23 05:24:16,426 2615 INFO sipanel odoo.modules.loading: loading 200 modules... 
+2026-09-23 05:24:23,074 2615 INFO sipanel odoo.modules.loading: Loading module sipanel_sale_scope (180/200) 
+2026-09-23 05:24:24,225 2615 INFO sipanel odoo.registry: module sipanel_sale_scope: creating or updating database tables 
+2026-09-23 05:24:25,264 2615 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_security.xml 
+2026-09-23 05:24:25,623 2615 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/ir.model.access.csv 
+2026-09-23 05:24:28,015 2615 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_record_rules.xml 
+2026-09-23 05:24:28,053 2615 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/add_scope_views.xml 
+2026-09-23 05:24:28,267 2615 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/refresh_cost_views.xml 
+2026-09-23 05:24:28,321 2615 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/split_move_views.xml 
+2026-09-23 05:24:28,379 2615 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/apply_price_views.xml 
+2026-09-23 05:24:28,418 2615 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/regenerate_note_views.xml 
+2026-09-23 05:24:28,457 2615 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/treatment_transition_views.xml 
+2026-09-23 05:24:28,510 2615 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/replace_recipe_views.xml 
+2026-09-23 05:24:28,554 2615 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_views.xml 
+2026-09-23 05:24:28,698 2615 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_revision_views.xml 
+2026-09-23 05:24:28,789 2615 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_component_views.xml 
+2026-09-23 05:24:28,844 2615 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/waiver_views.xml 
+2026-09-23 05:24:28,902 2615 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_order_views.xml 
+2026-09-23 05:24:29,271 2615 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_portal_templates.xml 
+2026-09-23 05:24:29,327 2615 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/menus.xml 
+2026-09-23 05:24:29,404 2615 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language fa_IR 
+2026-09-23 05:24:29,415 2615 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language ru_RU 
+2026-09-23 05:24:29,794 2615 INFO sipanel odoo.modules.loading: Module sipanel_sale_scope loaded in 6.72s, 676 queries (+676 other) 
+2026-09-23 05:24:30,135 2615 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_execution (198/200) 
+2026-09-23 05:24:30,672 2615 INFO sipanel odoo.registry: module sipanel_scope_execution: creating or updating database tables 
+2026-09-23 05:24:31,161 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_security.xml 
+2026-09-23 05:24:31,235 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/ir.model.access.csv 
+2026-09-23 05:24:31,373 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_record_rules.xml 
+2026-09-23 05:24:31,387 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/data/owner_rules.xml 
+2026-09-23 05:24:31,407 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/owner_rule_views.xml 
+2026-09-23 05:24:31,452 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/execution_views.xml 
+2026-09-23 05:24:31,575 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/sale_order_views.xml 
+2026-09-23 05:24:31,960 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/res_config_settings_views.xml 
+2026-09-23 05:24:32,545 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/menus.xml 
+2026-09-23 05:24:32,606 2615 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language fa_IR 
+2026-09-23 05:24:32,611 2615 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language ru_RU 
+2026-09-23 05:24:32,794 2615 INFO sipanel odoo.modules.loading: Module sipanel_scope_execution loaded in 2.66s, 499 queries (+499 other) 
+2026-09-23 05:24:32,799 2615 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_costing (200/200) 
+2026-09-23 05:24:32,938 2615 INFO sipanel odoo.registry: module sipanel_scope_costing: creating or updating database tables 
+2026-09-23 05:24:33,524 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_security.xml 
+2026-09-23 05:24:33,607 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/ir.model.access.csv 
+2026-09-23 05:24:33,700 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_record_rules.xml 
+2026-09-23 05:24:33,714 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/recognition_policies.xml 
+2026-09-23 05:24:33,745 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/ir_cron.xml 
+2026-09-23 05:24:33,756 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/policy_views.xml 
+2026-09-23 05:24:33,815 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/event_views.xml 
+2026-09-23 05:24:33,894 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/variance_views.xml 
+2026-09-23 05:24:33,946 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/sale_order_views.xml 
+2026-09-23 05:24:34,372 2615 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/menus.xml 
+2026-09-23 05:24:34,466 2615 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language fa_IR 
+2026-09-23 05:24:34,473 2615 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language ru_RU 
+2026-09-23 05:24:34,685 2615 INFO sipanel odoo.modules.loading: Module sipanel_scope_costing loaded in 1.89s, 339 queries (+339 other) 
+2026-09-23 05:24:34,685 2615 INFO sipanel odoo.modules.loading: 200 modules loaded in 18.26s, 1514 queries (+1514 extra) 
+2026-09-23 05:24:36,859 2615 INFO sipanel odoo.registry: verifying fields for every extended model 
+2026-09-23 05:24:39,842 2615 INFO sipanel odoo.modules.loading: Modules loaded. 
+2026-09-23 05:24:39,928 2615 INFO sipanel odoo.registry: Registry changed, signaling through the database 
+2026-09-23 05:24:39,953 2615 INFO sipanel odoo.registry: Registry loaded in 35.365s 
+2026-09-23 05:24:39,955 2615 INFO sipanel odoo.service.server: Starting post tests 
+2026-09-23 05:24:41,572 2615 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-23 05:24:42,940 2615 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-23 05:24:43,531 2615 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-23 05:24:48,311 2615 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-23 05:24:48,935 2615 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-23 05:24:49,571 2615 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-23 05:24:50,234 2615 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_estimator_and_sales_manager_paths_succeed ... 
+2026-09-23 05:24:53,279 2615 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-23 05:24:53,501 2615 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_inaccessible_order_with_sales_sudo_send_is_refused ... 
+2026-09-23 05:24:55,311 2615 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: ====================================================================== 
+2026-09-23 05:24:55,311 2615 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: FAIL: TestSealPermissionUnderSudo.test_inaccessible_order_with_sales_sudo_send_is_refused
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py", line 98, in test_inaccessible_order_with_sales_sudo_send_is_refused
+    self._assert_refused_and_unchanged(rev, lambda: order.with_user(self.sales).sudo().action_quotation_sent(),
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py", line 37, in _assert_refused_and_unchanged
+    with self.assertRaises(AccessError, msg=msg):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised : inaccessible_order.with_user(sales).sudo().action_quotation_sent()
+ 
+2026-09-23 05:24:55,330 2615 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_inaccessible_revision_with_sales_sudo_is_refused ... 
+2026-09-23 05:24:57,220 2615 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: ====================================================================== 
+2026-09-23 05:24:57,220 2615 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: FAIL: TestSealPermissionUnderSudo.test_inaccessible_revision_with_sales_sudo_is_refused
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py", line 93, in test_inaccessible_revision_with_sales_sudo_is_refused
+    self._assert_refused_and_unchanged(rev, lambda: rev.with_user(self.sales).sudo().action_seal(),
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py", line 37, in _assert_refused_and_unchanged
+    with self.assertRaises(AccessError, msg=msg):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised : inaccessible_revision.with_user(sales).sudo().action_seal()
+ 
+2026-09-23 05:24:57,226 2615 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_plain_sales_user_seals_own_quotation ... 
+2026-09-23 05:24:59,294 2615 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-23 05:25:00,559 2615 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_root_uid_is_superuser_by_odoo_design ... 
+2026-09-23 05:25:02,925 2615 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_sales_still_cannot_read_protected_fields_and_outputs_stay_clean ... 
+2026-09-23 05:25:03,940 2615 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-23 05:25:05,184 2615 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 2261, model: sipanel.quote.scope.revision, field: net_revenue_projection 
+2026-09-23 05:25:05,200 2615 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 2261, model: sipanel.quote.scope.revision, field: margin_amount 
+2026-09-23 05:25:05,208 2615 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 2261, model: sipanel.quote.scope.revision, field: margin_percent 
+2026-09-23 05:25:05,215 2615 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 2261, model: sipanel.quote.scope.revision, field: eligible_cost_total 
+2026-09-23 05:25:05,221 2615 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 2261, model: sipanel.quote.scope.revision, field: direct_cost_total 
+2026-09-23 05:25:05,449 2615 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_sudo_with_genuine_transaction_flag_but_no_service_token_is_refused ... 
+2026-09-23 05:25:07,438 2615 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: ====================================================================== 
+2026-09-23 05:25:07,439 2615 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: FAIL: TestSealPermissionUnderSudo.test_sudo_with_genuine_transaction_flag_but_no_service_token_is_refused
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py", line 127, in test_sudo_with_genuine_transaction_flag_but_no_service_token_is_refused
+    self._assert_refused_and_unchanged(rev, lambda: rev.with_user(self.sales).sudo().with_context(**guard_ctx('sipanel_seal_transaction')).action_seal(),
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py", line 37, in _assert_refused_and_unchanged
+    with self.assertRaises(AccessError, msg=msg):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised : sudo + genuine seal_transaction flag, no service token, no permission
+ 
+2026-09-23 05:25:07,445 2615 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_sudo_with_guessed_token_is_refused ... 
+2026-09-23 05:25:09,668 2615 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: ====================================================================== 
+2026-09-23 05:25:09,669 2615 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: FAIL: TestSealPermissionUnderSudo.test_sudo_with_guessed_token_is_refused
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py", line 112, in test_sudo_with_guessed_token_is_refused
+    self._assert_refused_and_unchanged(
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py", line 37, in _assert_refused_and_unchanged
+    with self.assertRaises(AccessError, msg=msg):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised : sudo + guessed token
+ 
+2026-09-23 05:25:09,673 2615 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_sudo_with_import_context_is_refused ... 
+2026-09-23 05:25:11,742 2615 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: ====================================================================== 
+2026-09-23 05:25:11,742 2615 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: FAIL: TestSealPermissionUnderSudo.test_sudo_with_import_context_is_refused
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py", line 119, in test_sudo_with_import_context_is_refused
+    self._assert_refused_and_unchanged(rev, lambda: rev.with_user(self.sales).sudo().with_context(import_file=True).action_seal(),
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py", line 37, in _assert_refused_and_unchanged
+    with self.assertRaises(AccessError, msg=msg):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised : sudo + import_file
+ 
+2026-09-23 05:25:11,749 2615 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_sudo_with_raw_context_flags_is_refused ... 
+2026-09-23 05:25:13,639 2615 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: ====================================================================== 
+2026-09-23 05:25:13,640 2615 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: FAIL: TestSealPermissionUnderSudo.test_sudo_with_raw_context_flags_is_refused
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py", line 106, in test_sudo_with_raw_context_flags_is_refused
+    self._assert_refused_and_unchanged(
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py", line 37, in _assert_refused_and_unchanged
+    with self.assertRaises(AccessError, msg=msg):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised : sudo + raw context flags
+ 
+2026-09-23 05:25:13,646 2615 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_unauthorized_user_sudo_action_seal_is_refused ... 
+2026-09-23 05:25:14,575 2615 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-23 05:25:14,710 2615 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: write, uid: 2260, model: sipanel.quote.scope.revision 
+2026-09-23 05:25:15,940 2615 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: ====================================================================== 
+2026-09-23 05:25:15,941 2615 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: FAIL: TestSealPermissionUnderSudo.test_unauthorized_user_sudo_action_seal_is_refused
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py", line 85, in test_unauthorized_user_sudo_action_seal_is_refused
+    self._assert_refused_and_unchanged(rev, lambda: rev.with_user(self.plain_user).sudo().action_seal(),
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py", line 37, in _assert_refused_and_unchanged
+    with self.assertRaises(AccessError, msg=msg):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised : unauthorized_user.sudo().action_seal()
+ 
+2026-09-23 05:25:17,281 2615 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 18 checked, 18 removed 
+2026-09-23 05:25:17,286 2615 INFO sipanel odoo.service.server: 11 post-tests in 37.33s, 5919 queries 
+2026-09-23 05:25:17,286 2615 INFO sipanel odoo.tests.stats: sipanel_sale_scope: 13 tests 37.31s 5919 queries 
+2026-09-23 05:25:17,287 2615 INFO sipanel odoo.service.server: Stopping workers gracefully 

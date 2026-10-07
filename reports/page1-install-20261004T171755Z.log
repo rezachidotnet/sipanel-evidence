@@ -1,0 +1,26 @@
+2026-10-04 17:17:58,200 1096 INFO ? odoo: Odoo version 19.0-20260528 
+2026-10-04 17:17:58,200 1096 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-10-04 17:17:58,200 1096 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-10-04 17:17:58,201 1096 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-10-04 17:17:59,908 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading 1 modules... 
+2026-10-04 17:17:59,930 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-10-04 17:18:00,057 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: updating modules list 
+2026-10-04 17:18:00,069 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-10-04 17:18:10,384 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['SIPANEL Quotation Project Information'] to user __system__ #1 via n/a 
+2026-10-04 17:18:10,644 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading 201 modules... 
+2026-10-04 17:18:18,539 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: Loading module sipanel_quotation_project_info (201/201) 
+2026-10-04 17:18:20,040 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.registry: module sipanel_quotation_project_info: creating or updating database tables 
+2026-10-04 17:18:21,245 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_quotation_project_info/security/ir.model.access.csv 
+2026-10-04 17:18:24,117 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_quotation_project_info/wizards/project_site_fiscal_change_views.xml 
+2026-10-04 17:18:24,271 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_quotation_project_info/views/crm_lead_views.xml 
+2026-10-04 17:18:24,365 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_quotation_project_info/views/sale_order_views.xml 
+2026-10-04 17:18:24,593 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_quotation_project_info/report/sale_report_templates.xml 
+2026-10-04 17:18:24,715 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: module sipanel_quotation_project_info: loading translation file /mnt/extra-addons/sipanel_quotation_project_info/i18n/fa_IR.po for language fa_IR 
+2026-10-04 17:18:24,733 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: module sipanel_quotation_project_info: no translation for language ru_RU 
+2026-10-04 17:18:25,032 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: Module sipanel_quotation_project_info loaded in 6.49s, 251 queries (+251 other) 
+2026-10-04 17:18:25,032 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: 201 modules loaded in 14.39s, 251 queries (+251 extra) 
+2026-10-04 17:18:27,371 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.registry: verifying fields for every extended model 
+2026-10-04 17:18:32,060 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: Modules loaded. 
+2026-10-04 17:18:32,173 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.registry: Registry changed, signaling through the database 
+2026-10-04 17:18:32,189 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.registry: Registry loaded in 32.433s 
+2026-10-04 17:18:32,191 1096 INFO sipanel_page1_clone_20261004T171534Z odoo.service.server: Stopping workers gracefully 

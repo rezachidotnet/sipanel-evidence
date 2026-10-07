@@ -1,0 +1,1285 @@
+2026-10-04 17:18:36,688 1104 INFO ? odoo: Odoo version 19.0-20260528 
+2026-10-04 17:18:36,689 1104 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-10-04 17:18:36,689 1104 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-10-04 17:18:36,689 1104 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-10-04 17:18:38,201 1104 WARNING ? odoo.service.server: Unit testing in workers mode could fail; use --workers 0. 
+2026-10-04 17:18:38,491 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.tests.common: Importing test framework 
+2026-10-04 17:18:38,677 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading 1 modules... 
+2026-10-04 17:18:38,713 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: 1 modules loaded in 0.03s, 0 queries (+0 extra) 
+2026-10-04 17:18:38,901 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: updating modules list 
+2026-10-04 17:18:38,913 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-10-04 17:18:45,293 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['SIPANEL Commercial Scope Core', 'SIPANEL Quotation Project Information', 'SIPANEL Sale Scope', 'SIPANEL Scope Costing', 'SIPANEL Scope Execution'] to user __system__ #1 via n/a 
+2026-10-04 17:18:45,294 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['SIPANEL Commercial Scope Core', 'SIPANEL Quotation Project Information', 'SIPANEL Sale Scope', 'SIPANEL Scope Costing', 'SIPANEL Scope Execution'] to user __system__ #1 via n/a 
+2026-10-04 17:18:49,650 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-10-04 17:18:49,875 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading 201 modules... 
+2026-10-04 17:18:54,044 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: Loading module sipanel_commercial_scope_core (53/201) 
+2026-10-04 17:18:54,543 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.registry: module sipanel_commercial_scope_core: creating or updating database tables 
+2026-10-04 17:18:55,084 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_commercial_scope_core/security/sipanel_security.xml 
+2026-10-04 17:18:55,767 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_commercial_scope_core/security/ir.model.access.csv 
+2026-10-04 17:18:58,953 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_commercial_scope_core/security/sipanel_record_rules.xml 
+2026-10-04 17:18:59,117 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_commercial_scope_core/data/ir_config_parameter.xml 
+2026-10-04 17:18:59,145 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_commercial_scope_core/views/scope_views.xml 
+2026-10-04 17:18:59,701 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_commercial_scope_core/views/scope_version_views.xml 
+2026-10-04 17:18:59,804 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_commercial_scope_core/views/recipe_line_views.xml 
+2026-10-04 17:18:59,910 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_commercial_scope_core/views/audit_event_views.xml 
+2026-10-04 17:18:59,989 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_commercial_scope_core/views/uom_family_views.xml 
+2026-10-04 17:19:00,178 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_commercial_scope_core/views/res_config_settings_views.xml 
+2026-10-04 17:19:00,624 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_commercial_scope_core/views/menus.xml 
+2026-10-04 17:19:02,809 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: module sipanel_commercial_scope_core: no translation for language fa_IR 
+2026-10-04 17:19:02,826 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: module sipanel_commercial_scope_core: no translation for language ru_RU 
+2026-10-04 17:19:03,071 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: Module sipanel_commercial_scope_core loaded in 9.03s, 444 queries (+444 other) 
+2026-10-04 17:19:10,438 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: Loading module sipanel_sale_scope (180/201) 
+2026-10-04 17:19:11,757 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.registry: module sipanel_sale_scope: creating or updating database tables 
+2026-10-04 17:19:13,091 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_security.xml 
+2026-10-04 17:19:13,558 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_sale_scope/security/ir.model.access.csv 
+2026-10-04 17:19:13,758 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_record_rules.xml 
+2026-10-04 17:19:13,799 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_sale_scope/wizards/add_scope_views.xml 
+2026-10-04 17:19:13,904 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_sale_scope/wizards/refresh_cost_views.xml 
+2026-10-04 17:19:13,955 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_sale_scope/wizards/split_move_views.xml 
+2026-10-04 17:19:14,061 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_sale_scope/wizards/apply_price_views.xml 
+2026-10-04 17:19:14,115 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_sale_scope/wizards/regenerate_note_views.xml 
+2026-10-04 17:19:14,158 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_sale_scope/wizards/treatment_transition_views.xml 
+2026-10-04 17:19:14,205 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_sale_scope/wizards/replace_recipe_views.xml 
+2026-10-04 17:19:14,266 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_views.xml 
+2026-10-04 17:19:14,438 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_revision_views.xml 
+2026-10-04 17:19:14,584 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_component_views.xml 
+2026-10-04 17:19:14,637 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_sale_scope/views/waiver_views.xml 
+2026-10-04 17:19:14,722 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_sale_scope/views/sale_order_views.xml 
+2026-10-04 17:19:15,135 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_sale_scope/views/sale_portal_templates.xml 
+2026-10-04 17:19:15,201 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_sale_scope/views/menus.xml 
+2026-10-04 17:19:15,315 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language fa_IR 
+2026-10-04 17:19:15,331 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language ru_RU 
+2026-10-04 17:19:16,187 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: Module sipanel_sale_scope loaded in 5.75s, 678 queries (+678 other) 
+2026-10-04 17:19:16,406 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: Loading module sipanel_quotation_project_info (189/201) 
+2026-10-04 17:19:17,050 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.registry: module sipanel_quotation_project_info: creating or updating database tables 
+2026-10-04 17:19:17,453 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_quotation_project_info/security/ir.model.access.csv 
+2026-10-04 17:19:17,470 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_quotation_project_info/wizards/project_site_fiscal_change_views.xml 
+2026-10-04 17:19:17,545 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_quotation_project_info/views/crm_lead_views.xml 
+2026-10-04 17:19:17,705 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_quotation_project_info/views/sale_order_views.xml 
+2026-10-04 17:19:18,106 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_quotation_project_info/report/sale_report_templates.xml 
+2026-10-04 17:19:18,252 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: module sipanel_quotation_project_info: loading translation file /mnt/extra-addons/sipanel_quotation_project_info/i18n/fa_IR.po for language fa_IR 
+2026-10-04 17:19:18,272 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: module sipanel_quotation_project_info: no translation for language ru_RU 
+2026-10-04 17:19:18,633 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: Module sipanel_quotation_project_info loaded in 2.23s, 240 queries (+240 other) 
+2026-10-04 17:19:18,775 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: Loading module sipanel_scope_execution (199/201) 
+2026-10-04 17:19:19,662 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.registry: module sipanel_scope_execution: creating or updating database tables 
+2026-10-04 17:19:20,534 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_security.xml 
+2026-10-04 17:19:20,636 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_execution/security/ir.model.access.csv 
+2026-10-04 17:19:20,764 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_record_rules.xml 
+2026-10-04 17:19:20,778 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_execution/data/owner_rules.xml 
+2026-10-04 17:19:20,811 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_execution/views/owner_rule_views.xml 
+2026-10-04 17:19:20,863 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_execution/views/execution_views.xml 
+2026-10-04 17:19:21,025 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_execution/views/sale_order_views.xml 
+2026-10-04 17:19:21,682 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_execution/views/res_config_settings_views.xml 
+2026-10-04 17:19:22,511 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_execution/views/menus.xml 
+2026-10-04 17:19:22,585 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language fa_IR 
+2026-10-04 17:19:22,595 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language ru_RU 
+2026-10-04 17:19:22,869 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: Module sipanel_scope_execution loaded in 4.09s, 506 queries (+506 other) 
+2026-10-04 17:19:22,873 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: Loading module sipanel_scope_costing (201/201) 
+2026-10-04 17:19:23,034 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.registry: module sipanel_scope_costing: creating or updating database tables 
+2026-10-04 17:19:23,790 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_security.xml 
+2026-10-04 17:19:23,871 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_costing/security/ir.model.access.csv 
+2026-10-04 17:19:24,060 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_record_rules.xml 
+2026-10-04 17:19:24,083 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_costing/data/recognition_policies.xml 
+2026-10-04 17:19:24,147 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_costing/data/ir_cron.xml 
+2026-10-04 17:19:24,167 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_costing/views/policy_views.xml 
+2026-10-04 17:19:24,301 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_costing/views/event_views.xml 
+2026-10-04 17:19:24,401 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_costing/views/variance_views.xml 
+2026-10-04 17:19:24,448 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_costing/views/sale_order_views.xml 
+2026-10-04 17:19:25,023 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: loading sipanel_scope_costing/views/menus.xml 
+2026-10-04 17:19:25,125 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language fa_IR 
+2026-10-04 17:19:25,136 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language ru_RU 
+2026-10-04 17:19:25,364 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: Module sipanel_scope_costing loaded in 2.49s, 339 queries (+339 other) 
+2026-10-04 17:19:25,365 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: 201 modules loaded in 35.49s, 2207 queries (+2207 extra) 
+2026-10-04 17:19:31,370 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.registry: verifying fields for every extended model 
+2026-10-04 17:19:37,906 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.modules.loading: Modules loaded. 
+2026-10-04 17:19:38,271 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.registry: Registry changed, signaling through the database 
+2026-10-04 17:19:38,300 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.registry: Registry loaded in 60.098s 
+2026-10-04 17:19:38,310 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.service.server: Starting post tests 
+2026-10-04 17:19:41,487 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:19:42,850 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:19:43,626 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:19:48,928 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestNativeMasterTranslation.test_accessor_unavailability_fails_closed ... 
+2026-10-04 17:19:49,241 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestNativeMasterTranslation.test_english_master_text_round_trips_through_en_US ... 
+2026-10-04 17:19:49,349 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestNativeMasterTranslation.test_missing_translation_is_distinguished_from_a_fallback ... 
+2026-10-04 17:19:49,449 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestNativeMasterTranslation.test_one_field_holds_every_language_and_the_dialog_sees_them ... 
+2026-10-04 17:19:49,549 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestNativeMasterTranslation.test_persian_master_text_round_trips_through_fa_IR ... 
+2026-10-04 17:19:49,630 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestNativeMasterTranslation.test_persian_only_master_does_not_leak_into_the_english_source ... 
+2026-10-04 17:19:51,592 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 10 checked, 6 removed 
+2026-10-04 17:19:52,610 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:19:53,451 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:19:54,250 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:19:59,465 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestReleasedTranslationImmutability.test_released_recipe_line_translation_is_immutable_too ... 
+2026-10-04 17:19:59,562 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestReleasedTranslationImmutability.test_released_translation_cannot_be_edited_by_a_normal_write ... 
+2026-10-04 17:19:59,580 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestReleasedTranslationImmutability.test_released_translation_cannot_be_edited_through_a_language_context ... 
+2026-10-04 17:19:59,606 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestReleasedTranslationImmutability.test_released_translation_cannot_be_edited_through_sudo ... 
+2026-10-04 17:19:59,636 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestReleasedTranslationImmutability.test_released_translation_cannot_be_edited_through_the_translation_dialog ... 
+2026-10-04 17:19:59,655 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestReleasedTranslationImmutability.test_translation_stays_unchanged_after_a_rejected_edit ... 
+2026-10-04 17:20:00,789 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 3 checked, 3 removed 
+2026-10-04 17:20:02,228 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:20:03,303 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:20:04,372 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:20:10,406 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestReleaseChecksumCoversTranslations.test_adding_a_translation_changes_the_checksum ... 
+2026-10-04 17:20:10,604 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestReleaseChecksumCoversTranslations.test_changing_one_language_changes_the_checksum ... 
+2026-10-04 17:20:10,802 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestReleaseChecksumCoversTranslations.test_checksum_payload_contains_the_full_translation_map ... 
+2026-10-04 17:20:10,847 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestReleaseChecksumCoversTranslations.test_existing_release_keeps_its_recorded_checksum_verifiable ... 
+2026-10-04 17:20:10,875 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestReleaseChecksumCoversTranslations.test_recipe_line_translation_participates_in_the_checksum ... 
+2026-10-04 17:20:12,367 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 3 checked, 3 removed 
+2026-10-04 17:20:13,483 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:20:14,403 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:20:15,546 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:20:20,343 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestLegacyTranslationMigration.test_backfill_dry_run_writes_nothing ... 
+2026-10-04 17:20:20,454 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestLegacyTranslationMigration.test_backfill_is_idempotent ... 
+2026-10-04 17:20:20,546 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestLegacyTranslationMigration.test_plan_always_writes_en_US_explicitly ... 
+2026-10-04 17:20:20,552 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestLegacyTranslationMigration.test_plan_ignores_whitespace_only_legacy_values ... 
+2026-10-04 17:20:20,558 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestLegacyTranslationMigration.test_plan_keeps_conflicting_values_as_separate_languages ... 
+2026-10-04 17:20:20,562 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestLegacyTranslationMigration.test_plan_maps_fa_to_fa_IR_and_en_to_en_US ... 
+2026-10-04 17:20:20,566 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_native_translation: Starting TestLegacyTranslationMigration.test_plan_never_overwrites_a_native_translation_with_a_blank_legacy_value ... 
+2026-10-04 17:20:21,527 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 3 checked, 3 removed 
+2026-10-04 17:20:22,877 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:20:24,459 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:20:25,897 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:20:33,510 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_recipe_validation: Starting TestRecipeValidation.test_percent_rules ... 
+2026-10-04 17:20:34,404 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_recipe_validation: Starting TestRecipeValidation.test_release_r7_r10_r11 ... 
+2026-10-04 17:20:34,783 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_recipe_validation: Starting TestRecipeValidation.test_uom_family_contract ... 
+2026-10-04 17:20:37,304 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 3 checked, 3 removed 
+2026-10-04 17:20:38,582 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:20:39,537 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:20:40,508 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:20:47,834 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_acl_plain_user_read_only ... 
+2026-10-04 17:20:48,479 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: write, uid: 2473, model: sipanel.scope 
+2026-10-04 17:20:48,520 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: create, uid: 2473, model: sipanel.scope 
+2026-10-04 17:20:48,589 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_concurrent_release_lock ... 
+2026-10-04 17:20:48,959 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_duplicate_as_new_scope ... 
+2026-10-04 17:20:49,590 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_release_and_supersede ... 
+2026-10-04 17:20:50,366 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_release_validations_block ... 
+2026-10-04 17:20:50,515 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_released_version_is_immutable ... 
+2026-10-04 17:20:51,421 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models.unlink: User #1 deleted mail.message records with IDs: [44231, 44230, 44229] 
+2026-10-04 17:20:53,195 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_scope_unlink_and_copy_guards ... 
+2026-10-04 17:20:53,992 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models.unlink: User #1 deleted mail.message records with IDs: [44232] 
+2026-10-04 17:20:54,105 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 3 checked, 3 removed 
+2026-10-04 17:20:54,116 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_tools: Starting TestTools.test_cycle ... 
+2026-10-04 17:20:54,118 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_tools: Starting TestTools.test_hash_deterministic ... 
+2026-10-04 17:20:54,121 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_tools: Starting TestTools.test_presets ... 
+2026-10-04 17:20:54,124 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_commercial_scope_core.tests.test_tools: Starting TestTools.test_rounding ... 
+2026-10-04 17:20:54,161 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-10-04 17:20:55,270 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:20:56,286 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:20:57,191 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:21:06,011 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:21:06,957 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:21:07,821 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:21:08,556 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_customer_output: Starting TestCustomerOutput.test_co01_unit_names_follow_quotation_language ... 
+2026-10-04 17:21:10,940 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_customer_output: Starting TestCustomerOutput.test_co02_portal_signature_is_the_acceptance_reference ... 
+2026-10-04 17:21:15,254 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_customer_output: Starting TestCustomerOutput.test_co03_explicit_reference_wins_over_signature ... 
+2026-10-04 17:21:18,389 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-10-04 17:21:19,643 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:21:20,562 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:21:21,367 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:21:27,648 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:21:28,696 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:21:29,593 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:21:30,506 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_governance: Starting TestGovernance.test_mismatch_after_send_blocks_confirm ... 
+2026-10-04 17:21:35,165 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_governance: Starting TestGovernance.test_pt10_optional_scope_transitions ... 
+2026-10-04 17:21:39,947 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_governance: Starting TestGovernance.test_pt22_price_only_amendment_keeps_baseline ... 
+2026-10-04 17:21:42,464 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_governance: Starting TestGovernance.test_pt32_snapshot_roundtrip_language ... 
+2026-10-04 17:21:45,065 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_governance: Starting TestGovernance.test_seal_accept_flow_and_mismatch ... 
+2026-10-04 17:21:49,494 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-10-04 17:21:50,628 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:21:51,603 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:21:52,603 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:21:58,441 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:21:59,342 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:22:00,198 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:22:00,984 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt01_add_scope_snapshot_and_cost ... 
+2026-10-04 17:22:02,230 1104 ERROR sipanel_page1_clone_20261004T171534Z odoo.sql_db: bad query: b'INSERT INTO "sipanel_quote_scope" ("acceptance_state", "active", "anchor_line_id", "create_date", "create_uid", "order_id", "scope_uid", "write_date", "write_uid") VALUES (\'base\', true, 4949, \'2026-10-04T17:21:49.503593\'::timestamp, 1, 2569, \'188e7661-470f-423d-8376-46cb3e2d49f8\', \'2026-10-04T17:21:49.503593\'::timestamp, 1) RETURNING "id"'
+ERROR: duplicate key value violates unique constraint "sipanel_quote_scope_anchor_line_unique"
+DETAIL:  Key (anchor_line_id)=(4949) already exists.
+ 
+2026-10-04 17:22:02,245 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt02_version_isolation ... 
+2026-10-04 17:22:03,881 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt03_dimensional_quantity ... 
+2026-10-04 17:22:06,097 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt04_override_retained_and_stale ... 
+2026-10-04 17:22:07,884 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt05_percent_validation ... 
+2026-10-04 17:22:10,119 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt06_split_with_dependent ... 
+2026-10-04 17:22:11,458 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt07_split_alone_blocked ... 
+2026-10-04 17:22:12,697 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt08_note_stale ... 
+2026-10-04 17:22:14,069 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt09_duplicate_independent ... 
+2026-10-04 17:22:16,715 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt11_customer_scope_and_internal_only ... 
+2026-10-04 17:22:17,724 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt25_foreign_currency_blocked ... 
+2026-10-04 17:22:19,191 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt26_cost_unit_conversion ... 
+2026-10-04 17:22:20,652 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt27_pricing_and_margin ... 
+2026-10-04 17:22:23,201 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt28_known_zero_vs_missing ... 
+2026-10-04 17:22:24,601 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt31_ordinary_sales_untouched ... 
+2026-10-04 17:22:25,179 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models.unlink: User #1 deleted sale.order.line records with IDs: [4968] 
+2026-10-04 17:22:27,469 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-10-04 17:22:29,117 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:22:30,318 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:22:31,178 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:22:36,939 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:22:37,935 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:22:38,844 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:22:39,623 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_audit_actor_is_the_initiating_sales_user ... 
+2026-10-04 17:22:43,731 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_customer_outputs_contain_no_cost_margin_or_net_revenue ... 
+2026-10-04 17:22:46,429 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal: ====================================================================== 
+2026-10-04 17:22:46,432 1104 ERROR sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal: ERROR: TestSalesSealSend.test_customer_outputs_contain_no_cost_margin_or_net_revenue
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 392, in template_sale_report_saleorder_document_912_t_call_0
+ValueError: unsupported format character ';' (0x3b) at index 10
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal.py", line 164, in test_customer_outputs_contain_no_cost_margin_or_net_revenue
+    html = report.with_user(self.sales)._render_qweb_html(report.report_name, order.ids)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 1119, in _render_qweb_html
+    return self._render_template(report.report_name, data), 'html'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 789, in _render_template
+    return view_obj._render_template(template, values).encode()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/website/models/ir_ui_view.py", line 456, in _render_template
+    return super()._render_template(template, values=values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_ui_view.py", line 2546, in _render_template
+    return self.env['ir.qweb']._render(template, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 735, in _render
+    return Markup(''.join(iterator))
+                  ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 3530, in template_sale_report_saleorder_document_912
+  File "<912>", line 3516, in template_sale_report_saleorder_document_912_content
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 626, in __str__
+    self.html = ''.join(self.irQweb._render_iterall(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 857, in _render_iterall
+    raise QWebError(qweb_error_info) from error
+odoo.addons.base.models.ir_qweb.QWebError: Error while rendering the template:
+    ValueError: unsupported format character ';' (0x3b) at index 10
+    Template: sale.report_saleorder_document
+    Reference: 912
+    Path: /t/t/div[1]/t[8]
+    Element: <t t-set="sipanel_value_style" t-value="\'padding: 4px 8px; vertical-align: top; text-align: %s;\' % sipanel_start"/>
+    From: (914, '/t/t', '<t t-call="sale.report_saleorder_raw"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (913, '/t/t/t/t', '<t t-call="sale.report_saleorder_document" t-inner-content="True" t-options-lang="doc.partner_id.lang"/>')
+          (912, '/t/t', '<t t-call="web.external_layout"/>')
+          (912, '/t/t/div[1]/t[8]', '<t t-set="sipanel_value_style" t-value="\\\'padding: 4px 8px; vertical-align: top; text-align: %s;\\\' % sipanel_start"/>')
+ 
+2026-10-04 17:22:46,444 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_estimator_and_manager_paths_remain_green ... 
+2026-10-04 17:22:49,314 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_guessed_token_does_not_open_the_service ... 
+2026-10-04 17:22:50,490 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_import_context_does_not_open_the_service ... 
+2026-10-04 17:22:53,315 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_plain_sales_user_seals_and_sends_own_quotation ... 
+2026-10-04 17:22:56,089 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal: ====================================================================== 
+2026-10-04 17:22:56,089 1104 ERROR sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal: FAIL: TestSalesSealSend.test_plain_sales_user_seals_and_sends_own_quotation
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal.py", line 54, in test_plain_sales_user_seals_and_sends_own_quotation
+    self.assertEqual(len(rev.artifact_ids), 2)
+AssertionError: 1 != 2
+ 
+2026-10-04 17:22:56,099 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_raw_context_flag_does_not_open_the_service ... 
+2026-10-04 17:22:57,548 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_sales_user_cannot_read_net_revenue_projection ... 
+2026-10-04 17:23:00,103 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2495, model: sipanel.quote.scope.revision, field: net_revenue_projection 
+2026-10-04 17:23:00,138 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2495, model: sipanel.quote.scope.revision, field: net_revenue_projection 
+2026-10-04 17:23:00,156 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2495, model: sipanel.quote.scope.revision, field: net_revenue_projection 
+2026-10-04 17:23:00,173 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2495, model: sipanel.quote.scope.revision, field: margin_amount 
+2026-10-04 17:23:00,190 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2495, model: sipanel.quote.scope.revision, field: margin_amount 
+2026-10-04 17:23:00,206 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2495, model: sipanel.quote.scope.revision, field: margin_amount 
+2026-10-04 17:23:00,221 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2495, model: sipanel.quote.scope.revision, field: margin_percent 
+2026-10-04 17:23:00,234 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2495, model: sipanel.quote.scope.revision, field: margin_percent 
+2026-10-04 17:23:00,246 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2495, model: sipanel.quote.scope.revision, field: margin_percent 
+2026-10-04 17:23:00,264 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2495, model: sipanel.quote.scope.revision, field: eligible_cost_total 
+2026-10-04 17:23:00,282 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2495, model: sipanel.quote.scope.revision, field: eligible_cost_total 
+2026-10-04 17:23:00,298 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2495, model: sipanel.quote.scope.revision, field: eligible_cost_total 
+2026-10-04 17:23:00,352 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_sales_user_cannot_seal_an_inaccessible_order ... 
+2026-10-04 17:23:02,340 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [2601], uid: 2495, model: sale.order 
+2026-10-04 17:23:02,433 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: write on record ids: [2601], uid: 2495, model: sale.order 
+2026-10-04 17:23:02,502 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_sales_user_cannot_write_net_revenue_projection ... 
+2026-10-04 17:23:03,845 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_sudo_without_the_genuine_guard_cannot_forge_the_projection ... 
+2026-10-04 17:23:05,641 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-10-04 17:23:06,604 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:23:07,546 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:23:08,361 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:23:13,996 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:23:14,931 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:23:15,813 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:23:16,525 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_estimator_and_sales_manager_paths_succeed ... 
+2026-10-04 17:23:19,353 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_inaccessible_order_with_sales_sudo_send_is_refused ... 
+2026-10-04 17:23:20,396 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: write on record ids: [2606], uid: 2501, model: sale.order 
+2026-10-04 17:23:20,487 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: write on record ids: [2606], uid: 2501, model: sale.order 
+2026-10-04 17:23:20,544 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_inaccessible_revision_with_sales_sudo_is_refused ... 
+2026-10-04 17:23:21,523 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: write on record ids: [2607], uid: 2501, model: sale.order 
+2026-10-04 17:23:21,566 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_plain_sales_user_seals_own_quotation ... 
+2026-10-04 17:23:23,571 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_root_uid_is_superuser_by_odoo_design ... 
+2026-10-04 17:23:25,460 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_sales_still_cannot_read_protected_fields_and_outputs_stay_clean ... 
+2026-10-04 17:23:28,013 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2501, model: sipanel.quote.scope.revision, field: net_revenue_projection 
+2026-10-04 17:23:28,042 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2501, model: sipanel.quote.scope.revision, field: margin_amount 
+2026-10-04 17:23:28,064 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2501, model: sipanel.quote.scope.revision, field: margin_percent 
+2026-10-04 17:23:28,082 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2501, model: sipanel.quote.scope.revision, field: eligible_cost_total 
+2026-10-04 17:23:28,099 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2501, model: sipanel.quote.scope.revision, field: direct_cost_total 
+2026-10-04 17:23:28,217 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: ====================================================================== 
+2026-10-04 17:23:28,217 1104 ERROR sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: ERROR: TestSealPermissionUnderSudo.test_sales_still_cannot_read_protected_fields_and_outputs_stay_clean
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 392, in template_sale_report_saleorder_document_912_t_call_0
+ValueError: unsupported format character ';' (0x3b) at index 10
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal_sudo.py", line 148, in test_sales_still_cannot_read_protected_fields_and_outputs_stay_clean
+    html = report.with_user(self.sales)._render_qweb_html(report.report_name, order.ids)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 1119, in _render_qweb_html
+    return self._render_template(report.report_name, data), 'html'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 789, in _render_template
+    return view_obj._render_template(template, values).encode()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/website/models/ir_ui_view.py", line 456, in _render_template
+    return super()._render_template(template, values=values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_ui_view.py", line 2546, in _render_template
+    return self.env['ir.qweb']._render(template, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 735, in _render
+    return Markup(''.join(iterator))
+                  ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 3530, in template_sale_report_saleorder_document_912
+  File "<912>", line 3516, in template_sale_report_saleorder_document_912_content
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 626, in __str__
+    self.html = ''.join(self.irQweb._render_iterall(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 857, in _render_iterall
+    raise QWebError(qweb_error_info) from error
+odoo.addons.base.models.ir_qweb.QWebError: Error while rendering the template:
+    ValueError: unsupported format character ';' (0x3b) at index 10
+    Template: sale.report_saleorder_document
+    Reference: 912
+    Path: /t/t/div[1]/t[8]
+    Element: <t t-set="sipanel_value_style" t-value="\'padding: 4px 8px; vertical-align: top; text-align: %s;\' % sipanel_start"/>
+    From: (914, '/t/t', '<t t-call="sale.report_saleorder_raw"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (913, '/t/t/t/t', '<t t-call="sale.report_saleorder_document" t-inner-content="True" t-options-lang="doc.partner_id.lang"/>')
+          (912, '/t/t', '<t t-call="web.external_layout"/>')
+          (912, '/t/t/div[1]/t[8]', '<t t-set="sipanel_value_style" t-value="\\\'padding: 4px 8px; vertical-align: top; text-align: %s;\\\' % sipanel_start"/>')
+ 
+2026-10-04 17:23:28,222 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_sudo_with_genuine_transaction_flag_but_no_service_token_is_refused ... 
+2026-10-04 17:23:29,537 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: write on record ids: [2611], uid: 2501, model: sale.order 
+2026-10-04 17:23:29,604 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: write, uid: 2500, model: sipanel.quote.scope.revision 
+2026-10-04 17:23:29,645 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_sudo_with_guessed_token_is_refused ... 
+2026-10-04 17:23:31,028 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: write on record ids: [2612], uid: 2501, model: sale.order 
+2026-10-04 17:23:31,079 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_sudo_with_import_context_is_refused ... 
+2026-10-04 17:23:32,203 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: write on record ids: [2613], uid: 2501, model: sale.order 
+2026-10-04 17:23:32,251 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: write, uid: 2500, model: sipanel.quote.scope.revision 
+2026-10-04 17:23:32,285 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_sudo_with_raw_context_flags_is_refused ... 
+2026-10-04 17:23:33,449 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: write on record ids: [2614], uid: 2501, model: sale.order 
+2026-10-04 17:23:33,487 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_sales_seal_sudo: Starting TestSealPermissionUnderSudo.test_unauthorized_user_sudo_action_seal_is_refused ... 
+2026-10-04 17:23:34,921 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: write, uid: 2500, model: sipanel.quote.scope.revision 
+2026-10-04 17:23:34,961 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: write, uid: 2500, model: sipanel.quote.scope.revision 
+2026-10-04 17:23:35,019 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: write, uid: 2498, model: sipanel.quote.scope.revision 
+2026-10-04 17:23:36,782 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-10-04 17:23:38,207 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:23:39,342 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:23:40,499 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:23:47,549 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:23:48,332 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:23:49,211 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:23:49,901 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_security: Starting TestSecurity.test_s01_acl_matrix_subset ... 
+2026-10-04 17:23:51,004 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: write, uid: 2506, model: sipanel.quote.scope.revision 
+2026-10-04 17:23:51,088 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: write, uid: 2504, model: sipanel.quote.scope.revision 
+2026-10-04 17:23:51,764 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_security: Starting TestSecurity.test_s02_company_isolation ... 
+2026-10-04 17:23:57,415 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_other_co> to <s.s@example.com> 
+2026-10-04 17:23:58,766 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [2423], uid: 2510, model: sipanel.quote.scope 
+2026-10-04 17:23:58,829 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_security: Starting TestSecurity.test_s03_import_and_rpc_bypass_on_sealed ... 
+2026-10-04 17:24:03,028 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_security: Starting TestSecurity.test_s04_portal_denied_on_internal_models ... 
+2026-10-04 17:24:03,969 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_portal> to <s.s@example.com> 
+2026-10-04 17:24:05,164 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2511, model: sipanel.quote.scope 
+2026-10-04 17:24:05,173 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2511, model: sipanel.quote.scope.revision 
+2026-10-04 17:24:05,181 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2511, model: sipanel.quote.scope.component 
+2026-10-04 17:24:05,190 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2511, model: sipanel.scope 
+2026-10-04 17:24:05,201 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2511, model: sipanel.scope.version 
+2026-10-04 17:24:05,213 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2511, model: sipanel.quote.waiver 
+2026-10-04 17:24:06,497 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2511, model: sipanel.quote.scope.revision 
+2026-10-04 17:24:06,984 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_stranger> to <s.s@example.com> 
+2026-10-04 17:24:07,049 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [2476], uid: 2512, model: sipanel.quote.scope.artifact 
+2026-10-04 17:24:07,094 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_security: Starting TestSecurity.test_s07_cost_fields_hidden_without_group ... 
+2026-10-04 17:24:08,125 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2507, model: sipanel.quote.scope.revision, field: eligible_cost_total 
+2026-10-04 17:24:08,151 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2507, model: sipanel.quote.scope.component, field: unit_cost 
+2026-10-04 17:24:08,162 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2507, model: sipanel.quote.scope.component, field: cost_amount 
+2026-10-04 17:24:08,255 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2507, model: sipanel.quote.scope.component, field: cost_amount 
+2026-10-04 17:24:08,300 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_security: Starting TestSecurity.test_s10_privileged_actions_audited ... 
+2026-10-04 17:24:10,606 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models: Access Denied by ACLs for operation: read, uid: 2507, model: sipanel.scope.audit.event, field: after_json 
+2026-10-04 17:24:10,724 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 10 checked, 10 removed 
+2026-10-04 17:24:11,699 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:24:12,606 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:24:13,365 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:24:18,461 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:24:19,357 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:24:20,702 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:24:21,550 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestProjection.test_customer_scope_creates_no_separate_line ... 
+2026-10-04 17:24:22,397 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestProjection.test_database_constraint_refuses_a_second_line_for_one_component ... 
+2026-10-04 17:24:23,829 1104 ERROR sipanel_page1_clone_20261004T171534Z odoo.sql_db: bad query: b'INSERT INTO "sale_order_line" ("collapse_composition", "collapse_prices", "company_id", "create_date", "create_uid", "currency_id", "customer_lead", "discount", "display_type", "is_delivery", "is_optional", "name", "order_id", "order_partner_id", "price_reduce_taxexcl", "price_reduce_taxinc", "price_subtotal", "price_tax", "price_total", "price_unit", "product_id", "product_uom_id", "product_uom_qty", "qty_delivered", "qty_delivered_method", "salesman_id", "sequence", "sipanel_is_generated", "sipanel_origin_key", "state", "technical_price_unit", "write_date", "write_uid") VALUES (false, false, 1, \'2026-10-04T17:24:10.741671\'::timestamp, 1, 86, 0.0, \'0\', NULL, false, false, \'SIPANEL-PT-CORE Bracket\', 2623, 4173, \'100\', \'110\', \'100\', 10.0, \'110\', 100.0, 4135, 1, \'1.00\', \'0.00\', \'stock_move\', 2514, 10, true, \'2614:bd8c0895-08f6-4134-940f-03a231ee56ce\', \'draft\', 100.0, \'2026-10-04T17:24:10.741671\'::timestamp, 1) RETURNING "id"'
+ERROR: duplicate key value violates unique constraint "sale_order_line_sipanel_origin_key_unique"
+DETAIL:  Key (sipanel_origin_key)=(2614:bd8c0895-08f6-4134-940f-03a231ee56ce) already exists.
+ 
+2026-10-04 17:24:23,847 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestProjection.test_deactivated_component_line_is_retired ... 
+2026-10-04 17:24:25,674 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models.unlink: User #2514 deleted sale.order.line records with IDs: [5009] 
+2026-10-04 17:24:25,752 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestProjection.test_eligible_own_line_component_creates_exactly_one_sale_line ... 
+2026-10-04 17:24:26,854 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestProjection.test_included_component_creates_no_separate_line ... 
+2026-10-04 17:24:27,742 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestProjection.test_internal_only_creates_no_separate_line ... 
+2026-10-04 17:24:28,621 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestProjection.test_product_backed_mapping_uses_the_component_product ... 
+2026-10-04 17:24:29,455 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestProjection.test_repeated_synchronisation_creates_no_duplicate ... 
+2026-10-04 17:24:31,548 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-10-04 17:24:32,647 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:24:33,520 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:24:34,249 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:24:39,646 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:24:40,445 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:24:41,173 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:24:42,186 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricingReadiness.test_estimate_only_without_product_blocks_readiness ... 
+2026-10-04 17:24:43,651 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models.unlink: User #2520 deleted sale.order.line records with IDs: [5027] 
+2026-10-04 17:24:43,837 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricingReadiness.test_governed_manual_price_wins_over_the_pricelist ... 
+2026-10-04 17:24:45,117 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricingReadiness.test_known_zero_selling_price_is_distinguishable_and_allowed ... 
+2026-10-04 17:24:46,446 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricingReadiness.test_missing_selling_price_blocks_seal ... 
+2026-10-04 17:24:47,758 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricingReadiness.test_price_status_is_not_applicable_for_an_included_component ... 
+2026-10-04 17:24:50,425 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-10-04 17:24:51,655 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:24:52,533 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:24:53,349 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:24:58,832 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:24:59,828 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:25:00,853 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:25:02,050 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestAmountsAndReconciliation.test_a_component_is_never_both_included_and_separate ... 
+2026-10-04 17:25:03,411 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestAmountsAndReconciliation.test_anchor_total_excludes_the_separate_line_amount ... 
+2026-10-04 17:25:04,651 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestAmountsAndReconciliation.test_included_component_stays_out_of_the_customer_note_bullets ... 
+2026-10-04 17:25:05,802 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestAmountsAndReconciliation.test_native_taxes_apply_to_the_generated_line ... 
+2026-10-04 17:25:07,112 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestAmountsAndReconciliation.test_reconciliation_reports_no_double_billing ... 
+2026-10-04 17:25:09,675 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-10-04 17:25:10,982 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:25:12,023 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:25:12,972 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:25:19,420 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:25:20,451 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:25:21,344 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:25:22,383 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestOptionalAndProvisional.test_optional_acceptance_gives_the_line_its_governed_quantity ... 
+2026-10-04 17:25:24,610 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestOptionalAndProvisional.test_optional_acceptance_is_idempotent ... 
+2026-10-04 17:25:26,760 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestOptionalAndProvisional.test_optional_unaccepted_line_is_quantity_zero ... 
+2026-10-04 17:25:27,772 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestOptionalAndProvisional.test_provisional_line_is_gated_from_invoicing ... 
+2026-10-04 17:25:28,868 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestOptionalAndProvisional.test_resolving_a_provisional_component_lifts_the_gate ... 
+2026-10-04 17:25:31,169 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-10-04 17:25:32,397 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:25:33,317 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:25:34,202 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:25:39,647 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:25:40,455 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:25:41,242 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:25:42,200 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSecurityAndLifecycle.test_cost_and_margin_stay_restricted_on_the_generated_line ... 
+2026-10-04 17:25:43,615 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSecurityAndLifecycle.test_duplicate_quotation_gets_independent_projected_lines ... 
+2026-10-04 17:25:45,268 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSecurityAndLifecycle.test_provenance_cannot_be_supplied_on_create ... 
+2026-10-04 17:25:45,897 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSecurityAndLifecycle.test_provenance_cannot_be_written_by_sudo_import_or_rpc_context ... 
+2026-10-04 17:25:47,417 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSecurityAndLifecycle.test_sealed_generated_line_cannot_be_edited_directly ... 
+2026-10-04 17:25:51,541 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-10-04 17:25:52,833 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:25:53,880 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:25:54,764 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:26:00,760 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:26:01,769 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:26:02,667 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:26:03,796 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSealDrift.test_amendment_does_not_double_bill_the_same_component ... 
+2026-10-04 17:26:06,278 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models.unlink: User #2544 deleted sale.order.line records with IDs: [5092] 
+2026-10-04 17:26:06,458 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models.unlink: User #2544 deleted sale.order.line records with IDs: [5093] 
+2026-10-04 17:26:07,040 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSealDrift.test_commercial_change_after_sealing_requires_a_new_revision_and_reseal ... 
+2026-10-04 17:26:10,010 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models.unlink: User #2544 deleted sale.order.line records with IDs: [5097] 
+2026-10-04 17:26:10,201 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models.unlink: User #2544 deleted sale.order.line records with IDs: [5098] 
+2026-10-04 17:26:10,867 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSealDrift.test_prior_artifacts_are_retained_after_amendment ... 
+2026-10-04 17:26:13,416 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models.unlink: User #2544 deleted sale.order.line records with IDs: [5102] 
+2026-10-04 17:26:13,555 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models.unlink: User #2544 deleted sale.order.line records with IDs: [5103] 
+2026-10-04 17:26:14,197 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSealDrift.test_seal_drift_blocks_acceptance ... 
+2026-10-04 17:26:16,699 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSealDrift.test_seal_drift_blocks_confirmation ... 
+2026-10-04 17:26:19,182 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestSealDrift.test_seal_drift_blocks_invoice_creation ... 
+2026-10-04 17:26:24,078 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-10-04 17:26:25,475 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:26:26,384 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:26:27,228 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:26:32,708 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:26:33,547 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:26:34,573 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:26:35,658 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceFlow.test_confirmed_order_produces_the_expected_invoice_line ... 
+2026-10-04 17:26:41,273 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceFlow.test_customer_scope_and_internal_only_create_no_invoice_line ... 
+2026-10-04 17:26:44,752 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceFlow.test_english_quotation_invoices_in_english ... 
+2026-10-04 17:26:47,969 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceFlow.test_generated_line_appears_in_the_customer_pdf_without_internal_data ... 
+2026-10-04 17:26:50,063 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ====================================================================== 
+2026-10-04 17:26:50,064 1104 ERROR sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: ERROR: TestInvoiceFlow.test_generated_line_appears_in_the_customer_pdf_without_internal_data
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 392, in template_sale_report_saleorder_document_912_t_call_0
+ValueError: unsupported format character ';' (0x3b) at index 10
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_separately_billable.py", line 604, in test_generated_line_appears_in_the_customer_pdf_without_internal_data
+    html = report._render_qweb_html(report.report_name, scope.order_id.ids)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 1119, in _render_qweb_html
+    return self._render_template(report.report_name, data), 'html'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 789, in _render_template
+    return view_obj._render_template(template, values).encode()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/website/models/ir_ui_view.py", line 456, in _render_template
+    return super()._render_template(template, values=values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_ui_view.py", line 2546, in _render_template
+    return self.env['ir.qweb']._render(template, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 735, in _render
+    return Markup(''.join(iterator))
+                  ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 3530, in template_sale_report_saleorder_document_912
+  File "<912>", line 3516, in template_sale_report_saleorder_document_912_content
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 626, in __str__
+    self.html = ''.join(self.irQweb._render_iterall(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 857, in _render_iterall
+    raise QWebError(qweb_error_info) from error
+odoo.addons.base.models.ir_qweb.QWebError: Error while rendering the template:
+    ValueError: unsupported format character ';' (0x3b) at index 10
+    Template: sale.report_saleorder_document
+    Reference: 912
+    Path: /t/t/div[1]/t[8]
+    Element: <t t-set="sipanel_value_style" t-value="\'padding: 4px 8px; vertical-align: top; text-align: %s;\' % sipanel_start"/>
+    From: (914, '/t/t', '<t t-call="sale.report_saleorder_raw"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (913, '/t/t/t/t', '<t t-call="sale.report_saleorder_document" t-inner-content="True" t-options-lang="doc.partner_id.lang"/>')
+          (912, '/t/t', '<t t-call="web.external_layout"/>')
+          (912, '/t/t/div[1]/t[8]', '<t t-set="sipanel_value_style" t-value="\\\'padding: 4px 8px; vertical-align: top; text-align: %s;\\\' % sipanel_start"/>')
+ 
+2026-10-04 17:26:50,072 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceFlow.test_included_component_creates_no_invoice_line ... 
+2026-10-04 17:26:53,031 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceFlow.test_invoice_description_uses_the_frozen_resolved_translation ... 
+2026-10-04 17:26:56,277 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceFlow.test_invoice_line_carries_source_provenance ... 
+2026-10-04 17:26:59,245 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceFlow.test_invoice_provenance_cannot_be_forged_on_a_manual_invoice ... 
+2026-10-04 17:26:59,857 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceFlow.test_provisional_component_creates_no_invoice_line ... 
+2026-10-04 17:27:04,017 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-10-04 17:27:05,123 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:27:05,987 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:27:06,860 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:27:12,567 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:27:13,456 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:27:14,333 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:27:15,321 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestOperationalOwnership.test_generated_line_does_not_add_a_second_procurement_owner ... 
+2026-10-04 17:27:16,465 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestOperationalOwnership.test_one_component_yields_one_execution_demand ... 
+2026-10-04 17:27:19,730 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-10-04 17:27:20,794 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:27:21,796 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:27:22,589 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:27:28,177 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:27:28,908 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:27:29,659 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:27:30,767 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceProvenanceAuthorization.test_direct_write_of_provenance_remains_refused ... 
+2026-10-04 17:27:33,224 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceProvenanceAuthorization.test_forged_sale_line_ids_no_longer_exempts_the_payload ... 
+2026-10-04 17:27:34,781 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceProvenanceAuthorization.test_genuine_invoice_creation_still_carries_full_provenance ... 
+2026-10-04 17:27:37,995 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceProvenanceAuthorization.test_guessed_token_is_refused ... 
+2026-10-04 17:27:38,623 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceProvenanceAuthorization.test_import_context_is_refused ... 
+2026-10-04 17:27:39,167 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceProvenanceAuthorization.test_plain_create_with_provenance_is_refused ... 
+2026-10-04 17:27:39,744 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceProvenanceAuthorization.test_raw_sipanel_from_sale_invoice_context_is_refused ... 
+2026-10-04 17:27:40,338 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceProvenanceAuthorization.test_raw_sipanel_invoice_trace_context_is_refused ... 
+2026-10-04 17:27:40,861 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestInvoiceProvenanceAuthorization.test_sudo_is_refused ... 
+2026-10-04 17:27:42,648 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-10-04 17:27:43,820 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:27:44,648 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:27:45,451 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:27:50,853 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:27:51,652 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:27:52,483 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:27:53,314 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricelistFailsClosed.test_a_governed_manual_price_clears_the_failure ... 
+2026-10-04 17:27:54,047 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Bracket for order SI-26/2658 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-10-04 17:27:54,141 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Base crane service for order SI-26/2658 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-10-04 17:27:54,240 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Sealant cartridge for order SI-26/2658 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-10-04 17:27:54,268 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Screw for order SI-26/2658 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-10-04 17:27:54,474 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricelistFailsClosed.test_a_known_zero_reason_cannot_mask_a_pricing_failure ... 
+2026-10-04 17:27:55,096 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Bracket for order SI-26/2659 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-10-04 17:27:55,198 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Base crane service for order SI-26/2659 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-10-04 17:27:55,314 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Sealant cartridge for order SI-26/2659 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-10-04 17:27:55,345 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Screw for order SI-26/2659 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-10-04 17:27:55,451 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricelistFailsClosed.test_failed_pricing_blocks_readiness_and_the_seal ... 
+2026-10-04 17:27:56,166 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Bracket for order SI-26/2660 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-10-04 17:27:56,271 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Base crane service for order SI-26/2660 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-10-04 17:27:56,371 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Sealant cartridge for order SI-26/2660 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-10-04 17:27:56,400 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Screw for order SI-26/2660 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-10-04 17:27:56,844 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricelistFailsClosed.test_failed_pricing_leaves_no_governed_price ... 
+2026-10-04 17:27:57,507 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Bracket for order SI-26/2661 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-10-04 17:27:57,633 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Base crane service for order SI-26/2661 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-10-04 17:27:57,732 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Sealant cartridge for order SI-26/2661 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-10-04 17:27:57,757 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.models.quote_scope_component: SIPANEL: pricelist Default (IRR) could not price SIPANEL-PT-CORE Screw for order SI-26/2661 (UserError: no exchange rate for this currency); the component is left without a governed price. 
+2026-10-04 17:27:57,848 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestPricelistFailsClosed.test_successful_pricing_records_no_error ... 
+2026-10-04 17:28:00,379 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-10-04 17:28:01,876 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:28:02,934 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:28:03,977 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:28:11,608 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:28:12,715 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:28:13,596 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:28:14,705 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestAmendmentAfterConfirmation.test_amendment_after_confirmation_neutralises_the_superseded_line ... 
+2026-10-04 17:28:19,932 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_separately_billable: Starting TestAmendmentAfterConfirmation.test_invoiced_superseded_line_is_left_alone_and_flagged ... 
+2026-10-04 17:28:27,866 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-10-04 17:28:29,107 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:28:30,188 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:28:31,160 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:28:37,460 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:28:38,428 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:28:39,308 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:28:40,085 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_component_labels_are_resolved_in_the_quotation_language ... 
+2026-10-04 17:28:41,077 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_customer_note_uses_the_resolved_snapshot_language ... 
+2026-10-04 17:28:42,089 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_draft_warns_when_the_requested_translation_is_missing ... 
+2026-10-04 17:28:43,145 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_duplicate_quotation_keeps_the_original_snapshot_and_provenance ... 
+2026-10-04 17:28:45,248 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_english_quotation_note_is_english ... 
+2026-10-04 17:28:46,286 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_english_quotation_snapshots_the_english_master_text ... 
+2026-10-04 17:28:47,311 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_internal_only_component_needs_no_customer_translation ... 
+2026-10-04 17:28:49,527 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_master_internal_description_is_not_translatable_and_stays_internal ... 
+2026-10-04 17:28:50,609 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_master_translation_change_does_not_alter_an_existing_snapshot ... 
+2026-10-04 17:28:51,835 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_no_cost_margin_or_internal_text_reaches_the_customer_payload ... 
+2026-10-04 17:28:52,819 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_persian_quotation_snapshots_the_persian_master_text ... 
+2026-10-04 17:28:53,791 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_readiness_blocks_on_a_missing_translation ... 
+2026-10-04 17:28:54,675 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_seal_fails_closed_when_the_requested_translation_is_missing ... 
+2026-10-04 17:28:55,743 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_seal_succeeds_once_the_translation_exists ... 
+2026-10-04 17:28:58,073 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_sealed_snapshot_and_artifact_survive_a_master_translation_change ... 
+2026-10-04 17:29:00,729 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_sealed_text_artifact_carries_the_resolved_language ... 
+2026-10-04 17:29:02,861 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_snapshot_columns_hold_only_really_stored_terms ... 
+2026-10-04 17:29:03,713 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_snapshot_is_not_a_live_read_of_the_master ... 
+2026-10-04 17:29:04,716 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_sale_scope.tests.test_translation_snapshot: Starting TestTranslationSnapshot.test_snapshot_records_the_source_version_provenance ... 
+2026-10-04 17:29:07,387 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-10-04 17:29:10,424 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_c01_requested_system_must_be_a_system ... 
+2026-10-04 17:29:10,920 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_c02_plan_resolution_fails_closed_on_ambiguity ... 
+2026-10-04 17:29:11,064 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Two fields (x_plan913_id, x_plan80_id) of account.analytic.line() have the same label: SIPANEL System. [Modules: None and None] 
+2026-10-04 17:29:11,504 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Two fields (x_plan913_id, x_plan80_id) of account.analytic.line() have the same label: SIPANEL System. [Modules: None and None] 
+2026-10-04 17:29:11,911 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Two fields (x_plan913_id, x_plan80_id) of project.project() have the same label: SIPANEL System. [Modules: None and None] 
+2026-10-04 17:29:12,512 1104 WARNING sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Two fields (x_plan913_id, x_plan80_id) of project.project() have the same label: SIPANEL System. [Modules: None and None] 
+2026-10-04 17:29:12,679 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_c03_configured_plan_must_agree ... 
+2026-10-04 17:29:12,843 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_c04_system_of_another_company_is_refused ... 
+2026-10-04 17:29:17,667 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_f01_customer_contact_hierarchy ... 
+2026-10-04 17:29:18,922 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: ====================================================================== 
+2026-10-04 17:29:18,922 1104 ERROR sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: ERROR: TestQuotationPage1.test_f01_customer_contact_hierarchy
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 392, in template_sale_report_saleorder_document_912_t_call_0
+ValueError: unsupported format character ';' (0x3b) at index 10
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_quotation_project_info/tests/test_project_info.py", line 217, in test_f01_customer_contact_hierarchy
+    block = self._page1(on_contact)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_quotation_project_info/tests/test_project_info.py", line 63, in _page1
+    content = self.env['ir.actions.report']._render_qweb_html('sale.report_saleorder', order.ids)[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 1119, in _render_qweb_html
+    return self._render_template(report.report_name, data), 'html'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 789, in _render_template
+    return view_obj._render_template(template, values).encode()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/website/models/ir_ui_view.py", line 456, in _render_template
+    return super()._render_template(template, values=values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_ui_view.py", line 2546, in _render_template
+    return self.env['ir.qweb']._render(template, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 735, in _render
+    return Markup(''.join(iterator))
+                  ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 3530, in template_sale_report_saleorder_document_912
+  File "<912>", line 3516, in template_sale_report_saleorder_document_912_content
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 626, in __str__
+    self.html = ''.join(self.irQweb._render_iterall(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 857, in _render_iterall
+    raise QWebError(qweb_error_info) from error
+odoo.addons.base.models.ir_qweb.QWebError: Error while rendering the template:
+    ValueError: unsupported format character ';' (0x3b) at index 10
+    Template: sale.report_saleorder_document
+    Reference: 912
+    Path: /t/t/div[1]/t[8]
+    Element: <t t-set="sipanel_value_style" t-value="\'padding: 4px 8px; vertical-align: top; text-align: %s;\' % sipanel_start"/>
+    From: (914, '/t/t', '<t t-call="sale.report_saleorder_raw"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (198, '/t/html/body/div/main/t', '<t t-out="0"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (198, '/t/html/body/div/main/t', '<t t-out="0"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (913, '/t/t/t/t', '<t t-call="sale.report_saleorder_document" t-inner-content="True" t-options-lang="doc.partner_id.lang"/>')
+          (912, '/t/t', '<t t-call="web.external_layout"/>')
+          (912, '/t/t/div[1]/t[8]', '<t t-set="sipanel_value_style" t-value="\\\'padding: 4px 8px; vertical-align: top; text-align: %s;\\\' % sipanel_start"/>')
+ 
+2026-10-04 17:29:18,931 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_l01_default_delivery_address_is_not_a_project_site ... 
+2026-10-04 17:29:20,641 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: ====================================================================== 
+2026-10-04 17:29:20,641 1104 ERROR sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: ERROR: TestQuotationPage1.test_l01_default_delivery_address_is_not_a_project_site
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 392, in template_sale_report_saleorder_document_912_t_call_0
+ValueError: unsupported format character ';' (0x3b) at index 10
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_quotation_project_info/tests/test_project_info.py", line 258, in test_l01_default_delivery_address_is_not_a_project_site
+    self.assertEqual(self._cell(self._page1(order), 'o_sipanel_page1_project_site'), 'Not specified')
+                                ^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_quotation_project_info/tests/test_project_info.py", line 63, in _page1
+    content = self.env['ir.actions.report']._render_qweb_html('sale.report_saleorder', order.ids)[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 1119, in _render_qweb_html
+    return self._render_template(report.report_name, data), 'html'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 789, in _render_template
+    return view_obj._render_template(template, values).encode()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/website/models/ir_ui_view.py", line 456, in _render_template
+    return super()._render_template(template, values=values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_ui_view.py", line 2546, in _render_template
+    return self.env['ir.qweb']._render(template, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 735, in _render
+    return Markup(''.join(iterator))
+                  ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 3530, in template_sale_report_saleorder_document_912
+  File "<912>", line 3516, in template_sale_report_saleorder_document_912_content
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 626, in __str__
+    self.html = ''.join(self.irQweb._render_iterall(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 857, in _render_iterall
+    raise QWebError(qweb_error_info) from error
+odoo.addons.base.models.ir_qweb.QWebError: Error while rendering the template:
+    ValueError: unsupported format character ';' (0x3b) at index 10
+    Template: sale.report_saleorder_document
+    Reference: 912
+    Path: /t/t/div[1]/t[8]
+    Element: <t t-set="sipanel_value_style" t-value="\'padding: 4px 8px; vertical-align: top; text-align: %s;\' % sipanel_start"/>
+    From: (914, '/t/t', '<t t-call="sale.report_saleorder_raw"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (198, '/t/html/body/div/main/t', '<t t-out="0"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (198, '/t/html/body/div/main/t', '<t t-out="0"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (913, '/t/t/t/t', '<t t-call="sale.report_saleorder_document" t-inner-content="True" t-options-lang="doc.partner_id.lang"/>')
+          (912, '/t/t', '<t t-call="web.external_layout"/>')
+          (912, '/t/t/div[1]/t[8]', '<t t-set="sipanel_value_style" t-value="\\\'padding: 4px 8px; vertical-align: top; text-align: %s;\\\' % sipanel_start"/>')
+ 
+2026-10-04 17:29:20,650 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_l02_distinct_site_same_fiscal_position_is_saved ... 
+2026-10-04 17:29:22,427 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: ====================================================================== 
+2026-10-04 17:29:22,427 1104 ERROR sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: ERROR: TestQuotationPage1.test_l02_distinct_site_same_fiscal_position_is_saved
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 392, in template_sale_report_saleorder_document_912_t_call_0
+ValueError: unsupported format character ';' (0x3b) at index 10
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_quotation_project_info/tests/test_project_info.py", line 275, in test_l02_distinct_site_same_fiscal_position_is_saved
+    cell = self._cell(self._page1(order), 'o_sipanel_page1_project_site')
+                      ^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_quotation_project_info/tests/test_project_info.py", line 63, in _page1
+    content = self.env['ir.actions.report']._render_qweb_html('sale.report_saleorder', order.ids)[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 1119, in _render_qweb_html
+    return self._render_template(report.report_name, data), 'html'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 789, in _render_template
+    return view_obj._render_template(template, values).encode()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/website/models/ir_ui_view.py", line 456, in _render_template
+    return super()._render_template(template, values=values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_ui_view.py", line 2546, in _render_template
+    return self.env['ir.qweb']._render(template, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 735, in _render
+    return Markup(''.join(iterator))
+                  ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 3530, in template_sale_report_saleorder_document_912
+  File "<912>", line 3516, in template_sale_report_saleorder_document_912_content
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 626, in __str__
+    self.html = ''.join(self.irQweb._render_iterall(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 857, in _render_iterall
+    raise QWebError(qweb_error_info) from error
+odoo.addons.base.models.ir_qweb.QWebError: Error while rendering the template:
+    ValueError: unsupported format character ';' (0x3b) at index 10
+    Template: sale.report_saleorder_document
+    Reference: 912
+    Path: /t/t/div[1]/t[8]
+    Element: <t t-set="sipanel_value_style" t-value="\'padding: 4px 8px; vertical-align: top; text-align: %s;\' % sipanel_start"/>
+    From: (914, '/t/t', '<t t-call="sale.report_saleorder_raw"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (198, '/t/html/body/div/main/t', '<t t-out="0"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (198, '/t/html/body/div/main/t', '<t t-out="0"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (913, '/t/t/t/t', '<t t-call="sale.report_saleorder_document" t-inner-content="True" t-options-lang="doc.partner_id.lang"/>')
+          (912, '/t/t', '<t t-call="web.external_layout"/>')
+          (912, '/t/t/div[1]/t[8]', '<t t-set="sipanel_value_style" t-value="\\\'padding: 4px 8px; vertical-align: top; text-align: %s;\\\' % sipanel_start"/>')
+ 
+2026-10-04 17:29:22,434 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_l03_site_changing_fiscal_position_is_blocked ... 
+2026-10-04 17:29:23,295 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_l04_customer_change_is_left_to_the_native_flow ... 
+2026-10-04 17:29:24,090 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_m01_m02_project_name_snapshot_from_opportunity ... 
+2026-10-04 17:29:25,604 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: ====================================================================== 
+2026-10-04 17:29:25,605 1104 ERROR sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: ERROR: TestQuotationPage1.test_m01_m02_project_name_snapshot_from_opportunity
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 392, in template_sale_report_saleorder_document_912_t_call_0
+ValueError: unsupported format character ';' (0x3b) at index 10
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_quotation_project_info/tests/test_project_info.py", line 93, in test_m01_m02_project_name_snapshot_from_opportunity
+    self.assertIn(f'{PT} پروژه طالقان', self._cell(self._page1(order), 'o_sipanel_page1_project_name'))
+                                                   ^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_quotation_project_info/tests/test_project_info.py", line 63, in _page1
+    content = self.env['ir.actions.report']._render_qweb_html('sale.report_saleorder', order.ids)[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 1119, in _render_qweb_html
+    return self._render_template(report.report_name, data), 'html'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 789, in _render_template
+    return view_obj._render_template(template, values).encode()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/website/models/ir_ui_view.py", line 456, in _render_template
+    return super()._render_template(template, values=values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_ui_view.py", line 2546, in _render_template
+    return self.env['ir.qweb']._render(template, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 735, in _render
+    return Markup(''.join(iterator))
+                  ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 3530, in template_sale_report_saleorder_document_912
+  File "<912>", line 3516, in template_sale_report_saleorder_document_912_content
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 626, in __str__
+    self.html = ''.join(self.irQweb._render_iterall(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 857, in _render_iterall
+    raise QWebError(qweb_error_info) from error
+odoo.addons.base.models.ir_qweb.QWebError: Error while rendering the template:
+    ValueError: unsupported format character ';' (0x3b) at index 10
+    Template: sale.report_saleorder_document
+    Reference: 912
+    Path: /t/t/div[1]/t[8]
+    Element: <t t-set="sipanel_value_style" t-value="\'padding: 4px 8px; vertical-align: top; text-align: %s;\' % sipanel_start"/>
+    From: (914, '/t/t', '<t t-call="sale.report_saleorder_raw"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (198, '/t/html/body/div/main/t', '<t t-out="0"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (198, '/t/html/body/div/main/t', '<t t-out="0"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (913, '/t/t/t/t', '<t t-call="sale.report_saleorder_document" t-inner-content="True" t-options-lang="doc.partner_id.lang"/>')
+          (912, '/t/t', '<t t-call="web.external_layout"/>')
+          (912, '/t/t/div[1]/t[8]', '<t t-set="sipanel_value_style" t-value="\\\'padding: 4px 8px; vertical-align: top; text-align: %s;\\\' % sipanel_start"/>')
+ 
+2026-10-04 17:29:25,613 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_m03_m04_m05_requested_system_reference_and_snapshot ... 
+2026-10-04 17:29:26,984 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: ====================================================================== 
+2026-10-04 17:29:26,984 1104 ERROR sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: ERROR: TestQuotationPage1.test_m03_m04_m05_requested_system_reference_and_snapshot
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 392, in template_sale_report_saleorder_document_912_t_call_0
+ValueError: unsupported format character ';' (0x3b) at index 10
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_quotation_project_info/tests/test_project_info.py", line 103, in test_m03_m04_m05_requested_system_reference_and_snapshot
+    printed = self._cell(self._page1(order), 'o_sipanel_page1_requested_system')
+                         ^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_quotation_project_info/tests/test_project_info.py", line 63, in _page1
+    content = self.env['ir.actions.report']._render_qweb_html('sale.report_saleorder', order.ids)[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 1119, in _render_qweb_html
+    return self._render_template(report.report_name, data), 'html'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 789, in _render_template
+    return view_obj._render_template(template, values).encode()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/website/models/ir_ui_view.py", line 456, in _render_template
+    return super()._render_template(template, values=values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_ui_view.py", line 2546, in _render_template
+    return self.env['ir.qweb']._render(template, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 735, in _render
+    return Markup(''.join(iterator))
+                  ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 3530, in template_sale_report_saleorder_document_912
+  File "<912>", line 3516, in template_sale_report_saleorder_document_912_content
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 626, in __str__
+    self.html = ''.join(self.irQweb._render_iterall(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 857, in _render_iterall
+    raise QWebError(qweb_error_info) from error
+odoo.addons.base.models.ir_qweb.QWebError: Error while rendering the template:
+    ValueError: unsupported format character ';' (0x3b) at index 10
+    Template: sale.report_saleorder_document
+    Reference: 912
+    Path: /t/t/div[1]/t[8]
+    Element: <t t-set="sipanel_value_style" t-value="\'padding: 4px 8px; vertical-align: top; text-align: %s;\' % sipanel_start"/>
+    From: (914, '/t/t', '<t t-call="sale.report_saleorder_raw"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (198, '/t/html/body/div/main/t', '<t t-out="0"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (198, '/t/html/body/div/main/t', '<t t-out="0"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (913, '/t/t/t/t', '<t t-call="sale.report_saleorder_document" t-inner-content="True" t-options-lang="doc.partner_id.lang"/>')
+          (912, '/t/t', '<t t-call="web.external_layout"/>')
+          (912, '/t/t/div[1]/t[8]', '<t t-set="sipanel_value_style" t-value="\\\'padding: 4px 8px; vertical-align: top; text-align: %s;\\\' % sipanel_start"/>')
+ 
+2026-10-04 17:29:26,991 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_m06_m07_direct_quotation_manual_entry ... 
+2026-10-04 17:29:27,260 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_m08_existing_quotation_not_backfilled ... 
+2026-10-04 17:29:28,448 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: ====================================================================== 
+2026-10-04 17:29:28,448 1104 ERROR sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: ERROR: TestQuotationPage1.test_m08_existing_quotation_not_backfilled
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 392, in template_sale_report_saleorder_document_912_t_call_0
+ValueError: unsupported format character ';' (0x3b) at index 10
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_quotation_project_info/tests/test_project_info.py", line 135, in test_m08_existing_quotation_not_backfilled
+    block = self._page1(order)
+            ^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_quotation_project_info/tests/test_project_info.py", line 63, in _page1
+    content = self.env['ir.actions.report']._render_qweb_html('sale.report_saleorder', order.ids)[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 1119, in _render_qweb_html
+    return self._render_template(report.report_name, data), 'html'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 789, in _render_template
+    return view_obj._render_template(template, values).encode()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/website/models/ir_ui_view.py", line 456, in _render_template
+    return super()._render_template(template, values=values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_ui_view.py", line 2546, in _render_template
+    return self.env['ir.qweb']._render(template, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 735, in _render
+    return Markup(''.join(iterator))
+                  ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 3530, in template_sale_report_saleorder_document_912
+  File "<912>", line 3516, in template_sale_report_saleorder_document_912_content
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 626, in __str__
+    self.html = ''.join(self.irQweb._render_iterall(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 857, in _render_iterall
+    raise QWebError(qweb_error_info) from error
+odoo.addons.base.models.ir_qweb.QWebError: Error while rendering the template:
+    ValueError: unsupported format character ';' (0x3b) at index 10
+    Template: sale.report_saleorder_document
+    Reference: 912
+    Path: /t/t/div[1]/t[8]
+    Element: <t t-set="sipanel_value_style" t-value="\'padding: 4px 8px; vertical-align: top; text-align: %s;\' % sipanel_start"/>
+    From: (914, '/t/t', '<t t-call="sale.report_saleorder_raw"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (198, '/t/html/body/div/main/t', '<t t-out="0"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (198, '/t/html/body/div/main/t', '<t t-out="0"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (913, '/t/t/t/t', '<t t-call="sale.report_saleorder_document" t-inner-content="True" t-options-lang="doc.partner_id.lang"/>')
+          (912, '/t/t', '<t t-call="web.external_layout"/>')
+          (912, '/t/t/div[1]/t[8]', '<t t-set="sipanel_value_style" t-value="\\\'padding: 4px 8px; vertical-align: top; text-align: %s;\\\' % sipanel_start"/>')
+ 
+2026-10-04 17:29:28,454 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_m09_no_install_hook_no_migration ... 
+2026-10-04 17:29:28,466 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_m10_opportunity_assigned_later_fills_only_empty_values ... 
+2026-10-04 17:29:28,893 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_m11_sales_operator_form_flow ... 
+2026-10-04 17:29:29,782 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_page1_sales> to <s.s@example.com> 
+2026-10-04 17:29:33,344 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_n01_page1_english ... 
+2026-10-04 17:29:34,719 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: ====================================================================== 
+2026-10-04 17:29:34,719 1104 ERROR sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: ERROR: TestQuotationPage1.test_n01_page1_english
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 392, in template_sale_report_saleorder_document_912_t_call_0
+ValueError: unsupported format character ';' (0x3b) at index 10
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_quotation_project_info/tests/test_project_info.py", line 304, in test_n01_page1_english
+    block = self._page1(order)
+            ^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_quotation_project_info/tests/test_project_info.py", line 63, in _page1
+    content = self.env['ir.actions.report']._render_qweb_html('sale.report_saleorder', order.ids)[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 1119, in _render_qweb_html
+    return self._render_template(report.report_name, data), 'html'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 789, in _render_template
+    return view_obj._render_template(template, values).encode()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/website/models/ir_ui_view.py", line 456, in _render_template
+    return super()._render_template(template, values=values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_ui_view.py", line 2546, in _render_template
+    return self.env['ir.qweb']._render(template, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 735, in _render
+    return Markup(''.join(iterator))
+                  ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 3530, in template_sale_report_saleorder_document_912
+  File "<912>", line 3516, in template_sale_report_saleorder_document_912_content
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 626, in __str__
+    self.html = ''.join(self.irQweb._render_iterall(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 857, in _render_iterall
+    raise QWebError(qweb_error_info) from error
+odoo.addons.base.models.ir_qweb.QWebError: Error while rendering the template:
+    ValueError: unsupported format character ';' (0x3b) at index 10
+    Template: sale.report_saleorder_document
+    Reference: 912
+    Path: /t/t/div[1]/t[8]
+    Element: <t t-set="sipanel_value_style" t-value="\'padding: 4px 8px; vertical-align: top; text-align: %s;\' % sipanel_start"/>
+    From: (914, '/t/t', '<t t-call="sale.report_saleorder_raw"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (198, '/t/html/body/div/main/t', '<t t-out="0"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (198, '/t/html/body/div/main/t', '<t t-out="0"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (913, '/t/t/t/t', '<t t-call="sale.report_saleorder_document" t-inner-content="True" t-options-lang="doc.partner_id.lang"/>')
+          (912, '/t/t', '<t t-call="web.external_layout"/>')
+          (912, '/t/t/div[1]/t[8]', '<t t-set="sipanel_value_style" t-value="\\\'padding: 4px 8px; vertical-align: top; text-align: %s;\\\' % sipanel_start"/>')
+ 
+2026-10-04 17:29:34,726 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_n02_page1_persian ... 
+2026-10-04 17:29:34,749 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_module: module sipanel_quotation_project_info: loading translation file /mnt/extra-addons/sipanel_quotation_project_info/i18n/fa_IR.po for language fa_IR 
+2026-10-04 17:29:37,201 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: ====================================================================== 
+2026-10-04 17:29:37,201 1104 ERROR sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: ERROR: TestQuotationPage1.test_n02_page1_persian
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 392, in template_sale_report_saleorder_document_912_t_call_0
+ValueError: unsupported format character ';' (0x3b) at index 10
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_quotation_project_info/tests/test_project_info.py", line 326, in test_n02_page1_persian
+    block = self._page1(order)
+            ^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_quotation_project_info/tests/test_project_info.py", line 63, in _page1
+    content = self.env['ir.actions.report']._render_qweb_html('sale.report_saleorder', order.ids)[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 1119, in _render_qweb_html
+    return self._render_template(report.report_name, data), 'html'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_actions_report.py", line 789, in _render_template
+    return view_obj._render_template(template, values).encode()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/website/models/ir_ui_view.py", line 456, in _render_template
+    return super()._render_template(template, values=values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_ui_view.py", line 2546, in _render_template
+    return self.env['ir.qweb']._render(template, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 735, in _render
+    return Markup(''.join(iterator))
+                  ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 763, in _render_iterall
+    for item in frame.iterator:
+  File "<912>", line 3530, in template_sale_report_saleorder_document_912
+  File "<912>", line 3516, in template_sale_report_saleorder_document_912_content
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 626, in __str__
+    self.html = ''.join(self.irQweb._render_iterall(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_qweb.py", line 857, in _render_iterall
+    raise QWebError(qweb_error_info) from error
+odoo.addons.base.models.ir_qweb.QWebError: Error while rendering the template:
+    ValueError: unsupported format character ';' (0x3b) at index 10
+    Template: sale.report_saleorder_document
+    Reference: 912
+    Path: /t/t/div[1]/t[8]
+    Element: <t t-set="sipanel_value_style" t-value="\'padding: 4px 8px; vertical-align: top; text-align: %s;\' % sipanel_start"/>
+    From: (914, '/t/t', '<t t-call="sale.report_saleorder_raw"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (198, '/t/html/body/div/main/t', '<t t-out="0"/>')
+          (200, '/t/t[2]', '<t t-call="web.report_layout"/>')
+          (198, '/t/html/body/div/main/t', '<t t-out="0"/>')
+          (913, '/t/t', '<t t-call="web.html_container"/>')
+          (913, '/t/t/t/t', '<t t-call="sale.report_saleorder_document" t-inner-content="True" t-options-lang="doc.partner_id.lang"/>')
+          (912, '/t/t', '<t t-call="web.external_layout"/>')
+          (912, '/t/t/div[1]/t[8]', '<t t-set="sipanel_value_style" t-value="\\\'padding: 4px 8px; vertical-align: top; text-align: %s;\\\' % sipanel_start"/>')
+ 
+2026-10-04 17:29:37,206 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_s01_sales_user_selects_system_without_analytic_group ... 
+2026-10-04 17:29:37,905 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_page1_s01> to <s.s@example.com> 
+2026-10-04 17:29:38,345 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_s02_native_access_tripwire ... 
+2026-10-04 17:29:39,225 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_page1_s02> to <s.s@example.com> 
+2026-10-04 17:29:39,486 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_s03_full_analytic_user_keeps_working ... 
+2026-10-04 17:29:40,356 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_page1_s03> to <s.s@example.com> 
+2026-10-04 17:29:40,767 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_w01_manager_applies_fiscal_change_natively_with_audit ... 
+2026-10-04 17:29:42,525 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_page1_mgr> to <s.s@example.com> 
+2026-10-04 17:29:43,780 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_w02_normal_sales_user_cannot_bypass ... 
+2026-10-04 17:29:45,360 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_page1_w02> to <s.s@example.com> 
+2026-10-04 17:29:45,945 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestQuotationPage1.test_w03_state_stale_preview_and_confirmed_orders_refused ... 
+2026-10-04 17:29:47,496 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_page1_mgr> to <s.s@example.com> 
+2026-10-04 17:29:50,443 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 9 checked, 9 removed 
+2026-10-04 17:29:51,720 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:29:52,579 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:29:53,491 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:30:20,939 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:30:21,788 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:30:22,690 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:30:23,533 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_quotation_project_info.tests.test_project_info: Starting TestProjectSiteFiscalChangeSeal.test_w04_sealed_scope_refused ... 
+2026-10-04 17:30:26,961 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 6 removed 
+2026-10-04 17:30:28,140 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:30:29,134 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:30:30,073 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:30:35,910 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:30:36,934 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:30:37,767 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:30:39,297 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_exec> to <s.s@example.com> 
+2026-10-04 17:30:40,238 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_release: Starting TestRelease.test_pt12_estimate_only_blocks ... 
+2026-10-04 17:30:43,119 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_release: Starting TestRelease.test_pt13_native_owner_links_not_creates ... 
+2026-10-04 17:30:46,466 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_release: Starting TestRelease.test_pt14_release_twice_and_concurrent ... 
+2026-10-04 17:30:53,842 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_release: Starting TestRelease.test_pt15_adapter_failure_rolls_back ... 
+2026-10-04 17:30:55,812 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models.unlink: User #1 deleted product.supplierinfo records with IDs: [202] 
+2026-10-04 17:30:58,727 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_release: Starting TestRelease.test_pt22_qty_delta_and_pt19_cancel_lineage ... 
+2026-10-04 17:31:05,672 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_release: Starting TestRelease.test_release_creates_one_demand_per_component ... 
+2026-10-04 17:31:11,036 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 7 checked, 7 removed 
+2026-10-04 17:31:12,098 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:31:12,962 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:31:13,875 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:31:19,242 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:31:20,109 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:31:20,896 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:31:22,293 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_exec> to <s.s@example.com> 
+2026-10-04 17:31:23,134 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c: Starting TestStep2CDemandOwnership.test_actual_cost_projection_is_idempotent_and_never_double_allocates ... 
+2026-10-04 17:31:27,425 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c: Starting TestStep2CDemandOwnership.test_amendment_after_release_with_generated_lines_keeps_lineage_and_adds_one_delta ... 
+2026-10-04 17:31:32,961 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c: Starting TestStep2CDemandOwnership.test_bridge_owner_generated_line_yields_one_demand_and_zero_native_demand ... 
+2026-10-04 17:31:36,761 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c: Starting TestStep2CDemandOwnership.test_native_owner_own_line_links_its_own_native_demand_and_creates_none ... 
+2026-10-04 17:31:40,280 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c: Starting TestStep2CDemandOwnership.test_project_system_activity_propagate_to_every_execution_record ... 
+2026-10-04 17:31:44,411 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c: Starting TestStep2CDemandOwnership.test_retry_after_failure_creates_the_full_demand_set_exactly_once ... 
+2026-10-04 17:31:46,729 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models.unlink: User #1 deleted product.supplierinfo records with IDs: [205] 
+2026-10-04 17:31:51,964 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 7 checked, 7 removed 
+2026-10-04 17:31:53,016 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:31:53,848 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:31:54,564 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:31:59,876 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:32:00,742 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:32:01,575 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:32:03,104 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_exec> to <s.s@example.com> 
+2026-10-04 17:32:03,956 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestDemandImmutability.test_demands_are_never_deleted ... 
+2026-10-04 17:32:08,113 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestDemandImmutability.test_direct_demand_key_modification_is_refused_and_value_unchanged ... 
+2026-10-04 17:32:11,947 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestDemandImmutability.test_every_provenance_field_is_immutable ... 
+2026-10-04 17:32:15,746 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestDemandImmutability.test_forged_demand_creation_is_refused ... 
+2026-10-04 17:32:19,445 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestDemandImmutability.test_genuine_release_failure_retry_and_cancellation_still_work ... 
+2026-10-04 17:32:21,628 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models.unlink: User #1 deleted product.supplierinfo records with IDs: [208] 
+2026-10-04 17:32:24,774 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestDemandImmutability.test_guessed_token_does_not_open_the_engine ... 
+2026-10-04 17:32:28,464 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestDemandImmutability.test_import_context_does_not_open_the_engine ... 
+2026-10-04 17:32:32,830 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestDemandImmutability.test_raw_context_flag_does_not_open_the_engine ... 
+2026-10-04 17:32:36,538 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestDemandImmutability.test_sudo_does_not_open_the_engine ... 
+2026-10-04 17:32:41,701 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 7 checked, 7 removed 
+2026-10-04 17:32:42,859 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:32:43,709 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:32:44,562 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:32:50,141 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:32:50,988 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:32:51,862 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:32:53,368 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_exec> to <s.s@example.com> 
+2026-10-04 17:32:54,133 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestNativeOwnerBoundary.test_bridge_owned_cancel_withdraws_sipanel_documents_and_classifies_reversal ... 
+2026-10-04 17:32:58,269 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestNativeOwnerBoundary.test_completed_bridge_target_refuses_plain_cancel_and_requires_reversal ... 
+2026-10-04 17:33:02,988 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestNativeOwnerBoundary.test_native_amendment_reduction_never_touches_native_documents ... 
+2026-10-04 17:33:07,068 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models.unlink: User #1 deleted stock.move records with IDs: [2507] 
+2026-10-04 17:33:08,396 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.models.unlink: User #1 deleted stock.move records with IDs: [2509] 
+2026-10-04 17:33:08,912 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestNativeOwnerBoundary.test_native_owned_cancel_leaves_native_documents_untouched ... 
+2026-10-04 17:33:12,519 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestNativeOwnerBoundary.test_repeated_cancellation_is_idempotent ... 
+2026-10-04 17:33:18,851 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestNativeOwnerBoundary.test_zero_duplicate_records_after_cancel_and_recount ... 
+2026-10-04 17:33:24,715 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 7 checked, 7 removed 
+2026-10-04 17:33:25,780 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:33:26,624 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:33:27,381 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:33:32,884 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:33:33,767 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:33:34,563 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:33:36,048 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_exec> to <s.s@example.com> 
+2026-10-04 17:33:36,718 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestSalesCancellation.test_authorized_sales_user_cancels_own_order_with_released_execution ... 
+2026-10-04 17:33:41,872 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestSalesCancellation.test_execution_owner_cancellation_remains_valid ... 
+2026-10-04 17:33:48,209 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestSalesCancellation.test_sales_user_cannot_cancel_another_orders_demand ... 
+2026-10-04 17:33:54,046 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2629, model: sipanel.execution.target 
+2026-10-04 17:33:54,064 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2629, model: sipanel.execution.target 
+2026-10-04 17:33:54,084 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2629, model: sipanel.execution.target 
+2026-10-04 17:33:54,092 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2629, model: sipanel.execution.target 
+2026-10-04 17:33:54,116 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2629, model: sipanel.execution.target 
+2026-10-04 17:33:54,123 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2629, model: sipanel.execution.target 
+2026-10-04 17:33:54,175 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [2748], uid: 2629, model: sale.order 
+2026-10-04 17:33:54,221 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [2748], uid: 2629, model: sale.order 
+2026-10-04 17:33:54,281 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestSalesCancellation.test_sales_user_cannot_write_a_demand_directly ... 
+2026-10-04 17:33:58,411 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestSalesCancellation.test_unauthorized_user_cannot_cancel_the_order ... 
+2026-10-04 17:34:02,348 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2628, model: sale.order 
+2026-10-04 17:34:03,727 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 7 checked, 7 removed 
+2026-10-04 17:34:05,188 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-10-04 17:34:06,250 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-10-04 17:34:07,235 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-10-04 17:34:12,872 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-10-04 17:34:13,790 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-10-04 17:34:14,704 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-10-04 17:34:16,025 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_exec> to <s.s@example.com> 
+2026-10-04 17:34:17,582 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_fin_rec> to <s.s@example.com> 
+2026-10-04 17:34:18,516 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_costing.tests.test_actuals: Starting TestActuals.test_policy_fail_closed_and_pt29_unallocated ... 
+2026-10-04 17:34:23,527 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_costing.tests.test_actuals: Starting TestActuals.test_pt16_pt21_reconciliation ... 
+2026-10-04 17:34:34,006 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2636, model: sipanel.actual.cost.event 
+2026-10-04 17:34:34,039 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.sipanel_scope_costing.tests.test_actuals: Starting TestActuals.test_pt19_return_and_credit_reverse_once ... 
+2026-10-04 17:34:40,777 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.addons.base.models.ir_attachment: filestore gc 9 checked, 9 removed 
+2026-10-04 17:34:40,780 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.service.server: 229 post-tests in 902.47s, 132001 queries 
+2026-10-04 17:34:40,785 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.tests.stats: sipanel_commercial_scope_core: 52 tests 75.79s 8821 queries 
+2026-10-04 17:34:40,785 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.tests.stats: sipanel_quotation_project_info: 29 tests 79.55s 7532 queries 
+2026-10-04 17:34:40,785 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.tests.stats: sipanel_sale_scope: 167 tests 493.07s 73451 queries 
+2026-10-04 17:34:40,785 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.tests.stats: sipanel_scope_costing: 5 tests 37.05s 5866 queries 
+2026-10-04 17:34:40,786 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.tests.stats: sipanel_scope_execution: 42 tests 216.74s 36331 queries 
+2026-10-04 17:34:40,787 1104 INFO sipanel_page1_clone_20261004T171534Z odoo.service.server: Stopping workers gracefully 

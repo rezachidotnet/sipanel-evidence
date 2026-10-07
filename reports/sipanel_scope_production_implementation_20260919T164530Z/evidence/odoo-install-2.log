@@ -1,0 +1,75 @@
+2026-09-19 16:51:50,876 3361 INFO ? odoo: Odoo version 19.0-20260528 
+2026-09-19 16:51:50,876 3361 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-19 16:51:50,877 3361 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-19 16:51:50,878 3361 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-09-19 16:51:53,513 3361 INFO sipanel odoo.modules.loading: loading 1 modules... 
+2026-09-19 16:51:53,533 3361 INFO sipanel odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-09-19 16:51:53,690 3361 INFO sipanel odoo.modules.loading: updating modules list 
+2026-09-19 16:51:53,739 3361 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-19 16:52:00,326 3361 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['SIPANEL Commercial Scope Core', 'SIPANEL Sale Scope', 'SIPANEL Scope Costing', 'SIPANEL Scope Execution'] to user __system__ #1 via n/a 
+2026-09-19 16:52:00,587 3361 INFO sipanel odoo.modules.loading: loading 200 modules... 
+2026-09-19 16:52:08,441 3361 INFO sipanel odoo.modules.loading: Loading module sipanel_commercial_scope_core (197/200) 
+2026-09-19 16:52:09,551 3361 INFO sipanel odoo.registry: module sipanel_commercial_scope_core: creating or updating database tables 
+2026-09-19 16:52:11,753 3361 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/security/sipanel_security.xml 
+2026-09-19 16:52:11,793 3361 WARNING sipanel odoo.modules.loading: Transient module states were reset 
+2026-09-19 16:52:11,794 3361 ERROR sipanel odoo.registry: Failed to load registry 
+2026-09-19 16:52:11,794 3361 CRITICAL sipanel odoo.service.server: Failed to initialize database `sipanel`. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/tools/convert.py", line 605, in _tag_root
+    f(rec)
+  File "/usr/lib/python3/dist-packages/odoo/tools/convert.py", line 423, in _tag_record
+    f_val = self.id_get(f_ref, raise_if_not_found=nodeattr2bool(rec, 'forcecreate', True))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/convert.py", line 589, in id_get
+    return self.model_id_get(id_str, raise_if_not_found)[1]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/convert.py", line 593, in model_id_get
+    return self.env['ir.model.data']._xmlid_to_res_model_res_id(id_str, raise_if_not_found=raise_if_not_found)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_model.py", line 2290, in _xmlid_to_res_model_res_id
+    return self._xmlid_lookup(xmlid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/cache.py", line 98, in lookup
+    return self.lookup(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/cache.py", line 155, in lookup
+    value = self.method(*args, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_model.py", line 2283, in _xmlid_lookup
+    raise ValueError('External ID not found in the system: %s' % xmlid)
+ValueError: External ID not found in the system: sipanel_commercial_scope_core.privilege_sipanel_scope
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1544, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module, install_modules=config['init'], upgrade_modules=config['update'], reinit_modules=config['reinit'])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 88, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 199, in new
+    load_modules(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 464, in load_modules
+    load_module_graph(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 217, in load_module_graph
+    load_data(env, idref, 'init', kind='data', package=package)
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 59, in load_data
+    convert_file(env, package.name, filename, idref, mode, noupdate=kind == 'demo')
+  File "/usr/lib/python3/dist-packages/odoo/tools/convert.py", line 693, in convert_file
+    convert_xml_import(env, module, fp, idref, mode, noupdate)
+  File "/usr/lib/python3/dist-packages/odoo/tools/convert.py", line 792, in convert_xml_import
+    obj.parse(doc.getroot())
+  File "/usr/lib/python3/dist-packages/odoo/tools/convert.py", line 663, in parse
+    self._tag_root(de)
+  File "/usr/lib/python3/dist-packages/odoo/tools/convert.py", line 605, in _tag_root
+    f(rec)
+  File "/usr/lib/python3/dist-packages/odoo/tools/convert.py", line 618, in _tag_root
+    raise ParseError('while parsing %s:%s, somewhere inside\n%s' % (
+odoo.tools.convert.ParseError: while parsing /mnt/extra-addons/sipanel_commercial_scope_core/security/sipanel_security.xml:9, somewhere inside
+<record id="privilege_sipanel_scope" model="res.groups.privilege">
+            <field name="name">SIPANEL Commercial Scope</field>
+            <field name="sequence">60</field>
+            <field name="privilege_id" ref="privilege_sipanel_scope"/>
+        </record>
+2026-09-19 16:52:11,815 3361 INFO sipanel odoo.service.server: Stopping workers gracefully 

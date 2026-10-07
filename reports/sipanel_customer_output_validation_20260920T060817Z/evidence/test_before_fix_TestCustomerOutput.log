@@ -1,0 +1,51 @@
+2026-09-20 06:32:01,560 391 INFO ? odoo: Odoo version 19.0-20260528 
+2026-09-20 06:32:01,560 391 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-20 06:32:01,560 391 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-20 06:32:01,561 391 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-09-20 06:32:02,705 391 WARNING ? odoo.service.server: Unit testing in workers mode could fail; use --workers 0. 
+2026-09-20 06:32:02,743 391 INFO sipanel odoo.tests.common: Importing test framework 
+2026-09-20 06:32:02,805 391 INFO sipanel odoo.modules.loading: loading 1 modules... 
+2026-09-20 06:32:03,520 391 INFO sipanel odoo.modules.loading: 1 modules loaded in 0.71s, 0 queries (+0 extra) 
+2026-09-20 06:32:03,657 391 INFO sipanel odoo.modules.loading: loading 200 modules... 
+2026-09-20 06:32:08,804 391 INFO sipanel odoo.modules.loading: 200 modules loaded in 5.15s, 0 queries (+0 extra) 
+2026-09-20 06:32:09,783 391 INFO sipanel odoo.modules.loading: Modules loaded. 
+2026-09-20 06:32:10,229 391 INFO sipanel odoo.registry: Registry loaded in 7.523s 
+2026-09-20 06:32:10,230 391 INFO sipanel odoo.service.server: Starting post tests 
+2026-09-20 06:32:12,083 391 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-20 06:32:13,417 391 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-20 06:32:14,049 391 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-20 06:32:18,446 391 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-20 06:32:19,141 391 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-20 06:32:19,737 391 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-20 06:32:20,323 391 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_customer_output: Starting TestCustomerOutput.test_co01_unit_names_follow_quotation_language ... 
+2026-09-20 06:32:21,096 391 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_customer_output: ====================================================================== 
+2026-09-20 06:32:21,096 391 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_customer_output: FAIL: TestCustomerOutput.test_co01_unit_names_follow_quotation_language
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_customer_output.py", line 30, in test_co01_unit_names_follow_quotation_language
+    self.assertEqual(bracket.uom_name_snapshot, 'عدد')
+AssertionError: 'Units' != 'عدد'
+- Units
++ عدد
+
+ 
+2026-09-20 06:32:21,104 391 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_customer_output: Starting TestCustomerOutput.test_co02_portal_signature_is_the_acceptance_reference ... 
+2026-09-20 06:32:23,317 391 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_customer_output: ====================================================================== 
+2026-09-20 06:32:23,317 391 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_customer_output: FAIL: TestCustomerOutput.test_co02_portal_signature_is_the_acceptance_reference
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_customer_output.py", line 55, in test_co02_portal_signature_is_the_acceptance_reference
+    self.assertTrue(rev.acceptance_reference, 'portal signature must be recorded as the acceptance reference')
+AssertionError: False is not true : portal signature must be recorded as the acceptance reference
+ 
+2026-09-20 06:32:23,323 391 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_customer_output: Starting TestCustomerOutput.test_co03_explicit_reference_wins_over_signature ... 
+2026-09-20 06:32:24,937 391 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_customer_output: ====================================================================== 
+2026-09-20 06:32:24,937 391 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_customer_output: ERROR: TestCustomerOutput.test_co03_explicit_reference_wins_over_signature
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_customer_output.py", line 66, in test_co03_explicit_reference_wins_over_signature
+    self.assertEqual(order._sipanel_acceptance_reference('change_order:CO-1'), 'change_order:CO-1')
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'sale.order' object has no attribute '_sipanel_acceptance_reference'
+ 
+2026-09-20 06:32:26,084 391 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 8 checked, 8 removed 
+2026-09-20 06:32:26,087 391 INFO sipanel odoo.service.server: 3 post-tests in 15.86s, 2520 queries 
+2026-09-20 06:32:26,087 391 INFO sipanel odoo.tests.stats: sipanel_sale_scope: 5 tests 15.11s 2520 queries 
+2026-09-20 06:32:26,088 391 INFO sipanel odoo.service.server: Stopping workers gracefully 

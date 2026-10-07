@@ -1,0 +1,62 @@
+== 1. identity
+container=/odoo-sipanel image=sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac status=running
+db_bytes=157269351 filestore_bytes=280308082 addons_bytes=47069251 need_mb~=462 free_mb=2609
+== 2. create /opt/odoo/backups/sipanel-pre-2ccloseout-20260922T111500Z
+== 3. verify readability + checksums
+eb0dcd83f8047faee58178e543e76fa7837dbacb5ef4d6ba0521215fd6d44aff  sipanel.dump
+160cf7d74c58ed2d421e303759513c48569979aa9134248cf1c31a90f967d469  filestore-sipanel.tar.gz
+f26489d2e70c53c99eb762b8c8ab5a347392a40026c48942ed9996423237fdd7  addons.tar.gz
+844fd68d1919533e2f38b12e59eb6896e4dcf98ad0d45e435212f82065f62772  installed_modules.txt
+62b61e7aaa173b18be3d6b5cd3f35877d55bf02cfb72198580e0726d6e0df21d  container-inspect.json
+8fd7a7863ef6d789b91cf0741446d646356c7ac02a5009dbd0a4939832890f60  odoo-sipanel.conf.redacted
+RECOVERY_POINT_OK /opt/odoo/backups/sipanel-pre-2ccloseout-20260922T111500Z
+
+== RESTORE REHEARSAL PROCEDURE for /opt/odoo/backups/sipanel-pre-2ccloseout-20260922T111500Z (not executed) ==
+# 0. Fix and validate the targets ONCE; every later command uses these exact values
+TS=$(date -u +%Y%m%dT%H%M%SZ)
+POINT=$(sudo realpath -e "/opt/odoo/backups/sipanel-pre-2ccloseout-20260922T111500Z")
+RDB="sipanel_restore_rehearsal_${TS}"
+RFS="/opt/odoo/data/filestore/${RDB}"
+[ "$RDB" != "sipanel" ] && [ "$RFS" != "/opt/odoo/data/filestore/sipanel" ] || { echo REFUSED; exit 1; }
+(cd "$POINT" && sudo sha256sum -c SHA256SUMS)                       # every artefact must print OK
+
+# 1. Database: restore ONLY into the rehearsal database (never into sipanel)
+docker exec -i odoo-db psql -U odoo -d postgres -tAc "select 1 from pg_database where datname='${RDB}'" | grep -q 1 && { echo "exists"; exit 1; }
+docker exec -i odoo-db psql -U odoo -d postgres -c "CREATE DATABASE \"${RDB}\" OWNER odoo"
+docker exec -i odoo-db pg_restore -U odoo -d "${RDB}" --no-owner --role=odoo < "$POINT/sipanel.dump"
+docker exec -i odoo-db psql -U odoo -d "${RDB}" -tAc "select count(*) from ir_module_module where state='installed'"
+
+# 2. Filestore: inspect the archive layout BEFORE extracting anything (expect exactly one top-level dir: sipanel)
+sudo tar -tzf "$POINT/filestore-sipanel.tar.gz" | awk -F/ '{print $1}' | sort -u
+
+# 3. Extract into a temporary directory first - NEVER with -C /opt/odoo/data/filestore
+TMP=$(sudo mktemp -d "/opt/odoo/restore_rehearsal_${TS}.XXXX")
+sudo tar -C "$TMP" -xzf "$POINT/filestore-sipanel.tar.gz"
+sudo test -d "$TMP/sipanel" || { echo "unexpected layout"; exit 1; }
+
+# 4. Install ONLY under the rehearsal name, with the live owner and permissions
+OWNER=$(sudo stat -c '%u:%g' /opt/odoo/data/filestore/sipanel)
+sudo test ! -e "$RFS" || { echo "target exists"; exit 1; }
+sudo mv "$TMP/sipanel" "$RFS" && sudo chown -R "$OWNER" "$RFS" && sudo chmod -R u+rwX,go-rwx "$RFS" && sudo rmdir "$TMP"
+
+# 5. Neutralise integrations BEFORE any Odoo process opens the rehearsal database
+docker exec -i odoo-db psql -U odoo -d "${RDB}" <<'SQL'
+UPDATE ir_mail_server SET active = false;
+UPDATE ir_cron SET active = false;
+UPDATE ir_config_parameter SET value = 'http://127.0.0.1:8072' WHERE key = 'report.url';
+UPDATE ir_config_parameter SET value = 'http://localhost' WHERE key = 'web.base.url';
+DELETE FROM ir_config_parameter WHERE key = 'web.base.url.freeze';
+SQL
+# (fetchmail_server / payment providers: disable likewise if those tables exist)
+
+# 6. Optional: a THROW-AWAY process against the rehearsal DB only (never the production service, --no-http)
+#    docker run --rm --network container:odoo-db -v /opt/odoo/addons:/mnt/extra-addons:ro -v /opt/odoo/data:/var/lib/odoo <odoo-sipanel image> \
+#      odoo -d "${RDB}" --db_host=db --db_user=odoo --db_password=<from config> --no-http --stop-after-init --list-db=false
+
+# 7. Cleanup - DESTRUCTIVE, exact rehearsal targets only, each validated first
+[ "$RDB" != "sipanel" ] && [ -n "$TS" ] || exit 1
+docker exec -i odoo-db psql -U odoo -d postgres -c "DROP DATABASE \"${RDB}\""                         # DESTRUCTIVE: rehearsal DB only
+[ "$(sudo realpath -e "$RFS")" = "/opt/odoo/data/filestore/${RDB}" ] || exit 1
+sudo rm -rf --one-file-system -- "/opt/odoo/data/filestore/${RDB}"                                       # DESTRUCTIVE: rehearsal filestore only
+== END OF RESTORE REHEARSAL PROCEDURE ==
+EXIT=0

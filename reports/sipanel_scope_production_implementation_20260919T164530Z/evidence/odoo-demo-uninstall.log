@@ -1,0 +1,32 @@
+2026-09-19 17:31:40,237 3490 INFO ? odoo: Odoo version 19.0-20260528 
+2026-09-19 17:31:40,237 3490 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-19 17:31:40,238 3490 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-19 17:31:40,239 3490 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-09-19 17:31:41,303 3490 INFO ? odoo.service.server: Stopping workers gracefully 
+2026-09-19 17:31:41,384 3490 INFO sipanel odoo.modules.loading: loading 1 modules... 
+2026-09-19 17:31:41,397 3490 INFO sipanel odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-19 17:31:41,596 3490 INFO sipanel odoo.modules.loading: loading 201 modules... 
+2026-09-19 17:31:47,356 3490 INFO sipanel odoo.modules.loading: 201 modules loaded in 5.76s, 0 queries (+0 extra) 
+2026-09-19 17:31:48,832 3490 INFO sipanel odoo.modules.loading: Modules loaded. 
+2026-09-19 17:31:49,099 3490 INFO sipanel odoo.registry: Registry loaded in 7.795s 
+2026-09-19 17:31:58,573 3490 ERROR sipanel odoo.sql_db: bad query: b'DELETE FROM "sipanel_scope_version" WHERE id IN (111)'
+ERROR: update or delete on table "sipanel_scope_version" violates foreign key constraint "sipanel_scope_current_version_id_fkey" on table "sipanel_scope"
+DETAIL:  Key (id)=(111) is still referenced from table "sipanel_scope".
+ 
+2026-09-19 17:31:58,660 3490 ERROR sipanel odoo.sql_db: bad query: b'DELETE FROM "sipanel_scope" WHERE id IN (91)'
+ERROR: update or delete on table "sipanel_scope" violates foreign key constraint "sipanel_scope_version_scope_id_fkey" on table "sipanel_scope_version"
+DETAIL:  Key (id)=(91) is still referenced from table "sipanel_scope_version".
+ 
+2026-09-19 17:32:01,200 3490 ERROR sipanel odoo.sql_db: bad query: b'DELETE FROM "product_product" WHERE id IN (1083)'
+ERROR: update or delete on table "product_product" violates foreign key constraint "sipanel_scope_version_anchor_product_id_fkey" on table "sipanel_scope_version"
+DETAIL:  Key (id)=(1083) is still referenced from table "sipanel_scope_version".
+ 
+2026-09-19 17:32:01,289 3490 ERROR sipanel odoo.sql_db: bad query: b'DELETE FROM "product_template" WHERE id IN (458)'
+ERROR: update or delete on table "product_product" violates foreign key constraint "sipanel_scope_version_anchor_product_id_fkey" on table "sipanel_scope_version"
+DETAIL:  Key (id)=(1083) is still referenced from table "sipanel_scope_version".
+ 
+DEMO_BEFORE {'product.product': 7, 'res.partner': 1, 'project.project': 1, 'account.analytic.plan': 2, 'sipanel.scope': 1}
+DEMO_STATE_BEFORE installed
+DEMO_STATE_AFTER uninstalled
+DEMO_AFTER {'product.product': 1, 'res.partner': 0, 'project.project': 0, 'account.analytic.plan': 0, 'sipanel.scope': 1}
+PROD_MODULES [('sipanel_scope_costing', 'installed'), ('sipanel_scope_execution', 'installed'), ('sipanel_commercial_scope_core', 'installed'), ('sipanel_sale_scope', 'installed')]

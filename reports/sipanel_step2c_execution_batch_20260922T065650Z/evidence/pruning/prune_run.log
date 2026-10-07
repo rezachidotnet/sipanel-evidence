@@ -1,0 +1,13 @@
+== validate /opt/odoo/backups/sipanel-pre-customer-output-fix-20260920T062942Z
+DELETING exact resolved path: /opt/odoo/backups/sipanel-pre-customer-output-fix-20260920T062942Z (114887015 bytes)
+DELETED /opt/odoo/backups/sipanel-pre-customer-output-fix-20260920T062942Z
+== validate /opt/odoo/backups/sipanel-pre-live-fix-20260920T080013Z
+DELETING exact resolved path: /opt/odoo/backups/sipanel-pre-live-fix-20260920T080013Z (114570881 bytes)
+DELETED /opt/odoo/backups/sipanel-pre-live-fix-20260920T080013Z
+== validate /opt/odoo/backups/sipanel-pre-layout-fix-20260920T084541Z
+DELETING exact resolved path: /opt/odoo/backups/sipanel-pre-layout-fix-20260920T084541Z (114571705 bytes)
+DELETED /opt/odoo/backups/sipanel-pre-layout-fix-20260920T084541Z
+== validate /opt/odoo/backups/sipanel-pre-multipage-20260920T104900Z
+DELETING exact resolved path: /opt/odoo/backups/sipanel-pre-multipage-20260920T104900Z (114582630 bytes)
+DELETED /opt/odoo/backups/sipanel-pre-multipage-20260920T104900Z
+BYTES_RECOVERED_SUM_OF_DU=458612231

@@ -1,0 +1,30 @@
+2026-10-05 18:45:20,666 221 INFO ? odoo: Odoo version 19.0-20260528 
+2026-10-05 18:45:20,667 221 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-10-05 18:45:20,667 221 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-10-05 18:45:20,667 221 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-10-05 18:45:26,488 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading 1 modules... 
+2026-10-05 18:45:26,523 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: 1 modules loaded in 0.03s, 0 queries (+0 extra) 
+2026-10-05 18:45:26,904 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: updating modules list 
+2026-10-05 18:45:26,945 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-10-05 18:45:42,411 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['SIPANEL Quotation Lines'] to user __system__ #1 via n/a 
+2026-10-05 18:45:43,349 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading 202 modules... 
+2026-10-05 18:45:57,206 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: Loading module sipanel_quotation_lines (202/202) 
+2026-10-05 18:45:58,977 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.registry: module sipanel_quotation_lines: creating or updating database tables 
+2026-10-05 18:46:02,895 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_quotation_lines/views/product_template_views.xml 
+2026-10-05 18:46:03,773 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_quotation_lines/views/account_analytic_account_views.xml 
+2026-10-05 18:46:03,917 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_quotation_lines/views/res_config_settings_views.xml 
+2026-10-05 18:46:04,597 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_quotation_lines/views/sale_order_views.xml 
+2026-10-05 18:46:04,924 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_quotation_lines/report/sale_report_templates.xml 
+2026-10-05 18:46:05,076 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: module sipanel_quotation_lines: loading translation file /mnt/extra-addons/sipanel_quotation_lines/i18n/fa_IR.po for language fa_IR 
+2026-10-05 18:46:05,097 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: module sipanel_quotation_lines: no translation for language ru_RU 
+2026-10-05 18:46:07,106 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.sipanel_quotation_lines.hooks: sipanel_quotation_lines: SIP-000074 flagged as installation base 
+2026-10-05 18:46:07,162 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.sipanel_quotation_lines.hooks: sipanel_quotation_lines: SIP-000076 flagged as installation base 
+2026-10-05 18:46:07,196 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.sipanel_quotation_lines.hooks: sipanel_quotation_lines: SIP-000077 flagged as installation base 
+2026-10-05 18:46:07,303 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.sipanel_quotation_lines.hooks: sipanel_quotation_lines: System 'Standing Seam' -> installation product SIP-000075 
+2026-10-05 18:46:08,182 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: Module sipanel_quotation_lines loaded in 10.98s, 382 queries (+382 other) 
+2026-10-05 18:46:08,182 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: 202 modules loaded in 24.83s, 382 queries (+382 extra) 
+2026-10-05 18:46:12,013 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.registry: verifying fields for every extended model 
+2026-10-05 18:46:18,632 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: Modules loaded. 
+2026-10-05 18:46:18,792 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.registry: Registry changed, signaling through the database 
+2026-10-05 18:46:18,805 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.registry: Registry loaded in 55.432s 
+2026-10-05 18:46:18,806 221 INFO sipanel_qlines_clone_20261005T184109Z odoo.service.server: Stopping workers gracefully 

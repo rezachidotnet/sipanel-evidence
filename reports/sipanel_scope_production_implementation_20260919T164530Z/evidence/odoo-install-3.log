@@ -1,0 +1,349 @@
+2026-09-19 16:52:35,891 3369 INFO ? odoo: Odoo version 19.0-20260528 
+2026-09-19 16:52:35,892 3369 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-19 16:52:35,892 3369 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-19 16:52:35,893 3369 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-09-19 16:52:37,250 3369 INFO sipanel odoo.modules.loading: loading 1 modules... 
+2026-09-19 16:52:37,270 3369 INFO sipanel odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-09-19 16:52:37,368 3369 INFO sipanel odoo.modules.loading: updating modules list 
+2026-09-19 16:52:37,384 3369 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-19 16:52:41,867 3369 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['SIPANEL Commercial Scope Core', 'SIPANEL Sale Scope', 'SIPANEL Scope Costing', 'SIPANEL Scope Execution'] to user __system__ #1 via n/a 
+2026-09-19 16:52:42,088 3369 INFO sipanel odoo.modules.loading: loading 200 modules... 
+2026-09-19 16:52:47,886 3369 INFO sipanel odoo.modules.loading: Loading module sipanel_commercial_scope_core (197/200) 
+2026-09-19 16:52:49,363 3369 INFO sipanel odoo.registry: module sipanel_commercial_scope_core: creating or updating database tables 
+2026-09-19 16:52:51,479 3369 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/security/sipanel_security.xml 
+2026-09-19 16:52:51,851 3369 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/security/ir.model.access.csv 
+2026-09-19 16:52:55,166 3369 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/security/sipanel_record_rules.xml 
+2026-09-19 16:52:55,386 3369 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/data/ir_config_parameter.xml 
+2026-09-19 16:52:55,424 3369 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/scope_views.xml 
+2026-09-19 16:52:55,761 3369 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/scope_version_views.xml 
+2026-09-19 16:52:55,876 3369 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/recipe_line_views.xml 
+2026-09-19 16:52:55,909 3369 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/audit_event_views.xml 
+2026-09-19 16:52:55,994 3369 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/uom_family_views.xml 
+2026-09-19 16:52:56,053 3369 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/res_config_settings_views.xml 
+2026-09-19 16:52:56,750 3369 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/menus.xml 
+2026-09-19 16:52:57,894 3369 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_commercial_scope_core: no translation for language fa_IR 
+2026-09-19 16:52:57,906 3369 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_commercial_scope_core: no translation for language ru_RU 
+2026-09-19 16:52:59,105 3369 INFO sipanel odoo.modules.loading: Module sipanel_commercial_scope_core loaded in 11.22s, 673 queries (+673 other) 
+2026-09-19 16:52:59,106 3369 INFO sipanel odoo.modules.loading: Loading module sipanel_sale_scope (198/200) 
+2026-09-19 16:52:59,323 3369 INFO sipanel odoo.registry: module sipanel_sale_scope: creating or updating database tables 
+2026-09-19 16:53:00,127 3369 INFO sipanel odoo.models: Prepare computation of sale.order.sipanel_has_scopes 
+2026-09-19 16:53:00,266 3369 INFO sipanel odoo.models: Prepare computation of sale.order.line.sipanel_quote_scope_id 
+2026-09-19 16:53:00,269 3369 INFO sipanel odoo.models: Prepare computation of sale.order.line.sipanel_guard_state 
+2026-09-19 16:53:00,271 3369 INFO sipanel odoo.models: Prepare computation of sale.order.line.sipanel_is_anchor 
+2026-09-19 16:53:00,272 3369 INFO sipanel odoo.models: Prepare computation of sale.order.line.sipanel_is_scoped_section 
+2026-09-19 16:53:00,617 3369 WARNING sipanel odoo.addons.base.models.ir_model: Two fields (sipanel_quote_scope_id, sipanel_quote_scope_ids) of sale.order.line() have the same label: Sipanel Quote Scope. [Modules: sipanel_sale_scope and sipanel_sale_scope] 
+2026-09-19 16:53:01,260 3369 WARNING sipanel py.warnings: /usr/lib/python3/dist-packages/odoo/orm/registry.py:537: UserWarning: sale.order: inconsistent 'compute_sudo' for computed fields sipanel_scope_count, sipanel_has_scopes. Either set 'compute_sudo' to the same value on all those fields, or use distinct compute methods for sudoed and non-sudoed fields.
+  File "/usr/bin/odoo", line 6, in <module>
+    odoo.cli.main()
+  File "/usr/lib/python3/dist-packages/odoo/cli/command.py", line 133, in main
+    command().run(args)
+  File "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 127, in run
+    main(args)
+  File "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 118, in main
+    rc = server.start(preload=config['db_name'], stop=stop)
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1630, in start
+    rc = server.run(preload, stop)
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1185, in run
+    rc = preload_registries(preload)
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1544, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module, install_modules=config['init'], upgrade_modules=config['update'], reinit_modules=config['reinit'])
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 88, in locked
+    return func(inst, *args, **kwargs)
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 199, in new
+    load_modules(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 464, in load_modules
+    load_module_graph(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 194, in load_module_graph
+    registry.init_models(env.cr, model_names, {'module': package.name}, update_operation == 'install')
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 772, in init_models
+    func()
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_model.py", line 2055, in _reflect_relation
+    self.env.invalidate_all()
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 365, in invalidate_all
+    self.flush_all()
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 383, in flush_all
+    self._recompute_all()
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 376, in _recompute_all
+    self[field.model_name]._recompute_field(field)
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 6958, in _recompute_field
+    field.recompute(records)
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1893, in recompute
+    apply_except_missing(self.compute_value, recs)
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1863, in apply_except_missing
+    func(records)
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1904, in compute_value
+    fields = records.pool.field_computed[self]
+  File "/usr/lib/python3.12/functools.py", line 995, in __get__
+    val = self.func(instance)
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 537, in field_computed
+    warnings.warn(
+ 
+2026-09-19 16:53:01,261 3369 WARNING sipanel py.warnings: /usr/lib/python3/dist-packages/odoo/orm/registry.py:554: UserWarning: sale.order: inconsistent 'store' for computed fields, accessing sipanel_scope_count may recompute and update sipanel_has_scopes. Use distinct compute methods for stored and non-stored fields.
+  File "/usr/bin/odoo", line 6, in <module>
+    odoo.cli.main()
+  File "/usr/lib/python3/dist-packages/odoo/cli/command.py", line 133, in main
+    command().run(args)
+  File "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 127, in run
+    main(args)
+  File "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 118, in main
+    rc = server.start(preload=config['db_name'], stop=stop)
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1630, in start
+    rc = server.run(preload, stop)
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1185, in run
+    rc = preload_registries(preload)
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1544, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module, install_modules=config['init'], upgrade_modules=config['update'], reinit_modules=config['reinit'])
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 88, in locked
+    return func(inst, *args, **kwargs)
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 199, in new
+    load_modules(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 464, in load_modules
+    load_module_graph(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 194, in load_module_graph
+    registry.init_models(env.cr, model_names, {'module': package.name}, update_operation == 'install')
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 772, in init_models
+    func()
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_model.py", line 2055, in _reflect_relation
+    self.env.invalidate_all()
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 365, in invalidate_all
+    self.flush_all()
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 383, in flush_all
+    self._recompute_all()
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 376, in _recompute_all
+    self[field.model_name]._recompute_field(field)
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 6958, in _recompute_field
+    field.recompute(records)
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1893, in recompute
+    apply_except_missing(self.compute_value, recs)
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1863, in apply_except_missing
+    func(records)
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1904, in compute_value
+    fields = records.pool.field_computed[self]
+  File "/usr/lib/python3.12/functools.py", line 995, in __get__
+    val = self.func(instance)
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 554, in field_computed
+    warnings.warn(
+ 
+2026-09-19 16:53:04,194 3369 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_security.xml 
+2026-09-19 16:53:04,348 3369 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/ir.model.access.csv 
+2026-09-19 16:53:04,485 3369 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_record_rules.xml 
+2026-09-19 16:53:04,676 3369 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/add_scope_views.xml 
+2026-09-19 16:53:04,796 3369 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/refresh_cost_views.xml 
+2026-09-19 16:53:04,854 3369 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/split_move_views.xml 
+2026-09-19 16:53:04,912 3369 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/apply_price_views.xml 
+2026-09-19 16:53:04,969 3369 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/regenerate_note_views.xml 
+2026-09-19 16:53:05,019 3369 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/treatment_transition_views.xml 
+2026-09-19 16:53:05,082 3369 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/replace_recipe_views.xml 
+2026-09-19 16:53:05,131 3369 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_views.xml 
+2026-09-19 16:53:05,333 3369 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_revision_views.xml 
+2026-09-19 16:53:05,473 3369 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_component_views.xml 
+2026-09-19 16:53:05,510 3369 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/waiver_views.xml 
+2026-09-19 16:53:05,585 3369 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_order_views.xml 
+2026-09-19 16:53:05,826 3369 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_portal_templates.xml 
+2026-09-19 16:53:05,888 3369 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/menus.xml 
+2026-09-19 16:53:06,021 3369 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language fa_IR 
+2026-09-19 16:53:06,039 3369 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language ru_RU 
+2026-09-19 16:53:06,302 3369 INFO sipanel odoo.modules.loading: Module sipanel_sale_scope loaded in 7.20s, 1031 queries (+1031 other) 
+2026-09-19 16:53:06,303 3369 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_execution (199/200) 
+2026-09-19 16:53:06,551 3369 INFO sipanel odoo.registry: module sipanel_scope_execution: creating or updating database tables 
+2026-09-19 16:53:08,452 3369 WARNING sipanel py.warnings: /usr/lib/python3/dist-packages/odoo/orm/registry.py:537: UserWarning: sale.order: inconsistent 'compute_sudo' for computed fields sipanel_scope_count, sipanel_has_scopes. Either set 'compute_sudo' to the same value on all those fields, or use distinct compute methods for sudoed and non-sudoed fields.
+  File "/usr/bin/odoo", line 6, in <module>
+    odoo.cli.main()
+  File "/usr/lib/python3/dist-packages/odoo/cli/command.py", line 133, in main
+    command().run(args)
+  File "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 127, in run
+    main(args)
+  File "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 118, in main
+    rc = server.start(preload=config['db_name'], stop=stop)
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1630, in start
+    rc = server.run(preload, stop)
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1185, in run
+    rc = preload_registries(preload)
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1544, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module, install_modules=config['init'], upgrade_modules=config['update'], reinit_modules=config['reinit'])
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 88, in locked
+    return func(inst, *args, **kwargs)
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 199, in new
+    load_modules(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 464, in load_modules
+    load_module_graph(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 194, in load_module_graph
+    registry.init_models(env.cr, model_names, {'module': package.name}, update_operation == 'install')
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 777, in init_models
+    env.flush_all()
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 383, in flush_all
+    self._recompute_all()
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 376, in _recompute_all
+    self[field.model_name]._recompute_field(field)
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 6958, in _recompute_field
+    field.recompute(records)
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1893, in recompute
+    apply_except_missing(self.compute_value, recs)
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1863, in apply_except_missing
+    func(records)
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1904, in compute_value
+    fields = records.pool.field_computed[self]
+  File "/usr/lib/python3.12/functools.py", line 995, in __get__
+    val = self.func(instance)
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 537, in field_computed
+    warnings.warn(
+ 
+2026-09-19 16:53:08,453 3369 WARNING sipanel py.warnings: /usr/lib/python3/dist-packages/odoo/orm/registry.py:554: UserWarning: sale.order: inconsistent 'store' for computed fields, accessing sipanel_scope_count may recompute and update sipanel_has_scopes. Use distinct compute methods for stored and non-stored fields.
+  File "/usr/bin/odoo", line 6, in <module>
+    odoo.cli.main()
+  File "/usr/lib/python3/dist-packages/odoo/cli/command.py", line 133, in main
+    command().run(args)
+  File "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 127, in run
+    main(args)
+  File "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 118, in main
+    rc = server.start(preload=config['db_name'], stop=stop)
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1630, in start
+    rc = server.run(preload, stop)
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1185, in run
+    rc = preload_registries(preload)
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1544, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module, install_modules=config['init'], upgrade_modules=config['update'], reinit_modules=config['reinit'])
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 88, in locked
+    return func(inst, *args, **kwargs)
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 199, in new
+    load_modules(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 464, in load_modules
+    load_module_graph(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 194, in load_module_graph
+    registry.init_models(env.cr, model_names, {'module': package.name}, update_operation == 'install')
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 777, in init_models
+    env.flush_all()
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 383, in flush_all
+    self._recompute_all()
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 376, in _recompute_all
+    self[field.model_name]._recompute_field(field)
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 6958, in _recompute_field
+    field.recompute(records)
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1893, in recompute
+    apply_except_missing(self.compute_value, recs)
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1863, in apply_except_missing
+    func(records)
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1904, in compute_value
+    fields = records.pool.field_computed[self]
+  File "/usr/lib/python3.12/functools.py", line 995, in __get__
+    val = self.func(instance)
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 554, in field_computed
+    warnings.warn(
+ 
+2026-09-19 16:53:08,495 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_security.xml 
+2026-09-19 16:53:08,593 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/ir.model.access.csv 
+2026-09-19 16:53:08,673 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_record_rules.xml 
+2026-09-19 16:53:08,750 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/data/owner_rules.xml 
+2026-09-19 16:53:08,798 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/owner_rule_views.xml 
+2026-09-19 16:53:08,904 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/execution_views.xml 
+2026-09-19 16:53:09,069 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/sale_order_views.xml 
+2026-09-19 16:53:09,295 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/res_config_settings_views.xml 
+2026-09-19 16:53:09,560 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/menus.xml 
+2026-09-19 16:53:09,673 3369 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language fa_IR 
+2026-09-19 16:53:09,681 3369 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language ru_RU 
+2026-09-19 16:53:09,940 3369 INFO sipanel odoo.modules.loading: Module sipanel_scope_execution loaded in 3.64s, 574 queries (+574 other) 
+2026-09-19 16:53:09,941 3369 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_costing (200/200) 
+2026-09-19 16:53:10,093 3369 INFO sipanel odoo.registry: module sipanel_scope_costing: creating or updating database tables 
+2026-09-19 16:53:11,200 3369 WARNING sipanel py.warnings: /usr/lib/python3/dist-packages/odoo/orm/registry.py:537: UserWarning: sale.order: inconsistent 'compute_sudo' for computed fields sipanel_scope_count, sipanel_has_scopes. Either set 'compute_sudo' to the same value on all those fields, or use distinct compute methods for sudoed and non-sudoed fields.
+  File "/usr/bin/odoo", line 6, in <module>
+    odoo.cli.main()
+  File "/usr/lib/python3/dist-packages/odoo/cli/command.py", line 133, in main
+    command().run(args)
+  File "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 127, in run
+    main(args)
+  File "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 118, in main
+    rc = server.start(preload=config['db_name'], stop=stop)
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1630, in start
+    rc = server.run(preload, stop)
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1185, in run
+    rc = preload_registries(preload)
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1544, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module, install_modules=config['init'], upgrade_modules=config['update'], reinit_modules=config['reinit'])
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 88, in locked
+    return func(inst, *args, **kwargs)
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 199, in new
+    load_modules(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 464, in load_modules
+    load_module_graph(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 194, in load_module_graph
+    registry.init_models(env.cr, model_names, {'module': package.name}, update_operation == 'install')
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 777, in init_models
+    env.flush_all()
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 383, in flush_all
+    self._recompute_all()
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 376, in _recompute_all
+    self[field.model_name]._recompute_field(field)
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 6958, in _recompute_field
+    field.recompute(records)
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1893, in recompute
+    apply_except_missing(self.compute_value, recs)
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1863, in apply_except_missing
+    func(records)
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1904, in compute_value
+    fields = records.pool.field_computed[self]
+  File "/usr/lib/python3.12/functools.py", line 995, in __get__
+    val = self.func(instance)
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 537, in field_computed
+    warnings.warn(
+ 
+2026-09-19 16:53:11,201 3369 WARNING sipanel py.warnings: /usr/lib/python3/dist-packages/odoo/orm/registry.py:554: UserWarning: sale.order: inconsistent 'store' for computed fields, accessing sipanel_scope_count may recompute and update sipanel_has_scopes. Use distinct compute methods for stored and non-stored fields.
+  File "/usr/bin/odoo", line 6, in <module>
+    odoo.cli.main()
+  File "/usr/lib/python3/dist-packages/odoo/cli/command.py", line 133, in main
+    command().run(args)
+  File "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 127, in run
+    main(args)
+  File "/usr/lib/python3/dist-packages/odoo/cli/server.py", line 118, in main
+    rc = server.start(preload=config['db_name'], stop=stop)
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1630, in start
+    rc = server.run(preload, stop)
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1185, in run
+    rc = preload_registries(preload)
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1544, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module, install_modules=config['init'], upgrade_modules=config['update'], reinit_modules=config['reinit'])
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 88, in locked
+    return func(inst, *args, **kwargs)
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 199, in new
+    load_modules(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 464, in load_modules
+    load_module_graph(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 194, in load_module_graph
+    registry.init_models(env.cr, model_names, {'module': package.name}, update_operation == 'install')
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 777, in init_models
+    env.flush_all()
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 383, in flush_all
+    self._recompute_all()
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 376, in _recompute_all
+    self[field.model_name]._recompute_field(field)
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 6958, in _recompute_field
+    field.recompute(records)
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1893, in recompute
+    apply_except_missing(self.compute_value, recs)
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1863, in apply_except_missing
+    func(records)
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1904, in compute_value
+    fields = records.pool.field_computed[self]
+  File "/usr/lib/python3.12/functools.py", line 995, in __get__
+    val = self.func(instance)
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 554, in field_computed
+    warnings.warn(
+ 
+2026-09-19 16:53:11,256 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_security.xml 
+2026-09-19 16:53:11,352 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/ir.model.access.csv 
+2026-09-19 16:53:11,419 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_record_rules.xml 
+2026-09-19 16:53:11,488 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/recognition_policies.xml 
+2026-09-19 16:53:11,600 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/ir_cron.xml 
+2026-09-19 16:53:11,898 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/policy_views.xml 
+2026-09-19 16:53:12,053 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/event_views.xml 
+2026-09-19 16:53:12,190 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/variance_views.xml 
+2026-09-19 16:53:12,256 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/sale_order_views.xml 
+2026-09-19 16:53:12,446 3369 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/menus.xml 
+2026-09-19 16:53:12,553 3369 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language fa_IR 
+2026-09-19 16:53:12,567 3369 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language ru_RU 
+2026-09-19 16:53:12,915 3369 INFO sipanel odoo.modules.loading: Module sipanel_scope_costing loaded in 2.97s, 484 queries (+484 other) 
+2026-09-19 16:53:12,916 3369 INFO sipanel odoo.modules.loading: 200 modules loaded in 30.83s, 2762 queries (+2762 extra) 
+2026-09-19 16:53:16,038 3369 INFO sipanel odoo.registry: verifying fields for every extended model 
+2026-09-19 16:53:20,220 3369 INFO sipanel odoo.modules.loading: Modules loaded. 
+2026-09-19 16:53:20,482 3369 INFO sipanel odoo.registry: Registry changed, signaling through the database 
+2026-09-19 16:53:20,498 3369 INFO sipanel odoo.registry: Registry loaded in 43.410s 
+2026-09-19 16:53:20,502 3369 INFO sipanel odoo.service.server: Stopping workers gracefully 

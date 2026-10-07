@@ -1,0 +1,594 @@
+2026-09-19 16:55:05,234 3377 INFO ? odoo: Odoo version 19.0-20260528 
+2026-09-19 16:55:05,235 3377 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-19 16:55:05,235 3377 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-19 16:55:05,235 3377 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-09-19 16:55:06,748 3377 WARNING ? odoo.service.server: Unit testing in workers mode could fail; use --workers 0. 
+2026-09-19 16:55:06,986 3377 INFO sipanel odoo.tests.common: Importing test framework 
+2026-09-19 16:55:07,177 3377 INFO sipanel odoo.modules.loading: loading 1 modules... 
+2026-09-19 16:55:07,208 3377 INFO sipanel odoo.modules.loading: 1 modules loaded in 0.03s, 0 queries (+0 extra) 
+2026-09-19 16:55:07,360 3377 INFO sipanel odoo.modules.loading: updating modules list 
+2026-09-19 16:55:07,372 3377 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-19 16:55:12,469 3377 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['SIPANEL Commercial Scope Core', 'SIPANEL Sale Scope', 'SIPANEL Scope Costing', 'SIPANEL Scope Execution'] to user __system__ #1 via n/a 
+2026-09-19 16:55:12,470 3377 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['SIPANEL Commercial Scope Core', 'SIPANEL Sale Scope', 'SIPANEL Scope Costing', 'SIPANEL Scope Execution'] to user __system__ #1 via n/a 
+2026-09-19 16:55:16,122 3377 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-19 16:55:16,346 3377 INFO sipanel odoo.modules.loading: loading 200 modules... 
+2026-09-19 16:55:18,372 3377 INFO sipanel odoo.modules.loading: Loading module sipanel_commercial_scope_core (53/200) 
+2026-09-19 16:55:18,829 3377 INFO sipanel odoo.registry: module sipanel_commercial_scope_core: creating or updating database tables 
+2026-09-19 16:55:19,422 3377 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/security/sipanel_security.xml 
+2026-09-19 16:55:19,837 3377 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/security/ir.model.access.csv 
+2026-09-19 16:55:22,976 3377 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/security/sipanel_record_rules.xml 
+2026-09-19 16:55:23,001 3377 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/data/ir_config_parameter.xml 
+2026-09-19 16:55:23,012 3377 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/scope_views.xml 
+2026-09-19 16:55:23,201 3377 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/scope_version_views.xml 
+2026-09-19 16:55:23,278 3377 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/recipe_line_views.xml 
+2026-09-19 16:55:23,311 3377 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/audit_event_views.xml 
+2026-09-19 16:55:23,391 3377 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/uom_family_views.xml 
+2026-09-19 16:55:23,430 3377 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/res_config_settings_views.xml 
+2026-09-19 16:55:23,681 3377 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/menus.xml 
+2026-09-19 16:55:24,233 3377 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_commercial_scope_core: no translation for language fa_IR 
+2026-09-19 16:55:24,250 3377 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_commercial_scope_core: no translation for language ru_RU 
+2026-09-19 16:55:24,326 3377 INFO sipanel odoo.modules.loading: Module sipanel_commercial_scope_core loaded in 5.95s, 420 queries (+420 other) 
+2026-09-19 16:55:29,656 3377 INFO sipanel odoo.modules.loading: Loading module sipanel_sale_scope (180/200) 
+2026-09-19 16:55:31,504 3377 INFO sipanel odoo.registry: module sipanel_sale_scope: creating or updating database tables 
+2026-09-19 16:55:32,269 3377 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_security.xml 
+2026-09-19 16:55:32,453 3377 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/ir.model.access.csv 
+2026-09-19 16:55:32,560 3377 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_record_rules.xml 
+2026-09-19 16:55:32,579 3377 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/add_scope_views.xml 
+2026-09-19 16:55:32,707 3377 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/refresh_cost_views.xml 
+2026-09-19 16:55:32,758 3377 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/split_move_views.xml 
+2026-09-19 16:55:32,808 3377 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/apply_price_views.xml 
+2026-09-19 16:55:32,851 3377 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/regenerate_note_views.xml 
+2026-09-19 16:55:32,908 3377 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/treatment_transition_views.xml 
+2026-09-19 16:55:32,953 3377 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/replace_recipe_views.xml 
+2026-09-19 16:55:32,997 3377 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_views.xml 
+2026-09-19 16:55:33,103 3377 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_revision_views.xml 
+2026-09-19 16:55:33,208 3377 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_component_views.xml 
+2026-09-19 16:55:33,252 3377 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/waiver_views.xml 
+2026-09-19 16:55:33,320 3377 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_order_views.xml 
+2026-09-19 16:55:33,631 3377 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_portal_templates.xml 
+2026-09-19 16:55:33,671 3377 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/menus.xml 
+2026-09-19 16:55:33,740 3377 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language fa_IR 
+2026-09-19 16:55:33,755 3377 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language ru_RU 
+2026-09-19 16:55:33,955 3377 INFO sipanel odoo.modules.loading: Module sipanel_sale_scope loaded in 4.30s, 603 queries (+603 other) 
+2026-09-19 16:55:34,293 3377 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_execution (198/200) 
+2026-09-19 16:55:35,035 3377 INFO sipanel odoo.registry: module sipanel_scope_execution: creating or updating database tables 
+2026-09-19 16:55:35,626 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_security.xml 
+2026-09-19 16:55:35,697 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/ir.model.access.csv 
+2026-09-19 16:55:35,733 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_record_rules.xml 
+2026-09-19 16:55:35,742 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/data/owner_rules.xml 
+2026-09-19 16:55:35,753 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/owner_rule_views.xml 
+2026-09-19 16:55:35,819 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/execution_views.xml 
+2026-09-19 16:55:35,928 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/sale_order_views.xml 
+2026-09-19 16:55:36,507 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/res_config_settings_views.xml 
+2026-09-19 16:55:37,292 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/menus.xml 
+2026-09-19 16:55:37,372 3377 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language fa_IR 
+2026-09-19 16:55:37,379 3377 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language ru_RU 
+2026-09-19 16:55:37,631 3377 INFO sipanel odoo.modules.loading: Module sipanel_scope_execution loaded in 3.34s, 502 queries (+502 other) 
+2026-09-19 16:55:37,639 3377 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_costing (200/200) 
+2026-09-19 16:55:37,829 3377 INFO sipanel odoo.registry: module sipanel_scope_costing: creating or updating database tables 
+2026-09-19 16:55:38,351 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_security.xml 
+2026-09-19 16:55:38,452 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/ir.model.access.csv 
+2026-09-19 16:55:38,535 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_record_rules.xml 
+2026-09-19 16:55:38,548 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/recognition_policies.xml 
+2026-09-19 16:55:38,567 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/ir_cron.xml 
+2026-09-19 16:55:38,575 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/policy_views.xml 
+2026-09-19 16:55:38,720 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/event_views.xml 
+2026-09-19 16:55:38,784 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/variance_views.xml 
+2026-09-19 16:55:38,835 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/sale_order_views.xml 
+2026-09-19 16:55:39,191 3377 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/menus.xml 
+2026-09-19 16:55:39,255 3377 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language fa_IR 
+2026-09-19 16:55:39,261 3377 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language ru_RU 
+2026-09-19 16:55:39,449 3377 INFO sipanel odoo.modules.loading: Module sipanel_scope_costing loaded in 1.81s, 335 queries (+335 other) 
+2026-09-19 16:55:39,449 3377 INFO sipanel odoo.modules.loading: 200 modules loaded in 23.10s, 1860 queries (+1860 extra) 
+2026-09-19 16:55:41,785 3377 INFO sipanel odoo.addons.base.models.ir_model: Deleting 16565@ir.model.fields (sipanel_commercial_scope_core.field_sipanel_scope_version__message_has_sms_error) 
+2026-09-19 16:55:42,362 3377 INFO sipanel odoo.models.unlink: User #1 deleted ir.model.data records with IDs: [272604] 
+2026-09-19 16:55:42,370 3377 INFO sipanel odoo.models.unlink: User #1 deleted ir.model.fields records with IDs: [16565] 
+2026-09-19 16:55:42,410 3377 INFO sipanel odoo.addons.base.models.ir_model: Deleting 16534@ir.model.fields (sipanel_commercial_scope_core.field_sipanel_scope__message_has_sms_error) 
+2026-09-19 16:55:42,648 3377 INFO sipanel odoo.models.unlink: User #1 deleted ir.model.data records with IDs: [272573] 
+2026-09-19 16:55:42,651 3377 INFO sipanel odoo.models.unlink: User #1 deleted ir.model.fields records with IDs: [16534] 
+2026-09-19 16:55:42,697 3377 INFO sipanel odoo.registry: verifying fields for every extended model 
+2026-09-19 16:55:47,294 3377 INFO sipanel odoo.modules.loading: Modules loaded. 
+2026-09-19 16:55:47,391 3377 INFO sipanel odoo.registry: Registry changed, signaling through the database 
+2026-09-19 16:55:47,398 3377 INFO sipanel odoo.registry: Registry loaded in 40.649s 
+2026-09-19 16:55:47,399 3377 INFO sipanel odoo.service.server: Starting post tests 
+2026-09-19 16:55:48,984 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-19 16:55:50,507 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-19 16:55:51,498 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-19 16:55:57,473 3377 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_recipe_validation: Starting TestRecipeValidation.test_percent_rules ... 
+2026-09-19 16:55:58,160 3377 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_recipe_validation: Starting TestRecipeValidation.test_release_r7_r10_r11 ... 
+2026-09-19 16:55:58,378 3377 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_recipe_validation: Starting TestRecipeValidation.test_uom_family_contract ... 
+2026-09-19 16:55:59,657 3377 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 3 checked, 3 removed 
+2026-09-19 16:56:00,924 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-19 16:56:01,959 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-19 16:56:02,873 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-19 16:56:08,458 3377 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_acl_plain_user_read_only ... 
+2026-09-19 16:56:09,057 3377 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: write, uid: 18, model: sipanel.scope 
+2026-09-19 16:56:09,082 3377 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: create, uid: 18, model: sipanel.scope 
+2026-09-19 16:56:09,098 3377 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_concurrent_release_lock ... 
+2026-09-19 16:56:09,307 3377 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_duplicate_as_new_scope ... 
+2026-09-19 16:56:09,771 3377 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_release_and_supersede ... 
+2026-09-19 16:56:10,270 3377 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_release_validations_block ... 
+2026-09-19 16:56:10,370 3377 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_released_version_is_immutable ... 
+2026-09-19 16:56:10,972 3377 INFO sipanel odoo.models.unlink: User #1 deleted mail.message records with IDs: [6605, 6604] 
+2026-09-19 16:56:12,374 3377 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_scope_unlink_and_copy_guards ... 
+2026-09-19 16:56:12,930 3377 INFO sipanel odoo.models.unlink: User #1 deleted mail.message records with IDs: [6606] 
+2026-09-19 16:56:12,977 3377 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 3 checked, 3 removed 
+2026-09-19 16:56:12,984 3377 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_tools: Starting TestTools.test_cycle ... 
+2026-09-19 16:56:12,989 3377 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_tools: Starting TestTools.test_hash_deterministic ... 
+2026-09-19 16:56:12,991 3377 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_tools: Starting TestTools.test_presets ... 
+2026-09-19 16:56:12,993 3377 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_tools: Starting TestTools.test_rounding ... 
+2026-09-19 16:56:13,004 3377 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-19 16:56:13,868 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-19 16:56:14,787 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-19 16:56:15,712 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-19 16:56:21,185 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-19 16:56:22,093 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-19 16:56:22,833 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-19 16:56:23,460 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_governance: Starting TestGovernance.test_mismatch_after_send_blocks_confirm ... 
+2026-09-19 16:56:24,506 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_governance: ====================================================================== 
+2026-09-19 16:56:24,507 3377 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_governance: ERROR: TestGovernance.test_mismatch_after_send_blocks_confirm
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_governance.py", line 49, in test_mismatch_after_send_blocks_confirm
+    order.action_quotation_sent()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 105, in action_quotation_sent
+    self._sipanel_seal_current_revisions(actor='mark_sent')
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 71, in _sipanel_seal_current_revisions
+    o._sipanel_check_readiness()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 65, in _sipanel_check_readiness
+    raise UserError(self.env._("Quotation %(o)s cannot be sent:\n%(l)s", o=o.name, l='\n'.join('- ' + b for b in blocking)))
+odoo.exceptions.UserError: Quotation SI-26/079 cannot be sent:
+- SI-26/079 / SIPANEL-PT-GUTTER: Negative margin; a joint Finance+Sales waiver is required (BQ-02).
+ 
+2026-09-19 16:56:24,521 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_governance: Starting TestGovernance.test_pt10_optional_scope_transitions ... 
+2026-09-19 16:56:29,821 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_governance: Starting TestGovernance.test_pt22_price_only_amendment_keeps_baseline ... 
+2026-09-19 16:56:30,672 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_governance: ====================================================================== 
+2026-09-19 16:56:30,673 3377 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_governance: ERROR: TestGovernance.test_pt22_price_only_amendment_keeps_baseline
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_governance.py", line 127, in test_pt22_price_only_amendment_keeps_baseline
+    order.action_quotation_sent()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 105, in action_quotation_sent
+    self._sipanel_seal_current_revisions(actor='mark_sent')
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 71, in _sipanel_seal_current_revisions
+    o._sipanel_check_readiness()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 65, in _sipanel_check_readiness
+    raise UserError(self.env._("Quotation %(o)s cannot be sent:\n%(l)s", o=o.name, l='\n'.join('- ' + b for b in blocking)))
+odoo.exceptions.UserError: Quotation SI-26/082 cannot be sent:
+- SI-26/082 / SIPANEL-PT-GUTTER: Negative margin; a joint Finance+Sales waiver is required (BQ-02).
+ 
+2026-09-19 16:56:30,676 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_governance: Starting TestGovernance.test_pt32_snapshot_roundtrip_language ... 
+2026-09-19 16:56:33,330 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_governance: Starting TestGovernance.test_seal_accept_flow_and_mismatch ... 
+2026-09-19 16:56:34,416 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_governance: ====================================================================== 
+2026-09-19 16:56:34,416 3377 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_governance: ERROR: TestGovernance.test_seal_accept_flow_and_mismatch
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_governance.py", line 17, in test_seal_accept_flow_and_mismatch
+    order.action_quotation_sent()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 105, in action_quotation_sent
+    self._sipanel_seal_current_revisions(actor='mark_sent')
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 71, in _sipanel_seal_current_revisions
+    o._sipanel_check_readiness()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 65, in _sipanel_check_readiness
+    raise UserError(self.env._("Quotation %(o)s cannot be sent:\n%(l)s", o=o.name, l='\n'.join('- ' + b for b in blocking)))
+odoo.exceptions.UserError: Quotation SI-26/084 cannot be sent:
+- SI-26/084 / SIPANEL-PT-GUTTER: Negative margin; a joint Finance+Sales waiver is required (BQ-02).
+ 
+2026-09-19 16:56:35,653 3377 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 10 checked, 10 removed 
+2026-09-19 16:56:36,855 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-19 16:56:37,713 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-19 16:56:38,548 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-19 16:56:43,984 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-19 16:56:44,793 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-19 16:56:45,644 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-19 16:56:46,365 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt01_add_scope_snapshot_and_cost ... 
+2026-09-19 16:56:47,472 3377 ERROR sipanel odoo.sql_db: bad query: b'INSERT INTO "sipanel_quote_scope" ("acceptance_state", "active", "anchor_line_id", "create_date", "create_uid", "order_id", "scope_uid", "write_date", "write_uid") VALUES (\'base\', true, 287, \'2026-09-19T16:56:35.661640\'::timestamp, 1, 85, \'2a509e6f-99c6-4ba3-a4c1-d11c28cc02e8\', \'2026-09-19T16:56:35.661640\'::timestamp, 1) RETURNING "id"'
+ERROR: duplicate key value violates unique constraint "sipanel_quote_scope_anchor_line_unique"
+DETAIL:  Key (anchor_line_id)=(287) already exists.
+ 
+2026-09-19 16:56:47,486 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt02_version_isolation ... 
+2026-09-19 16:56:48,621 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt03_dimensional_quantity ... 
+2026-09-19 16:56:50,180 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt04_override_retained_and_stale ... 
+2026-09-19 16:56:51,645 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt05_percent_validation ... 
+2026-09-19 16:56:53,559 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt06_split_with_dependent ... 
+2026-09-19 16:56:54,661 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: ====================================================================== 
+2026-09-19 16:56:54,662 3377 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: ERROR: TestQuoteEngine.test_pt06_split_with_dependent
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_quote_engine.py", line 134, in test_pt06_split_with_dependent
+    res = wiz.action_split()
+          ^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/wizards/split_move.py", line 85, in action_split
+    Comp.browse(id_map[c.id]).write({'base_component_ids': [(6, 0, [id_map[b.id] for b in c.base_component_ids if b.id in id_map])]})
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 289, in write
+    return super().write(vals)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4491, in write
+    real_recs._validate_fields(vals, inverse_fields)
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 1268, in _validate_fields
+    check(records)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_component.py", line 250, in _check_component
+    raise ValidationError(_("A percent base is tombstoned or transferred: relocate the dependent line explicitly (%s).", c.display_name))
+odoo.exceptions.ValidationError: A percent base is tombstoned or transferred: relocate the dependent line explicitly (SIPANEL-PT-CORE Screw).
+ 
+2026-09-19 16:56:54,667 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt07_split_alone_blocked ... 
+2026-09-19 16:56:55,759 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt08_note_stale ... 
+2026-09-19 16:56:56,800 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: ====================================================================== 
+2026-09-19 16:56:56,801 3377 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: FAIL: TestQuoteEngine.test_pt08_note_stale
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_quote_engine.py", line 180, in test_pt08_note_stale
+    self.assertFalse(rev.note_stale)
+AssertionError: True is not false
+ 
+2026-09-19 16:56:56,806 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt09_duplicate_independent ... 
+2026-09-19 16:56:59,407 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt11_customer_scope_and_internal_only ... 
+2026-09-19 16:57:00,295 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt25_foreign_currency_blocked ... 
+2026-09-19 16:57:01,483 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt26_cost_unit_conversion ... 
+2026-09-19 16:57:02,638 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt27_pricing_and_margin ... 
+2026-09-19 16:57:05,366 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt28_known_zero_vs_missing ... 
+2026-09-19 16:57:06,342 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: ====================================================================== 
+2026-09-19 16:57:06,343 3377 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: FAIL: TestQuoteEngine.test_pt28_known_zero_vs_missing
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_quote_engine.py", line 304, in test_pt28_known_zero_vs_missing
+    self.assertEqual(c.cost_status, 'missing')
+AssertionError: 'known_zero' != 'missing'
+- known_zero
++ missing
+
+ 
+2026-09-19 16:57:06,350 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt31_ordinary_sales_untouched ... 
+2026-09-19 16:57:07,041 3377 INFO sipanel odoo.models.unlink: User #1 deleted sale.order.line records with IDs: [306] 
+2026-09-19 16:57:09,787 3377 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 8 checked, 8 removed 
+2026-09-19 16:57:10,984 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-19 16:57:11,902 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-19 16:57:12,832 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-19 16:57:18,574 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-19 16:57:19,451 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-19 16:57:20,328 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-19 16:57:20,947 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_security: Starting TestSecurity.test_s01_acl_matrix_subset ... 
+2026-09-19 16:57:21,896 3377 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: write, uid: 33, model: sipanel.quote.scope.revision 
+2026-09-19 16:57:21,958 3377 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: write, uid: 31, model: sipanel.quote.scope.revision 
+2026-09-19 16:57:22,432 3377 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-19 16:57:22,657 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_security: Starting TestSecurity.test_s02_company_isolation ... 
+2026-09-19 16:57:27,118 3377 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "OdooBot" <odoobot@example.com> as fallback 
+2026-09-19 16:57:27,135 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_other_co> to <s.s@example.com> 
+2026-09-19 16:57:28,319 3377 INFO sipanel odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [27], uid: 37, model: sipanel.quote.scope 
+2026-09-19 16:57:28,380 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_security: Starting TestSecurity.test_s03_import_and_rpc_bypass_on_sealed ... 
+2026-09-19 16:57:30,522 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_security: ====================================================================== 
+2026-09-19 16:57:30,522 3377 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_security: ERROR: TestSecurity.test_s03_import_and_rpc_bypass_on_sealed
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_security.py", line 72, in test_s03_import_and_rpc_bypass_on_sealed
+    xid = comp.export_data(['id'])['datas'][0][0]
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 890, in export_data
+    raise UserError(_("You don't have the rights to export data. Please contact an Administrator."))
+odoo.exceptions.UserError: You don't have the rights to export data. Please contact an Administrator.
+ 
+2026-09-19 16:57:30,536 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_security: Starting TestSecurity.test_s04_portal_denied_on_internal_models ... 
+2026-09-19 16:57:31,293 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_portal> to <s.s@example.com> 
+2026-09-19 16:57:32,448 3377 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 38, model: sipanel.quote.scope 
+2026-09-19 16:57:32,457 3377 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 38, model: sipanel.quote.scope.revision 
+2026-09-19 16:57:32,466 3377 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 38, model: sipanel.quote.scope.component 
+2026-09-19 16:57:32,479 3377 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 38, model: sipanel.scope 
+2026-09-19 16:57:32,492 3377 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 38, model: sipanel.scope.version 
+2026-09-19 16:57:32,503 3377 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 38, model: sipanel.quote.waiver 
+2026-09-19 16:57:34,354 3377 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 38, model: sipanel.quote.scope.revision 
+2026-09-19 16:57:34,868 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_stranger> to <s.s@example.com> 
+2026-09-19 16:57:34,904 3377 INFO sipanel odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [16], uid: 39, model: sipanel.quote.scope.artifact 
+2026-09-19 16:57:34,942 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_security: Starting TestSecurity.test_s07_cost_fields_hidden_without_group ... 
+2026-09-19 16:57:35,877 3377 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 34, model: sipanel.quote.scope.revision, field: eligible_cost_total 
+2026-09-19 16:57:35,909 3377 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 34, model: sipanel.quote.scope.component, field: unit_cost 
+2026-09-19 16:57:35,929 3377 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 34, model: sipanel.quote.scope.component, field: cost_amount 
+2026-09-19 16:57:36,008 3377 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 34, model: sipanel.quote.scope.component, field: cost_amount 
+2026-09-19 16:57:36,063 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_security: Starting TestSecurity.test_s10_privileged_actions_audited ... 
+2026-09-19 16:57:36,918 3377 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_security: ====================================================================== 
+2026-09-19 16:57:36,919 3377 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_security: ERROR: TestSecurity.test_s10_privileged_actions_audited
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_security.py", line 109, in test_s10_privileged_actions_audited
+    order.action_quotation_sent()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 105, in action_quotation_sent
+    self._sipanel_seal_current_revisions(actor='mark_sent')
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 71, in _sipanel_seal_current_revisions
+    o._sipanel_check_readiness()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 65, in _sipanel_check_readiness
+    raise UserError(self.env._("Quotation %(o)s cannot be sent:\n%(l)s", o=o.name, l='\n'.join('- ' + b for b in blocking)))
+odoo.exceptions.UserError: Quotation SI-26/112 cannot be sent:
+- SI-26/112 / SIPANEL-PT-GUTTER: Customer note is stale and not reviewed.
+ 
+2026-09-19 16:57:38,261 3377 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 12 checked, 12 removed 
+2026-09-19 16:57:39,395 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-19 16:57:40,222 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-19 16:57:41,120 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-19 16:57:46,632 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-19 16:57:47,535 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-19 16:57:48,374 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-19 16:57:49,500 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_exec> to <s.s@example.com> 
+2026-09-19 16:57:50,353 3377 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_release: Starting TestRelease.test_pt12_estimate_only_blocks ... 
+2026-09-19 16:57:52,972 3377 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_release: Starting TestRelease.test_pt13_native_owner_links_not_creates ... 
+2026-09-19 16:57:54,070 3377 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_release: ====================================================================== 
+2026-09-19 16:57:54,071 3377 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_release: ERROR: TestRelease.test_pt13_native_owner_links_not_creates
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_release.py", line 117, in test_pt13_native_owner_links_not_creates
+    order.action_quotation_sent()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 105, in action_quotation_sent
+    self._sipanel_seal_current_revisions(actor='mark_sent')
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 71, in _sipanel_seal_current_revisions
+    o._sipanel_check_readiness()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 65, in _sipanel_check_readiness
+    raise UserError(self.env._("Quotation %(o)s cannot be sent:\n%(l)s", o=o.name, l='\n'.join('- ' + b for b in blocking)))
+odoo.exceptions.UserError: Quotation SI-26/114 cannot be sent:
+- SI-26/114 / SIPANEL-PT-GUTTER: Negative margin; a joint Finance+Sales waiver is required (BQ-02).
+ 
+2026-09-19 16:57:54,080 3377 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_release: Starting TestRelease.test_pt14_release_twice_and_concurrent ... 
+2026-09-19 16:57:57,333 3377 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_release: ====================================================================== 
+2026-09-19 16:57:57,333 3377 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_release: ERROR: TestRelease.test_pt14_release_twice_and_concurrent
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_release.py", line 55, in test_pt14_release_twice_and_concurrent
+    b1 = self.env['sipanel.execution.batch'].with_user(self.exec_owner).release_for_order(order)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/execution_batch.py", line 74, in release_for_order
+    return self._release_locked(order, delta_uid=delta_uid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/execution_batch.py", line 123, in _release_locked
+    self.env['sipanel.execution.adapter'].create_or_link(d)
+  File "/mnt/extra-addons/sipanel_scope_execution/models/adapters.py", line 20, in create_or_link
+    return handler(demand)
+           ^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/adapters.py", line 112, in _adapt_stock_issue
+    move = self.env['stock.move'].create({
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/mrp/models/stock_move.py", line 280, in create
+    return super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/stock/models/stock_move.py", line 757, in create
+    res = super().create(vals_list)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4654, in create
+    raise ValueError(f"Invalid field {field_name!r} in {self._name!r}")
+ValueError: Invalid field 'name' in 'stock.move'
+ 
+2026-09-19 16:57:57,343 3377 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_release: Starting TestRelease.test_pt15_adapter_failure_rolls_back ... 
+2026-09-19 16:57:59,714 3377 INFO sipanel odoo.models.unlink: User #1 deleted product.supplierinfo records with IDs: [20] 
+2026-09-19 16:58:00,798 3377 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_release: ====================================================================== 
+2026-09-19 16:58:00,800 3377 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_release: ERROR: TestRelease.test_pt15_adapter_failure_rolls_back
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_release.py", line 78, in test_pt15_adapter_failure_rolls_back
+    self.env['sipanel.execution.batch'].with_user(self.exec_owner).release_for_order(order)
+  File "/mnt/extra-addons/sipanel_scope_execution/models/execution_batch.py", line 74, in release_for_order
+    return self._release_locked(order, delta_uid=delta_uid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/execution_batch.py", line 123, in _release_locked
+    self.env['sipanel.execution.adapter'].create_or_link(d)
+  File "/mnt/extra-addons/sipanel_scope_execution/models/adapters.py", line 20, in create_or_link
+    return handler(demand)
+           ^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/adapters.py", line 112, in _adapt_stock_issue
+    move = self.env['stock.move'].create({
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/mrp/models/stock_move.py", line 280, in create
+    return super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/stock/models/stock_move.py", line 757, in create
+    res = super().create(vals_list)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4654, in create
+    raise ValueError(f"Invalid field {field_name!r} in {self._name!r}")
+ValueError: Invalid field 'name' in 'stock.move'
+ 
+2026-09-19 16:58:00,810 3377 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_release: Starting TestRelease.test_pt22_qty_delta_and_pt19_cancel_lineage ... 
+2026-09-19 16:58:03,959 3377 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_release: ====================================================================== 
+2026-09-19 16:58:03,960 3377 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_release: ERROR: TestRelease.test_pt22_qty_delta_and_pt19_cancel_lineage
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_release.py", line 134, in test_pt22_qty_delta_and_pt19_cancel_lineage
+    b = self.env['sipanel.execution.batch'].with_user(self.exec_owner).release_for_order(order)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/execution_batch.py", line 74, in release_for_order
+    return self._release_locked(order, delta_uid=delta_uid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/execution_batch.py", line 123, in _release_locked
+    self.env['sipanel.execution.adapter'].create_or_link(d)
+  File "/mnt/extra-addons/sipanel_scope_execution/models/adapters.py", line 20, in create_or_link
+    return handler(demand)
+           ^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/adapters.py", line 112, in _adapt_stock_issue
+    move = self.env['stock.move'].create({
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/mrp/models/stock_move.py", line 280, in create
+    return super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/stock/models/stock_move.py", line 757, in create
+    res = super().create(vals_list)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4654, in create
+    raise ValueError(f"Invalid field {field_name!r} in {self._name!r}")
+ValueError: Invalid field 'name' in 'stock.move'
+ 
+2026-09-19 16:58:03,968 3377 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_release: Starting TestRelease.test_release_creates_one_demand_per_component ... 
+2026-09-19 16:58:07,209 3377 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_release: ====================================================================== 
+2026-09-19 16:58:07,210 3377 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_release: ERROR: TestRelease.test_release_creates_one_demand_per_component
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_release.py", line 18, in test_release_creates_one_demand_per_component
+    res = order.with_user(self.exec_owner).action_sipanel_release_execution()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/sale_order.py", line 22, in action_sipanel_release_execution
+    batch = self.env['sipanel.execution.batch'].release_for_order(self)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/execution_batch.py", line 74, in release_for_order
+    return self._release_locked(order, delta_uid=delta_uid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/execution_batch.py", line 123, in _release_locked
+    self.env['sipanel.execution.adapter'].create_or_link(d)
+  File "/mnt/extra-addons/sipanel_scope_execution/models/adapters.py", line 20, in create_or_link
+    return handler(demand)
+           ^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/adapters.py", line 112, in _adapt_stock_issue
+    move = self.env['stock.move'].create({
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/mrp/models/stock_move.py", line 280, in create
+    return super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/stock/models/stock_move.py", line 757, in create
+    res = super().create(vals_list)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4654, in create
+    raise ValueError(f"Invalid field {field_name!r} in {self._name!r}")
+ValueError: Invalid field 'name' in 'stock.move'
+ 
+2026-09-19 16:58:08,493 3377 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 12 checked, 12 removed 
+2026-09-19 16:58:09,638 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-19 16:58:10,472 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-19 16:58:11,259 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-19 16:58:16,598 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-19 16:58:17,440 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-19 16:58:18,244 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-19 16:58:19,500 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_exec> to <s.s@example.com> 
+2026-09-19 16:58:20,935 3377 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_fin_rec> to <s.s@example.com> 
+2026-09-19 16:58:21,865 3377 INFO sipanel odoo.addons.sipanel_scope_costing.tests.test_actuals: Starting TestActuals.test_policy_fail_closed_and_pt29_unallocated ... 
+2026-09-19 16:58:25,072 3377 INFO sipanel odoo.addons.sipanel_scope_costing.tests.test_actuals: ====================================================================== 
+2026-09-19 16:58:25,072 3377 ERROR sipanel odoo.addons.sipanel_scope_costing.tests.test_actuals: ERROR: TestActuals.test_policy_fail_closed_and_pt29_unallocated
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_costing/tests/test_actuals.py", line 163, in test_policy_fail_closed_and_pt29_unallocated
+    self.env['sipanel.execution.batch'].with_user(self.exec_owner).release_for_order(order)
+  File "/mnt/extra-addons/sipanel_scope_execution/models/execution_batch.py", line 74, in release_for_order
+    return self._release_locked(order, delta_uid=delta_uid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/execution_batch.py", line 123, in _release_locked
+    self.env['sipanel.execution.adapter'].create_or_link(d)
+  File "/mnt/extra-addons/sipanel_scope_execution/models/adapters.py", line 20, in create_or_link
+    return handler(demand)
+           ^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/adapters.py", line 112, in _adapt_stock_issue
+    move = self.env['stock.move'].create({
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/mrp/models/stock_move.py", line 280, in create
+    return super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/stock/models/stock_move.py", line 757, in create
+    res = super().create(vals_list)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4654, in create
+    raise ValueError(f"Invalid field {field_name!r} in {self._name!r}")
+ValueError: Invalid field 'name' in 'stock.move'
+ 
+2026-09-19 16:58:25,079 3377 INFO sipanel odoo.addons.sipanel_scope_costing.tests.test_actuals: Starting TestActuals.test_pt16_pt21_reconciliation ... 
+2026-09-19 16:58:28,313 3377 INFO sipanel odoo.addons.sipanel_scope_costing.tests.test_actuals: ====================================================================== 
+2026-09-19 16:58:28,314 3377 ERROR sipanel odoo.addons.sipanel_scope_costing.tests.test_actuals: ERROR: TestActuals.test_pt16_pt21_reconciliation
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_costing/tests/test_actuals.py", line 54, in test_pt16_pt21_reconciliation
+    batch = self.env['sipanel.execution.batch'].with_user(self.exec_owner).release_for_order(order)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/execution_batch.py", line 74, in release_for_order
+    return self._release_locked(order, delta_uid=delta_uid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/execution_batch.py", line 123, in _release_locked
+    self.env['sipanel.execution.adapter'].create_or_link(d)
+  File "/mnt/extra-addons/sipanel_scope_execution/models/adapters.py", line 20, in create_or_link
+    return handler(demand)
+           ^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/adapters.py", line 112, in _adapt_stock_issue
+    move = self.env['stock.move'].create({
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/mrp/models/stock_move.py", line 280, in create
+    return super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/stock/models/stock_move.py", line 757, in create
+    res = super().create(vals_list)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4654, in create
+    raise ValueError(f"Invalid field {field_name!r} in {self._name!r}")
+ValueError: Invalid field 'name' in 'stock.move'
+ 
+2026-09-19 16:58:28,321 3377 INFO sipanel odoo.addons.sipanel_scope_costing.tests.test_actuals: Starting TestActuals.test_pt19_return_and_credit_reverse_once ... 
+2026-09-19 16:58:31,384 3377 INFO sipanel odoo.addons.sipanel_scope_costing.tests.test_actuals: ====================================================================== 
+2026-09-19 16:58:31,384 3377 ERROR sipanel odoo.addons.sipanel_scope_costing.tests.test_actuals: ERROR: TestActuals.test_pt19_return_and_credit_reverse_once
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_costing/tests/test_actuals.py", line 142, in test_pt19_return_and_credit_reverse_once
+    batch = self.env['sipanel.execution.batch'].with_user(self.exec_owner).release_for_order(order)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/execution_batch.py", line 74, in release_for_order
+    return self._release_locked(order, delta_uid=delta_uid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/execution_batch.py", line 123, in _release_locked
+    self.env['sipanel.execution.adapter'].create_or_link(d)
+  File "/mnt/extra-addons/sipanel_scope_execution/models/adapters.py", line 20, in create_or_link
+    return handler(demand)
+           ^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/models/adapters.py", line 112, in _adapt_stock_issue
+    move = self.env['stock.move'].create({
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/mrp/models/stock_move.py", line 280, in create
+    return super().create(vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/stock/models/stock_move.py", line 757, in create
+    res = super().create(vals_list)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 365, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4654, in create
+    raise ValueError(f"Invalid field {field_name!r} in {self._name!r}")
+ValueError: Invalid field 'name' in 'stock.move'
+ 
+2026-09-19 16:58:32,570 3377 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 12 checked, 12 removed 
+2026-09-19 16:58:32,575 3377 INFO sipanel odoo.service.server: 49 post-tests in 165.18s, 25985 queries 
+2026-09-19 16:58:32,576 3377 INFO sipanel odoo.tests.stats: sipanel_commercial_scope_core: 20 tests 25.59s 3169 queries 
+2026-09-19 16:58:32,577 3377 INFO sipanel odoo.tests.stats: sipanel_sale_scope: 32 tests 85.24s 14030 queries 
+2026-09-19 16:58:32,578 3377 INFO sipanel odoo.tests.stats: sipanel_scope_costing: 5 tests 24.08s 3975 queries 
+2026-09-19 16:58:32,578 3377 INFO sipanel odoo.tests.stats: sipanel_scope_execution: 8 tests 30.23s 4811 queries 
+2026-09-19 16:58:32,579 3377 INFO sipanel odoo.service.server: Stopping workers gracefully 

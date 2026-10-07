@@ -1,0 +1,70 @@
+2026-09-20 08:03:33,210 15 INFO sipanel odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-09-20 08:05:32,213 1 ERROR sipanel odoo.service.server: WorkerHTTP (15) timeout after 120s 
+2026-09-20 08:05:33,401 150 INFO sipanel odoo.service.server: Worker WorkerHTTP (150) alive 
+2026-09-20 08:05:53,057 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:05:53] "GET /my/orders/312?access_token=<REDACTED> HTTP/1.1" 200 - 189 1.942 9.466
+2026-09-20 08:05:56,777 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:05:56] "GET /my/orders/312?access_token=<REDACTED>&report_type=html HTTP/1.1" 200 - 77 0.160 3.506
+2026-09-20 08:07:09,809 16 INFO sipanel longpolling: 127.0.0.1 - - [2026-09-20 08:07:09] "GET /web/assets/1/f3a065c/web.report_assets_common.rtl.autoprefixed.min.css HTTP/1.1" 200 438200 3.329196 
+2026-09-20 08:07:14,762 16 INFO sipanel longpolling: 127.0.0.1 - - [2026-09-20 08:07:14] "GET /web/login HTTP/1.1" 500 7255 4.883107 
+2026-09-20 08:07:42,804 16 INFO sipanel longpolling: 127.0.0.1 - - [2026-09-20 08:07:42] "GET /web/assets/1/f3a065c/web.report_assets_common.rtl.autoprefixed.min.css HTTP/1.1" 200 438200 0.070245 
+2026-09-20 08:07:42,929 16 INFO sipanel longpolling: 127.0.0.1 - - [2026-09-20 08:07:42] "GET /web/assets/1/d12ac26/web.report_assets_pdf.rtl.autoprefixed.min.css HTTP/1.1" 200 7003 0.066708 
+2026-09-20 08:07:43,126 16 INFO sipanel longpolling: 127.0.0.1 - - [2026-09-20 08:07:43] "GET /web/image/website/1/logo HTTP/1.1" 200 9879 0.175582 
+2026-09-20 08:07:43,229 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:07:43] "GET /web/static/img/placeholder.png HTTP/1.1" 200 6475 0.087128 
+2026-09-20 08:07:43,328 16 INFO sipanel longpolling: 127.0.0.1 - - [2026-09-20 08:07:43] "GET /web/assets/1/f3a065c/web.report_assets_common.rtl.autoprefixed.min.css HTTP/1.1" 200 438200 0.080763 
+2026-09-20 08:07:43,478 16 INFO sipanel longpolling: 127.0.0.1 - - [2026-09-20 08:07:43] "GET /web/assets/5439b38/web.report_assets_common.min.js HTTP/1.1" 200 156606 0.088374 
+2026-09-20 08:08:19,819 150 INFO sipanel odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-09-20 08:08:22,538 16 INFO sipanel longpolling: 127.0.0.1 - - [2026-09-20 08:08:22] "GET /web/assets/1/d12ac26/web.report_assets_pdf.rtl.autoprefixed.min.css HTTP/1.1" 200 6821 0.071866 
+2026-09-20 08:08:22,570 16 INFO sipanel longpolling: 127.0.0.1 - - [2026-09-20 08:08:22] "GET /web/assets/1/f3a065c/web.report_assets_common.rtl.autoprefixed.min.css HTTP/1.1" 200 438018 0.085199 
+2026-09-20 08:08:22,629 16 INFO sipanel longpolling: 127.0.0.1 - - [2026-09-20 08:08:22] "GET /web/image/1804-2fd03e21/signature.png?access_token=<REDACTED> HTTP/1.1" 200 99731 0.152176 
+2026-09-20 08:08:22,672 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:08:22] "GET /sale_shamsi_report/static/src/fonts/IRANSans.ttf HTTP/1.1" 200 104662 0.022748 
+2026-09-20 08:08:24,835 16 INFO sipanel longpolling: 127.0.0.1 - - [2026-09-20 08:08:24] "GET /web/assets/1/f7a4315/web.report_assets_common.autoprefixed.min.css HTTP/1.1" 200 437879 0.040668 
+2026-09-20 08:08:24,842 16 INFO sipanel longpolling: 127.0.0.1 - - [2026-09-20 08:08:24] "GET /web/assets/1/061706e/web.report_assets_pdf.autoprefixed.min.css HTTP/1.1" 200 6818 0.043355 
+2026-09-20 08:08:25,160 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:08:25] "GET /web/static/fonts/lato/Lato-Reg-webfont.woff HTTP/1.1" 200 34296 0.019999 
+2026-09-20 08:08:25,181 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:08:25] "GET /web/static/fonts/lato/Lato-Lig-webfont.woff HTTP/1.1" 200 33972 0.014412 
+2026-09-20 08:08:25,192 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:08:25] "GET /web/static/fonts/lato/Lato-Hai-webfont.woff HTTP/1.1" 200 33448 0.008720 
+2026-09-20 08:08:25,205 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:08:25] "GET /web/static/fonts/lato/Lato-Bol-webfont.woff HTTP/1.1" 200 34776 0.007886 
+2026-09-20 08:08:25,223 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:08:25] "GET /web/static/fonts/lato/Lato-Bla-webfont.woff HTTP/1.1" 200 33336 0.015871 
+2026-09-20 08:08:26,704 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:08:26] "GET /my/orders/312?access_token=<REDACTED>&report_type=pdf HTTP/1.1" 200 - 92 0.347 6.677
+2026-09-20 08:09:24,257 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:09:24] "GET /fa/my/orders/312?access_token=<REDACTED> HTTP/1.1" 404 - 24 0.110 0.875
+2026-09-20 08:09:24,376 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:09:24] "GET /fa_IR/my/orders/312?access_token=<REDACTED> HTTP/1.1" 404 - 14 0.023 0.073
+2026-09-20 08:09:30,140 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:09:30] "GET /my/orders/312?access_token=<REDACTED> HTTP/1.1" 200 - 86 0.761 4.981
+2026-09-20 08:09:30,219 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:09:30] "GET /en/my/orders/312?access_token=<REDACTED> HTTP/1.1" 303 - 2 0.007 0.046
+2026-09-20 08:09:30,338 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:09:30] "GET /fa/my/orders/312 HTTP/1.1" 404 - 12 0.023 0.075
+2026-09-20 08:09:30,478 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:09:30] "GET /fa/my/orders/312?access_token=<REDACTED> HTTP/1.1" 404 - 12 0.024 0.089
+2026-09-20 08:09:30,601 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:09:30] "GET /fa/my/orders/311?access_token=<REDACTED> HTTP/1.1" 404 - 14 0.023 0.078
+2026-09-20 08:09:30,713 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:09:30] "GET /fa/my/orders/310?access_token=<REDACTED> HTTP/1.1" 404 - 14 0.025 0.068
+2026-09-20 08:09:30,822 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:09:30] "GET /fa/my/orders/312?access_token=<REDACTED>&report_type=pdf HTTP/1.1" 404 - 12 0.018 0.073
+2026-09-20 08:09:30,921 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:09:30] "GET /fa/my/orders/312?report_type=pdf HTTP/1.1" 404 - 12 0.019 0.061
+2026-09-20 08:09:31,651 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:09:31] "GET /fa/my HTTP/1.1" 404 - 14 0.026 0.069
+2026-09-20 08:10:28,088 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:10:28] "GET /fa/my/orders/312?access_token=<REDACTED> HTTP/1.1" 200 - 139 0.368 6.617
+2026-09-20 08:10:28,170 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:10:28] "GET /fa_IR/my/orders/312?access_token=<REDACTED> HTTP/1.1" 301 - 2 0.011 0.038
+2026-09-20 08:10:28,243 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:10:28] "GET /fa/my HTTP/1.1" 303 - 3 0.016 0.035
+2026-09-20 08:10:52,063 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:10:52] "GET /fa/my/orders/312?access_token=<REDACTED> HTTP/1.1" 200 - 86 0.147 2.383
+2026-09-20 08:10:52,176 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:10:52] "GET /fa_IR/my/orders/312?access_token=<REDACTED> HTTP/1.1" 301 - 2 0.022 0.059
+2026-09-20 08:10:55,091 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:10:55] "GET /my/orders/312?access_token=<REDACTED> HTTP/1.1" 200 - 111 0.236 2.635
+2026-09-20 08:10:55,151 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:10:55] "GET /en/my/orders/312?access_token=<REDACTED> HTTP/1.1" 303 - 2 0.007 0.029
+2026-09-20 08:10:55,220 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:10:55] "GET /fa/my/orders/312 HTTP/1.1" 303 - 5 0.011 0.038
+2026-09-20 08:10:55,282 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:10:55] "GET /fa/my/orders/312?access_token=<REDACTED> HTTP/1.1" 303 - 6 0.010 0.033
+2026-09-20 08:10:55,382 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:10:55] "GET /fa/my/orders/311?access_token=<REDACTED> HTTP/1.1" 303 - 3 0.010 0.069
+2026-09-20 08:10:55,451 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:10:55] "GET /fa/my/orders/310?access_token=<REDACTED> HTTP/1.1" 303 - 3 0.009 0.037
+2026-09-20 08:10:58,124 16 INFO sipanel longpolling: 127.0.0.1 - - [2026-09-20 08:10:58] "GET /web/assets/1/f3a065c/web.report_assets_common.rtl.autoprefixed.min.css HTTP/1.1" 200 438018 1.649068 
+2026-09-20 08:10:58,130 16 INFO sipanel longpolling: 127.0.0.1 - - [2026-09-20 08:10:58] "GET /web/assets/1/d12ac26/web.report_assets_pdf.rtl.autoprefixed.min.css HTTP/1.1" 200 6821 1.653629 
+2026-09-20 08:10:58,149 16 INFO sipanel longpolling: 127.0.0.1 - - [2026-09-20 08:10:58] "GET /web/image/1804-2fd03e21/signature.png?access_token=<REDACTED> HTTP/1.1" 200 99731 1.667086 
+2026-09-20 08:10:58,182 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:10:58] "GET /sale_shamsi_report/static/src/fonts/IRANSans.ttf HTTP/1.1" 200 104662 0.008756 
+2026-09-20 08:10:59,432 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:10:59] "GET /web/static/fonts/lato/Lato-Reg-webfont.woff HTTP/1.1" 200 34296 0.005733 
+2026-09-20 08:10:59,446 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:10:59] "GET /web/static/fonts/lato/Lato-Hai-webfont.woff HTTP/1.1" 200 33448 0.009476 
+2026-09-20 08:10:59,459 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:10:59] "GET /web/static/fonts/lato/Lato-Bol-webfont.woff HTTP/1.1" 200 34776 0.009407 
+2026-09-20 08:10:59,470 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:10:59] "GET /web/static/fonts/lato/Lato-Bla-webfont.woff HTTP/1.1" 200 33336 0.006885 
+2026-09-20 08:10:59,478 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:10:59] "GET /web/static/fonts/lato/Lato-Lig-webfont.woff HTTP/1.1" 200 33972 0.006672 
+2026-09-20 08:11:00,895 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:11:00] "GET /fa/my/orders/312?access_token=<REDACTED>&report_type=pdf HTTP/1.1" 200 - 97 0.154 5.213
+2026-09-20 08:11:00,979 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:11:00] "GET /fa/my/orders/312?report_type=pdf HTTP/1.1" 303 - 5 0.013 0.042
+2026-09-20 08:11:01,194 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:11:01] "GET /fa/my/orders/312?access_token=<REDACTED>&report_type=html HTTP/1.1" 200 - 32 0.049 0.147
+2026-09-20 08:11:01,984 150 INFO sipanel werkzeug: 172.18.0.1 - - [20/Sep/2026 08:11:01] "GET /fa/web/login HTTP/1.1" 200 - 22 0.080 0.310
+2026-09-20 08:12:12,702 16 INFO sipanel longpolling: 127.0.0.1 - - [2026-09-20 08:12:12] "GET /web/assets/1/f3a065c/web.report_assets_common.rtl.autoprefixed.min.css HTTP/1.1" 200 438200 0.182324 
+2026-09-20 08:12:12,728 16 INFO sipanel longpolling: 127.0.0.1 - - [2026-09-20 08:12:12] "GET /web/assets/1/5439b38/web.report_assets_common.min.js HTTP/1.1" 200 156606 0.169829 
+2026-09-20 08:12:13,067 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:12:13] "GET /sale_shamsi_report/static/src/fonts/IRANSans.ttf HTTP/1.1" 200 104662 0.275084 
+2026-09-20 08:12:13,123 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:12:13] "GET /web/static/fonts/lato/Lato-Reg-webfont.woff HTTP/1.1" 200 34296 0.312254 
+2026-09-20 08:12:13,140 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:12:13] "GET /web/static/fonts/lato/Lato-Hai-webfont.woff HTTP/1.1" 200 33448 0.323436 
+2026-09-20 08:12:13,144 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:12:13] "GET /web/static/fonts/lato/Lato-Bol-webfont.woff HTTP/1.1" 200 34776 0.324567 
+2026-09-20 08:12:13,149 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:12:13] "GET /web/static/fonts/lato/Lato-Lig-webfont.woff HTTP/1.1" 200 33972 0.324109 
+2026-09-20 08:12:13,167 16 INFO ? longpolling: 127.0.0.1 - - [2026-09-20 08:12:13] "GET /web/static/fonts/lato/Lato-Bla-webfont.woff HTTP/1.1" 200 33336 0.095960 
+2026-09-20 08:12:13,191 16 INFO sipanel longpolling: 127.0.0.1 - - [2026-09-20 08:12:13] "GET /web/image/1804-2fd03e21/signature.png?access_token=<REDACTED> HTTP/1.1" 200 99731 0.391282 

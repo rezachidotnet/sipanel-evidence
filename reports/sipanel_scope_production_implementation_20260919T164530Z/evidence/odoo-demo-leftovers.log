@@ -1,0 +1,22 @@
+2026-09-19 17:34:59,427 3498 INFO ? odoo: Odoo version 19.0-20260528 
+2026-09-19 17:34:59,428 3498 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-19 17:34:59,428 3498 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-19 17:34:59,429 3498 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-09-19 17:35:01,411 3498 INFO ? odoo.service.server: Stopping workers gracefully 
+2026-09-19 17:35:01,647 3498 INFO sipanel odoo.modules.loading: loading 1 modules... 
+2026-09-19 17:35:01,668 3498 INFO sipanel odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-09-19 17:35:02,369 3498 INFO sipanel odoo.modules.loading: loading 200 modules... 
+2026-09-19 17:35:10,224 3498 INFO sipanel odoo.modules.loading: 200 modules loaded in 7.86s, 0 queries (+0 extra) 
+2026-09-19 17:35:11,936 3498 INFO sipanel odoo.modules.loading: Modules loaded. 
+2026-09-19 17:35:12,257 3498 INFO sipanel odoo.registry: Registry loaded in 10.845s 
+LEFTOVER_PRODUCTS [(1083, 'SIPANEL-PT Gutter run (anchor)', True)]
+LEFTOVER_SCOPES [(91, 'SIPANEL-PT-GUTTER', True, [(1, 'released')])]
+CHECK res.partner []
+CHECK project.project []
+CHECK account.analytic.account []
+CHECK account.analytic.plan []
+CHECK stock.picking.type []
+CHECK uom.uom []
+AUDIT_FIXTURE_EVENTS 1
+PARAMS {'sipanel_scope.system_plan_id': '78', 'sipanel_scope.activity_plan_id': '79', 'sipanel_scope.default_project_id': '54', 'sipanel_scope.stock_issue_picking_type_id': False}
+LEFTOVERS_ARCHIVED

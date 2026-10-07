@@ -1,0 +1,129 @@
+2026-10-05 19:54:24,705 341 INFO ? odoo: Odoo version 19.0-20260528 
+2026-10-05 19:54:24,706 341 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-10-05 19:54:24,707 341 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-10-05 19:54:24,709 341 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-10-05 19:54:28,084 341 WARNING ? odoo.service.server: Unit testing in workers mode could fail; use --workers 0. 
+2026-10-05 19:54:28,350 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.tests.common: Importing test framework 
+2026-10-05 19:54:30,153 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading 1 modules... 
+2026-10-05 19:54:30,172 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-10-05 19:54:30,298 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: updating modules list 
+2026-10-05 19:54:30,309 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-10-05 19:54:44,728 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['SIPANEL Commercial Scope Core', 'SIPANEL Quotation Lines', 'SIPANEL Quotation Project Information', 'SIPANEL Sale Scope', 'SIPANEL Scope Costing', 'SIPANEL Scope Execution'] to user __system__ #1 via n/a 
+2026-10-05 19:54:44,729 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['SIPANEL Commercial Scope Core', 'SIPANEL Quotation Lines', 'SIPANEL Quotation Project Information', 'SIPANEL Sale Scope', 'SIPANEL Scope Costing', 'SIPANEL Scope Execution'] to user __system__ #1 via n/a 
+2026-10-05 19:54:51,239 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-10-05 19:54:52,180 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading 202 modules... 
+2026-10-05 19:54:57,484 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: Loading module sipanel_commercial_scope_core (53/202) 
+2026-10-05 19:54:58,081 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.registry: module sipanel_commercial_scope_core: creating or updating database tables 
+2026-10-05 19:54:59,576 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_commercial_scope_core/security/sipanel_security.xml 
+2026-10-05 19:55:00,519 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_commercial_scope_core/security/ir.model.access.csv 
+2026-10-05 19:55:03,702 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_commercial_scope_core/security/sipanel_record_rules.xml 
+2026-10-05 19:55:03,748 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_commercial_scope_core/data/ir_config_parameter.xml 
+2026-10-05 19:55:03,763 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_commercial_scope_core/views/scope_views.xml 
+2026-10-05 19:55:04,119 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_commercial_scope_core/views/scope_version_views.xml 
+2026-10-05 19:55:04,200 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_commercial_scope_core/views/recipe_line_views.xml 
+2026-10-05 19:55:04,254 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_commercial_scope_core/views/audit_event_views.xml 
+2026-10-05 19:55:04,428 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_commercial_scope_core/views/uom_family_views.xml 
+2026-10-05 19:55:04,506 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_commercial_scope_core/views/res_config_settings_views.xml 
+2026-10-05 19:55:07,092 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_commercial_scope_core/views/menus.xml 
+2026-10-05 19:55:08,820 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: module sipanel_commercial_scope_core: no translation for language fa_IR 
+2026-10-05 19:55:08,828 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: module sipanel_commercial_scope_core: no translation for language ru_RU 
+2026-10-05 19:55:09,096 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: Module sipanel_commercial_scope_core loaded in 11.61s, 444 queries (+444 other) 
+2026-10-05 19:55:22,062 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: Loading module sipanel_sale_scope (180/202) 
+2026-10-05 19:55:24,418 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.registry: module sipanel_sale_scope: creating or updating database tables 
+2026-10-05 19:55:27,510 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_security.xml 
+2026-10-05 19:55:27,922 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_sale_scope/security/ir.model.access.csv 
+2026-10-05 19:55:28,080 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_record_rules.xml 
+2026-10-05 19:55:28,101 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_sale_scope/wizards/add_scope_views.xml 
+2026-10-05 19:55:28,234 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_sale_scope/wizards/refresh_cost_views.xml 
+2026-10-05 19:55:28,312 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_sale_scope/wizards/split_move_views.xml 
+2026-10-05 19:55:28,386 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_sale_scope/wizards/apply_price_views.xml 
+2026-10-05 19:55:28,436 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_sale_scope/wizards/regenerate_note_views.xml 
+2026-10-05 19:55:28,480 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_sale_scope/wizards/treatment_transition_views.xml 
+2026-10-05 19:55:28,523 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_sale_scope/wizards/replace_recipe_views.xml 
+2026-10-05 19:55:28,560 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_views.xml 
+2026-10-05 19:55:28,670 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_revision_views.xml 
+2026-10-05 19:55:28,791 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_component_views.xml 
+2026-10-05 19:55:28,836 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_sale_scope/views/waiver_views.xml 
+2026-10-05 19:55:28,909 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_sale_scope/views/sale_order_views.xml 
+2026-10-05 19:55:29,369 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_sale_scope/views/sale_portal_templates.xml 
+2026-10-05 19:55:29,434 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_sale_scope/views/menus.xml 
+2026-10-05 19:55:29,524 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language fa_IR 
+2026-10-05 19:55:29,538 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language ru_RU 
+2026-10-05 19:55:30,783 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: Module sipanel_sale_scope loaded in 8.72s, 678 queries (+678 other) 
+2026-10-05 19:55:31,159 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: Loading module sipanel_quotation_project_info (189/202) 
+2026-10-05 19:55:32,051 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.registry: module sipanel_quotation_project_info: creating or updating database tables 
+2026-10-05 19:55:32,638 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_quotation_project_info/security/ir.model.access.csv 
+2026-10-05 19:55:32,660 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_quotation_project_info/wizards/project_site_fiscal_change_views.xml 
+2026-10-05 19:55:32,760 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_quotation_project_info/views/crm_lead_views.xml 
+2026-10-05 19:55:33,001 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_quotation_project_info/views/sale_order_views.xml 
+2026-10-05 19:55:33,538 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_quotation_project_info/report/sale_report_templates.xml 
+2026-10-05 19:55:33,714 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: module sipanel_quotation_project_info: loading translation file /mnt/extra-addons/sipanel_quotation_project_info/i18n/fa_IR.po for language fa_IR 
+2026-10-05 19:55:33,746 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: module sipanel_quotation_project_info: no translation for language ru_RU 
+2026-10-05 19:55:34,090 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: Module sipanel_quotation_project_info loaded in 2.93s, 240 queries (+240 other) 
+2026-10-05 19:55:34,406 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: Loading module sipanel_quotation_lines (199/202) 
+2026-10-05 19:55:35,016 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.registry: module sipanel_quotation_lines: creating or updating database tables 
+2026-10-05 19:55:36,294 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_quotation_lines/views/product_template_views.xml 
+2026-10-05 19:55:36,732 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_quotation_lines/views/account_analytic_account_views.xml 
+2026-10-05 19:55:36,838 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_quotation_lines/views/res_config_settings_views.xml 
+2026-10-05 19:55:37,658 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_quotation_lines/views/sale_order_views.xml 
+2026-10-05 19:55:38,340 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_quotation_lines/report/sale_report_templates.xml 
+2026-10-05 19:55:38,528 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: module sipanel_quotation_lines: loading translation file /mnt/extra-addons/sipanel_quotation_lines/i18n/fa_IR.po for language fa_IR 
+2026-10-05 19:55:38,549 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: module sipanel_quotation_lines: no translation for language ru_RU 
+2026-10-05 19:55:38,902 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: Module sipanel_quotation_lines loaded in 4.50s, 447 queries (+447 other) 
+2026-10-05 19:55:38,903 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: Loading module sipanel_scope_execution (200/202) 
+2026-10-05 19:55:39,309 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.registry: module sipanel_scope_execution: creating or updating database tables 
+2026-10-05 19:55:40,306 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_security.xml 
+2026-10-05 19:55:40,508 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_execution/security/ir.model.access.csv 
+2026-10-05 19:55:40,675 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_record_rules.xml 
+2026-10-05 19:55:40,689 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_execution/data/owner_rules.xml 
+2026-10-05 19:55:40,705 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_execution/views/owner_rule_views.xml 
+2026-10-05 19:55:40,756 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_execution/views/execution_views.xml 
+2026-10-05 19:55:40,960 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_execution/views/sale_order_views.xml 
+2026-10-05 19:55:41,751 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_execution/views/res_config_settings_views.xml 
+2026-10-05 19:55:42,517 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_execution/views/menus.xml 
+2026-10-05 19:55:42,642 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language fa_IR 
+2026-10-05 19:55:42,650 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language ru_RU 
+2026-10-05 19:55:42,932 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: Module sipanel_scope_execution loaded in 4.03s, 497 queries (+497 other) 
+2026-10-05 19:55:42,959 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: Loading module sipanel_scope_costing (202/202) 
+2026-10-05 19:55:43,209 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.registry: module sipanel_scope_costing: creating or updating database tables 
+2026-10-05 19:55:44,009 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_security.xml 
+2026-10-05 19:55:44,149 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_costing/security/ir.model.access.csv 
+2026-10-05 19:55:44,387 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_record_rules.xml 
+2026-10-05 19:55:44,407 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_costing/data/recognition_policies.xml 
+2026-10-05 19:55:44,446 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_costing/data/ir_cron.xml 
+2026-10-05 19:55:44,457 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_costing/views/policy_views.xml 
+2026-10-05 19:55:44,559 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_costing/views/event_views.xml 
+2026-10-05 19:55:44,671 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_costing/views/variance_views.xml 
+2026-10-05 19:55:44,735 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_costing/views/sale_order_views.xml 
+2026-10-05 19:55:45,449 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: loading sipanel_scope_costing/views/menus.xml 
+2026-10-05 19:55:45,629 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language fa_IR 
+2026-10-05 19:55:45,636 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language ru_RU 
+2026-10-05 19:55:45,969 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: Module sipanel_scope_costing loaded in 3.01s, 339 queries (+339 other) 
+2026-10-05 19:55:45,971 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: 202 modules loaded in 53.79s, 2645 queries (+2645 extra) 
+2026-10-05 19:55:50,924 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.registry: verifying fields for every extended model 
+2026-10-05 19:56:06,151 341 ERROR sipanel_qlines_clone_20261005T184109Z odoo.sql_db: bad query: b'ALTER TABLE ir_model_fields  ALTER COLUMN website_form_blacklisted SET DEFAULT true'
+ERROR: canceling statement due to lock timeout
+ 
+2026-10-05 19:56:06,163 341 WARNING sipanel_qlines_clone_20261005T184109Z odoo.modules.loading: Transient module states were reset 
+2026-10-05 19:56:06,165 341 ERROR sipanel_qlines_clone_20261005T184109Z odoo.registry: Failed to load registry 
+2026-10-05 19:56:06,166 341 CRITICAL sipanel_qlines_clone_20261005T184109Z odoo.service.server: Failed to initialize database `sipanel_qlines_clone_20261005T184109Z`. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1544, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module, install_modules=config['init'], upgrade_modules=config['update'], reinit_modules=config['reinit'])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 88, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 199, in new
+    load_modules(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 572, in load_modules
+    registry.init_models(cr, models_to_check, {'models_to_check': True, 'update_custom_fields': True})
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 760, in init_models
+    model.init()
+  File "/usr/lib/python3/dist-packages/odoo/addons/website/models/website_form.py", line 149, in init
+    self.env.cr.execute('ALTER TABLE ir_model_fields '
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 433, in execute
+    self._obj.execute(query, params)
+psycopg2.errors.LockNotAvailable: canceling statement due to lock timeout
+
+2026-10-05 19:56:06,201 341 INFO sipanel_qlines_clone_20261005T184109Z odoo.service.server: Stopping workers gracefully 

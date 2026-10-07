@@ -1,0 +1,403 @@
+2026-09-22 08:36:10,187 2348 INFO ? odoo: Odoo version 19.0-20260528 
+2026-09-22 08:36:10,188 2348 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-22 08:36:10,188 2348 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-22 08:36:10,188 2348 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-09-22 08:36:11,889 2348 WARNING ? odoo.service.server: Unit testing in workers mode could fail; use --workers 0. 
+2026-09-22 08:36:12,027 2348 INFO sipanel odoo.tests.common: Importing test framework 
+2026-09-22 08:36:12,890 2348 INFO sipanel odoo.modules.loading: loading 1 modules... 
+2026-09-22 08:36:12,902 2348 INFO sipanel odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-22 08:36:12,993 2348 INFO sipanel odoo.modules.loading: updating modules list 
+2026-09-22 08:36:13,012 2348 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-22 08:36:20,161 2348 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['SIPANEL Scope Execution'] to user __system__ #1 via n/a 
+2026-09-22 08:36:20,163 2348 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['SIPANEL Scope Execution'] to user __system__ #1 via n/a 
+2026-09-22 08:36:23,149 2348 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-22 08:36:23,443 2348 INFO sipanel odoo.modules.loading: loading 200 modules... 
+2026-09-22 08:36:30,434 2348 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_execution (198/200) 
+2026-09-22 08:36:31,666 2348 INFO sipanel odoo.registry: module sipanel_scope_execution: creating or updating database tables 
+2026-09-22 08:36:32,662 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_security.xml 
+2026-09-22 08:36:32,792 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/ir.model.access.csv 
+2026-09-22 08:36:35,516 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_record_rules.xml 
+2026-09-22 08:36:35,534 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/data/owner_rules.xml 
+2026-09-22 08:36:35,553 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/owner_rule_views.xml 
+2026-09-22 08:36:35,675 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/execution_views.xml 
+2026-09-22 08:36:35,797 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/sale_order_views.xml 
+2026-09-22 08:36:36,318 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/res_config_settings_views.xml 
+2026-09-22 08:36:36,958 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/menus.xml 
+2026-09-22 08:36:37,047 2348 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language fa_IR 
+2026-09-22 08:36:37,053 2348 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language ru_RU 
+2026-09-22 08:36:37,689 2348 INFO sipanel odoo.modules.loading: Module sipanel_scope_execution loaded in 7.26s, 497 queries (+497 other) 
+2026-09-22 08:36:37,695 2348 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_costing (200/200) 
+2026-09-22 08:36:37,841 2348 INFO sipanel odoo.registry: module sipanel_scope_costing: creating or updating database tables 
+2026-09-22 08:36:38,411 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_security.xml 
+2026-09-22 08:36:38,486 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/ir.model.access.csv 
+2026-09-22 08:36:38,578 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_record_rules.xml 
+2026-09-22 08:36:38,591 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/recognition_policies.xml 
+2026-09-22 08:36:38,615 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/ir_cron.xml 
+2026-09-22 08:36:38,627 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/policy_views.xml 
+2026-09-22 08:36:38,681 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/event_views.xml 
+2026-09-22 08:36:38,762 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/variance_views.xml 
+2026-09-22 08:36:38,813 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/sale_order_views.xml 
+2026-09-22 08:36:39,290 2348 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/menus.xml 
+2026-09-22 08:36:39,395 2348 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language fa_IR 
+2026-09-22 08:36:39,402 2348 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language ru_RU 
+2026-09-22 08:36:39,602 2348 INFO sipanel odoo.modules.loading: Module sipanel_scope_costing loaded in 1.91s, 339 queries (+339 other) 
+2026-09-22 08:36:39,602 2348 INFO sipanel odoo.modules.loading: 200 modules loaded in 16.16s, 836 queries (+836 extra) 
+2026-09-22 08:36:41,759 2348 INFO sipanel odoo.registry: verifying fields for every extended model 
+2026-09-22 08:36:44,907 2348 INFO sipanel odoo.modules.loading: Modules loaded. 
+2026-09-22 08:36:45,079 2348 INFO sipanel odoo.registry: Registry changed, signaling through the database 
+2026-09-22 08:36:45,090 2348 INFO sipanel odoo.registry: Registry loaded in 33.200s 
+2026-09-22 08:36:45,091 2348 INFO sipanel odoo.service.server: Starting post tests 
+2026-09-22 08:36:46,667 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-22 08:36:47,861 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-22 08:36:48,518 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-22 08:36:53,310 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-22 08:36:53,949 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-22 08:36:54,700 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-22 08:36:55,886 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_exec> to <s.s@example.com> 
+2026-09-22 08:36:56,610 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestDemandImmutability.test_demands_are_never_deleted ... 
+2026-09-22 08:37:01,445 2348 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: unlink, uid: 1687, model: sipanel.execution.demand 
+2026-09-22 08:37:01,459 2348 ERROR sipanel odoo.sql_db: bad query: b'DELETE FROM "sipanel_execution_demand" WHERE id IN (1525)'
+ERROR: update or delete on table "sipanel_execution_demand" violates foreign key constraint "sipanel_execution_target_demand_id_fkey" on table "sipanel_execution_target"
+DETAIL:  Key (id)=(1525) is still referenced from table "sipanel_execution_target".
+ 
+2026-09-22 08:37:01,477 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ====================================================================== 
+2026-09-22 08:37:01,477 2348 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ERROR: TestDemandImmutability.test_demands_are_never_deleted
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 108, in test_demands_are_never_deleted
+    rs.unlink()
+  File "/usr/lib/python3/dist-packages/odoo/addons/mail/models/models.py", line 49, in unlink
+    result = super().unlink()
+             ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4235, in unlink
+    cr.execute(SQL(
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 433, in execute
+    self._obj.execute(query, params)
+psycopg2.errors.ForeignKeyViolation: update or delete on table "sipanel_execution_demand" violates foreign key constraint "sipanel_execution_target_demand_id_fkey" on table "sipanel_execution_target"
+DETAIL:  Key (id)=(1525) is still referenced from table "sipanel_execution_target".
+
+ 
+2026-09-22 08:37:01,485 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestDemandImmutability.test_direct_demand_key_modification_is_refused_and_value_unchanged ... 
+2026-09-22 08:37:04,666 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ====================================================================== 
+2026-09-22 08:37:04,667 2348 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: FAIL: TestDemandImmutability.test_direct_demand_key_modification_is_refused_and_value_unchanged
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 42, in test_direct_demand_key_modification_is_refused_and_value_unchanged
+    with self.assertRaises(AccessError):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised
+ 
+2026-09-22 08:37:04,674 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestDemandImmutability.test_every_provenance_field_is_immutable ... 
+2026-09-22 08:37:08,379 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ====================================================================== 
+2026-09-22 08:37:08,380 2348 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: FAIL: TestDemandImmutability.test_every_provenance_field_is_immutable
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 53, in test_every_provenance_field_is_immutable
+    with self.assertRaises(AccessError, msg=f):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised : batch_id
+ 
+2026-09-22 08:37:08,383 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestDemandImmutability.test_forged_demand_creation_is_refused ... 
+2026-09-22 08:37:11,473 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ====================================================================== 
+2026-09-22 08:37:11,474 2348 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: FAIL: TestDemandImmutability.test_forged_demand_creation_is_refused
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 100, in test_forged_demand_creation_is_refused
+    with self.assertRaises(AccessError):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised
+ 
+2026-09-22 08:37:11,481 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestDemandImmutability.test_genuine_release_failure_retry_and_cancellation_still_work ... 
+2026-09-22 08:37:13,413 2348 INFO sipanel odoo.models.unlink: User #1 deleted product.supplierinfo records with IDs: [121] 
+2026-09-22 08:37:15,542 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ====================================================================== 
+2026-09-22 08:37:15,542 2348 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: FAIL: TestDemandImmutability.test_genuine_release_failure_retry_and_cancellation_still_work
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 129, in test_genuine_release_failure_retry_and_cancellation_still_work
+    self.assertEqual(len(ev), 1)
+AssertionError: 0 != 1
+ 
+2026-09-22 08:37:15,548 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestDemandImmutability.test_guessed_token_does_not_open_the_engine ... 
+2026-09-22 08:37:18,618 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ====================================================================== 
+2026-09-22 08:37:18,618 2348 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: FAIL: TestDemandImmutability.test_guessed_token_does_not_open_the_engine
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 68, in test_guessed_token_does_not_open_the_engine
+    with self.assertRaises(AccessError):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised
+ 
+2026-09-22 08:37:18,624 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestDemandImmutability.test_import_context_does_not_open_the_engine ... 
+2026-09-22 08:37:21,738 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ====================================================================== 
+2026-09-22 08:37:21,738 2348 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: FAIL: TestDemandImmutability.test_import_context_does_not_open_the_engine
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 83, in test_import_context_does_not_open_the_engine
+    with self.assertRaises(AccessError):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised
+ 
+2026-09-22 08:37:21,742 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestDemandImmutability.test_raw_context_flag_does_not_open_the_engine ... 
+2026-09-22 08:37:24,658 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ====================================================================== 
+2026-09-22 08:37:24,658 2348 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: FAIL: TestDemandImmutability.test_raw_context_flag_does_not_open_the_engine
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 62, in test_raw_context_flag_does_not_open_the_engine
+    with self.assertRaises(AccessError):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised
+ 
+2026-09-22 08:37:24,663 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestDemandImmutability.test_sudo_does_not_open_the_engine ... 
+2026-09-22 08:37:27,703 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ====================================================================== 
+2026-09-22 08:37:27,704 2348 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: FAIL: TestDemandImmutability.test_sudo_does_not_open_the_engine
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 74, in test_sudo_does_not_open_the_engine
+    with self.assertRaises(AccessError):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised
+ 
+2026-09-22 08:37:28,982 2348 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 21 checked, 16 removed 
+2026-09-22 08:37:29,832 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-22 08:37:30,586 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-22 08:37:31,128 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-22 08:37:35,256 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-22 08:37:35,858 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-22 08:37:36,482 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-22 08:37:37,528 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_exec> to <s.s@example.com> 
+2026-09-22 08:37:38,051 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestNativeOwnerBoundary.test_bridge_owned_cancel_withdraws_sipanel_documents_and_classifies_reversal ... 
+2026-09-22 08:37:41,169 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ====================================================================== 
+2026-09-22 08:37:41,170 2348 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: FAIL: TestNativeOwnerBoundary.test_bridge_owned_cancel_withdraws_sipanel_documents_and_classifies_reversal
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 157, in test_bridge_owned_cancel_withdraws_sipanel_documents_and_classifies_reversal
+    self.assertFalse(dm['stock_issue'].reversal_required)
+AssertionError: True is not false
+ 
+2026-09-22 08:37:41,186 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestNativeOwnerBoundary.test_completed_bridge_target_refuses_plain_cancel_and_requires_reversal ... 
+2026-09-22 08:37:45,170 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ====================================================================== 
+2026-09-22 08:37:45,170 2348 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: FAIL: TestNativeOwnerBoundary.test_completed_bridge_target_refuses_plain_cancel_and_requires_reversal
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 266, in test_completed_bridge_target_refuses_plain_cancel_and_requires_reversal
+    self.assertFalse(dm['labour'].reversal_required)
+AssertionError: True is not false
+ 
+2026-09-22 08:37:45,180 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestNativeOwnerBoundary.test_native_amendment_reduction_never_touches_native_documents ... 
+2026-09-22 08:37:48,042 2348 INFO sipanel odoo.models.unlink: User #1 deleted stock.move records with IDs: [1207] 
+2026-09-22 08:37:49,074 2348 INFO sipanel odoo.models.unlink: User #1 deleted stock.move records with IDs: [1209] 
+2026-09-22 08:37:49,584 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestNativeOwnerBoundary.test_native_owned_cancel_leaves_native_documents_untouched ... 
+2026-09-22 08:37:52,838 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ====================================================================== 
+2026-09-22 08:37:52,839 2348 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: FAIL: TestNativeOwnerBoundary.test_native_owned_cancel_leaves_native_documents_untouched
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 181, in test_native_owned_cancel_leaves_native_documents_untouched
+    self.assertFalse(cancelled_calls, 'SIPANEL never cancels a native-owned move')
+AssertionError: [['/mnt/extra-addons/sipanel_scope_execution/models/adapters.py', '/mnt/extra-addons/sipanel_scope_execution/models/execution_batch.py', '/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py', '/usr/lib/python3/dist-packages/odoo/tests/case.py', '/usr/lib/python3/dist-packages/odoo/tests/case.py']] is not false : SIPANEL never cancels a native-owned move
+ 
+2026-09-22 08:37:52,844 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestNativeOwnerBoundary.test_repeated_cancellation_is_idempotent ... 
+2026-09-22 08:37:55,862 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ====================================================================== 
+2026-09-22 08:37:55,862 2348 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: FAIL: TestNativeOwnerBoundary.test_repeated_cancellation_is_idempotent
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 245, in test_repeated_cancellation_is_idempotent
+    self.assertFalse(calls, 'no second document action')
+AssertionError: [1] is not false : no second document action
+ 
+2026-09-22 08:37:55,869 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestNativeOwnerBoundary.test_zero_duplicate_records_after_cancel_and_recount ... 
+2026-09-22 08:38:00,194 2348 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 14 checked, 14 removed 
+2026-09-22 08:38:01,032 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-22 08:38:01,670 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-22 08:38:02,212 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-22 08:38:06,155 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-22 08:38:06,821 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-22 08:38:07,371 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-22 08:38:08,367 2348 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_exec> to <s.s@example.com> 
+2026-09-22 08:38:08,864 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestSalesCancellation.test_authorized_sales_user_cancels_own_order_with_released_execution ... 
+2026-09-22 08:38:09,741 2348 INFO sipanel odoo.models: Access Denied by ACLs for operation: write, uid: 1698, model: sipanel.quote.scope.revision, field: net_revenue_projection 
+2026-09-22 08:38:09,762 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ====================================================================== 
+2026-09-22 08:38:09,763 2348 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ERROR: TestSalesCancellation.test_authorized_sales_user_cancels_own_order_with_released_execution
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 291, in test_authorized_sales_user_cancels_own_order_with_released_execution
+    order, scope, batch = self._sales_order_released()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 284, in _sales_order_released
+    order, scope, bracket = self._bridge_order_with_own_line(user=self.sales)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/common.py", line 55, in _bridge_order_with_own_line
+    order.action_quotation_sent()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 116, in action_quotation_sent
+    self._sipanel_seal_current_revisions(actor='mark_sent')
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 77, in _sipanel_seal_current_revisions
+    rev.action_seal(actor=actor)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 345, in action_seal
+    r.with_context(**guard_ctx('sipanel_seal_transaction')).write({
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 204, in write
+    res = super().write(vals)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/mail/models/mail_thread.py", line 391, in write
+    result = super().write(vals)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4381, in write
+    self._check_field_access(self._fields[field_name], 'write')
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 3429, in _check_field_access
+    raise AccessError(error_msg)
+odoo.exceptions.AccessError: You do not have enough rights to access the field "net_revenue_projection" on SIPANEL quote scope revision (snapshot) (sipanel.quote.scope.revision). Please contact your system administrator.
+
+Operation: write
+User: 1698
+Groups: allowed for groups 'SIPANEL Commercial Scope / Cost & Margin Viewer'
+ 
+2026-09-22 08:38:09,775 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestSalesCancellation.test_execution_owner_cancellation_remains_valid ... 
+2026-09-22 08:38:14,801 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestSalesCancellation.test_sales_user_cannot_cancel_another_orders_demand ... 
+2026-09-22 08:38:15,584 2348 INFO sipanel odoo.models: Access Denied by ACLs for operation: write, uid: 1698, model: sipanel.quote.scope.revision, field: net_revenue_projection 
+2026-09-22 08:38:15,591 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ====================================================================== 
+2026-09-22 08:38:15,592 2348 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ERROR: TestSalesCancellation.test_sales_user_cannot_cancel_another_orders_demand
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 327, in test_sales_user_cannot_cancel_another_orders_demand
+    mine, scope_m, batch_m = self._sales_order_released()
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 284, in _sales_order_released
+    order, scope, bracket = self._bridge_order_with_own_line(user=self.sales)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/common.py", line 55, in _bridge_order_with_own_line
+    order.action_quotation_sent()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 116, in action_quotation_sent
+    self._sipanel_seal_current_revisions(actor='mark_sent')
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 77, in _sipanel_seal_current_revisions
+    rev.action_seal(actor=actor)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 345, in action_seal
+    r.with_context(**guard_ctx('sipanel_seal_transaction')).write({
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 204, in write
+    res = super().write(vals)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/mail/models/mail_thread.py", line 391, in write
+    result = super().write(vals)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4381, in write
+    self._check_field_access(self._fields[field_name], 'write')
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 3429, in _check_field_access
+    raise AccessError(error_msg)
+odoo.exceptions.AccessError: You do not have enough rights to access the field "net_revenue_projection" on SIPANEL quote scope revision (snapshot) (sipanel.quote.scope.revision). Please contact your system administrator.
+
+Operation: write
+User: 1698
+Groups: allowed for groups 'SIPANEL Commercial Scope / Cost & Margin Viewer'
+ 
+2026-09-22 08:38:15,595 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestSalesCancellation.test_sales_user_cannot_write_a_demand_directly ... 
+2026-09-22 08:38:16,376 2348 INFO sipanel odoo.models: Access Denied by ACLs for operation: write, uid: 1698, model: sipanel.quote.scope.revision, field: net_revenue_projection 
+2026-09-22 08:38:16,385 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ====================================================================== 
+2026-09-22 08:38:16,386 2348 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ERROR: TestSalesCancellation.test_sales_user_cannot_write_a_demand_directly
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 316, in test_sales_user_cannot_write_a_demand_directly
+    order, scope, batch = self._sales_order_released()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 284, in _sales_order_released
+    order, scope, bracket = self._bridge_order_with_own_line(user=self.sales)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/common.py", line 55, in _bridge_order_with_own_line
+    order.action_quotation_sent()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 116, in action_quotation_sent
+    self._sipanel_seal_current_revisions(actor='mark_sent')
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 77, in _sipanel_seal_current_revisions
+    rev.action_seal(actor=actor)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 345, in action_seal
+    r.with_context(**guard_ctx('sipanel_seal_transaction')).write({
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 204, in write
+    res = super().write(vals)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/mail/models/mail_thread.py", line 391, in write
+    result = super().write(vals)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4381, in write
+    self._check_field_access(self._fields[field_name], 'write')
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 3429, in _check_field_access
+    raise AccessError(error_msg)
+odoo.exceptions.AccessError: You do not have enough rights to access the field "net_revenue_projection" on SIPANEL quote scope revision (snapshot) (sipanel.quote.scope.revision). Please contact your system administrator.
+
+Operation: write
+User: 1698
+Groups: allowed for groups 'SIPANEL Commercial Scope / Cost & Margin Viewer'
+ 
+2026-09-22 08:38:16,390 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: Starting TestSalesCancellation.test_unauthorized_user_cannot_cancel_the_order ... 
+2026-09-22 08:38:17,214 2348 INFO sipanel odoo.models: Access Denied by ACLs for operation: write, uid: 1698, model: sipanel.quote.scope.revision, field: net_revenue_projection 
+2026-09-22 08:38:17,223 2348 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ====================================================================== 
+2026-09-22 08:38:17,224 2348 ERROR sipanel odoo.addons.sipanel_scope_execution.tests.test_step2c_hardening: ERROR: TestSalesCancellation.test_unauthorized_user_cannot_cancel_the_order
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 308, in test_unauthorized_user_cannot_cancel_the_order
+    order, scope, batch = self._sales_order_released()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/test_step2c_hardening.py", line 284, in _sales_order_released
+    order, scope, bracket = self._bridge_order_with_own_line(user=self.sales)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_scope_execution/tests/common.py", line 55, in _bridge_order_with_own_line
+    order.action_quotation_sent()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 116, in action_quotation_sent
+    self._sipanel_seal_current_revisions(actor='mark_sent')
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 77, in _sipanel_seal_current_revisions
+    rev.action_seal(actor=actor)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 345, in action_seal
+    r.with_context(**guard_ctx('sipanel_seal_transaction')).write({
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 204, in write
+    res = super().write(vals)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/mail/models/mail_thread.py", line 391, in write
+    result = super().write(vals)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4381, in write
+    self._check_field_access(self._fields[field_name], 'write')
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 3429, in _check_field_access
+    raise AccessError(error_msg)
+odoo.exceptions.AccessError: You do not have enough rights to access the field "net_revenue_projection" on SIPANEL quote scope revision (snapshot) (sipanel.quote.scope.revision). Please contact your system administrator.
+
+Operation: write
+User: 1698
+Groups: allowed for groups 'SIPANEL Commercial Scope / Cost & Margin Viewer'
+ 
+2026-09-22 08:38:18,239 2348 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 9 checked, 9 removed 
+2026-09-22 08:38:18,242 2348 INFO sipanel odoo.service.server: 20 post-tests in 93.15s, 19994 queries 
+2026-09-22 08:38:18,243 2348 INFO sipanel odoo.tests.stats: sipanel_scope_execution: 26 tests 93.14s 19994 queries 
+2026-09-22 08:38:18,244 2348 INFO sipanel odoo.service.server: Stopping workers gracefully 

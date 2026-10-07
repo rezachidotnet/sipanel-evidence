@@ -1,0 +1,13 @@
+== 1. identity
+container=/odoo-sipanel image=sha256:1cd111414896838e9ba27b1ecadd789eb8d370ace907b8753aaa5ef144d589ac status=running
+db_bytes=152370535 filestore_bytes=278513611 addons_bytes=46532733 need_mb~=455 free_mb=3296
+== 2. create /opt/odoo/backups/sipanel-pre-live-fix-20260920T080013Z
+== 3. verify readability + checksums
+4d79c4ab3d76dfe8fef6653f6f4e4cc9c95d38b0b064d962d48b991c0a85b20e  sipanel.dump
+f4ec6442c98a9a4e1dbccb4ef728067dd0fdc9d0ebcfcf6ecc3414f6e27e8baf  filestore-sipanel.tar.gz
+e28a8939a79fcff15038a874e0653a610b6af61547b8dba9d87f9d4acef2a51f  addons.tar.gz
+2a267258222594c563af7ed99a8eacd5580f2ee68aeae9a251bede811f5327aa  installed_modules.txt
+62b61e7aaa173b18be3d6b5cd3f35877d55bf02cfb72198580e0726d6e0df21d  container-inspect.json
+8fd7a7863ef6d789b91cf0741446d646356c7ac02a5009dbd0a4939832890f60  odoo-sipanel.conf.redacted
+RECOVERY_POINT_OK /opt/odoo/backups/sipanel-pre-live-fix-20260920T080013Z
+Restore: docker exec -i odoo-db psql -U odoo -d postgres -c "CREATE DATABASE sipanel_restore" && docker exec -i odoo-db pg_restore -U odoo -d sipanel_restore < /opt/odoo/backups/sipanel-pre-live-fix-20260920T080013Z/sipanel.dump ; sudo tar -C /opt/odoo/data/filestore -xzf /opt/odoo/backups/sipanel-pre-live-fix-20260920T080013Z/filestore-sipanel.tar.gz

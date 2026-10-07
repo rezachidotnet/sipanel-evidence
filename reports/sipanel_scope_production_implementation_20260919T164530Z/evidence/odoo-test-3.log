@@ -1,0 +1,244 @@
+2026-09-19 17:09:45,783 3434 INFO ? odoo: Odoo version 19.0-20260528 
+2026-09-19 17:09:45,784 3434 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-19 17:09:45,784 3434 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-19 17:09:45,784 3434 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-09-19 17:09:47,858 3434 WARNING ? odoo.service.server: Unit testing in workers mode could fail; use --workers 0. 
+2026-09-19 17:09:48,029 3434 INFO sipanel odoo.tests.common: Importing test framework 
+2026-09-19 17:09:49,249 3434 INFO sipanel odoo.modules.loading: loading 1 modules... 
+2026-09-19 17:09:49,271 3434 INFO sipanel odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-09-19 17:09:49,393 3434 INFO sipanel odoo.modules.loading: updating modules list 
+2026-09-19 17:09:49,405 3434 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-19 17:09:57,737 3434 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['SIPANEL Commercial Scope Core', 'SIPANEL Sale Scope', 'SIPANEL Scope Costing', 'SIPANEL Scope Execution'] to user __system__ #1 via n/a 
+2026-09-19 17:09:57,737 3434 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['SIPANEL Commercial Scope Core', 'SIPANEL Sale Scope', 'SIPANEL Scope Costing', 'SIPANEL Scope Execution'] to user __system__ #1 via n/a 
+2026-09-19 17:10:01,634 3434 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-19 17:10:01,895 3434 INFO sipanel odoo.modules.loading: loading 200 modules... 
+2026-09-19 17:10:05,128 3434 INFO sipanel odoo.modules.loading: Loading module sipanel_commercial_scope_core (53/200) 
+2026-09-19 17:10:05,501 3434 INFO sipanel odoo.registry: module sipanel_commercial_scope_core: creating or updating database tables 
+2026-09-19 17:10:05,968 3434 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/security/sipanel_security.xml 
+2026-09-19 17:10:06,319 3434 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/security/ir.model.access.csv 
+2026-09-19 17:10:09,790 3434 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/security/sipanel_record_rules.xml 
+2026-09-19 17:10:09,820 3434 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/data/ir_config_parameter.xml 
+2026-09-19 17:10:09,831 3434 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/scope_views.xml 
+2026-09-19 17:10:09,997 3434 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/scope_version_views.xml 
+2026-09-19 17:10:10,105 3434 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/recipe_line_views.xml 
+2026-09-19 17:10:10,146 3434 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/audit_event_views.xml 
+2026-09-19 17:10:10,236 3434 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/uom_family_views.xml 
+2026-09-19 17:10:10,280 3434 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/res_config_settings_views.xml 
+2026-09-19 17:10:10,600 3434 INFO sipanel odoo.modules.loading: loading sipanel_commercial_scope_core/views/menus.xml 
+2026-09-19 17:10:11,501 3434 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_commercial_scope_core: no translation for language fa_IR 
+2026-09-19 17:10:11,509 3434 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_commercial_scope_core: no translation for language ru_RU 
+2026-09-19 17:10:11,569 3434 INFO sipanel odoo.modules.loading: Module sipanel_commercial_scope_core loaded in 6.44s, 420 queries (+420 other) 
+2026-09-19 17:10:17,361 3434 INFO sipanel odoo.modules.loading: Loading module sipanel_sale_scope (180/200) 
+2026-09-19 17:10:18,797 3434 INFO sipanel odoo.registry: module sipanel_sale_scope: creating or updating database tables 
+2026-09-19 17:10:19,677 3434 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_security.xml 
+2026-09-19 17:10:19,848 3434 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/ir.model.access.csv 
+2026-09-19 17:10:19,991 3434 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_record_rules.xml 
+2026-09-19 17:10:20,029 3434 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/add_scope_views.xml 
+2026-09-19 17:10:20,151 3434 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/refresh_cost_views.xml 
+2026-09-19 17:10:20,214 3434 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/split_move_views.xml 
+2026-09-19 17:10:20,271 3434 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/apply_price_views.xml 
+2026-09-19 17:10:20,313 3434 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/regenerate_note_views.xml 
+2026-09-19 17:10:20,350 3434 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/treatment_transition_views.xml 
+2026-09-19 17:10:20,390 3434 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/replace_recipe_views.xml 
+2026-09-19 17:10:20,433 3434 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_views.xml 
+2026-09-19 17:10:20,529 3434 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_revision_views.xml 
+2026-09-19 17:10:20,681 3434 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_component_views.xml 
+2026-09-19 17:10:20,735 3434 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/waiver_views.xml 
+2026-09-19 17:10:20,797 3434 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_order_views.xml 
+2026-09-19 17:10:21,226 3434 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_portal_templates.xml 
+2026-09-19 17:10:21,294 3434 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/menus.xml 
+2026-09-19 17:10:21,384 3434 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language fa_IR 
+2026-09-19 17:10:21,395 3434 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language ru_RU 
+2026-09-19 17:10:22,350 3434 INFO sipanel odoo.modules.loading: Module sipanel_sale_scope loaded in 4.99s, 601 queries (+601 other) 
+2026-09-19 17:10:22,714 3434 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_execution (198/200) 
+2026-09-19 17:10:23,514 3434 INFO sipanel odoo.registry: module sipanel_scope_execution: creating or updating database tables 
+2026-09-19 17:10:24,187 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_security.xml 
+2026-09-19 17:10:24,281 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/ir.model.access.csv 
+2026-09-19 17:10:24,355 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_record_rules.xml 
+2026-09-19 17:10:24,373 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/data/owner_rules.xml 
+2026-09-19 17:10:24,393 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/owner_rule_views.xml 
+2026-09-19 17:10:24,484 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/execution_views.xml 
+2026-09-19 17:10:24,734 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/sale_order_views.xml 
+2026-09-19 17:10:25,273 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/res_config_settings_views.xml 
+2026-09-19 17:10:25,822 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/menus.xml 
+2026-09-19 17:10:25,906 3434 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language fa_IR 
+2026-09-19 17:10:25,912 3434 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language ru_RU 
+2026-09-19 17:10:26,138 3434 INFO sipanel odoo.modules.loading: Module sipanel_scope_execution loaded in 3.42s, 502 queries (+502 other) 
+2026-09-19 17:10:26,144 3434 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_costing (200/200) 
+2026-09-19 17:10:26,279 3434 INFO sipanel odoo.registry: module sipanel_scope_costing: creating or updating database tables 
+2026-09-19 17:10:26,757 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_security.xml 
+2026-09-19 17:10:26,846 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/ir.model.access.csv 
+2026-09-19 17:10:26,914 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_record_rules.xml 
+2026-09-19 17:10:26,928 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/recognition_policies.xml 
+2026-09-19 17:10:26,964 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/ir_cron.xml 
+2026-09-19 17:10:26,974 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/policy_views.xml 
+2026-09-19 17:10:27,094 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/event_views.xml 
+2026-09-19 17:10:27,166 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/variance_views.xml 
+2026-09-19 17:10:27,219 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/sale_order_views.xml 
+2026-09-19 17:10:27,612 3434 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/menus.xml 
+2026-09-19 17:10:27,716 3434 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language fa_IR 
+2026-09-19 17:10:27,723 3434 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language ru_RU 
+2026-09-19 17:10:27,959 3434 INFO sipanel odoo.modules.loading: Module sipanel_scope_costing loaded in 1.82s, 335 queries (+335 other) 
+2026-09-19 17:10:27,960 3434 INFO sipanel odoo.modules.loading: 200 modules loaded in 26.06s, 1858 queries (+1858 extra) 
+2026-09-19 17:10:30,191 3434 INFO sipanel odoo.registry: verifying fields for every extended model 
+2026-09-19 17:10:34,880 3434 INFO sipanel odoo.modules.loading: Modules loaded. 
+2026-09-19 17:10:34,982 3434 INFO sipanel odoo.registry: Registry changed, signaling through the database 
+2026-09-19 17:10:34,996 3434 INFO sipanel odoo.registry: Registry loaded in 47.137s 
+2026-09-19 17:10:34,998 3434 INFO sipanel odoo.service.server: Starting post tests 
+2026-09-19 17:10:36,016 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-19 17:10:36,831 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-19 17:10:37,675 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-19 17:10:43,166 3434 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_recipe_validation: Starting TestRecipeValidation.test_percent_rules ... 
+2026-09-19 17:10:43,631 3434 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_recipe_validation: Starting TestRecipeValidation.test_release_r7_r10_r11 ... 
+2026-09-19 17:10:43,818 3434 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_recipe_validation: Starting TestRecipeValidation.test_uom_family_contract ... 
+2026-09-19 17:10:45,509 3434 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 4 checked, 3 removed 
+2026-09-19 17:10:46,648 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-19 17:10:47,537 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-19 17:10:48,404 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-19 17:10:53,285 3434 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_acl_plain_user_read_only ... 
+2026-09-19 17:10:53,653 3434 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: write, uid: 102, model: sipanel.scope 
+2026-09-19 17:10:53,674 3434 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: create, uid: 102, model: sipanel.scope 
+2026-09-19 17:10:53,689 3434 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_concurrent_release_lock ... 
+2026-09-19 17:10:53,862 3434 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_duplicate_as_new_scope ... 
+2026-09-19 17:10:54,237 3434 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_release_and_supersede ... 
+2026-09-19 17:10:54,654 3434 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_release_validations_block ... 
+2026-09-19 17:10:54,757 3434 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_released_version_is_immutable ... 
+2026-09-19 17:10:55,196 3434 INFO sipanel odoo.models.unlink: User #1 deleted mail.message records with IDs: [7770, 7769] 
+2026-09-19 17:10:56,458 3434 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_scope_lifecycle: Starting TestScopeLifecycle.test_scope_unlink_and_copy_guards ... 
+2026-09-19 17:10:57,083 3434 INFO sipanel odoo.models.unlink: User #1 deleted mail.message records with IDs: [7771] 
+2026-09-19 17:10:57,124 3434 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 3 checked, 3 removed 
+2026-09-19 17:10:57,128 3434 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_tools: Starting TestTools.test_cycle ... 
+2026-09-19 17:10:57,130 3434 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_tools: Starting TestTools.test_hash_deterministic ... 
+2026-09-19 17:10:57,132 3434 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_tools: Starting TestTools.test_presets ... 
+2026-09-19 17:10:57,134 3434 INFO sipanel odoo.addons.sipanel_commercial_scope_core.tests.test_tools: Starting TestTools.test_rounding ... 
+2026-09-19 17:10:57,152 3434 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-19 17:10:58,106 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-19 17:10:58,972 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-19 17:10:59,775 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-19 17:11:05,565 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-19 17:11:06,653 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-19 17:11:07,657 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-19 17:11:08,370 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_governance: Starting TestGovernance.test_mismatch_after_send_blocks_confirm ... 
+2026-09-19 17:11:12,979 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_governance: Starting TestGovernance.test_pt10_optional_scope_transitions ... 
+2026-09-19 17:11:17,304 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_governance: Starting TestGovernance.test_pt22_price_only_amendment_keeps_baseline ... 
+2026-09-19 17:11:19,992 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_governance: Starting TestGovernance.test_pt32_snapshot_roundtrip_language ... 
+2026-09-19 17:11:22,350 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_governance: Starting TestGovernance.test_seal_accept_flow_and_mismatch ... 
+2026-09-19 17:11:26,300 3434 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 15 checked, 15 removed 
+2026-09-19 17:11:27,500 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-19 17:11:28,420 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-19 17:11:29,441 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-19 17:11:34,880 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-19 17:11:35,708 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-19 17:11:36,514 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-19 17:11:37,128 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt01_add_scope_snapshot_and_cost ... 
+2026-09-19 17:11:38,003 3434 ERROR sipanel odoo.sql_db: bad query: b'INSERT INTO "sipanel_quote_scope" ("acceptance_state", "active", "anchor_line_id", "create_date", "create_uid", "order_id", "scope_uid", "write_date", "write_uid") VALUES (\'base\', true, 385, \'2026-09-19T17:11:26.307842\'::timestamp, 1, 175, \'df663c3d-8297-4936-915b-aebb4bf14bba\', \'2026-09-19T17:11:26.307842\'::timestamp, 1) RETURNING "id"'
+ERROR: duplicate key value violates unique constraint "sipanel_quote_scope_anchor_line_unique"
+DETAIL:  Key (anchor_line_id)=(385) already exists.
+ 
+2026-09-19 17:11:38,019 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt02_version_isolation ... 
+2026-09-19 17:11:39,120 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt03_dimensional_quantity ... 
+2026-09-19 17:11:40,810 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt04_override_retained_and_stale ... 
+2026-09-19 17:11:42,202 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt05_percent_validation ... 
+2026-09-19 17:11:44,070 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt06_split_with_dependent ... 
+2026-09-19 17:11:45,116 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: ====================================================================== 
+2026-09-19 17:11:45,116 3434 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: ERROR: TestQuoteEngine.test_pt06_split_with_dependent
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_quote_engine.py", line 134, in test_pt06_split_with_dependent
+    res = wiz.action_split()
+          ^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/sipanel_sale_scope/wizards/split_move.py", line 123, in action_split
+    raise UserError(_("Cost conservation violated: before %(b).4f, after %(a).4f. Nothing was saved.", b=cost_before, a=cost_after))
+odoo.exceptions.UserError: Cost conservation violated: before 10734.0000, after 10377.0000. Nothing was saved.
+ 
+2026-09-19 17:11:45,121 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt07_split_alone_blocked ... 
+2026-09-19 17:11:45,917 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt08_note_stale ... 
+2026-09-19 17:11:46,962 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt09_duplicate_independent ... 
+2026-09-19 17:11:49,570 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt11_customer_scope_and_internal_only ... 
+2026-09-19 17:11:50,320 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt25_foreign_currency_blocked ... 
+2026-09-19 17:11:51,663 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt26_cost_unit_conversion ... 
+2026-09-19 17:11:52,791 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt27_pricing_and_margin ... 
+2026-09-19 17:11:55,686 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt28_known_zero_vs_missing ... 
+2026-09-19 17:11:56,657 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_quote_engine: Starting TestQuoteEngine.test_pt31_ordinary_sales_untouched ... 
+2026-09-19 17:11:57,167 3434 INFO sipanel odoo.models.unlink: User #1 deleted sale.order.line records with IDs: [404] 
+2026-09-19 17:11:59,247 3434 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 8 checked, 8 removed 
+2026-09-19 17:12:00,727 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-19 17:12:01,672 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-19 17:12:02,556 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-19 17:12:08,740 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-19 17:12:09,581 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-19 17:12:10,418 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-19 17:12:11,060 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_security: Starting TestSecurity.test_s01_acl_matrix_subset ... 
+2026-09-19 17:12:11,987 3434 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: write, uid: 117, model: sipanel.quote.scope.revision 
+2026-09-19 17:12:12,041 3434 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: write, uid: 115, model: sipanel.quote.scope.revision 
+2026-09-19 17:12:12,455 3434 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-19 17:12:12,691 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_security: Starting TestSecurity.test_s02_company_isolation ... 
+2026-09-19 17:12:17,086 3434 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "OdooBot" <odoobot@example.com> as fallback 
+2026-09-19 17:12:17,100 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_other_co> to <s.s@example.com> 
+2026-09-19 17:12:18,263 3434 INFO sipanel odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [110], uid: 121, model: sipanel.quote.scope 
+2026-09-19 17:12:18,334 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_security: Starting TestSecurity.test_s03_import_and_rpc_bypass_on_sealed ... 
+2026-09-19 17:12:22,374 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_security: Starting TestSecurity.test_s04_portal_denied_on_internal_models ... 
+2026-09-19 17:12:23,429 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_portal> to <s.s@example.com> 
+2026-09-19 17:12:24,428 3434 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 122, model: sipanel.quote.scope 
+2026-09-19 17:12:24,438 3434 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 122, model: sipanel.quote.scope.revision 
+2026-09-19 17:12:24,448 3434 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 122, model: sipanel.quote.scope.component 
+2026-09-19 17:12:24,457 3434 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 122, model: sipanel.scope 
+2026-09-19 17:12:24,465 3434 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 122, model: sipanel.scope.version 
+2026-09-19 17:12:24,472 3434 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 122, model: sipanel.quote.waiver 
+2026-09-19 17:12:26,069 3434 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 122, model: sipanel.quote.scope.revision 
+2026-09-19 17:12:26,566 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_stranger> to <s.s@example.com> 
+2026-09-19 17:12:26,615 3434 INFO sipanel odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [106], uid: 123, model: sipanel.quote.scope.artifact 
+2026-09-19 17:12:26,650 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_security: Starting TestSecurity.test_s07_cost_fields_hidden_without_group ... 
+2026-09-19 17:12:27,389 3434 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 118, model: sipanel.quote.scope.revision, field: eligible_cost_total 
+2026-09-19 17:12:27,410 3434 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 118, model: sipanel.quote.scope.component, field: unit_cost 
+2026-09-19 17:12:27,425 3434 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 118, model: sipanel.quote.scope.component, field: cost_amount 
+2026-09-19 17:12:27,486 3434 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 118, model: sipanel.quote.scope.component, field: cost_amount 
+2026-09-19 17:12:27,522 3434 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_security: Starting TestSecurity.test_s10_privileged_actions_audited ... 
+2026-09-19 17:12:29,790 3434 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 118, model: sipanel.scope.audit.event, field: after_json 
+2026-09-19 17:12:30,004 3434 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 13 checked, 13 removed 
+2026-09-19 17:12:30,940 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-19 17:12:32,031 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-19 17:12:33,084 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-19 17:12:39,065 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-19 17:12:39,959 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-19 17:12:40,754 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-19 17:12:42,031 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_exec> to <s.s@example.com> 
+2026-09-19 17:12:42,885 3434 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_release: Starting TestRelease.test_pt12_estimate_only_blocks ... 
+2026-09-19 17:12:45,623 3434 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_release: Starting TestRelease.test_pt13_native_owner_links_not_creates ... 
+2026-09-19 17:12:48,782 3434 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_release: Starting TestRelease.test_pt14_release_twice_and_concurrent ... 
+2026-09-19 17:12:55,639 3434 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_release: Starting TestRelease.test_pt15_adapter_failure_rolls_back ... 
+2026-09-19 17:12:57,980 3434 INFO sipanel odoo.models.unlink: User #1 deleted product.supplierinfo records with IDs: [28] 
+2026-09-19 17:12:59,560 3434 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_release: Starting TestRelease.test_pt22_qty_delta_and_pt19_cancel_lineage ... 
+2026-09-19 17:13:06,563 3434 INFO sipanel odoo.addons.sipanel_scope_execution.tests.test_release: Starting TestRelease.test_release_creates_one_demand_per_component ... 
+2026-09-19 17:13:11,808 3434 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 16 checked, 16 removed 
+2026-09-19 17:13:13,168 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-19 17:13:14,090 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-19 17:13:14,918 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-19 17:13:20,429 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-19 17:13:21,288 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-19 17:13:22,159 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-19 17:13:23,521 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_exec> to <s.s@example.com> 
+2026-09-19 17:13:24,890 3434 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_fin_rec> to <s.s@example.com> 
+2026-09-19 17:13:25,660 3434 INFO sipanel odoo.addons.sipanel_scope_costing.tests.test_actuals: Starting TestActuals.test_policy_fail_closed_and_pt29_unallocated ... 
+2026-09-19 17:13:30,556 3434 INFO sipanel odoo.addons.sipanel_scope_costing.tests.test_actuals: ====================================================================== 
+2026-09-19 17:13:30,556 3434 ERROR sipanel odoo.addons.sipanel_scope_costing.tests.test_actuals: FAIL: TestActuals.test_policy_fail_closed_and_pt29_unallocated
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_costing/tests/test_actuals.py", line 193, in test_policy_fail_closed_and_pt29_unallocated
+    self.assertAlmostEqual(var.unallocated_cost, 30.0, places=2, msg=str([(e.source_model, e.source_res_id, e.component_type, e.amount, e.unallocated_amount, e.allocation_state) for e in others]))
+AssertionError: 60.0 != 30.0 within 2 places (30.0 difference) : [('account.analytic.line', 14, 'labour', 30.0, 30.0, 'unallocated')]
+ 
+2026-09-19 17:13:30,565 3434 INFO sipanel odoo.addons.sipanel_scope_costing.tests.test_actuals: Starting TestActuals.test_pt16_pt21_reconciliation ... 
+2026-09-19 17:13:41,307 3434 INFO sipanel odoo.addons.sipanel_scope_costing.tests.test_actuals: ====================================================================== 
+2026-09-19 17:13:41,308 3434 ERROR sipanel odoo.addons.sipanel_scope_costing.tests.test_actuals: FAIL: TestActuals.test_pt16_pt21_reconciliation
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_scope_costing/tests/test_actuals.py", line 113, in test_pt16_pt21_reconciliation
+    self.assertAlmostEqual(baseline, 10734.0, places=2)
+AssertionError: 10754.0 != 10734.0 within 2 places (20.0 difference)
+ 
+2026-09-19 17:13:41,321 3434 INFO sipanel odoo.addons.sipanel_scope_costing.tests.test_actuals: Starting TestActuals.test_pt19_return_and_credit_reverse_once ... 
+2026-09-19 17:13:48,691 3434 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 12 checked, 12 removed 
+2026-09-19 17:13:48,695 3434 INFO sipanel odoo.service.server: 49 post-tests in 193.70s, 30540 queries 
+2026-09-19 17:13:48,696 3434 INFO sipanel odoo.tests.stats: sipanel_commercial_scope_core: 20 tests 22.14s 3173 queries 
+2026-09-19 17:13:48,696 3434 INFO sipanel odoo.tests.stats: sipanel_sale_scope: 32 tests 92.84s 15046 queries 
+2026-09-19 17:13:48,696 3434 INFO sipanel odoo.tests.stats: sipanel_scope_costing: 5 tests 36.88s 5631 queries 
+2026-09-19 17:13:48,697 3434 INFO sipanel odoo.tests.stats: sipanel_scope_execution: 8 tests 41.80s 6690 queries 
+2026-09-19 17:13:48,704 3434 INFO sipanel odoo.service.server: Stopping workers gracefully 

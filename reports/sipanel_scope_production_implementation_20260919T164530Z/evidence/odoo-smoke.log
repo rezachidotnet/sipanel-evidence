@@ -1,0 +1,28 @@
+2026-09-19 17:30:43,094 3482 INFO ? odoo: Odoo version 19.0-20260528 
+2026-09-19 17:30:43,095 3482 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-19 17:30:43,095 3482 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-19 17:30:43,095 3482 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-09-19 17:30:45,238 3482 WARNING ? odoo.service.server: Unit testing in workers mode could fail; use --workers 0. 
+2026-09-19 17:30:45,400 3482 INFO sipanel odoo.tests.common: Importing test framework 
+2026-09-19 17:30:45,549 3482 INFO sipanel odoo.modules.loading: loading 1 modules... 
+2026-09-19 17:30:45,568 3482 INFO sipanel odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-09-19 17:30:45,698 3482 INFO sipanel odoo.modules.loading: updating modules list 
+2026-09-19 17:30:45,708 3482 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-19 17:30:50,270 3482 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['SIPANEL Scope Demo (C9 synthetic fixture) — TEST ONLY'] to user __system__ #1 via n/a 
+2026-09-19 17:30:50,498 3482 INFO sipanel odoo.modules.loading: loading 201 modules... 
+2026-09-19 17:30:55,473 3482 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_demo (201/201) 
+2026-09-19 17:30:56,773 3482 INFO sipanel odoo.modules.loading: loading sipanel_scope_demo/data/fixture_master.xml 
+2026-09-19 17:31:02,842 3482 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_demo: no translation for language fa_IR 
+2026-09-19 17:31:02,846 3482 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_demo: no translation for language ru_RU 
+2026-09-19 17:31:03,225 3482 INFO sipanel odoo.modules.loading: Module sipanel_scope_demo loaded in 7.75s, 737 queries (+737 other) 
+2026-09-19 17:31:03,226 3482 INFO sipanel odoo.modules.loading: 201 modules loaded in 12.73s, 737 queries (+737 extra) 
+2026-09-19 17:31:05,756 3482 INFO sipanel odoo.registry: verifying fields for every extended model 
+2026-09-19 17:31:09,953 3482 INFO sipanel odoo.modules.loading: Modules loaded. 
+2026-09-19 17:31:10,053 3482 INFO sipanel odoo.registry: Registry changed, signaling through the database 
+2026-09-19 17:31:10,063 3482 INFO sipanel odoo.registry: Registry loaded in 24.824s 
+2026-09-19 17:31:10,063 3482 INFO sipanel odoo.service.server: Starting post tests 
+2026-09-19 17:31:10,070 3482 INFO sipanel odoo.addons.sipanel_scope_demo.tests.test_fixture: Starting TestFixture.test_c9_oracle_from_fixture ... 
+2026-09-19 17:31:11,067 3482 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 1 checked, 0 removed 
+2026-09-19 17:31:11,070 3482 INFO sipanel odoo.service.server: 1 post-tests in 1.01s, 153 queries 
+2026-09-19 17:31:11,071 3482 INFO sipanel odoo.tests.stats: sipanel_scope_demo: 3 tests 1.00s 153 queries 
+2026-09-19 17:31:11,072 3482 INFO sipanel odoo.service.server: Stopping workers gracefully 

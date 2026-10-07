@@ -1,0 +1,312 @@
+2026-09-22 11:15:11,366 2457 INFO ? odoo: Odoo version 19.0-20260528 
+2026-09-22 11:15:11,368 2457 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-22 11:15:11,369 2457 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-22 11:15:11,373 2457 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-09-22 11:15:13,151 2457 WARNING ? odoo.service.server: Unit testing in workers mode could fail; use --workers 0. 
+2026-09-22 11:15:13,303 2457 INFO sipanel odoo.tests.common: Importing test framework 
+2026-09-22 11:15:13,590 2457 INFO sipanel odoo.modules.loading: loading 1 modules... 
+2026-09-22 11:15:13,614 2457 INFO sipanel odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-09-22 11:15:13,756 2457 INFO sipanel odoo.modules.loading: updating modules list 
+2026-09-22 11:15:14,051 2457 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-22 11:15:20,832 2457 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['SIPANEL Sale Scope'] to user __system__ #1 via n/a 
+2026-09-22 11:15:20,834 2457 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['SIPANEL Sale Scope'] to user __system__ #1 via n/a 
+2026-09-22 11:15:24,259 2457 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-22 11:15:24,725 2457 INFO sipanel odoo.modules.loading: loading 200 modules... 
+2026-09-22 11:15:31,494 2457 INFO sipanel odoo.modules.loading: Loading module sipanel_sale_scope (180/200) 
+2026-09-22 11:15:32,832 2457 INFO sipanel odoo.registry: module sipanel_sale_scope: creating or updating database tables 
+2026-09-22 11:15:34,343 2457 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_security.xml 
+2026-09-22 11:15:34,705 2457 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/ir.model.access.csv 
+2026-09-22 11:15:37,254 2457 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_record_rules.xml 
+2026-09-22 11:15:37,278 2457 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/add_scope_views.xml 
+2026-09-22 11:15:37,418 2457 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/refresh_cost_views.xml 
+2026-09-22 11:15:37,459 2457 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/split_move_views.xml 
+2026-09-22 11:15:37,496 2457 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/apply_price_views.xml 
+2026-09-22 11:15:37,529 2457 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/regenerate_note_views.xml 
+2026-09-22 11:15:37,563 2457 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/treatment_transition_views.xml 
+2026-09-22 11:15:37,605 2457 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/replace_recipe_views.xml 
+2026-09-22 11:15:37,642 2457 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_views.xml 
+2026-09-22 11:15:37,781 2457 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_revision_views.xml 
+2026-09-22 11:15:37,870 2457 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_component_views.xml 
+2026-09-22 11:15:37,899 2457 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/waiver_views.xml 
+2026-09-22 11:15:37,949 2457 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_order_views.xml 
+2026-09-22 11:15:38,307 2457 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_portal_templates.xml 
+2026-09-22 11:15:38,357 2457 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/menus.xml 
+2026-09-22 11:15:38,450 2457 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language fa_IR 
+2026-09-22 11:15:38,460 2457 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language ru_RU 
+2026-09-22 11:15:39,292 2457 INFO sipanel odoo.modules.loading: Module sipanel_sale_scope loaded in 7.80s, 676 queries (+676 other) 
+2026-09-22 11:15:39,567 2457 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_execution (198/200) 
+2026-09-22 11:15:40,141 2457 INFO sipanel odoo.registry: module sipanel_scope_execution: creating or updating database tables 
+2026-09-22 11:15:40,700 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_security.xml 
+2026-09-22 11:15:40,782 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/ir.model.access.csv 
+2026-09-22 11:15:40,892 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_record_rules.xml 
+2026-09-22 11:15:40,904 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/data/owner_rules.xml 
+2026-09-22 11:15:40,921 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/owner_rule_views.xml 
+2026-09-22 11:15:40,956 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/execution_views.xml 
+2026-09-22 11:15:41,097 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/sale_order_views.xml 
+2026-09-22 11:15:41,523 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/res_config_settings_views.xml 
+2026-09-22 11:15:42,187 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/menus.xml 
+2026-09-22 11:15:42,259 2457 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language fa_IR 
+2026-09-22 11:15:42,265 2457 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language ru_RU 
+2026-09-22 11:15:42,482 2457 INFO sipanel odoo.modules.loading: Module sipanel_scope_execution loaded in 2.91s, 499 queries (+499 other) 
+2026-09-22 11:15:42,488 2457 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_costing (200/200) 
+2026-09-22 11:15:42,662 2457 INFO sipanel odoo.registry: module sipanel_scope_costing: creating or updating database tables 
+2026-09-22 11:15:43,390 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_security.xml 
+2026-09-22 11:15:43,453 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/ir.model.access.csv 
+2026-09-22 11:15:43,537 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_record_rules.xml 
+2026-09-22 11:15:43,550 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/recognition_policies.xml 
+2026-09-22 11:15:43,589 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/ir_cron.xml 
+2026-09-22 11:15:43,607 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/policy_views.xml 
+2026-09-22 11:15:43,683 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/event_views.xml 
+2026-09-22 11:15:43,782 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/variance_views.xml 
+2026-09-22 11:15:43,831 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/sale_order_views.xml 
+2026-09-22 11:15:44,227 2457 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/menus.xml 
+2026-09-22 11:15:44,307 2457 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language fa_IR 
+2026-09-22 11:15:44,313 2457 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language ru_RU 
+2026-09-22 11:15:44,480 2457 INFO sipanel odoo.modules.loading: Module sipanel_scope_costing loaded in 1.99s, 339 queries (+339 other) 
+2026-09-22 11:15:44,480 2457 INFO sipanel odoo.modules.loading: 200 modules loaded in 19.75s, 1514 queries (+1514 extra) 
+2026-09-22 11:15:46,834 2457 INFO sipanel odoo.registry: verifying fields for every extended model 
+2026-09-22 11:15:50,275 2457 INFO sipanel odoo.modules.loading: Modules loaded. 
+2026-09-22 11:15:50,466 2457 INFO sipanel odoo.registry: Registry changed, signaling through the database 
+2026-09-22 11:15:50,482 2457 INFO sipanel odoo.registry: Registry loaded in 37.328s 
+2026-09-22 11:15:50,483 2457 INFO sipanel odoo.service.server: Starting post tests 
+2026-09-22 11:15:52,172 2457 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-22 11:15:53,203 2457 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-22 11:15:53,769 2457 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-22 11:15:58,130 2457 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-22 11:15:58,692 2457 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-22 11:15:59,263 2457 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-22 11:15:59,884 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_audit_actor_is_the_initiating_sales_user ... 
+2026-09-22 11:16:01,175 2457 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:16:01,217 2457 INFO sipanel odoo.models: Access Denied by ACLs for operation: write, uid: 2068, model: sipanel.quote.scope.revision, field: net_revenue_projection 
+2026-09-22 11:16:01,242 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: ====================================================================== 
+2026-09-22 11:16:01,242 2457 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: ERROR: TestSalesSealSend.test_audit_actor_is_the_initiating_sales_user
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal.py", line 61, in test_audit_actor_is_the_initiating_sales_user
+    order.with_user(self.sales).action_quotation_sent()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 116, in action_quotation_sent
+    self._sipanel_seal_current_revisions(actor='mark_sent')
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 77, in _sipanel_seal_current_revisions
+    rev.action_seal(actor=actor)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 345, in action_seal
+    r.with_context(**guard_ctx('sipanel_seal_transaction')).write({
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 204, in write
+    res = super().write(vals)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/mail/models/mail_thread.py", line 391, in write
+    result = super().write(vals)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4381, in write
+    self._check_field_access(self._fields[field_name], 'write')
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 3429, in _check_field_access
+    raise AccessError(error_msg)
+odoo.exceptions.AccessError: You do not have enough rights to access the field "net_revenue_projection" on SIPANEL quote scope revision (snapshot) (sipanel.quote.scope.revision). Please contact your system administrator.
+
+Operation: write
+User: 2068
+Groups: allowed for groups 'SIPANEL Commercial Scope / Cost & Margin Viewer'
+ 
+2026-09-22 11:16:01,250 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_customer_outputs_contain_no_cost_margin_or_net_revenue ... 
+2026-09-22 11:16:02,015 2457 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:16:02,075 2457 INFO sipanel odoo.models: Access Denied by ACLs for operation: write, uid: 2068, model: sipanel.quote.scope.revision, field: net_revenue_projection 
+2026-09-22 11:16:02,087 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: ====================================================================== 
+2026-09-22 11:16:02,088 2457 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: ERROR: TestSalesSealSend.test_customer_outputs_contain_no_cost_margin_or_net_revenue
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal.py", line 159, in test_customer_outputs_contain_no_cost_margin_or_net_revenue
+    order.with_user(self.sales).action_quotation_sent()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 116, in action_quotation_sent
+    self._sipanel_seal_current_revisions(actor='mark_sent')
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 77, in _sipanel_seal_current_revisions
+    rev.action_seal(actor=actor)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 345, in action_seal
+    r.with_context(**guard_ctx('sipanel_seal_transaction')).write({
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 204, in write
+    res = super().write(vals)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/mail/models/mail_thread.py", line 391, in write
+    result = super().write(vals)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4381, in write
+    self._check_field_access(self._fields[field_name], 'write')
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 3429, in _check_field_access
+    raise AccessError(error_msg)
+odoo.exceptions.AccessError: You do not have enough rights to access the field "net_revenue_projection" on SIPANEL quote scope revision (snapshot) (sipanel.quote.scope.revision). Please contact your system administrator.
+
+Operation: write
+User: 2068
+Groups: allowed for groups 'SIPANEL Commercial Scope / Cost & Margin Viewer'
+ 
+2026-09-22 11:16:02,096 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_estimator_and_manager_paths_remain_green ... 
+2026-09-22 11:16:02,751 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: ====================================================================== 
+2026-09-22 11:16:02,751 2457 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: ERROR: TestSalesSealSend.test_estimator_and_manager_paths_remain_green
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal.py", line 147, in test_estimator_and_manager_paths_remain_green
+    order.with_user(self.estimator).action_quotation_sent()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 116, in action_quotation_sent
+    self._sipanel_seal_current_revisions(actor='mark_sent')
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 72, in _sipanel_seal_current_revisions
+    o._sipanel_check_readiness()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 66, in _sipanel_check_readiness
+    raise UserError(self.env._("Quotation %(o)s cannot be sent:\n%(l)s", o=o.name, l='\n'.join('- ' + b for b in blocking)))
+odoo.exceptions.UserError: Quotation SI-26/2098 cannot be sent:
+- SI-26/2098 / SIPANEL-PT-GUTTER-f0aa77c4: Negative margin; a joint Finance+Sales waiver is required (BQ-02).
+ 
+2026-09-22 11:16:02,754 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_guessed_token_does_not_open_the_service ... 
+2026-09-22 11:16:03,580 2457 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:16:03,750 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: ====================================================================== 
+2026-09-22 11:16:03,751 2457 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: FAIL: TestSalesSealSend.test_guessed_token_does_not_open_the_service
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal.py", line 127, in test_guessed_token_does_not_open_the_service
+    with self.assertRaises(AccessError):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised
+ 
+2026-09-22 11:16:03,755 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_import_context_does_not_open_the_service ... 
+2026-09-22 11:16:04,587 2457 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:16:04,704 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: ====================================================================== 
+2026-09-22 11:16:04,704 2457 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: FAIL: TestSalesSealSend.test_import_context_does_not_open_the_service
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal.py", line 134, in test_import_context_does_not_open_the_service
+    with self.assertRaises(AccessError):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised
+ 
+2026-09-22 11:16:04,707 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_plain_sales_user_seals_and_sends_own_quotation ... 
+2026-09-22 11:16:05,459 2457 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:16:05,516 2457 INFO sipanel odoo.models: Access Denied by ACLs for operation: write, uid: 2068, model: sipanel.quote.scope.revision, field: net_revenue_projection 
+2026-09-22 11:16:05,524 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: ====================================================================== 
+2026-09-22 11:16:05,525 2457 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: ERROR: TestSalesSealSend.test_plain_sales_user_seals_and_sends_own_quotation
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal.py", line 47, in test_plain_sales_user_seals_and_sends_own_quotation
+    order.with_user(self.sales).action_quotation_sent()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 116, in action_quotation_sent
+    self._sipanel_seal_current_revisions(actor='mark_sent')
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 77, in _sipanel_seal_current_revisions
+    rev.action_seal(actor=actor)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 345, in action_seal
+    r.with_context(**guard_ctx('sipanel_seal_transaction')).write({
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 204, in write
+    res = super().write(vals)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/mail/models/mail_thread.py", line 391, in write
+    result = super().write(vals)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4381, in write
+    self._check_field_access(self._fields[field_name], 'write')
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 3429, in _check_field_access
+    raise AccessError(error_msg)
+odoo.exceptions.AccessError: You do not have enough rights to access the field "net_revenue_projection" on SIPANEL quote scope revision (snapshot) (sipanel.quote.scope.revision). Please contact your system administrator.
+
+Operation: write
+User: 2068
+Groups: allowed for groups 'SIPANEL Commercial Scope / Cost & Margin Viewer'
+ 
+2026-09-22 11:16:05,529 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_raw_context_flag_does_not_open_the_service ... 
+2026-09-22 11:16:06,373 2457 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:16:06,490 2457 INFO sipanel odoo.models: Access Denied by ACLs for operation: write, uid: 2068, model: sipanel.quote.scope.revision, field: net_revenue_projection 
+2026-09-22 11:16:06,528 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: ====================================================================== 
+2026-09-22 11:16:06,528 2457 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: FAIL: TestSalesSealSend.test_raw_context_flag_does_not_open_the_service
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal.py", line 120, in test_raw_context_flag_does_not_open_the_service
+    with self.assertRaises(AccessError):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised
+ 
+2026-09-22 11:16:06,533 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_sales_user_cannot_read_net_revenue_projection ... 
+2026-09-22 11:16:07,365 2457 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:16:07,408 2457 INFO sipanel odoo.models: Access Denied by ACLs for operation: write, uid: 2068, model: sipanel.quote.scope.revision, field: net_revenue_projection 
+2026-09-22 11:16:07,416 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: ====================================================================== 
+2026-09-22 11:16:07,416 2457 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: ERROR: TestSalesSealSend.test_sales_user_cannot_read_net_revenue_projection
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal.py", line 83, in test_sales_user_cannot_read_net_revenue_projection
+    order.with_user(self.sales).action_quotation_sent()
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 116, in action_quotation_sent
+    self._sipanel_seal_current_revisions(actor='mark_sent')
+  File "/mnt/extra-addons/sipanel_sale_scope/models/sale_order.py", line 77, in _sipanel_seal_current_revisions
+    rev.action_seal(actor=actor)
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 345, in action_seal
+    r.with_context(**guard_ctx('sipanel_seal_transaction')).write({
+  File "/mnt/extra-addons/sipanel_sale_scope/models/quote_scope_revision.py", line 204, in write
+    res = super().write(vals)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/mail/models/mail_thread.py", line 391, in write
+    result = super().write(vals)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4381, in write
+    self._check_field_access(self._fields[field_name], 'write')
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 3429, in _check_field_access
+    raise AccessError(error_msg)
+odoo.exceptions.AccessError: You do not have enough rights to access the field "net_revenue_projection" on SIPANEL quote scope revision (snapshot) (sipanel.quote.scope.revision). Please contact your system administrator.
+
+Operation: write
+User: 2068
+Groups: allowed for groups 'SIPANEL Commercial Scope / Cost & Margin Viewer'
+ 
+2026-09-22 11:16:07,420 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_sales_user_cannot_seal_an_inaccessible_order ... 
+2026-09-22 11:16:08,313 2457 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:16:08,826 2457 INFO sipanel odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [2105], uid: 2068, model: sale.order 
+2026-09-22 11:16:08,882 2457 INFO sipanel odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [2105], uid: 2068, model: sale.order 
+2026-09-22 11:16:08,924 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_sales_user_cannot_write_net_revenue_projection ... 
+2026-09-22 11:16:09,781 2457 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:16:09,909 2457 INFO sipanel odoo.models: Access Denied by ACLs for operation: write, uid: 2068, model: sipanel.quote.scope.revision, field: net_revenue_projection 
+2026-09-22 11:16:09,942 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: ====================================================================== 
+2026-09-22 11:16:09,942 2457 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: FAIL: TestSalesSealSend.test_sales_user_cannot_write_net_revenue_projection
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal.py", line 101, in test_sales_user_cannot_write_net_revenue_projection
+    with self.assertRaises(AccessError):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised
+ 
+2026-09-22 11:16:09,946 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_sudo_without_the_genuine_guard_cannot_forge_the_projection ... 
+2026-09-22 11:16:10,765 2457 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:16:10,914 2457 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: ====================================================================== 
+2026-09-22 11:16:10,914 2457 ERROR sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: FAIL: TestSalesSealSend.test_sudo_without_the_genuine_guard_cannot_forge_the_projection
+Traceback (most recent call last):
+  File "/mnt/extra-addons/sipanel_sale_scope/tests/test_sales_seal.py", line 110, in test_sudo_without_the_genuine_guard_cannot_forge_the_projection
+    with self.assertRaises(AccessError, msg=f):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised : commercial_projection_json
+ 
+2026-09-22 11:16:12,051 2457 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 10 checked, 6 removed 
+2026-09-22 11:16:12,053 2457 INFO sipanel odoo.service.server: 11 post-tests in 21.57s, 5078 queries 
+2026-09-22 11:16:12,054 2457 INFO sipanel odoo.tests.stats: sipanel_sale_scope: 13 tests 21.56s 5078 queries 
+2026-09-22 11:16:12,054 2457 INFO sipanel odoo.service.server: Stopping workers gracefully 

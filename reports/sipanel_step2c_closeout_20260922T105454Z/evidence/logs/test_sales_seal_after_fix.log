@@ -1,0 +1,125 @@
+2026-09-22 11:19:44,337 2480 INFO ? odoo: Odoo version 19.0-20260528 
+2026-09-22 11:19:44,338 2480 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-22 11:19:44,338 2480 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-22 11:19:44,339 2480 INFO ? odoo: database: odoo_sipanel_app@db:5432 
+2026-09-22 11:19:47,196 2480 WARNING ? odoo.service.server: Unit testing in workers mode could fail; use --workers 0. 
+2026-09-22 11:19:47,281 2480 INFO sipanel odoo.tests.common: Importing test framework 
+2026-09-22 11:19:47,395 2480 INFO sipanel odoo.modules.loading: loading 1 modules... 
+2026-09-22 11:19:47,411 2480 INFO sipanel odoo.modules.loading: 1 modules loaded in 0.02s, 0 queries (+0 extra) 
+2026-09-22 11:19:47,509 2480 INFO sipanel odoo.modules.loading: updating modules list 
+2026-09-22 11:19:47,520 2480 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-22 11:19:51,514 2480 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['SIPANEL Sale Scope'] to user __system__ #1 via n/a 
+2026-09-22 11:19:51,516 2480 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['SIPANEL Sale Scope'] to user __system__ #1 via n/a 
+2026-09-22 11:19:53,768 2480 INFO sipanel odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-22 11:19:53,911 2480 INFO sipanel odoo.modules.loading: loading 200 modules... 
+2026-09-22 11:19:57,560 2480 INFO sipanel odoo.modules.loading: Loading module sipanel_sale_scope (180/200) 
+2026-09-22 11:19:58,867 2480 INFO sipanel odoo.registry: module sipanel_sale_scope: creating or updating database tables 
+2026-09-22 11:19:59,653 2480 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_security.xml 
+2026-09-22 11:19:59,908 2480 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/ir.model.access.csv 
+2026-09-22 11:20:02,299 2480 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/security/sipanel_sale_record_rules.xml 
+2026-09-22 11:20:02,319 2480 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/add_scope_views.xml 
+2026-09-22 11:20:02,385 2480 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/refresh_cost_views.xml 
+2026-09-22 11:20:02,433 2480 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/split_move_views.xml 
+2026-09-22 11:20:02,487 2480 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/apply_price_views.xml 
+2026-09-22 11:20:02,531 2480 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/regenerate_note_views.xml 
+2026-09-22 11:20:02,574 2480 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/treatment_transition_views.xml 
+2026-09-22 11:20:02,621 2480 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/wizards/replace_recipe_views.xml 
+2026-09-22 11:20:02,663 2480 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_views.xml 
+2026-09-22 11:20:02,760 2480 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_revision_views.xml 
+2026-09-22 11:20:02,862 2480 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/quote_scope_component_views.xml 
+2026-09-22 11:20:02,900 2480 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/waiver_views.xml 
+2026-09-22 11:20:02,939 2480 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_order_views.xml 
+2026-09-22 11:20:03,231 2480 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/sale_portal_templates.xml 
+2026-09-22 11:20:03,270 2480 INFO sipanel odoo.modules.loading: loading sipanel_sale_scope/views/menus.xml 
+2026-09-22 11:20:03,337 2480 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language fa_IR 
+2026-09-22 11:20:03,352 2480 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_sale_scope: no translation for language ru_RU 
+2026-09-22 11:20:03,741 2480 INFO sipanel odoo.modules.loading: Module sipanel_sale_scope loaded in 6.18s, 676 queries (+676 other) 
+2026-09-22 11:20:03,851 2480 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_execution (198/200) 
+2026-09-22 11:20:04,351 2480 INFO sipanel odoo.registry: module sipanel_scope_execution: creating or updating database tables 
+2026-09-22 11:20:04,800 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_security.xml 
+2026-09-22 11:20:04,858 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/ir.model.access.csv 
+2026-09-22 11:20:04,951 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/security/sipanel_execution_record_rules.xml 
+2026-09-22 11:20:04,963 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/data/owner_rules.xml 
+2026-09-22 11:20:04,979 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/owner_rule_views.xml 
+2026-09-22 11:20:05,026 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/execution_views.xml 
+2026-09-22 11:20:05,174 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/sale_order_views.xml 
+2026-09-22 11:20:05,561 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/res_config_settings_views.xml 
+2026-09-22 11:20:06,121 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_execution/views/menus.xml 
+2026-09-22 11:20:06,241 2480 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language fa_IR 
+2026-09-22 11:20:06,247 2480 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_execution: no translation for language ru_RU 
+2026-09-22 11:20:06,442 2480 INFO sipanel odoo.modules.loading: Module sipanel_scope_execution loaded in 2.59s, 499 queries (+499 other) 
+2026-09-22 11:20:06,445 2480 INFO sipanel odoo.modules.loading: Loading module sipanel_scope_costing (200/200) 
+2026-09-22 11:20:06,540 2480 INFO sipanel odoo.registry: module sipanel_scope_costing: creating or updating database tables 
+2026-09-22 11:20:06,868 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_security.xml 
+2026-09-22 11:20:06,949 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/ir.model.access.csv 
+2026-09-22 11:20:07,029 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/security/sipanel_costing_record_rules.xml 
+2026-09-22 11:20:07,046 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/recognition_policies.xml 
+2026-09-22 11:20:07,075 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/data/ir_cron.xml 
+2026-09-22 11:20:07,082 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/policy_views.xml 
+2026-09-22 11:20:07,147 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/event_views.xml 
+2026-09-22 11:20:07,212 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/variance_views.xml 
+2026-09-22 11:20:07,246 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/sale_order_views.xml 
+2026-09-22 11:20:07,579 2480 INFO sipanel odoo.modules.loading: loading sipanel_scope_costing/views/menus.xml 
+2026-09-22 11:20:07,653 2480 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language fa_IR 
+2026-09-22 11:20:07,658 2480 INFO sipanel odoo.addons.base.models.ir_module: module sipanel_scope_costing: no translation for language ru_RU 
+2026-09-22 11:20:07,791 2480 INFO sipanel odoo.modules.loading: Module sipanel_scope_costing loaded in 1.35s, 339 queries (+339 other) 
+2026-09-22 11:20:07,791 2480 INFO sipanel odoo.modules.loading: 200 modules loaded in 13.88s, 1514 queries (+1514 extra) 
+2026-09-22 11:20:09,642 2480 INFO sipanel odoo.registry: verifying fields for every extended model 
+2026-09-22 11:20:13,076 2480 INFO sipanel odoo.modules.loading: Modules loaded. 
+2026-09-22 11:20:13,146 2480 INFO sipanel odoo.registry: Registry changed, signaling through the database 
+2026-09-22 11:20:13,157 2480 INFO sipanel odoo.registry: Registry loaded in 25.959s 
+2026-09-22 11:20:13,158 2480 INFO sipanel odoo.service.server: Starting post tests 
+2026-09-22 11:20:14,211 2480 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_steward> to <s.s@example.com> 
+2026-09-22 11:20:14,994 2480 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_estimator> to <s.s@example.com> 
+2026-09-22 11:20:15,651 2480 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_plain> to <s.s@example.com> 
+2026-09-22 11:20:20,189 2480 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales> to <s.s@example.com> 
+2026-09-22 11:20:20,800 2480 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_sales_mgr> to <s.s@example.com> 
+2026-09-22 11:20:21,469 2480 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_finance> to <s.s@example.com> 
+2026-09-22 11:20:21,977 2480 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_audit_actor_is_the_initiating_sales_user ... 
+2026-09-22 11:20:23,035 2480 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:20:24,258 2480 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_customer_outputs_contain_no_cost_margin_or_net_revenue ... 
+2026-09-22 11:20:25,367 2480 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:20:26,950 2480 INFO sipanel odoo.addons.auth_signup.models.res_users: Signup email sent for user <sipanel_pt_portal_seal> to <s.s@example.com> 
+2026-09-22 11:20:27,253 2480 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2090, model: product.template.attribute.value 
+2026-09-22 11:20:27,261 2480 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2090, model: product.template.attribute.value 
+2026-09-22 11:20:27,270 2480 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2090, model: account.tax 
+2026-09-22 11:20:27,333 2480 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2090, model: stock.route 
+2026-09-22 11:20:27,342 2480 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2090, model: product.document 
+2026-09-22 11:20:27,423 2480 INFO sipanel odoo.addons.base.models.ir_model: Access Denied by ACLs for operation: read, uid: 2090, model: sipanel.quote.scope.revision 
+2026-09-22 11:20:29,254 2480 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:20:30,669 2480 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_estimator_and_manager_paths_remain_green ... 
+2026-09-22 11:20:32,982 2480 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:20:33,213 2480 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_guessed_token_does_not_open_the_service ... 
+2026-09-22 11:20:34,055 2480 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:20:34,181 2480 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_import_context_does_not_open_the_service ... 
+2026-09-22 11:20:35,044 2480 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:20:36,136 2480 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_plain_sales_user_seals_and_sends_own_quotation ... 
+2026-09-22 11:20:37,203 2480 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:20:38,423 2480 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_raw_context_flag_does_not_open_the_service ... 
+2026-09-22 11:20:39,260 2480 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:20:39,369 2480 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_sales_user_cannot_read_net_revenue_projection ... 
+2026-09-22 11:20:40,112 2480 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:20:41,268 2480 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 2087, model: sipanel.quote.scope.revision, field: net_revenue_projection 
+2026-09-22 11:20:41,296 2480 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 2087, model: sipanel.quote.scope.revision, field: net_revenue_projection 
+2026-09-22 11:20:41,305 2480 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 2087, model: sipanel.quote.scope.revision, field: net_revenue_projection 
+2026-09-22 11:20:41,312 2480 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 2087, model: sipanel.quote.scope.revision, field: margin_amount 
+2026-09-22 11:20:41,327 2480 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 2087, model: sipanel.quote.scope.revision, field: margin_amount 
+2026-09-22 11:20:41,338 2480 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 2087, model: sipanel.quote.scope.revision, field: margin_amount 
+2026-09-22 11:20:41,348 2480 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 2087, model: sipanel.quote.scope.revision, field: margin_percent 
+2026-09-22 11:20:41,359 2480 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 2087, model: sipanel.quote.scope.revision, field: margin_percent 
+2026-09-22 11:20:41,369 2480 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 2087, model: sipanel.quote.scope.revision, field: margin_percent 
+2026-09-22 11:20:41,377 2480 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 2087, model: sipanel.quote.scope.revision, field: eligible_cost_total 
+2026-09-22 11:20:41,387 2480 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 2087, model: sipanel.quote.scope.revision, field: eligible_cost_total 
+2026-09-22 11:20:41,398 2480 INFO sipanel odoo.models: Access Denied by ACLs for operation: read, uid: 2087, model: sipanel.quote.scope.revision, field: eligible_cost_total 
+2026-09-22 11:20:41,443 2480 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_sales_user_cannot_seal_an_inaccessible_order ... 
+2026-09-22 11:20:42,319 2480 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:20:42,869 2480 INFO sipanel odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [2144], uid: 2087, model: sale.order 
+2026-09-22 11:20:42,946 2480 INFO sipanel odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: write on record ids: [2144], uid: 2087, model: sale.order 
+2026-09-22 11:20:42,987 2480 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_sales_user_cannot_write_net_revenue_projection ... 
+2026-09-22 11:20:43,735 2480 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:20:43,898 2480 INFO sipanel odoo.addons.sipanel_sale_scope.tests.test_sales_seal: Starting TestSalesSealSend.test_sudo_without_the_genuine_guard_cannot_forge_the_projection ... 
+2026-09-22 11:20:44,708 2480 WARNING sipanel odoo.addons.base.models.ir_mail_server: No mail server matches the from_filter, using "SIPANEL-PT Estimator" <s.s@example.com> as fallback 
+2026-09-22 11:20:45,122 2480 INFO sipanel odoo.addons.base.models.ir_attachment: filestore gc 12 checked, 12 removed 
+2026-09-22 11:20:45,126 2480 INFO sipanel odoo.service.server: 11 post-tests in 31.97s, 6207 queries 
+2026-09-22 11:20:45,126 2480 INFO sipanel odoo.tests.stats: sipanel_sale_scope: 13 tests 31.95s 6207 queries 
+2026-09-22 11:20:45,127 2480 INFO sipanel odoo.service.server: Stopping workers gracefully 
